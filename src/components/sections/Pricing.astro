@@ -1,0 +1,98 @@
+---
+import Card from '../ui/Card.astro';
+import Button from '../ui/Button.astro';
+import { site } from '../../config/site.config.js';
+---
+
+<section class="pricing section" id="prijzen">
+  <div class="container">
+    <h2 class="section__heading">Transparante prijzen</h2>
+    <p class="section__sub">Geen verborgen kosten. Eenmalig betalen, direct starten.</p>
+    <div class="pricing__grid">
+      {site.courses.map((course, i) => (
+        <Card highlighted={!!course.badge}>
+          {course.badge && <span class="pricing__badge">{course.badge}</span>}
+          <h3 class="pricing__name">{course.title}</h3>
+          <div class="pricing__amount">
+            <span class="pricing__price">{site.pricing[i]?.price}</span>
+            <span class="pricing__period">{site.pricing[i]?.period}</span>
+          </div>
+          <p class="pricing__desc">{course.description}</p>
+          <ul class="pricing__features" role="list">
+            {course.includes.map(f => (
+              <li class="pricing__feature">
+                <span class="pricing__check" aria-hidden="true">✓</span>
+                {f}
+              </li>
+            ))}
+          </ul>
+          <Button href={course.cta.href} variant={course.badge ? 'primary' : 'secondary'} class="pricing__cta">
+            {course.cta.label}
+          </Button>
+        </Card>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.pricing__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+.pricing__badge {
+  display: inline-block;
+  background: var(--color-accent);
+  color: var(--color-white);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-4);
+}
+.pricing__name {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary-dark);
+  margin-bottom: var(--space-4);
+}
+.pricing__amount {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+.pricing__price {
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-primary-dark);
+  line-height: 1;
+}
+.pricing__period {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+.pricing__desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-6);
+  line-height: var(--line-height-relaxed);
+}
+.pricing__features { list-style: none; display: flex; flex-direction: column; gap: var(--space-3); margin-bottom: var(--space-8); }
+.pricing__feature {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--font-size-sm);
+}
+.pricing__check { color: var(--color-accent); font-weight: var(--font-weight-bold); flex-shrink: 0; }
+.pricing__cta { width: 100%; justify-content: center; }
+
+@media (min-width: 768px) {
+  .pricing__grid { grid-template-columns: repeat(3, 1fr); align-items: stretch; }
+}
+</style>

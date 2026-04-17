@@ -1,0 +1,66 @@
+---
+import { site } from '../../config/site.config.js';
+---
+
+<section class="faq section" id="faq">
+  <div class="container faq__inner">
+    <h2 class="section__heading">Veelgestelde vragen</h2>
+    <p class="section__sub">Staat jouw vraag er niet bij? <a href="/contact" class="faq__contact-link">Neem contact op</a>.</p>
+    <div class="faq__list">
+      {site.faq.map(item => (
+        <details class="faq__item">
+          <summary class="faq__question">
+            <span>{item.question}</span>
+            <span class="faq__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="5 8 10 13 15 8"></polyline>
+              </svg>
+            </span>
+          </summary>
+          <p class="faq__answer">{item.answer}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.faq__inner { max-width: 720px; margin-inline: auto; }
+.faq__contact-link { color: var(--color-primary); font-weight: var(--font-weight-medium); }
+.faq__contact-link:hover { text-decoration: underline; }
+.faq__list { display: flex; flex-direction: column; gap: var(--space-3); }
+.faq__item {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: box-shadow var(--transition-fast);
+}
+.faq__item:hover { box-shadow: var(--shadow-md); }
+.faq__item[open] { box-shadow: var(--shadow-md); }
+.faq__question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-6);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary-dark);
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+.faq__question::-webkit-details-marker { display: none; }
+.faq__icon {
+  color: var(--color-primary);
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+.faq__item[open] .faq__icon { transform: rotate(180deg); }
+.faq__answer {
+  padding: 0 var(--space-6) var(--space-5);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+  font-size: var(--font-size-base);
+}
+</style>

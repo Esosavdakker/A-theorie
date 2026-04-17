@@ -1,0 +1,124 @@
+---
+import { site } from '../../config/site.config.js';
+const { about } = site;
+---
+
+<section class="about section" id="over-ons">
+  <div class="container about__inner">
+    <div class="about__text">
+      <h2 class="about__heading">{about.heading}</h2>
+      <p class="about__body">{about.body}</p>
+      <ul class="about__features" role="list">
+        {about.features.map(f => (
+          <li class="about__feature">
+            <span class="about__feature-icon" aria-hidden="true">{f.icon}</span>
+            <span>{f.text}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div class="about__visual" aria-hidden="true">
+      <div class="about__card-big">
+        <span class="about__big-stat">97%</span>
+        <span class="about__big-label">Slagingspercentage</span>
+      </div>
+      <div class="about__card-small">
+        <span class="about__small-stat">5.000+</span>
+        <span class="about__small-label">Tevreden cursisten</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.about__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  align-items: center;
+}
+.about__heading {
+  font-size: clamp(var(--font-size-2xl), 3vw, var(--font-size-4xl));
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-primary-dark);
+  margin-bottom: var(--space-6);
+}
+.about__body {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-8);
+  max-width: 540px;
+}
+.about__features { list-style: none; display: flex; flex-direction: column; gap: var(--space-4); }
+.about__feature {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-weight: var(--font-weight-medium);
+}
+.about__feature-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: rgb(249 115 22 / 0.1);
+  font-size: var(--font-size-lg);
+  flex-shrink: 0;
+}
+.about__visual {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  flex-shrink: 0;
+}
+.about__card-big {
+  background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+  color: var(--color-white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8) var(--space-10);
+  text-align: center;
+  box-shadow: var(--shadow-xl);
+}
+.about__big-stat {
+  display: block;
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-accent);
+  line-height: 1;
+}
+.about__big-label {
+  display: block;
+  font-size: var(--font-size-sm);
+  opacity: 0.85;
+  margin-top: var(--space-2);
+}
+.about__card-small {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6) var(--space-8);
+  text-align: center;
+  box-shadow: var(--shadow-md);
+}
+.about__small-stat {
+  display: block;
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-primary);
+  line-height: 1;
+}
+.about__small-label {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-top: var(--space-2);
+}
+
+@media (min-width: 768px) {
+  .about__inner { flex-direction: row; justify-content: space-between; }
+  .about__text { max-width: 560px; }
+}
+</style>

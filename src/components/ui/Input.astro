@@ -1,0 +1,64 @@
+---
+interface Props {
+  label: string;
+  name: string;
+  type?: string;
+  placeholder?: string;
+  required?: boolean;
+  error?: string;
+  rows?: number;
+}
+const { label, name, type = 'text', placeholder, required, error, rows } = Astro.props;
+const isTextarea = type === 'textarea';
+---
+
+<div class="field">
+  <label for={name} class="field__label">
+    {label}{required && <span class="field__required" aria-hidden="true"> *</span>}
+  </label>
+  {isTextarea ? (
+    <textarea
+      id={name}
+      name={name}
+      rows={rows ?? 5}
+      placeholder={placeholder}
+      required={required}
+      class:list={['field__input', 'field__textarea', { 'field__input--error': error }]}
+    ></textarea>
+  ) : (
+    <input
+      id={name}
+      name={name}
+      type={type}
+      placeholder={placeholder}
+      required={required}
+      class:list={['field__input', { 'field__input--error': error }]}
+    />
+  )}
+  {error && <p class="field__error" role="alert">{error}</p>}
+</div>
+
+<style>
+.field { display: flex; flex-direction: column; gap: var(--space-2); }
+.field__label { font-weight: var(--font-weight-medium); font-size: var(--font-size-sm); color: var(--color-text); }
+.field__required { color: var(--color-accent); }
+.field__input {
+  padding: var(--space-3) var(--space-4);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  background: var(--color-white);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  width: 100%;
+}
+.field__input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgb(0 102 204 / 0.15);
+}
+.field__input--error { border-color: #ef4444; }
+.field__textarea { resize: vertical; min-height: 120px; }
+.field__error { color: #ef4444; font-size: var(--font-size-sm); }
+</style>

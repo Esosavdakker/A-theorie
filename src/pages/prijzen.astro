@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Pricing from '../components/sections/Pricing.astro';
+import FAQ from '../components/sections/FAQ.astro';
+import CTA from '../components/sections/CTA.astro';
+---
+
+<BaseLayout
+  title="Prijzen"
+  description="Bekijk de prijzen van A+theorie. Transparante, eenmalige kosten zonder abonnement."
+>
+  <section class="page-hero">
+    <div class="container">
+      <h1 class="page-hero__title">Eerlijke prijzen</h1>
+      <p class="page-hero__sub">Eenmalig betalen, geen abonnement. Direct toegang tot alles wat je nodig hebt.</p>
+    </div>
+  </section>
+  <Pricing />
+  <FAQ />
+  <CTA />
+</BaseLayout>
+
+<style>
+.page-hero {
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+  color: var(--color-white);
+  padding-block: var(--space-20);
+  text-align: center;
+}
+.page-hero__title {
+  font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-5xl));
+  font-weight: var(--font-weight-extrabold);
+  margin-bottom: var(--space-4);
+}
+.page-hero__sub {
+  font-size: var(--font-size-lg);
+  opacity: 0.9;
+  max-width: 560px;
+  margin-inline: auto;
+}
+</style>
