@@ -1,0 +1,139 @@
+---
+import { site } from '../../config/site.config.js';
+const { testimonials } = site;
+---
+
+<section class="reviews">
+  <div class="container reviews__header">
+    <h2 class="reviews__heading">Beoordelingen</h2>
+    <div class="reviews__score-badge">
+      <span class="reviews__stars" aria-label="5 sterren">★★★★★</span>
+      <span class="reviews__score-text">
+        <strong>5.0</strong> · Uitstekend
+      </span>
+    </div>
+  </div>
+
+  <div class="reviews__wave">
+    <div class="container">
+      <div class="reviews__grid">
+        {testimonials.map(r => (
+          <div class="review-card">
+            <div class="review-card__stars" aria-label={`${r.rating} sterren`}>
+              {'★'.repeat(r.rating)}
+            </div>
+            <h3 class="review-card__title">{r.title}</h3>
+            <p class="review-card__text">{r.text}</p>
+            <div class="review-card__meta">
+              <span class="review-card__name">{r.name}</span>
+              <span class="review-card__time">{r.time}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p class="reviews__footer-text">
+        Een score van <strong>5.0</strong> uit 5 op basis van <strong>5.000+</strong> beoordelingen
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+.reviews {
+  padding-top: var(--space-20);
+}
+.reviews__header {
+  text-align: left;
+  margin-bottom: var(--space-8);
+}
+.reviews__heading {
+  font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-primary-dark);
+  margin-bottom: var(--space-4);
+}
+.reviews__score-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-4);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-white);
+}
+.reviews__stars {
+  color: #f59e0b;
+  font-size: var(--font-size-base);
+  letter-spacing: 2px;
+}
+.reviews__score-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+.reviews__score-text strong { color: var(--color-text); }
+
+/* Wave section */
+.reviews__wave {
+  background: var(--color-primary);
+  border-radius: 2rem 2rem 0 0;
+  padding: var(--space-12) 0 var(--space-16);
+  margin-top: var(--space-6);
+}
+.reviews__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+.review-card {
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.review-card__stars {
+  color: #f59e0b;
+  font-size: var(--font-size-base);
+  letter-spacing: 2px;
+}
+.review-card__title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary-dark);
+}
+.review-card__text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+  flex: 1;
+}
+.review-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+.review-card__name {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+.review-card__time {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.reviews__footer-text {
+  text-align: center;
+  color: rgb(255 255 255 / 0.8);
+  font-size: var(--font-size-sm);
+}
+.reviews__footer-text strong { color: var(--color-white); }
+
+@media (min-width: 768px) {
+  .reviews__grid { grid-template-columns: repeat(3, 1fr); }
+}
+</style>

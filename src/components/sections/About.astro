@@ -4,7 +4,60 @@ const { about } = site;
 ---
 
 <section class="about section" id="over-ons">
-  <div class="container about__inner">
+  <div class="container about__grid">
+
+    <div class="about__visual" aria-hidden="true">
+      <div class="about__device">
+        <div class="about__device-top">
+          <span class="about__device-dot"></span>
+          <span class="about__device-dot"></span>
+          <span class="about__device-dot"></span>
+        </div>
+        <div class="about__device-screen">
+          <div class="about__screen-header">
+            <span class="about__screen-title">Oefenexamen — Voortgang</span>
+          </div>
+          <div class="about__screen-stat">
+            <span class="about__screen-pct">84%</span>
+            <div class="about__screen-ring">
+              <svg viewBox="0 0 80 80" width="80" height="80">
+                <circle cx="40" cy="40" r="34" fill="none" stroke="#e2e8f0" stroke-width="8"/>
+                <circle cx="40" cy="40" r="34" fill="none" stroke="#f97316" stroke-width="8"
+                  stroke-dasharray="213.6" stroke-dashoffset="34" stroke-linecap="round"
+                  transform="rotate(-90 40 40)"/>
+              </svg>
+            </div>
+          </div>
+          <p class="about__screen-label">Correct beantwoord</p>
+          <div class="about__screen-divider"></div>
+          <div class="about__screen-topics">
+            <div class="about__topic">
+              <span class="about__topic-name">Verkeersregels</span>
+              <div class="about__topic-bar">
+                <div class="about__topic-fill" style="width: 92%"></div>
+              </div>
+              <span class="about__topic-score">92%</span>
+            </div>
+            <div class="about__topic">
+              <span class="about__topic-name">Gevaarherkenning</span>
+              <div class="about__topic-bar">
+                <div class="about__topic-fill" style="width: 78%"></div>
+              </div>
+              <span class="about__topic-score">78%</span>
+            </div>
+            <div class="about__topic">
+              <span class="about__topic-name">Verkeerstekens</span>
+              <div class="about__topic-bar">
+                <div class="about__topic-fill" style="width: 88%"></div>
+              </div>
+              <span class="about__topic-score">88%</span>
+            </div>
+          </div>
+          <button class="about__screen-btn">Verder oefenen →</button>
+        </div>
+      </div>
+    </div>
+
     <div class="about__text">
       <h2 class="about__heading">{about.heading}</h2>
       <p class="about__body">{about.body}</p>
@@ -17,38 +70,124 @@ const { about } = site;
         ))}
       </ul>
     </div>
-    <div class="about__visual" aria-hidden="true">
-      <div class="about__card-big">
-        <span class="about__big-stat">97%</span>
-        <span class="about__big-label">Slagingspercentage</span>
-      </div>
-      <div class="about__card-small">
-        <span class="about__small-stat">5.000+</span>
-        <span class="about__small-label">Tevreden cursisten</span>
-      </div>
-    </div>
+
   </div>
 </section>
 
 <style>
-.about__inner {
-  display: flex;
-  flex-direction: column;
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr;
   gap: var(--space-12);
   align-items: center;
 }
+
+/* Device visual */
+.about__visual { display: flex; justify-content: center; }
+.about__device {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+  width: 100%;
+  max-width: 380px;
+}
+.about__device-top {
+  background: var(--color-bg);
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  gap: var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+}
+.about__device-dot {
+  width: 10px; height: 10px;
+  border-radius: var(--radius-full);
+  background: var(--color-border);
+}
+.about__device-dot:first-child { background: #ef4444; }
+.about__device-dot:nth-child(2) { background: #f59e0b; }
+.about__device-dot:nth-child(3) { background: #22c55e; }
+
+.about__device-screen { padding: var(--space-6); }
+.about__screen-header { margin-bottom: var(--space-5); }
+.about__screen-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary-dark);
+}
+.about__screen-stat {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-2);
+  position: relative;
+}
+.about__screen-pct {
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-primary-dark);
+  line-height: 1;
+}
+.about__screen-ring {
+  position: absolute;
+  right: 0;
+}
+.about__screen-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-5);
+}
+.about__screen-divider {
+  height: 1px;
+  background: var(--color-border);
+  margin-bottom: var(--space-5);
+}
+.about__screen-topics { display: flex; flex-direction: column; gap: var(--space-3); margin-bottom: var(--space-6); }
+.about__topic { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: var(--space-2); }
+.about__topic-name { font-size: var(--font-size-xs); color: var(--color-text-muted); }
+.about__topic-bar {
+  width: 80px;
+  height: 6px;
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+.about__topic-fill {
+  height: 100%;
+  background: var(--color-accent);
+  border-radius: var(--radius-full);
+}
+.about__topic-score { font-size: var(--font-size-xs); font-weight: var(--font-weight-bold); color: var(--color-primary-dark); }
+.about__screen-btn {
+  display: block;
+  width: 100%;
+  padding: var(--space-3);
+  background: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+.about__screen-btn:hover { background: var(--color-primary-dark); }
+
+/* Text side */
 .about__heading {
   font-size: clamp(var(--font-size-2xl), 3vw, var(--font-size-4xl));
   font-weight: var(--font-weight-extrabold);
-  color: var(--color-primary-dark);
-  margin-bottom: var(--space-6);
+  color: var(--color-primary);
+  margin-bottom: var(--space-5);
+  line-height: var(--line-height-tight);
 }
 .about__body {
   font-size: var(--font-size-lg);
   color: var(--color-text-muted);
   line-height: var(--line-height-relaxed);
   margin-bottom: var(--space-8);
-  max-width: 540px;
 }
 .about__features { list-style: none; display: flex; flex-direction: column; gap: var(--space-4); }
 .about__feature {
@@ -56,69 +195,25 @@ const { about } = site;
   align-items: center;
   gap: var(--space-3);
   font-weight: var(--font-weight-medium);
+  color: var(--color-text);
 }
 .about__feature-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: var(--radius-md);
-  background: rgb(249 115 22 / 0.1);
-  font-size: var(--font-size-lg);
-  flex-shrink: 0;
-}
-.about__visual {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-  flex-shrink: 0;
-}
-.about__card-big {
-  background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  background: var(--color-accent);
   color: var(--color-white);
-  border-radius: var(--radius-xl);
-  padding: var(--space-8) var(--space-10);
-  text-align: center;
-  box-shadow: var(--shadow-xl);
-}
-.about__big-stat {
-  display: block;
-  font-size: var(--font-size-5xl);
-  font-weight: var(--font-weight-extrabold);
-  color: var(--color-accent);
-  line-height: 1;
-}
-.about__big-label {
-  display: block;
   font-size: var(--font-size-sm);
-  opacity: 0.85;
-  margin-top: var(--space-2);
-}
-.about__card-small {
-  background: var(--color-white);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
-  padding: var(--space-6) var(--space-8);
-  text-align: center;
-  box-shadow: var(--shadow-md);
-}
-.about__small-stat {
-  display: block;
-  font-size: var(--font-size-3xl);
-  font-weight: var(--font-weight-extrabold);
-  color: var(--color-primary);
-  line-height: 1;
-}
-.about__small-label {
-  display: block;
-  font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
-  margin-top: var(--space-2);
+  font-weight: var(--font-weight-bold);
+  flex-shrink: 0;
 }
 
 @media (min-width: 768px) {
-  .about__inner { flex-direction: row; justify-content: space-between; }
-  .about__text { max-width: 560px; }
+  .about__grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 </style>

@@ -24,26 +24,49 @@ export const site = {
     { label: "Contact",    href: "/contact" },
   ],
   hero: {
-    headline: "Slaag voor je theorie-examen!",
-    subheadline: "Meer dan 5.000 tevreden cursisten gingen je voor. Oefen met onze bewezen methode en haal je rijbewijs.",
-    ctaPrimary:   { label: "Start vandaag", href: "/cursussen" },
-    ctaSecondary: { label: "Bekijk prijzen", href: "/prijzen" },
+    headline1: "SLAAG IN 1 KEER",
+    headline2: "VOOR JE THEORIE",
+    ctaPrimary: { label: "Meld je aan", href: "/contact" },
+    trust: ["CBR-oefenexamens", "Direct toegang", "Alle apparaten"],
     stats: [
-      { value: "97%",    label: "Slagingspercentage" },
-      { value: "5.000+", label: "Tevreden cursisten" },
-      { value: "CBR",    label: "Erkend materiaal" },
+      { icon: "🏆", value: "97%",    label: "Slagingspercentage" },
+      { icon: "⭐", value: "5.000+", label: "Tevreden cursisten" },
+      { icon: "🎓", value: "CBR",    label: "Erkend materiaal" },
     ],
   },
   about: {
-    heading: "Waarom A+theorie?",
-    body: "Bij A+theorie geloven we dat iedereen zijn rijbewijs kan halen. Onze bewezen lesmethode combineert officieel CBR-materiaal met slimme oefentools zodat jij goed voorbereid je examen ingaat.",
+    heading: "Online theoriecursus",
+    body: "Bij A+theorie maken we het behalen van je CBR theorie-examen eenvoudiger dan ooit. Onze online theoriecursus stoomt je perfect klaar om in één keer te slagen bij het CBR. Met onze uitgebreide oefenexamens, gebaseerd op echte examenvragen, weet je precies wat je te wachten staat.",
     features: [
       { icon: "✓", text: "CBR-erkend oefenmateriaal" },
-      { icon: "⏰", text: "Oefen wanneer het jou uitkomt" },
-      { icon: "★", text: "Persoonlijke voortgangsrapportage" },
-      { icon: "📞", text: "Altijd bereikbaar voor vragen" },
+      { icon: "✓", text: "Oefen wanneer het jou uitkomt" },
+      { icon: "✓", text: "Persoonlijke voortgangsrapportage" },
+      { icon: "✓", text: "Altijd bereikbaar voor vragen" },
     ],
   },
+  testimonials: [
+    {
+      name: "Miryam A.",
+      rating: 5,
+      title: "Aanrader!",
+      text: "In één keer geslaagd dankzij de duidelijke uitleg en goede oefenexamens. Echt een aanrader!",
+      time: "2 weken geleden",
+    },
+    {
+      name: "Khalil C.",
+      rating: 5,
+      title: "Top cursus!",
+      text: "Top docent en 1x keer geslaagd. Echt aanrader voor iedereen die zijn rijbewijs wil halen.",
+      time: "1 maand geleden",
+    },
+    {
+      name: "Sara V.",
+      rating: 5,
+      title: "Intensief maar waardevol",
+      text: "Veel informatie, goede uitleg. Met vertrouwen het examen ingegaan en in één keer geslaagd.",
+      time: "3 weken geleden",
+    },
+  ],
   courses: [
     {
       id: "basis",
@@ -112,10 +135,11 @@ export const site = {
   cta: {
     heading: "Klaar om te starten?",
     body: "Sluit je aan bij duizenden cursisten die al geslaagd zijn met A+theorie.",
-    button: { label: "Begin nu", href: "/cursussen" },
+    button: { label: "Meld je aan", href: "/contact" },
   },
   footer: {
     tagline: "Jouw weg naar het rijbewijs begint hier.",
+    hours: { weekdays: "Ma–Vr: 09:00–17:00", saturday: "Za: Gesloten", sunday: "Zo: Gesloten" },
     copyright: `© ${new Date().getFullYear()} A+theorie. Alle rechten voorbehouden.`,
   },
 };

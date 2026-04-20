@@ -1,105 +1,386 @@
 ---
-import Button from '../ui/Button.astro';
 import { site } from '../../config/site.config.js';
 const { hero } = site;
 ---
 
 <section class="hero">
-  <div class="container hero__content">
-    <div class="hero__text">
-      <h1 class="hero__headline">{hero.headline}</h1>
-      <p class="hero__sub">{hero.subheadline}</p>
-      <div class="hero__actions">
-        <Button href={hero.ctaPrimary.href} variant="primary" size="lg">
-          {hero.ctaPrimary.label}
-        </Button>
-        <Button href={hero.ctaSecondary.href} variant="outline" size="lg">
-          {hero.ctaSecondary.label}
-        </Button>
+  <div class="hero__left">
+    <div class="hero__content">
+
+      <div class="hero__stats-bar">
+        {hero.stats.map(s => (
+          <div class="hero__stat-pill">
+            <span class="hero__stat-icon" aria-hidden="true">{s.icon}</span>
+            <div class="hero__stat-text">
+              <strong>{s.value}</strong>
+              <span>{s.label}</span>
+            </div>
+          </div>
+        ))}
       </div>
+
+      <h1 class="hero__headline">
+        <span class="hero__line1">{hero.headline1}</span>
+        <span class="hero__line2">{hero.headline2}</span>
+      </h1>
+
+      <a href={hero.ctaPrimary.href} class="hero__cta">
+        {hero.ctaPrimary.label}
+      </a>
+
+      <div class="hero__trust">
+        {hero.trust.map(t => (
+          <span class="hero__trust-item">
+            <span class="hero__trust-check" aria-hidden="true">✓</span> {t}
+          </span>
+        ))}
+      </div>
+
     </div>
-    <div class="hero__stats">
-      {hero.stats.map(s => (
-        <div class="hero__stat">
-          <span class="hero__stat-value">{s.value}</span>
-          <span class="hero__stat-label">{s.label}</span>
+  </div>
+
+  <div class="hero__right" aria-hidden="true">
+    <div class="hero__mockup">
+      <div class="mockup__header">
+        <span class="mockup__brand">A<span>+</span>theorie</span>
+        <span class="mockup__badge">Oefenexamen</span>
+      </div>
+      <div class="mockup__progress">
+        <div class="mockup__progress-bar"></div>
+        <span>Vraag 7 van 25</span>
+      </div>
+      <div class="mockup__scene">
+        <div class="mockup__road">
+          <div class="mockup__road-line"></div>
+          <div class="mockup__car"></div>
+          <div class="mockup__sign">
+            <span>50</span>
+          </div>
         </div>
-      ))}
+      </div>
+      <p class="mockup__question">Wat is de maximumsnelheid binnen de bebouwde kom?</p>
+      <div class="mockup__answers">
+        <div class="mockup__answer mockup__answer--wrong">
+          <span class="mockup__answer-key">A</span>
+          <span>30 km/u</span>
+        </div>
+        <div class="mockup__answer mockup__answer--correct">
+          <span class="mockup__answer-key">B</span>
+          <span>50 km/u</span>
+          <span class="mockup__answer-tick">✓</span>
+        </div>
+        <div class="mockup__answer">
+          <span class="mockup__answer-key">C</span>
+          <span>70 km/u</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <style>
 .hero {
-  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
-  color: var(--color-white);
-  padding-block: var(--space-24) var(--space-20);
-  min-height: calc(90vh - var(--navbar-height));
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: calc(100vh - var(--navbar-height));
+  overflow: hidden;
+  background: var(--color-white);
+}
+
+/* ── Left panel ── */
+.hero__left {
   display: flex;
   align-items: center;
+  padding: var(--space-16) var(--space-6);
 }
 .hero__content {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-12);
+  max-width: 560px;
   width: 100%;
 }
-.hero__headline {
-  font-size: clamp(var(--font-size-3xl), 5vw, var(--font-size-5xl));
-  font-weight: var(--font-weight-extrabold);
-  line-height: var(--line-height-tight);
-  margin-bottom: var(--space-6);
-}
-.hero__sub {
-  font-size: var(--font-size-lg);
-  opacity: 0.9;
-  max-width: 560px;
-  line-height: var(--line-height-relaxed);
+
+/* Stats pills */
+.hero__stats-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
   margin-bottom: var(--space-8);
 }
-.hero__actions {
+.hero__stat-pill {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-full);
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-white);
+}
+.hero__stat-icon { font-size: var(--font-size-base); }
+.hero__stat-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+.hero__stat-text strong {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary-dark);
+}
+.hero__stat-text span {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+/* Headline */
+.hero__headline {
+  display: flex;
+  flex-direction: column;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--line-height-tight);
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-8);
+}
+.hero__line1 { color: var(--color-primary-dark); }
+.hero__line2 { color: var(--color-primary-dark); }
+
+/* CTA */
+.hero__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 420px;
+  padding: var(--space-4) var(--space-8);
+  background: var(--color-accent);
+  color: var(--color-white);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+  margin-bottom: var(--space-5);
+}
+.hero__cta:hover {
+  background: var(--color-accent-dark);
+  transform: translateY(-1px);
+}
+
+/* Trust line */
+.hero__trust {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-4);
 }
-.hero__stats {
+.hero__trust-item {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-8);
-  padding-top: var(--space-8);
-  border-top: 1px solid rgb(255 255 255 / 0.2);
-}
-.hero__stat {
-  display: flex;
-  flex-direction: column;
+  align-items: center;
   gap: var(--space-1);
 }
-.hero__stat-value {
-  font-size: var(--font-size-3xl);
-  font-weight: var(--font-weight-extrabold);
-  color: var(--color-accent);
-  line-height: 1;
-}
-.hero__stat-label {
-  font-size: var(--font-size-sm);
-  opacity: 0.8;
+.hero__trust-check { color: var(--color-accent); font-weight: var(--font-weight-bold); }
+
+/* ── Right panel (app mockup) ── */
+.hero__right {
+  display: none;
+  background: linear-gradient(160deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+  border-radius: 2rem 0 0 2rem;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-12);
 }
 
-@media (min-width: 768px) {
-  .hero__content {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+/* Mockup UI */
+.hero__mockup {
+  background: rgb(255 255 255 / 0.08);
+  border: 1px solid rgb(255 255 255 / 0.15);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  width: 100%;
+  max-width: 420px;
+  backdrop-filter: blur(4px);
+}
+.mockup__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+}
+.mockup__brand {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-white);
+}
+.mockup__brand span { color: var(--color-accent); }
+.mockup__badge {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  background: var(--color-accent);
+  color: var(--color-white);
+  padding: 2px var(--space-3);
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.mockup__progress {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+.mockup__progress-bar {
+  flex: 1;
+  height: 6px;
+  background: rgb(255 255 255 / 0.2);
+  border-radius: var(--radius-full);
+  position: relative;
+}
+.mockup__progress-bar::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: 28%;
+  height: 100%;
+  background: var(--color-accent);
+  border-radius: var(--radius-full);
+}
+.mockup__progress span {
+  font-size: var(--font-size-xs);
+  color: rgb(255 255 255 / 0.7);
+  white-space: nowrap;
+}
+
+/* Road scene */
+.mockup__scene {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #4ade80;
+  height: 120px;
+  margin-bottom: var(--space-4);
+  position: relative;
+}
+.mockup__road {
+  position: absolute;
+  bottom: 0;
+  left: 0; right: 0;
+  height: 50px;
+  background: #374151;
+  display: flex;
+  align-items: center;
+  padding-inline: var(--space-4);
+}
+.mockup__road-line {
+  flex: 1;
+  height: 3px;
+  background: repeating-linear-gradient(
+    90deg,
+    #fff 0, #fff 20px,
+    transparent 20px, transparent 36px
+  );
+}
+.mockup__car {
+  width: 40px;
+  height: 22px;
+  background: var(--color-primary);
+  border-radius: 6px 6px 3px 3px;
+  position: absolute;
+  left: var(--space-8);
+  bottom: 14px;
+}
+.mockup__car::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 8px;
+  width: 24px;
+  height: 12px;
+  background: var(--color-primary-light);
+  border-radius: 4px 4px 0 0;
+}
+.mockup__sign {
+  position: absolute;
+  top: 12px;
+  right: var(--space-8);
+  width: 36px;
+  height: 36px;
+  background: var(--color-white);
+  border: 3px solid #dc2626;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-weight-extrabold);
+  font-size: var(--font-size-sm);
+  color: #dc2626;
+}
+
+.mockup__question {
+  font-size: var(--font-size-sm);
+  color: var(--color-white);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-4);
+  line-height: var(--line-height-normal);
+}
+.mockup__answers {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.mockup__answer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  background: rgb(255 255 255 / 0.08);
+  border: 1px solid rgb(255 255 255 / 0.15);
+  font-size: var(--font-size-sm);
+  color: rgb(255 255 255 / 0.85);
+  cursor: default;
+}
+.mockup__answer--correct {
+  background: rgb(34 197 94 / 0.2);
+  border-color: #22c55e;
+  color: var(--color-white);
+}
+.mockup__answer--wrong {
+  background: rgb(239 68 68 / 0.15);
+  border-color: #ef4444;
+  color: rgb(255 255 255 / 0.6);
+}
+.mockup__answer-key {
+  font-weight: var(--font-weight-bold);
+  width: 20px;
+  text-align: center;
+}
+.mockup__answer-tick {
+  margin-left: auto;
+  color: #22c55e;
+  font-weight: var(--font-weight-bold);
+}
+
+/* ── Responsive ── */
+@media (min-width: 1024px) {
+  .hero {
+    grid-template-columns: 1fr 1fr;
   }
-  .hero__text { flex: 1; }
-  .hero__stats {
-    flex-direction: column;
-    flex-shrink: 0;
-    gap: var(--space-6);
-    border-top: none;
-    border-left: 1px solid rgb(255 255 255 / 0.2);
-    padding-top: 0;
-    padding-left: var(--space-12);
+  .hero__left {
+    padding: var(--space-20) var(--space-12) var(--space-20) calc((100vw - var(--container-max)) / 2 + var(--container-pad));
+    justify-content: flex-end;
   }
+  .hero__right {
+    display: flex;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero__left {
+    padding: var(--space-16) var(--space-8);
+  }
+  .hero__content { max-width: 100%; }
+  .hero__cta { max-width: 100%; }
 }
 </style>
