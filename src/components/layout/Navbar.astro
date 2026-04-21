@@ -2,7 +2,7 @@
 import { site } from '../../config/site.config.js';
 ---
 
-<header class="navbar">
+<header class="navbar" id="navbar">
   <div class="container navbar__inner">
     <a href="/" class="navbar__logo" aria-label="A+theorie home">
       <span class="logo__a">A</span><span class="logo__plus">+</span><span class="logo__theorie">theorie</span>
@@ -20,7 +20,12 @@ import { site } from '../../config/site.config.js';
 
     <div class="navbar__actions">
       <a href="/contact" class="navbar__login">Inloggen</a>
-      <a href="/contact" class="navbar__cta">Meld je aan</a>
+      <a href="/contact" class="navbar__cta">
+        Meld je aan
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="navbar__cta-arrow">
+          <line x1="3" y1="8" x2="13" y2="8"/><polyline points="9 4 13 8 9 12"/>
+        </svg>
+      </a>
     </div>
 
     <button class="navbar__burger" aria-label="Menu openen" aria-expanded="false" aria-controls="mobile-menu">
@@ -36,13 +41,14 @@ import { site } from '../../config/site.config.js';
         ))}
         <li class="navbar__mobile-divider"></li>
         <li><a href="/contact" class="navbar__mobile-link">Inloggen</a></li>
-        <li><a href="/contact" class="navbar__mobile-cta">Meld je aan</a></li>
+        <li><a href="/contact" class="navbar__mobile-cta">Meld je aan →</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
 <script>
+  /* Burger toggle */
   const burger = document.querySelector('.navbar__burger') as HTMLButtonElement | null;
   const menu   = document.getElementById('mobile-menu');
   burger?.addEventListener('click', () => {
@@ -51,6 +57,12 @@ import { site } from '../../config/site.config.js';
     burger.setAttribute('aria-expanded', String(!isOpen));
     burger.classList.toggle('navbar__burger--open', !isOpen);
   });
+
+  /* Glassmorphism on scroll */
+  const navbar = document.getElementById('navbar');
+  const onScroll = () => navbar?.classList.toggle('navbar--scrolled', window.scrollY > 8);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 </script>
 
 <style>
@@ -60,7 +72,16 @@ import { site } from '../../config/site.config.js';
   z-index: var(--z-navbar);
   background: var(--color-white);
   border-bottom: 1px solid var(--color-border);
-  box-shadow: var(--shadow-sm);
+  transition: background var(--duration-normal) var(--ease-out),
+              box-shadow var(--duration-normal) var(--ease-out),
+              border-color var(--duration-normal) var(--ease-out);
+}
+.navbar--scrolled {
+  background: rgb(255 255 255 / 0.82);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom-color: rgb(226 232 240 / 0.6);
+  box-shadow: var(--shadow-md);
 }
 .navbar__inner {
   display: flex;
@@ -69,64 +90,95 @@ import { site } from '../../config/site.config.js';
   height: var(--navbar-height);
   gap: var(--space-6);
 }
+
+/* Logo */
 .navbar__logo {
   display: flex;
   align-items: baseline;
-  font-size: var(--font-size-xl);
+  font-size: 1.35rem;
   font-weight: var(--font-weight-extrabold);
+  letter-spacing: -0.02em;
   text-decoration: none;
   flex-shrink: 0;
 }
-.logo__a { color: var(--color-primary-dark); }
+.logo__a, .logo__theorie { color: var(--color-primary-dark); }
 .logo__plus { color: var(--color-accent); }
-.logo__theorie { color: var(--color-primary-dark); }
 
+/* Nav links */
 .navbar__nav { flex: 1; }
 .navbar__list {
   display: flex;
   list-style: none;
-  gap: var(--space-8);
+  gap: var(--space-2);
   justify-content: center;
 }
 .navbar__link {
+  position: relative;
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-sm);
-  color: var(--color-text);
-  transition: color var(--transition-fast);
-  padding-block: var(--space-2);
+  color: var(--color-text-muted);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+.navbar__link::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: calc(100% - var(--space-6));
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
+  transition: transform var(--duration-normal) var(--ease-spring);
 }
 .navbar__link:hover { color: var(--color-primary); }
+.navbar__link:hover::after { transform: translateX(-50%) scaleX(1); }
 
+/* Action buttons */
 .navbar__actions {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
+  gap: var(--space-2);
   flex-shrink: 0;
 }
 .navbar__login {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
-  color: var(--color-text);
+  color: var(--color-text-muted);
   padding: var(--space-2) var(--space-4);
-  border: 1.5px solid var(--color-border);
   border-radius: var(--radius-md);
-  transition: border-color var(--transition-fast), color var(--transition-fast);
-  text-decoration: none;
+  transition: color var(--transition-fast), background var(--transition-fast);
 }
-.navbar__login:hover { border-color: var(--color-primary); color: var(--color-primary); }
+.navbar__login:hover { color: var(--color-text); background: var(--color-bg); }
+
 .navbar__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
   color: var(--color-white);
   background: var(--color-accent);
-  padding: var(--space-2) var(--space-5);
+  padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-md);
-  text-decoration: none;
-  transition: background var(--transition-fast), transform var(--transition-fast);
-  white-space: nowrap;
+  box-shadow: 0 2px 8px rgb(249 115 22 / 0.3);
+  transition: background var(--transition-fast),
+              transform var(--duration-normal) var(--ease-spring),
+              box-shadow var(--duration-normal) var(--ease-out);
 }
-.navbar__cta:hover { background: var(--color-accent-dark); transform: translateY(-1px); }
+.navbar__cta:hover {
+  background: var(--color-accent-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgb(249 115 22 / 0.4);
+}
+.navbar__cta-arrow {
+  transition: transform var(--duration-normal) var(--ease-spring);
+}
+.navbar__cta:hover .navbar__cta-arrow { transform: translateX(3px); }
 
+/* Burger */
 .navbar__burger {
   display: none;
   flex-direction: column;
@@ -140,41 +192,35 @@ import { site } from '../../config/site.config.js';
 }
 .navbar__burger span {
   display: block;
-  width: 24px;
+  width: 22px;
   height: 2px;
   background: var(--color-text);
   border-radius: 2px;
-  transition: transform var(--transition-fast), opacity var(--transition-fast);
+  transition: transform var(--duration-normal) var(--ease-out),
+              opacity var(--duration-fast) var(--ease-in-out);
 }
 .navbar__burger--open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .navbar__burger--open span:nth-child(2) { opacity: 0; }
 .navbar__burger--open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+/* Mobile menu */
 .navbar__mobile {
   background: var(--color-white);
   border-top: 1px solid var(--color-border);
-  padding: var(--space-4) var(--space-6);
+  padding: var(--space-3) var(--space-6) var(--space-5);
 }
-.navbar__mobile-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-1);
-}
+.navbar__mobile-list { list-style: none; display: flex; flex-direction: column; }
 .navbar__mobile-link {
   display: block;
-  padding: var(--space-3) var(--space-4);
+  padding: var(--space-3) var(--space-3);
   font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
   color: var(--color-text);
   border-radius: var(--radius-md);
   transition: background var(--transition-fast), color var(--transition-fast);
 }
 .navbar__mobile-link:hover { background: var(--color-bg); color: var(--color-primary); }
-.navbar__mobile-divider {
-  height: 1px;
-  background: var(--color-border);
-  margin-block: var(--space-2);
-}
+.navbar__mobile-divider { height: 1px; background: var(--color-border); margin-block: var(--space-3); }
 .navbar__mobile-cta {
   display: block;
   margin-top: var(--space-2);
@@ -184,7 +230,9 @@ import { site } from '../../config/site.config.js';
   color: var(--color-white);
   border-radius: var(--radius-md);
   font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
   transition: background var(--transition-fast);
+  box-shadow: var(--shadow-accent);
 }
 .navbar__mobile-cta:hover { background: var(--color-accent-dark); }
 

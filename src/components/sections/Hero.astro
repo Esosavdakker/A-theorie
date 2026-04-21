@@ -4,34 +4,59 @@ const { hero } = site;
 ---
 
 <section class="hero">
+  <!-- Subtle dot-grid background -->
+  <div class="hero__bg" aria-hidden="true"></div>
+
   <div class="hero__left">
     <div class="hero__content">
 
-      <div class="hero__stats-bar">
+      <!-- Trust pill -->
+      <div class="hero__trust-pill" data-reveal data-delay="1">
+        <span class="hero__trust-dot" aria-hidden="true"></span>
+        <span>CBR-erkend · 5.000+ geslaagd</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="hero__headline" data-reveal data-delay="2">
+        <span class="hero__line gradient-text">{hero.headline1}</span>
+        <span class="hero__line hero__line--sub">{hero.headline2}</span>
+      </h1>
+
+      <!-- Stats pills -->
+      <div class="hero__stats-bar" data-counter-group data-reveal data-delay="3">
         {hero.stats.map(s => (
           <div class="hero__stat-pill">
             <span class="hero__stat-icon" aria-hidden="true">{s.icon}</span>
             <div class="hero__stat-text">
-              <strong>{s.value}</strong>
+              {s.numericValue
+                ? <strong data-counter data-target={s.numericValue} data-suffix={s.suffix}>0{s.suffix}</strong>
+                : <strong>{s.value}</strong>
+              }
               <span>{s.label}</span>
             </div>
           </div>
         ))}
       </div>
 
-      <h1 class="hero__headline">
-        <span class="hero__line1">{hero.headline1}</span>
-        <span class="hero__line2">{hero.headline2}</span>
-      </h1>
+      <!-- CTA -->
+      <div class="hero__cta-wrap" data-reveal data-delay="4">
+        <a href={hero.ctaPrimary.href} class="hero__cta">
+          <span>{hero.ctaPrimary.label}</span>
+          <svg class="hero__cta-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="9" x2="15" y2="9"/><polyline points="10 4 15 9 10 14"/>
+          </svg>
+        </a>
+      </div>
 
-      <a href={hero.ctaPrimary.href} class="hero__cta">
-        {hero.ctaPrimary.label}
-      </a>
-
-      <div class="hero__trust">
+      <!-- Trust line -->
+      <div class="hero__trust-line" data-reveal data-delay="5">
         {hero.trust.map(t => (
           <span class="hero__trust-item">
-            <span class="hero__trust-check" aria-hidden="true">✓</span> {t}
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+              <circle cx="6.5" cy="6.5" r="6" fill="rgb(249 115 22 / 0.15)"/>
+              <polyline points="3.5,6.5 5.5,8.5 9,5" stroke="#f97316" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+            {t}
           </span>
         ))}
       </div>
@@ -39,64 +64,126 @@ const { hero } = site;
     </div>
   </div>
 
+  <!-- CSS App mockup -->
   <div class="hero__right" aria-hidden="true">
     <div class="hero__mockup">
       <div class="mockup__header">
-        <span class="mockup__brand">A<span>+</span>theorie</span>
-        <span class="mockup__badge">Oefenexamen</span>
-      </div>
-      <div class="mockup__progress">
-        <div class="mockup__progress-bar"></div>
-        <span>Vraag 7 van 25</span>
-      </div>
-      <div class="mockup__scene">
-        <div class="mockup__road">
-          <div class="mockup__road-line"></div>
-          <div class="mockup__car"></div>
-          <div class="mockup__sign">
-            <span>50</span>
-          </div>
+        <div class="mockup__dots">
+          <span></span><span></span><span></span>
         </div>
+        <span class="mockup__title">A<span>+</span>theorie — Oefenexamen</span>
+        <span class="mockup__progress-text">7 / 25</span>
       </div>
-      <p class="mockup__question">Wat is de maximumsnelheid binnen de bebouwde kom?</p>
+
+      <div class="mockup__progress-bar-wrap">
+        <div class="mockup__progress-bar"></div>
+      </div>
+
+      <div class="mockup__scene">
+        <div class="mockup__road-bg"></div>
+        <div class="mockup__road">
+          <div class="mockup__lane-marks"></div>
+        </div>
+        <div class="mockup__car">
+          <div class="mockup__car-roof"></div>
+          <div class="mockup__car-window"></div>
+        </div>
+        <div class="mockup__sign">50</div>
+      </div>
+
+      <p class="mockup__question">
+        Wat is de maximumsnelheid binnen de bebouwde kom?
+      </p>
+
       <div class="mockup__answers">
         <div class="mockup__answer mockup__answer--wrong">
-          <span class="mockup__answer-key">A</span>
-          <span>30 km/u</span>
+          <span class="mockup__key">A</span><span>30 km/u</span>
+          <span class="mockup__result">✕</span>
         </div>
         <div class="mockup__answer mockup__answer--correct">
-          <span class="mockup__answer-key">B</span>
-          <span>50 km/u</span>
-          <span class="mockup__answer-tick">✓</span>
+          <span class="mockup__key">B</span><span>50 km/u</span>
+          <span class="mockup__result">✓</span>
         </div>
         <div class="mockup__answer">
-          <span class="mockup__answer-key">C</span>
-          <span>70 km/u</span>
+          <span class="mockup__key">C</span><span>100 km/u</span>
         </div>
+      </div>
+
+      <div class="mockup__footer">
+        <button class="mockup__next">Volgende vraag →</button>
       </div>
     </div>
   </div>
 </section>
 
 <style>
+/* ── Layout ── */
 .hero {
   display: grid;
   grid-template-columns: 1fr;
-  min-height: calc(100vh - var(--navbar-height));
+  min-height: calc(100svh - var(--navbar-height));
   overflow: hidden;
   background: var(--color-white);
+  position: relative;
+}
+
+/* Dot-grid background */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgb(0 102 204 / 0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  mask-image: linear-gradient(to right, white 30%, transparent 80%);
+  -webkit-mask-image: linear-gradient(to right, white 30%, transparent 80%);
 }
 
 /* ── Left panel ── */
 .hero__left {
   display: flex;
   align-items: center;
-  padding: var(--space-16) var(--space-6);
+  padding: var(--space-16) var(--space-6) var(--space-12);
+  position: relative;
+  z-index: 1;
 }
-.hero__content {
-  max-width: 560px;
-  width: 100%;
+.hero__content { max-width: 540px; width: 100%; }
+
+/* Trust pill */
+.hero__trust-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: rgb(249 115 22 / 0.08);
+  border: 1px solid rgb(249 115 22 / 0.2);
+  border-radius: var(--radius-full);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-accent-dark);
+  margin-bottom: var(--space-6);
+  animation: badge-pop 0.5s var(--ease-spring) 0.2s both;
 }
+.hero__trust-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-full);
+  background: var(--color-accent);
+  animation: pulse-ring 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+/* Headline */
+.hero__headline {
+  display: flex;
+  flex-direction: column;
+  font-size: clamp(2.6rem, 5.5vw, 4.25rem);
+  font-weight: var(--font-weight-extrabold);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--space-8);
+}
+.hero__line { display: block; }
+.hero__line--sub { color: var(--color-text); }
 
 /* Stats pills */
 .hero__stats-bar {
@@ -109,258 +196,281 @@ const { hero } = site;
   display: flex;
   align-items: center;
   gap: var(--space-2);
+  background: var(--color-white);
   border: 1.5px solid var(--color-border);
   border-radius: var(--radius-full);
-  padding: var(--space-2) var(--space-4);
-  background: var(--color-white);
+  padding: var(--space-2) var(--space-4) var(--space-2) var(--space-3);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--duration-normal) var(--ease-out), border-color var(--duration-normal) var(--ease-out);
 }
-.hero__stat-icon { font-size: var(--font-size-base); }
+.hero__stat-pill:hover { box-shadow: var(--shadow-md); border-color: var(--color-border-strong); }
+.hero__stat-icon { font-size: var(--font-size-base); line-height: 1; }
 .hero__stat-text {
   display: flex;
   flex-direction: column;
   line-height: 1.2;
+  min-width: 60px;
 }
 .hero__stat-text strong {
   font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-primary-dark);
-}
-.hero__stat-text span {
-  font-size: var(--font-size-xs);
-  color: var(--color-text-muted);
-}
-
-/* Headline */
-.hero__headline {
-  display: flex;
-  flex-direction: column;
-  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: var(--font-weight-extrabold);
-  line-height: var(--line-height-tight);
-  letter-spacing: -0.01em;
-  margin-bottom: var(--space-8);
+  color: var(--color-text);
+  font-variant-numeric: tabular-nums;
 }
-.hero__line1 { color: var(--color-primary-dark); }
-.hero__line2 { color: var(--color-primary-dark); }
+.hero__stat-text span { font-size: var(--font-size-xs); color: var(--color-text-muted); }
 
 /* CTA */
+.hero__cta-wrap { margin-bottom: var(--space-5); }
 .hero__cta {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 420px;
+  gap: var(--space-3);
   padding: var(--space-4) var(--space-8);
-  background: var(--color-accent);
+  background: var(--gradient-accent);
   color: var(--color-white);
-  font-family: var(--font-family-base);
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
-  border-radius: var(--radius-md);
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  transition: background var(--transition-fast), transform var(--transition-fast);
-  margin-bottom: var(--space-5);
+  border-radius: var(--radius-lg);
+  letter-spacing: 0.01em;
+  box-shadow: var(--shadow-accent);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--duration-normal) var(--ease-spring),
+              box-shadow var(--duration-normal) var(--ease-out);
+}
+.hero__cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.22), transparent);
+  transform: skewX(-18deg);
+  animation: shimmer 2.8s ease-in-out 1.5s infinite;
 }
 .hero__cta:hover {
-  background: var(--color-accent-dark);
-  transform: translateY(-1px);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 32px rgb(249 115 22 / 0.5);
 }
+.hero__cta-arrow {
+  transition: transform var(--duration-normal) var(--ease-spring);
+}
+.hero__cta:hover .hero__cta-arrow { transform: translateX(4px); }
 
 /* Trust line */
-.hero__trust {
+.hero__trust-line {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-4);
 }
 .hero__trust-item {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
   display: flex;
   align-items: center;
   gap: var(--space-1);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-muted);
 }
-.hero__trust-check { color: var(--color-accent); font-weight: var(--font-weight-bold); }
 
-/* ── Right panel (app mockup) ── */
+/* ── Right panel ── */
 .hero__right {
   display: none;
-  background: linear-gradient(160deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
-  border-radius: 2rem 0 0 2rem;
+  background: var(--gradient-hero);
+  border-radius: var(--radius-2xl) 0 0 var(--radius-2xl);
   align-items: center;
   justify-content: center;
   padding: var(--space-12);
+  position: relative;
+  overflow: hidden;
+}
+.hero__right::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -20%;
+  width: 400px;
+  height: 400px;
+  border-radius: var(--radius-full);
+  background: rgb(255 255 255 / 0.04);
+  pointer-events: none;
 }
 
-/* Mockup UI */
+/* Mockup */
 .hero__mockup {
-  background: rgb(255 255 255 / 0.08);
-  border: 1px solid rgb(255 255 255 / 0.15);
+  background: rgb(255 255 255 / 0.07);
+  border: 1px solid rgb(255 255 255 / 0.12);
   border-radius: var(--radius-xl);
-  padding: var(--space-6);
+  padding: var(--space-5);
   width: 100%;
-  max-width: 420px;
-  backdrop-filter: blur(4px);
+  max-width: 400px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 24px 64px rgb(0 0 0 / 0.3);
+  animation: float 4s ease-in-out infinite;
 }
 .mockup__header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: var(--space-3);
   margin-bottom: var(--space-4);
 }
-.mockup__brand {
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-extrabold);
-  color: var(--color-white);
+.mockup__dots { display: flex; gap: 5px; }
+.mockup__dots span {
+  width: 9px; height: 9px;
+  border-radius: var(--radius-full);
 }
-.mockup__brand span { color: var(--color-accent); }
-.mockup__badge {
+.mockup__dots span:nth-child(1) { background: #ef4444; }
+.mockup__dots span:nth-child(2) { background: #f59e0b; }
+.mockup__dots span:nth-child(3) { background: #22c55e; }
+.mockup__title {
+  flex: 1;
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-semibold);
-  background: var(--color-accent);
-  color: var(--color-white);
-  padding: 2px var(--space-3);
-  border-radius: var(--radius-full);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-.mockup__progress {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  margin-bottom: var(--space-5);
-}
-.mockup__progress-bar {
-  flex: 1;
-  height: 6px;
-  background: rgb(255 255 255 / 0.2);
-  border-radius: var(--radius-full);
-  position: relative;
-}
-.mockup__progress-bar::after {
-  content: '';
-  position: absolute;
-  left: 0; top: 0;
-  width: 28%;
-  height: 100%;
-  background: var(--color-accent);
-  border-radius: var(--radius-full);
-}
-.mockup__progress span {
-  font-size: var(--font-size-xs);
   color: rgb(255 255 255 / 0.7);
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mockup__title span { color: var(--color-accent); }
+.mockup__progress-text {
+  font-size: var(--font-size-xs);
+  color: rgb(255 255 255 / 0.5);
+  font-variant-numeric: tabular-nums;
+}
+
+.mockup__progress-bar-wrap {
+  height: 4px;
+  background: rgb(255 255 255 / 0.1);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-5);
+  overflow: hidden;
+}
+.mockup__progress-bar {
+  height: 100%;
+  width: 28%;
+  background: var(--color-accent);
+  border-radius: var(--radius-full);
 }
 
 /* Road scene */
 .mockup__scene {
   border-radius: var(--radius-lg);
-  overflow: hidden;
+  height: 110px;
   background: #4ade80;
-  height: 120px;
   margin-bottom: var(--space-4);
   position: relative;
+  overflow: hidden;
+}
+.mockup__road-bg {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 48px;
+  background: #374151;
 }
 .mockup__road {
   position: absolute;
-  bottom: 0;
-  left: 0; right: 0;
-  height: 50px;
-  background: #374151;
-  display: flex;
-  align-items: center;
-  padding-inline: var(--space-4);
+  bottom: 21px; left: 0; right: 0;
+  height: 6px;
+  overflow: hidden;
 }
-.mockup__road-line {
-  flex: 1;
-  height: 3px;
+.mockup__lane-marks {
+  height: 100%;
   background: repeating-linear-gradient(
     90deg,
     #fff 0, #fff 20px,
     transparent 20px, transparent 36px
   );
+  opacity: 0.5;
 }
 .mockup__car {
-  width: 40px;
+  position: absolute;
+  bottom: 12px;
+  left: 20%;
+  width: 44px;
   height: 22px;
-  background: var(--color-primary);
-  border-radius: 6px 6px 3px 3px;
-  position: absolute;
-  left: var(--space-8);
-  bottom: 14px;
-}
-.mockup__car::before {
-  content: '';
-  position: absolute;
-  top: -10px;
-  left: 8px;
-  width: 24px;
-  height: 12px;
   background: var(--color-primary-light);
+  border-radius: 4px 4px 3px 3px;
+}
+.mockup__car-roof {
+  position: absolute;
+  top: -11px; left: 9px;
+  width: 26px; height: 13px;
+  background: rgb(59 130 246 / 0.8);
   border-radius: 4px 4px 0 0;
+}
+.mockup__car-window {
+  position: absolute;
+  top: -10px; left: 11px;
+  width: 22px; height: 9px;
+  background: rgb(186 230 253 / 0.6);
+  border-radius: 3px 3px 0 0;
 }
 .mockup__sign {
   position: absolute;
-  top: 12px;
-  right: var(--space-8);
-  width: 36px;
-  height: 36px;
+  top: 10px; right: 20px;
+  width: 34px; height: 34px;
   background: var(--color-white);
   border: 3px solid #dc2626;
   border-radius: var(--radius-full);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   font-weight: var(--font-weight-extrabold);
-  font-size: var(--font-size-sm);
+  font-size: 12px;
   color: #dc2626;
+  box-shadow: var(--shadow-sm);
 }
 
 .mockup__question {
-  font-size: var(--font-size-sm);
-  color: var(--color-white);
+  font-size: 13px;
+  color: rgb(255 255 255 / 0.9);
   font-weight: var(--font-weight-medium);
   margin-bottom: var(--space-4);
-  line-height: var(--line-height-normal);
+  line-height: 1.5;
 }
-.mockup__answers {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
+.mockup__answers { display: flex; flex-direction: column; gap: var(--space-2); margin-bottom: var(--space-4); }
 .mockup__answer {
   display: flex;
   align-items: center;
   gap: var(--space-3);
   padding: var(--space-2) var(--space-3);
   border-radius: var(--radius-md);
-  background: rgb(255 255 255 / 0.08);
-  border: 1px solid rgb(255 255 255 / 0.15);
-  font-size: var(--font-size-sm);
-  color: rgb(255 255 255 / 0.85);
-  cursor: default;
+  background: rgb(255 255 255 / 0.07);
+  border: 1px solid rgb(255 255 255 / 0.1);
+  font-size: 12px;
+  color: rgb(255 255 255 / 0.8);
 }
 .mockup__answer--correct {
-  background: rgb(34 197 94 / 0.2);
-  border-color: #22c55e;
+  background: rgb(34 197 94 / 0.18);
+  border-color: rgb(34 197 94 / 0.5);
   color: var(--color-white);
 }
 .mockup__answer--wrong {
-  background: rgb(239 68 68 / 0.15);
-  border-color: #ef4444;
-  color: rgb(255 255 255 / 0.6);
+  background: rgb(239 68 68 / 0.12);
+  border-color: rgb(239 68 68 / 0.3);
+  color: rgb(255 255 255 / 0.5);
 }
-.mockup__answer-key {
+.mockup__key {
   font-weight: var(--font-weight-bold);
-  width: 20px;
+  width: 18px;
   text-align: center;
+  flex-shrink: 0;
 }
-.mockup__answer-tick {
-  margin-left: auto;
-  color: #22c55e;
-  font-weight: var(--font-weight-bold);
+.mockup__result { margin-left: auto; font-weight: var(--font-weight-bold); }
+.mockup__answer--correct .mockup__result { color: #22c55e; }
+.mockup__answer--wrong .mockup__result   { color: #ef4444; }
+
+.mockup__footer { text-align: right; }
+.mockup__next {
+  font-size: 12px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family-base);
+  padding: 0;
+  transition: opacity var(--transition-fast);
 }
+.mockup__next:hover { opacity: 0.75; }
 
 /* ── Responsive ── */
 @media (min-width: 1024px) {
@@ -368,19 +478,10 @@ const { hero } = site;
     grid-template-columns: 1fr 1fr;
   }
   .hero__left {
-    padding: var(--space-20) var(--space-12) var(--space-20) calc((100vw - var(--container-max)) / 2 + var(--container-pad));
+    padding: var(--space-20) var(--space-10) var(--space-20)
+             calc(max((100vw - var(--container-max)) / 2, 0px) + var(--container-pad));
     justify-content: flex-end;
   }
-  .hero__right {
-    display: flex;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1023px) {
-  .hero__left {
-    padding: var(--space-16) var(--space-8);
-  }
-  .hero__content { max-width: 100%; }
-  .hero__cta { max-width: 100%; }
+  .hero__right { display: flex; }
 }
 </style>

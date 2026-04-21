@@ -16,6 +16,11 @@ export const site = {
     facebook: "https://facebook.com/aplustheorie",
     whatsapp: "https://wa.me/31600000000",
   },
+  announcement: {
+    active: true,
+    text: "🎉 Tijdelijk: Gratis proefles bij aanmelding voor het Compleet pakket",
+    cta: { label: "Claim nu →", href: "/contact" },
+  },
   nav: [
     { label: "Home",       href: "/" },
     { label: "Over Ons",   href: "/over-ons" },
@@ -29,14 +34,18 @@ export const site = {
     ctaPrimary: { label: "Meld je aan", href: "/contact" },
     trust: ["CBR-oefenexamens", "Direct toegang", "Alle apparaten"],
     stats: [
-      { icon: "🏆", value: "97%",    label: "Slagingspercentage" },
-      { icon: "⭐", value: "5.000+", label: "Tevreden cursisten" },
-      { icon: "🎓", value: "CBR",    label: "Erkend materiaal" },
+      { icon: "🏆", numericValue: 97,   suffix: "%",  label: "Slagingspercentage" },
+      { icon: "⭐", numericValue: 5000, suffix: "+",  label: "Tevreden cursisten" },
+      { icon: "🎓", value: "CBR",                    label: "Erkend materiaal"   },
     ],
+    socialProof: {
+      text: "5.000+ cursisten gingen je voor",
+      avatars: 5,
+    },
   },
   about: {
     heading: "Online theoriecursus",
-    body: "Bij A+theorie maken we het behalen van je CBR theorie-examen eenvoudiger dan ooit. Onze online theoriecursus stoomt je perfect klaar om in één keer te slagen bij het CBR. Met onze uitgebreide oefenexamens, gebaseerd op echte examenvragen, weet je precies wat je te wachten staat.",
+    body: "Bij A+theorie maken we het behalen van je CBR theorie-examen eenvoudiger dan ooit. Onze online theoriecursus stoomt je perfect klaar om in één keer te slagen bij het CBR.",
     features: [
       { icon: "✓", text: "CBR-erkend oefenmateriaal" },
       { icon: "✓", text: "Oefen wanneer het jou uitkomt" },
@@ -133,9 +142,10 @@ export const site = {
     },
   ],
   cta: {
-    heading: "Klaar om te starten?",
-    body: "Sluit je aan bij duizenden cursisten die al geslaagd zijn met A+theorie.",
+    heading: "Klaar om in één keer te slagen?",
+    body: "Sluit je aan bij 5.000+ cursisten die al hun rijbewijs hebben behaald met A+theorie.",
     button: { label: "Meld je aan", href: "/contact" },
+    trust: ["Geen abonnement", "Direct toegang", "Geld-terug garantie"],
   },
   footer: {
     tagline: "Jouw weg naar het rijbewijs begint hier.",
