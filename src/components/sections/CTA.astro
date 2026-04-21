@@ -5,36 +5,152 @@ const { cta } = site;
 ---
 
 <section class="cta-section">
+  <div class="cta__bg-dots" aria-hidden="true"></div>
   <div class="container cta__inner">
-    <h2 class="cta__heading">{cta.heading}</h2>
-    <p class="cta__body">{cta.body}</p>
-    <Button href={cta.button.href} variant="outline" size="lg">
-      {cta.button.label}
-    </Button>
+    <div class="cta__score-row" data-reveal>
+      <span class="cta__stars" aria-hidden="true">★★★★★</span>
+      <span class="cta__score-label">5.000+ tevreden cursisten</span>
+    </div>
+
+    <h2 class="cta__heading" data-reveal data-delay="1">
+      {cta.heading}
+    </h2>
+    <p class="cta__body" data-reveal data-delay="2">{cta.body}</p>
+
+    <div class="cta__actions" data-reveal data-delay="3">
+      <Button href={cta.button.href} variant="primary" size="lg" arrow>
+        {cta.button.label}
+      </Button>
+    </div>
+
+    {cta.trust && (
+      <ul class="cta__trust" role="list" data-reveal data-delay="4">
+        {cta.trust.map((t: string) => (
+          <li class="cta__trust-item">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="2 7 5.5 10.5 12 3.5"/>
+            </svg>
+            {t}
+          </li>
+        ))}
+      </ul>
+    )}
+
+    <div class="cta__avatars" data-reveal data-delay="5" aria-hidden="true">
+      <div class="cta__avatar-row">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <div class="cta__avatar" style={`background: hsl(${210 + i * 20}deg 60% 55%)`}></div>
+        ))}
+      </div>
+      <span class="cta__avatar-label">Sluit je aan bij duizenden anderen</span>
+    </div>
   </div>
 </section>
 
 <style>
 .cta-section {
-  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
-  padding-block: var(--space-20);
+  background: var(--gradient-primary);
+  padding-block: var(--space-24);
+  position: relative;
+  overflow: hidden;
 }
+
+/* Subtle dot pattern overlay */
+.cta__bg-dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgb(255 255 255 / 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+
 .cta__inner {
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--space-6);
+  position: relative;
 }
+
+.cta__score-row {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: rgb(255 255 255 / 0.1);
+  border: 1px solid rgb(255 255 255 / 0.2);
+  border-radius: var(--radius-full);
+  padding: var(--space-2) var(--space-5);
+  backdrop-filter: blur(8px);
+}
+.cta__stars {
+  color: #fbbf24;
+  font-size: var(--font-size-sm);
+  letter-spacing: 2px;
+}
+.cta__score-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: rgb(255 255 255 / 0.9);
+}
+
 .cta__heading {
-  font-size: clamp(var(--font-size-2xl), 3vw, var(--font-size-4xl));
+  font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-5xl));
   font-weight: var(--font-weight-extrabold);
   color: var(--color-white);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  max-width: 18ch;
 }
 .cta__body {
   font-size: var(--font-size-lg);
-  color: rgb(255 255 255 / 0.9);
-  max-width: 500px;
+  color: rgb(255 255 255 / 0.8);
+  max-width: 46ch;
   line-height: var(--line-height-relaxed);
+}
+
+.cta__actions { display: flex; gap: var(--space-4); flex-wrap: wrap; justify-content: center; }
+
+/* Trust badges */
+.cta__trust {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  list-style: none;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.cta__trust-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: rgb(255 255 255 / 0.85);
+}
+.cta__trust-item svg { color: #4ade80; flex-shrink: 0; }
+
+/* Social proof avatars */
+.cta__avatars {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+.cta__avatar-row {
+  display: flex;
+}
+.cta__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-white);
+  margin-left: -8px;
+}
+.cta__avatar:first-child { margin-left: 0; }
+.cta__avatar-label {
+  font-size: var(--font-size-xs);
+  color: rgb(255 255 255 / 0.6);
 }
 </style>

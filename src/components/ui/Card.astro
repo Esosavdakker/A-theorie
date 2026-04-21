@@ -2,11 +2,12 @@
 interface Props {
   highlighted?: boolean;
   class?: string;
+  [key: string]: unknown;
 }
-const { highlighted = false, class: className = '' } = Astro.props;
+const { highlighted = false, class: className = '', ...rest } = Astro.props;
 ---
 
-<div class:list={['card', { 'card--highlighted': highlighted }, className]}>
+<div class:list={['card', { 'card--highlighted': highlighted }, className]} {...rest}>
   <slot />
 </div>
 
@@ -17,15 +18,20 @@ const { highlighted = false, class: className = '' } = Astro.props;
   border-radius: var(--radius-xl);
   padding: var(--space-8);
   box-shadow: var(--shadow-md);
-  transition: box-shadow var(--transition-normal), transform var(--transition-normal);
+  transition: box-shadow var(--duration-normal) var(--ease-out),
+              transform var(--duration-normal) var(--ease-spring);
   position: relative;
 }
 .card:hover {
-  box-shadow: var(--shadow-xl);
-  transform: translateY(-2px);
+  box-shadow: var(--shadow-primary);
+  transform: translateY(-3px);
 }
 .card--highlighted {
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 2px var(--color-accent), var(--shadow-xl);
+  box-shadow: 0 0 0 2px var(--color-accent), var(--shadow-lg);
+}
+.card--highlighted:hover {
+  box-shadow: 0 0 0 2px var(--color-accent), var(--shadow-accent);
+  transform: translateY(-4px);
 }
 </style>

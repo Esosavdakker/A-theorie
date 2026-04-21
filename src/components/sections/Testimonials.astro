@@ -5,8 +5,9 @@ const { testimonials } = site;
 
 <section class="reviews">
   <div class="container reviews__header">
-    <h2 class="reviews__heading">Beoordelingen</h2>
-    <div class="reviews__score-badge">
+    <p class="section__label" data-reveal>Beoordelingen</p>
+    <h2 class="reviews__heading" data-reveal data-delay="1">Wat cursisten zeggen</h2>
+    <div class="reviews__score-badge" data-reveal data-delay="2">
       <span class="reviews__stars" aria-label="5 sterren">★★★★★</span>
       <span class="reviews__score-text">
         <strong>5.0</strong> · Uitstekend
@@ -17,21 +18,24 @@ const { testimonials } = site;
   <div class="reviews__wave">
     <div class="container">
       <div class="reviews__grid">
-        {testimonials.map(r => (
-          <div class="review-card">
+        {testimonials.map((r, i) => (
+          <div class="review-card" data-reveal data-delay={String(i + 1)}>
             <div class="review-card__stars" aria-label={`${r.rating} sterren`}>
               {'★'.repeat(r.rating)}
             </div>
             <h3 class="review-card__title">{r.title}</h3>
             <p class="review-card__text">{r.text}</p>
             <div class="review-card__meta">
-              <span class="review-card__name">{r.name}</span>
+              <div class="review-card__author">
+                <div class="review-card__avatar" aria-hidden="true">{r.name.charAt(0)}</div>
+                <span class="review-card__name">{r.name}</span>
+              </div>
               <span class="review-card__time">{r.time}</span>
             </div>
           </div>
         ))}
       </div>
-      <p class="reviews__footer-text">
+      <p class="reviews__footer-text" data-reveal data-delay="4">
         Een score van <strong>5.0</strong> uit 5 op basis van <strong>5.000+</strong> beoordelingen
       </p>
     </div>
@@ -51,6 +55,7 @@ const { testimonials } = site;
   font-weight: var(--font-weight-extrabold);
   color: var(--color-primary-dark);
   margin-bottom: var(--space-4);
+  letter-spacing: -0.02em;
 }
 .reviews__score-badge {
   display: inline-flex;
@@ -60,6 +65,7 @@ const { testimonials } = site;
   border: 1.5px solid var(--color-border);
   border-radius: var(--radius-full);
   background: var(--color-white);
+  box-shadow: var(--shadow-sm);
 }
 .reviews__stars {
   color: #f59e0b;
@@ -92,6 +98,13 @@ const { testimonials } = site;
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
+  box-shadow: 0 4px 24px rgb(0 0 0 / 0.12);
+  transition: transform var(--duration-normal) var(--ease-spring),
+              box-shadow var(--duration-normal) var(--ease-out);
+}
+.review-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgb(0 0 0 / 0.18);
 }
 .review-card__stars {
   color: #f59e0b;
@@ -116,6 +129,24 @@ const { testimonials } = site;
   padding-top: var(--space-3);
   border-top: 1px solid var(--color-border);
 }
+.review-card__author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.review-card__avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  background: var(--gradient-primary);
+  color: var(--color-white);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
 .review-card__name {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
@@ -128,7 +159,7 @@ const { testimonials } = site;
 
 .reviews__footer-text {
   text-align: center;
-  color: rgb(255 255 255 / 0.8);
+  color: rgb(255 255 255 / 0.75);
   font-size: var(--font-size-sm);
 }
 .reviews__footer-text strong { color: var(--color-white); }
