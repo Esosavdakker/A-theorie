@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 215" fill="none">
+
+  <!-- White fill for inner circle -->
+  <circle cx="100" cy="115" r="84" fill="white"/>
+
+  <!-- Outer blue ring -->
+  <circle cx="100" cy="115" r="84" fill="none" stroke="#1452CC" stroke-width="9"/>
+
+  <!-- Inner gold ring -->
+  <circle cx="100" cy="115" r="72" fill="none" stroke="#E8A020" stroke-width="5.5"/>
+
+  <!-- White mask where car sits on the ring top -->
+  <rect x="62" y="24" width="76" height="16" fill="white"/>
+
+  <!-- Car: left wheel -->
+  <circle cx="82" cy="43" r="11" fill="#1452CC"/>
+  <circle cx="82" cy="43" r="5.5" fill="white"/>
+
+  <!-- Car: right wheel -->
+  <circle cx="118" cy="43" r="11" fill="#1452CC"/>
+  <circle cx="118" cy="43" r="5.5" fill="white"/>
+
+  <!-- Car: lower body -->
+  <rect x="70" y="27" width="60" height="15" rx="6" fill="#1452CC"/>
+
+  <!-- Car: cabin arch -->
+  <path d="M80 27 C81 13 90 4 100 3 C110 4 119 13 120 27 Z" fill="#1452CC"/>
+
+  <!-- Car: left window -->
+  <path d="M84.5 26.5 C86 14.5 92 7 99.5 6 L99.5 26.5 Z" fill="white" opacity="0.28"/>
+
+  <!-- Car: right window -->
+  <path d="M100.5 26.5 L100.5 6 C108 7 114 14.5 115.5 26.5 Z" fill="white" opacity="0.28"/>
+
+  <!-- Car: center divider pillar -->
+  <rect x="99" y="6" width="2" height="20.5" fill="white" opacity="0.18"/>
+
+  <!-- A letter (blue) -->
+  <text x="96"
+        y="150"
+        font-family="'Plus Jakarta Sans','Arial Black',Arial,sans-serif"
+        font-size="76"
+        font-weight="800"
+        fill="#1452CC"
+        text-anchor="middle">A</text>
+
+  <!-- + letter (gold) -->
+  <text x="141"
+        y="137"
+        font-family="'Plus Jakarta Sans','Arial Black',Arial,sans-serif"
+        font-size="55"
+        font-weight="800"
+        fill="#E8A020"
+        text-anchor="middle">+</text>
+
+  <!-- THEORIE label -->
+  <text x="100"
+        y="175"
+        font-family="'Plus Jakarta Sans','Arial Black',Arial,sans-serif"
+        font-size="18"
+        font-weight="800"
+        fill="#1452CC"
+        text-anchor="middle"
+        letter-spacing="3.5">THEORIE</text>
+
+  <!-- Clockwise arrow on outer ring at ~130° (bottom-right area) -->
+  <!-- Position: x=100+84*sin130°=164, y=115-84*cos130°=169 -->
+  <!-- Tangent direction at 130° CW ≈ 50° above horizontal -->
+  <g transform="translate(164,169) rotate(-50)">
+    <path d="M6 -5 L0 0 L6 5"
+          stroke="#1452CC"
+          stroke-width="3.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+  </g>
+
+</svg>
