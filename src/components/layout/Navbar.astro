@@ -5,8 +5,7 @@ import { site } from '../../config/site.config.js';
 <header class="navbar" id="navbar">
   <div class="container navbar__inner">
     <a href="/" class="navbar__logo" aria-label="A+theorie home">
-      <img src="/logo.svg" alt="" width="34" height="37" loading="eager" aria-hidden="true" class="navbar__logo-img"/>
-      <span class="logo__name">A<span class="logo__plus">+</span>theorie</span>
+      <img src="/logo.svg" alt="A+theorie" width="44" height="47" loading="eager" class="navbar__logo-img"/>
     </a>
 
     <nav class="navbar__nav" aria-label="Hoofdnavigatie">
@@ -96,24 +95,14 @@ import { site } from '../../config/site.config.js';
 .navbar__logo {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
   text-decoration: none;
   flex-shrink: 0;
 }
 .navbar__logo-img {
   display: block;
-  width: 34px;
+  width: 44px;
   height: auto;
-  flex-shrink: 0;
 }
-.logo__name {
-  font-size: 1.35rem;
-  font-weight: var(--font-weight-extrabold);
-  letter-spacing: -0.02em;
-  color: var(--color-primary-dark);
-  line-height: 1;
-}
-.logo__plus { color: var(--color-accent); }
 
 /* Nav links */
 .navbar__nav { flex: 1; }

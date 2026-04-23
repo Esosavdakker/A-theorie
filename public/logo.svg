@@ -4,27 +4,27 @@
   <circle cx="100" cy="115" r="84" fill="white"/>
 
   <!-- Outer blue ring -->
-  <circle cx="100" cy="115" r="84" fill="none" stroke="#1452CC" stroke-width="9"/>
+  <circle cx="100" cy="115" r="84" fill="none" stroke="#0066CC" stroke-width="9"/>
 
-  <!-- Inner gold ring -->
-  <circle cx="100" cy="115" r="72" fill="none" stroke="#E8A020" stroke-width="5.5"/>
+  <!-- Inner orange ring -->
+  <circle cx="100" cy="115" r="72" fill="none" stroke="#f97316" stroke-width="5.5"/>
 
   <!-- White mask where car sits on the ring top -->
   <rect x="62" y="24" width="76" height="16" fill="white"/>
 
   <!-- Car: left wheel -->
-  <circle cx="82" cy="43" r="11" fill="#1452CC"/>
+  <circle cx="82" cy="43" r="11" fill="#0066CC"/>
   <circle cx="82" cy="43" r="5.5" fill="white"/>
 
   <!-- Car: right wheel -->
-  <circle cx="118" cy="43" r="11" fill="#1452CC"/>
+  <circle cx="118" cy="43" r="11" fill="#0066CC"/>
   <circle cx="118" cy="43" r="5.5" fill="white"/>
 
   <!-- Car: lower body -->
-  <rect x="70" y="27" width="60" height="15" rx="6" fill="#1452CC"/>
+  <rect x="70" y="27" width="60" height="15" rx="6" fill="#0066CC"/>
 
   <!-- Car: cabin arch -->
-  <path d="M80 27 C81 13 90 4 100 3 C110 4 119 13 120 27 Z" fill="#1452CC"/>
+  <path d="M80 27 C81 13 90 4 100 3 C110 4 119 13 120 27 Z" fill="#0066CC"/>
 
   <!-- Car: left window -->
   <path d="M84.5 26.5 C86 14.5 92 7 99.5 6 L99.5 26.5 Z" fill="white" opacity="0.28"/>
@@ -41,16 +41,16 @@
         font-family="'Plus Jakarta Sans','Arial Black',Arial,sans-serif"
         font-size="76"
         font-weight="800"
-        fill="#1452CC"
+        fill="#0066CC"
         text-anchor="middle">A</text>
 
-  <!-- + letter (gold) -->
+  <!-- + letter (orange) -->
   <text x="141"
         y="137"
         font-family="'Plus Jakarta Sans','Arial Black',Arial,sans-serif"
         font-size="55"
         font-weight="800"
-        fill="#E8A020"
+        fill="#f97316"
         text-anchor="middle">+</text>
 
   <!-- THEORIE label -->
@@ -59,16 +59,14 @@
         font-family="'Plus Jakarta Sans','Arial Black',Arial,sans-serif"
         font-size="18"
         font-weight="800"
-        fill="#1452CC"
+        fill="#0066CC"
         text-anchor="middle"
         letter-spacing="3.5">THEORIE</text>
 
   <!-- Clockwise arrow on outer ring at ~130° (bottom-right area) -->
-  <!-- Position: x=100+84*sin130°=164, y=115-84*cos130°=169 -->
-  <!-- Tangent direction at 130° CW ≈ 50° above horizontal -->
   <g transform="translate(164,169) rotate(-50)">
     <path d="M6 -5 L0 0 L6 5"
-          stroke="#1452CC"
+          stroke="#0066CC"
           stroke-width="3.5"
           stroke-linecap="round"
           stroke-linejoin="round"/>
