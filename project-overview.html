@@ -4,471 +4,529 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>A+theorie — Project Overzicht</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Plus Jakarta Sans',sans-serif;background:#f8fafc;color:#1e293b;line-height:1.6}
-a{color:inherit;text-decoration:none}
+:root{
+  --blue:#0066CC;
+  --blue-dark:#1e3a8a;
+  --orange:#f97316;
+  --orange-dark:#ea580c;
+  --white:#ffffff;
+  --bg:#f8fafc;
+  --border:#e2e8f0;
+  --text:#1e293b;
+  --muted:#64748b;
+  --grad-primary:linear-gradient(135deg,#1e3a8a 0%,#0066CC 100%);
+  --grad-accent:linear-gradient(135deg,#f97316 0%,#ea580c 100%);
+  --shadow-sm:0 1px 3px rgba(0,0,0,.08);
+  --shadow-md:0 4px 16px rgba(0,0,0,.1);
+  --shadow-blue:0 8px 24px rgba(0,102,204,.25);
+  --shadow-orange:0 8px 24px rgba(249,115,22,.3);
+  --radius:14px;
+  --radius-sm:8px;
+  --radius-full:999px;
+}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
 
-/* ---- Layout ---- */
-.page{max-width:960px;margin:0 auto;padding:48px 24px 80px}
+/* ---- Utilities ---- */
+.container{max-width:960px;margin:0 auto;padding:0 24px}
+.gradient-text{background:var(--grad-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
-/* ---- Header ---- */
-.header{background:linear-gradient(135deg,#1e3a8a 0%,#0066CC 100%);border-radius:20px;padding:48px 40px;margin-bottom:48px;color:#fff;position:relative;overflow:hidden}
-.header::before{content:'';position:absolute;right:-60px;top:-60px;width:300px;height:300px;border-radius:50%;background:rgba(249,115,22,.15)}
-.header__logo{display:flex;align-items:center;gap:10px;margin-bottom:24px}
-.header__logo-badge{background:#f97316;color:#fff;font-weight:800;font-size:22px;width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center}
-.header__logo-name{font-size:22px;font-weight:800;color:#fff}
-.header__logo-name span{color:#f97316}
-.header__title{font-size:clamp(26px,4vw,38px);font-weight:800;margin-bottom:12px;line-height:1.2}
-.header__sub{font-size:16px;opacity:.85;max-width:560px}
-.header__meta{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px}
-.header__tag{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:6px 14px;font-size:13px;font-weight:600}
+/* ============================================================
+   NAVBAR
+============================================================ */
+.navbar{background:var(--white);border-bottom:1px solid var(--border);padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
+.navbar__inner{max-width:960px;margin:0 auto;height:64px;display:flex;align-items:center;justify-content:space-between}
+.navbar__logo{display:flex;align-items:center;gap:8px;text-decoration:none}
+.navbar__logo-mark{width:36px;height:36px;background:var(--grad-primary);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.navbar__logo-svg{display:block}
+.navbar__logo-name{font-size:1.2rem;font-weight:800;letter-spacing:-.02em;color:var(--blue-dark)}
+.navbar__logo-name span{color:var(--orange)}
+.navbar__badge{background:linear-gradient(135deg,rgb(249 115 22/.15),rgb(249 115 22/.05));border:1px solid rgb(249 115 22/.3);color:var(--orange);font-size:12px;font-weight:700;padding:4px 12px;border-radius:var(--radius-full)}
 
-/* ---- Section headings ---- */
-.section{margin-bottom:48px}
-.section__label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#f97316;margin-bottom:8px}
-.section__heading{font-size:clamp(20px,3vw,26px);font-weight:800;color:#1e3a8a;margin-bottom:24px}
+/* ============================================================
+   HERO
+============================================================ */
+.hero{background:var(--grad-primary);padding:72px 24px 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 80% 50%,rgb(249 115 22/.18),transparent);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:60px;background:var(--bg);clip-path:ellipse(55% 100% at 50% 100%)}
+.hero__inner{max-width:960px;margin:0 auto;position:relative}
+.hero__eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgb(255 255 255/.12);border:1px solid rgb(255 255 255/.2);color:rgb(255 255 255/.9);font-size:13px;font-weight:600;padding:6px 14px;border-radius:var(--radius-full);margin-bottom:28px;letter-spacing:.03em}
+.hero__eyebrow::before{content:'';width:7px;height:7px;background:#f97316;border-radius:50%;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgb(249 115 22/.5)}50%{box-shadow:0 0 0 5px rgb(249 115 22/0)}}
+.hero__title{font-size:clamp(32px,5vw,52px);font-weight:800;color:var(--white);line-height:1.15;letter-spacing:-.02em;margin-bottom:16px}
+.hero__title span{color:var(--orange)}
+.hero__sub{font-size:17px;color:rgb(255 255 255/.8);max-width:560px;line-height:1.7;margin-bottom:36px}
+.hero__tags{display:flex;flex-wrap:wrap;gap:10px}
+.hero__tag{background:rgb(255 255 255/.1);border:1px solid rgb(255 255 255/.2);color:rgb(255 255 255/.9);font-size:13px;font-weight:600;padding:8px 16px;border-radius:var(--radius-full);display:flex;align-items:center;gap:6px}
+
+/* ============================================================
+   CONTENT
+============================================================ */
+.content{padding:72px 0 96px}
+.section{margin-bottom:72px}
+.section__label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--orange);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.section__label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgb(249 115 22/.3),transparent);max-width:120px}
+.section__heading{font-size:clamp(22px,3vw,30px);font-weight:800;color:var(--blue-dark);letter-spacing:-.02em;margin-bottom:28px}
+
+/* ---- Page list ---- */
+.pages{display:flex;flex-direction:column;gap:10px}
+.page-row{display:flex;align-items:center;gap:14px;background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);padding:16px 20px;transition:border-color .2s,box-shadow .2s}
+.page-row:hover{border-color:var(--blue);box-shadow:var(--shadow-blue)}
+.page-row__pill{background:var(--grad-primary);color:var(--white);font-size:11px;font-weight:700;padding:4px 11px;border-radius:var(--radius-full);white-space:nowrap;flex-shrink:0}
+.page-row__title{font-weight:700;font-size:14px;color:var(--text)}
+.page-row__desc{font-size:12px;color:var(--muted);margin-top:2px}
+.page-row__url{margin-left:auto;font-size:12px;color:var(--muted);font-family:monospace;flex-shrink:0}
 
 /* ---- Cards grid ---- */
-.grid{display:grid;gap:16px;grid-template-columns:1fr}
-@media(min-width:600px){.grid--2{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:768px){.grid--3{grid-template-columns:repeat(3,1fr)}}
+.grid{display:grid;gap:14px}
+.grid--2{grid-template-columns:1fr}
+.grid--3{grid-template-columns:1fr}
+@media(min-width:560px){.grid--2{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:680px){.grid--3{grid-template-columns:repeat(3,1fr)}}
 
-/* ---- Feature card ---- */
-.card{background:#fff;border:1.5px solid #e2e8f0;border-radius:14px;padding:20px;transition:box-shadow .2s,transform .2s}
-.card:hover{box-shadow:0 8px 24px rgba(0,102,204,.12);transform:translateY(-2px)}
-.card__icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:12px;flex-shrink:0}
+.card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);padding:22px;transition:box-shadow .2s,transform .2s,border-color .2s}
+.card:hover{box-shadow:var(--shadow-blue);transform:translateY(-2px);border-color:rgb(0 102 204/.25)}
+.card__icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:14px}
 .card__icon--blue{background:#dbeafe}
 .card__icon--orange{background:#ffedd5}
 .card__icon--green{background:#dcfce7}
 .card__icon--purple{background:#ede9fe}
-.card__title{font-size:15px;font-weight:700;color:#1e293b;margin-bottom:4px}
-.card__desc{font-size:13px;color:#64748b;line-height:1.5}
+.card__title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:5px}
+.card__desc{font-size:13px;color:var(--muted);line-height:1.55}
 .card--done{border-color:#bbf7d0}
-.card--done .card__title::after{content:' ✓';color:#16a34a}
+.card--done .card__title::after{content:' ✓';color:#16a34a;font-weight:700}
 
-/* ---- Page list ---- */
-.page-list{display:flex;flex-direction:column;gap:10px}
-.page-item{display:flex;align-items:center;gap:14px;background:#fff;border:1.5px solid #e2e8f0;border-radius:12px;padding:16px 20px}
-.page-item__badge{background:#0066CC;color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap}
-.page-item__url{font-size:12px;color:#94a3b8;font-family:monospace;margin-left:auto}
-.page-item__title{font-weight:600;font-size:14px}
-
-/* ---- Tech stack ---- */
-.tech-list{display:flex;flex-wrap:wrap;gap:10px}
-.tech-pill{background:#fff;border:1.5px solid #e2e8f0;border-radius:20px;padding:8px 16px;font-size:13px;font-weight:600;color:#1e3a8a;display:flex;align-items:center;gap:6px}
-.tech-pill span{font-size:16px}
-
-/* ---- What's next ---- */
-.next-card{background:#fff;border:1.5px solid #e2e8f0;border-radius:14px;padding:20px;display:flex;gap:16px;align-items:flex-start}
-.next-card__num{background:linear-gradient(135deg,#0066CC,#1e3a8a);color:#fff;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0}
-.next-card__title{font-weight:700;font-size:15px;margin-bottom:4px}
-.next-card__desc{font-size:13px;color:#64748b;line-height:1.5}
-.next-card--phase{border-left:4px solid #f97316}
-
-/* ---- CTA banner ---- */
-.cta-banner{background:linear-gradient(135deg,#f97316,#ea580c);border-radius:16px;padding:32px 36px;color:#fff;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;margin-top:48px}
-.cta-banner__title{font-size:20px;font-weight:800}
-.cta-banner__sub{font-size:14px;opacity:.9;margin-top:4px}
-.cta-banner__btn{background:#fff;color:#f97316;font-weight:700;font-size:14px;padding:12px 24px;border-radius:10px;white-space:nowrap}
-
-/* ---- Divider ---- */
-.divider{height:1px;background:#e2e8f0;margin:40px 0}
+/* ---- Tech pills ---- */
+.tech-grid{display:flex;flex-wrap:wrap;gap:10px}
+.tech-pill{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius-full);padding:9px 18px;font-size:13px;font-weight:600;color:var(--blue-dark);transition:border-color .2s,box-shadow .2s}
+.tech-pill:hover{border-color:var(--blue);box-shadow:var(--shadow-sm)}
+.tech-pill__icon{font-size:16px}
 
 /* ---- Info box ---- */
-.info-box{background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:12px;padding:16px 20px;font-size:14px;color:#1e40af;margin-bottom:24px}
-.info-box strong{font-weight:700}
+.infobox{background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:var(--radius);padding:16px 20px;font-size:14px;color:#1e40af;margin-bottom:24px;line-height:1.6}
+.infobox code{background:rgb(0 102 204/.1);padding:2px 6px;border-radius:4px;font-size:13px}
+
+/* ---- Step cards ---- */
+.steps{display:flex;flex-direction:column;gap:12px}
+.step{display:flex;gap:16px;align-items:flex-start;background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);padding:20px;transition:box-shadow .2s}
+.step:hover{box-shadow:var(--shadow-md)}
+.step--action{border-left:4px solid var(--orange)}
+.step--future{border-left:4px solid var(--blue)}
+.step__num{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;flex-shrink:0}
+.step__num--orange{background:var(--grad-accent);color:var(--white)}
+.step__num--blue{background:var(--grad-primary);color:var(--white)}
+.step__num--emoji{background:var(--bg);border:1.5px solid var(--border);font-size:18px}
+.step__title{font-weight:700;font-size:15px;color:var(--text);margin-bottom:4px}
+.step__desc{font-size:13px;color:var(--muted);line-height:1.6}
+.step__desc code{background:rgb(0 0 0/.06);padding:2px 5px;border-radius:4px;font-size:12px}
+
+/* ---- Divider ---- */
+.divider{height:1px;background:var(--border);margin:56px 0}
+
+/* ---- CTA Banner ---- */
+.cta-banner{background:var(--grad-accent);border-radius:20px;padding:40px 40px;color:var(--white);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;margin-top:64px;position:relative;overflow:hidden;box-shadow:var(--shadow-orange)}
+.cta-banner::before{content:'';position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.08)}
+.cta-banner__left{position:relative}
+.cta-banner__label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;opacity:.8;margin-bottom:8px}
+.cta-banner__title{font-size:24px;font-weight:800;line-height:1.25}
+.cta-banner__sub{font-size:14px;opacity:.85;margin-top:6px;max-width:400px}
+.cta-banner__btn{background:var(--white);color:var(--orange);font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px;padding:14px 28px;border-radius:10px;white-space:nowrap;border:none;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.15);transition:transform .2s,box-shadow .2s;position:relative;display:inline-block;text-decoration:none}
+.cta-banner__btn:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(0,0,0,.2)}
+
+/* ---- Footer ---- */
+.footer{background:var(--blue-dark);padding:32px 24px;text-align:center}
+.footer__inner{max-width:960px;margin:0 auto}
+.footer__logo{font-size:18px;font-weight:800;color:var(--white);margin-bottom:8px}
+.footer__logo span{color:var(--orange)}
+.footer__copy{font-size:13px;color:rgb(255 255 255/.5)}
 </style>
 </head>
 <body>
-<div class="page">
 
-  <!-- Header -->
-  <div class="header">
-    <div class="header__logo">
-      <div class="header__logo-badge">A+</div>
-      <span class="header__logo-name">A<span>+</span>theorie</span>
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="navbar__inner">
+    <div class="navbar__logo">
+      <div class="navbar__logo-mark">
+        <svg class="navbar__logo-svg" viewBox="0 0 28 28" width="22" height="22" fill="none">
+          <circle cx="14" cy="14" r="12" stroke="white" stroke-width="2.5"/>
+          <circle cx="14" cy="14" r="8" stroke="#f97316" stroke-width="1.8"/>
+          <text x="14" y="19" font-family="Arial Black,sans-serif" font-size="11" font-weight="900" fill="white" text-anchor="middle">A</text>
+        </svg>
+      </div>
+      <span class="navbar__logo-name">A<span>+</span>theorie</span>
     </div>
-    <h1 class="header__title">Project Overzicht &amp; Oplevering</h1>
-    <p class="header__sub">Een volledig overzicht van alles wat is opgeleverd, hoe het werkt, en wat er in de toekomst nog bij kan.</p>
-    <div class="header__meta">
-      <span class="header__tag">📅 April 2026</span>
-      <span class="header__tag">⚡ Astro + Netlify</span>
-      <span class="header__tag">🇳🇱 Nederlands</span>
-      <span class="header__tag">✅ Live-ready</span>
+    <span class="navbar__badge">Project Overzicht</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero__inner">
+    <div class="hero__eyebrow">April 2026 · Opgeleverd aan Alex</div>
+    <h1 class="hero__title">Alles wat is gebouwd<br/><span>voor A+theorie</span></h1>
+    <p class="hero__sub">Een volledig overzicht van alle pagina's, secties, features en animaties die zijn opgeleverd — plus wat er in de toekomst nog bij kan.</p>
+    <div class="hero__tags">
+      <div class="hero__tag">⚡ Astro + Netlify</div>
+      <div class="hero__tag">📱 Volledig responsive</div>
+      <div class="hero__tag">🎨 2026 UI design</div>
+      <div class="hero__tag">✅ Live-ready</div>
     </div>
   </div>
+</section>
 
-  <!-- Pages -->
-  <div class="section">
-    <p class="section__label">Pagina's</p>
-    <h2 class="section__heading">5 volledige pagina's opgeleverd</h2>
-    <div class="page-list">
-      <div class="page-item">
-        <div class="page-item__badge">HOME</div>
-        <div>
-          <div class="page-item__title">Homepagina</div>
-          <div style="font-size:12px;color:#64748b">Hero, Over Ons, Cursussen, Beoordelingen, Prijzen, FAQ, CTA</div>
+<!-- CONTENT -->
+<div class="content">
+  <div class="container">
+
+    <!-- PAGINA'S -->
+    <div class="section">
+      <p class="section__label">Pagina's</p>
+      <h2 class="section__heading">5 volledige pagina's</h2>
+      <div class="pages">
+        <div class="page-row">
+          <span class="page-row__pill">HOME</span>
+          <div>
+            <div class="page-row__title">Homepagina</div>
+            <div class="page-row__desc">Hero · Over Ons · Cursussen · Beoordelingen · Prijzen · FAQ · CTA</div>
+          </div>
+          <span class="page-row__url">/</span>
         </div>
-        <span class="page-item__url">/</span>
-      </div>
-      <div class="page-item">
-        <div class="page-item__badge">OVER ONS</div>
-        <div>
-          <div class="page-item__title">Over Ons</div>
-          <div style="font-size:12px;color:#64748b">Wie zijn wij, missie, kenmerken van de opleiding</div>
+        <div class="page-row">
+          <span class="page-row__pill">OVER ONS</span>
+          <div>
+            <div class="page-row__title">Over Ons</div>
+            <div class="page-row__desc">Missie, kenmerken van de opleiding, browser-mockup met voortgang</div>
+          </div>
+          <span class="page-row__url">/over-ons</span>
         </div>
-        <span class="page-item__url">/over-ons</span>
-      </div>
-      <div class="page-item">
-        <div class="page-item__badge">CURSUSSEN</div>
-        <div>
-          <div class="page-item__title">Cursussen</div>
-          <div style="font-size:12px;color:#64748b">Basis, Compleet &amp; Premium pakket met inhoud</div>
+        <div class="page-row">
+          <span class="page-row__pill">CURSUSSEN</span>
+          <div>
+            <div class="page-row__title">Cursussen</div>
+            <div class="page-row__desc">Basis, Compleet &amp; Premium pakket met inhoud en CTA</div>
+          </div>
+          <span class="page-row__url">/cursussen</span>
         </div>
-        <span class="page-item__url">/cursussen</span>
-      </div>
-      <div class="page-item">
-        <div class="page-item__badge">PRIJZEN</div>
-        <div>
-          <div class="page-item__title">Prijzen</div>
-          <div style="font-size:12px;color:#64748b">Transparante prijsoverzicht met features per pakket</div>
+        <div class="page-row">
+          <span class="page-row__pill">PRIJZEN</span>
+          <div>
+            <div class="page-row__title">Prijzen</div>
+            <div class="page-row__desc">Transparant prijsoverzicht met features per pakket</div>
+          </div>
+          <span class="page-row__url">/prijzen</span>
         </div>
-        <span class="page-item__url">/prijzen</span>
-      </div>
-      <div class="page-item">
-        <div class="page-item__badge">CONTACT</div>
-        <div>
-          <div class="page-item__title">Contact</div>
-          <div style="font-size:12px;color:#64748b">Werkend contactformulier met e-mail notificatie</div>
+        <div class="page-row">
+          <span class="page-row__pill">CONTACT</span>
+          <div>
+            <div class="page-row__title">Contact</div>
+            <div class="page-row__desc">Werkend formulier met e-mail notificatie via serverless functie</div>
+          </div>
+          <span class="page-row__url">/contact</span>
         </div>
-        <span class="page-item__url">/contact</span>
       </div>
     </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTIES -->
+    <div class="section">
+      <p class="section__label">Secties &amp; Componenten</p>
+      <h2 class="section__heading">Wat er precies in zit</h2>
+      <div class="grid grid--2">
+        <div class="card card--done">
+          <div class="card__icon card__icon--blue">🦸</div>
+          <div class="card__title">Hero sectie</div>
+          <div class="card__desc">Split-layout met animerende statistieken (97% slagingspercentage, 5000+ cursisten), grote CTA met shimmer-effect, vertrouwensbadges en CSS app-mockup.</div>
+        </div>
+        <div class="card card--done">
+          <div class="card__icon card__icon--blue">ℹ️</div>
+          <div class="card__title">Over Ons sectie</div>
+          <div class="card__desc">Twee kolommen: browser-mockup met voortgangsringdiagram en percentages per onderwerp, plus tekst met 4 kenmerken van de opleiding.</div>
+        </div>
+        <div class="card card--done">
+          <div class="card__icon card__icon--orange">📦</div>
+          <div class="card__title">Cursuspakketten (3x)</div>
+          <div class="card__desc">Basis, Compleet (uitgelicht met oranje rand) en Premium — elk met eigen badge, inhoudslijst en CTA-knop. Staggered animatie bij scrollen.</div>
+        </div>
+        <div class="card card--done">
+          <div class="card__icon card__icon--orange">💰</div>
+          <div class="card__title">Prijzenoverzicht</div>
+          <div class="card__desc">Drie prijskaarten met groot bedrag, features-lijst, urgentiebalk en de populairste optie extra uitgelicht. Inclusief "geen abonnement" trust-balk.</div>
+        </div>
+        <div class="card card--done">
+          <div class="card__icon card__icon--green">⭐</div>
+          <div class="card__title">Beoordelingen sectie</div>
+          <div class="card__desc">Drie reviews op blauwe curved achtergrond. Score-badge (5.0 · Uitstekend), auteur-avatars, naam en tijdstempel per kaart.</div>
+        </div>
+        <div class="card card--done">
+          <div class="card__icon card__icon--blue">❓</div>
+          <div class="card__title">FAQ accordion</div>
+          <div class="card__desc">5 vragen met vloeiende CSS-animatie (geen sprongetjes). Slechts één vraag open tegelijk, knop draait soepel om.</div>
+        </div>
+        <div class="card card--done">
+          <div class="card__icon card__icon--orange">📣</div>
+          <div class="card__title">CTA sectie</div>
+          <div class="card__desc">Donkerblauwe gradient, oranje knop met shimmer, 3 vertrouwensbadges (geen abonnement / direct toegang / geld-terug) en social proof avatar-rij.</div>
+        </div>
+        <div class="card card--done">
+          <div class="card__icon card__icon--blue">📬</div>
+          <div class="card__title">Contactformulier</div>
+          <div class="card__desc">Serverless formulier via Netlify Functions. Stuurt automatisch een e-mail naar Alex via de Resend API. Spambeveiliging (honeypot) ingebouwd.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- DESIGN & UX -->
+    <div class="section">
+      <p class="section__label">Design &amp; UX</p>
+      <h2 class="section__heading">2026 UI details &amp; animaties</h2>
+      <div class="grid grid--3">
+        <div class="card card--done">
+          <div class="card__icon card__icon--purple">🔮</div>
+          <div class="card__title">Glassmorphism navbar</div>
+          <div class="card__desc">Navbar wordt transparant met blur-effect bij scrollen. Hamburger menu op mobiel met slide-animatie.</div>
+        </div>
+        <div class="card card--done">
+          <div class="card__icon card__icon--blue">✨</div>
+          <div class="card__title">Scroll reveal animaties</div>
+          <div class="card__desc">Elke sectie en kaart animeert soepel in beeld. Staggered delays zodat het één voor één verschijnt.</div>
+        </div>
+        <div class="card card--done">
+          <div class="card__icon card__icon--orange">🔢</div>
+          <div class="card__title">Teller animaties</div>
+          <div class="card__desc">Statistieken (97%, 5000+) tellen op van nul zodra je de hero in beeld scrolt. Easing curve voor een natuurlijk gevoel.</div>
+        </div>
+        <div class="card card--done">
+          <div class="card__icon card__icon--green">📱</div>
+          <div class="card__title">100% Responsive</div>
+          <div class="card__desc">Werkt perfect op mobiel, tablet en desktop. Hamburger menu, stacked layouts en aangepaste lettergroottes.</div>
+        </div>
+        <div class="card card--done">
+          <div class="card__icon card__icon--blue">🎨</div>
+          <div class="card__title">Plus Jakarta Sans</div>
+          <div class="card__desc">Trending 2026 font met variabele gewichten (300–800) voor een premium, moderne uitstraling op alle schermen.</div>
+        </div>
+        <div class="card card--done">
+          <div class="card__icon card__icon--orange">💬</div>
+          <div class="card__title">WhatsApp FAB knop</div>
+          <div class="card__desc">Vaste groene knop rechtsonder op elke pagina met puls-animatie. Directe verbinding met Alex via WhatsApp.</div>
+        </div>
+        <div class="card card--done">
+          <div class="card__icon card__icon--purple">📢</div>
+          <div class="card__title">Aankondigingsbalk</div>
+          <div class="card__desc">"Gratis proefles bij aanmelding" balk bovenaan. Wegklikbaar en onthoudt dit via sessiestorage.</div>
+        </div>
+        <div class="card card--done">
+          <div class="card__icon card__icon--blue">🖼️</div>
+          <div class="card__title">SVG Logo</div>
+          <div class="card__desc">Eigen logo: cirkel met auto bovenop, A+ tekst en THEORIE in de precieze huisstijlkleuren. Scherp op elk scherm.</div>
+        </div>
+        <div class="card card--done">
+          <div class="card__icon card__icon--green">🔍</div>
+          <div class="card__title">SEO &amp; Social sharing</div>
+          <div class="card__desc">Meta-tags, Open Graph, Twitter Card, canonical URL's en favicon voor Google en social media previews.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- FOOTER -->
+    <div class="section">
+      <p class="section__label">Footer</p>
+      <h2 class="section__heading">Professionele 3-koloms footer</h2>
+      <div class="grid grid--3">
+        <div class="card card--done">
+          <div class="card__icon card__icon--blue">📞</div>
+          <div class="card__title">Contact kolom</div>
+          <div class="card__desc">Telefoon, WhatsApp, e-mail en openingstijden — elk als klikbare kaart met icon.</div>
+        </div>
+        <div class="card card--done">
+          <div class="card__icon card__icon--orange">⭐</div>
+          <div class="card__title">Beoordelingen kolom</div>
+          <div class="card__desc">Google 5/5, Facebook aanbevolen, Trustpilot uitstekend — als herkenbare review-kaarten.</div>
+        </div>
+        <div class="card card--done">
+          <div class="card__icon card__icon--purple">📲</div>
+          <div class="card__title">Social media kolom</div>
+          <div class="card__desc">Instagram, Facebook en WhatsApp als klikbare kaarten met merkicon en kleur.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- TECH STACK -->
+    <div class="section">
+      <p class="section__label">Techniek</p>
+      <h2 class="section__heading">Tech stack</h2>
+      <div class="infobox">
+        <strong>Eén configuratiebestand voor alles</strong> — alle tekst, prijzen, pakketten en contactinfo staan in <code>src/config/site.config.js</code>. Alex of een developer kan dit aanpassen zonder in losse componenten te hoeven duiken.
+      </div>
+      <div class="tech-grid">
+        <div class="tech-pill"><span class="tech-pill__icon">⚡</span> Astro 4.x</div>
+        <div class="tech-pill"><span class="tech-pill__icon">🟢</span> Netlify hosting</div>
+        <div class="tech-pill"><span class="tech-pill__icon">⚙️</span> Netlify Functions</div>
+        <div class="tech-pill"><span class="tech-pill__icon">📧</span> Resend e-mail API</div>
+        <div class="tech-pill"><span class="tech-pill__icon">🎨</span> Vanilla CSS + tokens</div>
+        <div class="tech-pill"><span class="tech-pill__icon">🔤</span> Plus Jakarta Sans</div>
+        <div class="tech-pill"><span class="tech-pill__icon">🐙</span> GitHub</div>
+        <div class="tech-pill"><span class="tech-pill__icon">🔒</span> HTTPS automatisch</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ACTIEPUNTEN ALEX -->
+    <div class="section">
+      <p class="section__label">Actiepunten voor Alex</p>
+      <h2 class="section__heading">Dit moet Alex zelf nog instellen</h2>
+      <div class="steps">
+        <div class="step step--action">
+          <div class="step__num step__num--orange">1</div>
+          <div>
+            <div class="step__title">Contactgegevens invullen</div>
+            <div class="step__desc">Telefoonnummer, e-mailadres, WhatsApp-link en adres aanpassen in <code>src/config/site.config.js</code>. Nu staan er tijdelijke placeholders.</div>
+          </div>
+        </div>
+        <div class="step step--action">
+          <div class="step__num step__num--orange">2</div>
+          <div>
+            <div class="step__title">Netlify omgevingsvariabelen instellen</div>
+            <div class="step__desc">In Netlify → Site configuration → Environment variables: <code>CONTACT_EMAIL</code> (jouw e-mailadres) en <code>EMAIL_API_KEY</code> (Resend API key) invullen zodat het contactformulier werkt.</div>
+          </div>
+        </div>
+        <div class="step step--action">
+          <div class="step__num step__num--orange">3</div>
+          <div>
+            <div class="step__title">Resend.com account aanmaken</div>
+            <div class="step__desc">Gratis account op resend.com → domein verifiëren → API key kopiëren → plakken in Netlify (stap 2). Hierna werkt het contactformulier volledig automatisch.</div>
+          </div>
+        </div>
+        <div class="step step--action">
+          <div class="step__num step__num--orange">4</div>
+          <div>
+            <div class="step__title">Eigen domein koppelen</div>
+            <div class="step__desc">aplustheorie.nl kopen via TransIP, Mijndomein of een andere registrar. In Netlify → Domains koppelen. SSL (HTTPS) regelt Netlify volledig automatisch.</div>
+          </div>
+        </div>
+        <div class="step step--action">
+          <div class="step__num step__num--orange">5</div>
+          <div>
+            <div class="step__title">OG-afbeelding toevoegen</div>
+            <div class="step__desc">Een afbeelding van 1200×630px opslaan als <code>public/og-image.jpg</code> voor mooie previews bij het delen op WhatsApp, Facebook, LinkedIn en Google.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- FASE 2 -->
+    <div class="section">
+      <p class="section__label">Fase 2 — Toekomst</p>
+      <h2 class="section__heading">Wat er nog bij kan komen</h2>
+      <div class="steps">
+        <div class="step step--future">
+          <div class="step__num step__num--emoji">💳</div>
+          <div>
+            <div class="step__title">Online betaalsysteem</div>
+            <div class="step__desc">iDEAL, creditcard en PayPal via Stripe of Mollie. Cursisten kopen direct een pakket en krijgen meteen toegang — geen handmatige handelingen meer.</div>
+          </div>
+        </div>
+        <div class="step step--future">
+          <div class="step__num step__num--emoji">🔐</div>
+          <div>
+            <div class="step__title">Inlogsysteem voor cursisten</div>
+            <div class="step__desc">Eigen account per cursist met e-mail verificatie. Toegang tot het leerplatform na betaling, voortgang opslaan en terugkomen waar je gebleven was.</div>
+          </div>
+        </div>
+        <div class="step step--future">
+          <div class="step__num step__num--emoji">📝</div>
+          <div>
+            <div class="step__title">Oefenexamen module</div>
+            <div class="step__desc">Het echte hart van het product: CBR-stijl vragen met tijdslimiet, score bijhouden, zakken/slagen feedback en per onderwerp oefenen (verkeerstekens, gevaarherkenning etc.).</div>
+          </div>
+        </div>
+        <div class="step step--future">
+          <div class="step__num step__num--emoji">🎥</div>
+          <div>
+            <div class="step__title">Video-uitleg per onderwerp</div>
+            <div class="step__desc">Korte uitlegvideo's bij elk verkeersonderwerp als aanvulling op de oefenexamens. Versterkt het leerproces en verhoogt de waarde van duurdere pakketten.</div>
+          </div>
+        </div>
+        <div class="step step--future">
+          <div class="step__num step__num--emoji">📊</div>
+          <div>
+            <div class="step__title">Cursisten dashboard</div>
+            <div class="step__desc">Persoonlijk overzicht per cursist: hoeveel vragen goed/fout, welke onderwerpen aandacht nodig hebben, examendatum instellen en countdown.</div>
+          </div>
+        </div>
+        <div class="step step--future">
+          <div class="step__num step__num--emoji">📧</div>
+          <div>
+            <div class="step__title">E-mail marketing</div>
+            <div class="step__desc">Automatische welkomstmail na aanmelding, herinneringen vóór het examen, tips per week en gerichte aanbiedingen via Mailchimp of Brevo.</div>
+          </div>
+        </div>
+        <div class="step step--future">
+          <div class="step__num step__num--emoji">⭐</div>
+          <div>
+            <div class="step__title">Echte Google/Facebook reviews</div>
+            <div class="step__desc">Live beoordelingen ophalen via de Google Places API en op de website tonen. Nu zijn het placeholder-reviews — echte reviews versterken het vertrouwen enorm.</div>
+          </div>
+        </div>
+        <div class="step step--future">
+          <div class="step__num step__num--emoji">📈</div>
+          <div>
+            <div class="step__title">Google Analytics + statistieken</div>
+            <div class="step__desc">Bijhouden hoeveel bezoekers er zijn, waar ze vandaan komen, welke pagina's het populairst zijn en waar mensen afhaken. Essentieel voor groei.</div>
+          </div>
+        </div>
+        <div class="step step--future">
+          <div class="step__num step__num--emoji">📰</div>
+          <div>
+            <div class="step__title">Blog / tips sectie</div>
+            <div class="step__desc">Artikelen over rijbewijs halen, examenstress, theorie-tips en nieuws. Goed voor SEO (hogere Google-positie) en vertrouwen bij nieuwe bezoekers.</div>
+          </div>
+        </div>
+        <div class="step step--future">
+          <div class="step__num step__num--emoji">🍪</div>
+          <div>
+            <div class="step__title">Cookie banner (AVG/GDPR)</div>
+            <div class="step__desc">Wettelijk verplicht zodra je Google Analytics of advertentie-tracking gebruikt. Eenvoudig toe te voegen met een bestaande cookieoplossing.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA BANNER -->
+    <div class="cta-banner">
+      <div class="cta-banner__left">
+        <div class="cta-banner__label">Klaar voor de volgende stap?</div>
+        <div class="cta-banner__title">Fase 2 bespreken?</div>
+        <div class="cta-banner__sub">Betaalsysteem, leerplatform, inlogsysteem of iets anders — neem contact op.</div>
+      </div>
+      <a href="mailto:info@aplustheorie.nl" class="cta-banner__btn">Contact opnemen →</a>
+    </div>
+
   </div>
-
-  <div class="divider"></div>
-
-  <!-- Sections delivered -->
-  <div class="section">
-    <p class="section__label">Secties &amp; Componenten</p>
-    <h2 class="section__heading">Wat er precies in zit</h2>
-    <div class="grid grid--2">
-
-      <div class="card card--done">
-        <div class="card__icon card__icon--blue">🦸</div>
-        <div class="card__title">Hero sectie</div>
-        <div class="card__desc">Split-layout met statistieken (97% slagingspercentage, 5000+ cursisten), grote CTA-knop met shimmer-effect, vertrouwensbadges en CSS app-mockup.</div>
-      </div>
-
-      <div class="card card--done">
-        <div class="card__icon card__icon--blue">ℹ️</div>
-        <div class="card__title">Over Ons sectie</div>
-        <div class="card__desc">Twee kolommen: browser-mockup met voortgangsringdiagram + tekst met 4 kenmerken. Stijlvol en professioneel.</div>
-      </div>
-
-      <div class="card card--done">
-        <div class="card__icon card__icon--orange">📦</div>
-        <div class="card__title">Cursuspakketten (3x)</div>
-        <div class="card__desc">Basis, Compleet (uitgelicht) en Premium — elk met eigen badge, inhoudslijst en CTA-knop. Staggered scroll-animatie.</div>
-      </div>
-
-      <div class="card card--done">
-        <div class="card__icon card__icon--orange">💰</div>
-        <div class="card__title">Prijzenpagina</div>
-        <div class="card__desc">Prijskaarten met groot prijsbedrag, features, urgentieregel en de populairste optie uitgelicht met oranje rand.</div>
-      </div>
-
-      <div class="card card--done">
-        <div class="card__icon card__icon--green">⭐</div>
-        <div class="card__title">Beoordelingen sectie</div>
-        <div class="card__desc">3 reviews op blauwe curved achtergrond. Score-badge (5.0 · Uitstekend), auteur-avatars en tijdstempel.</div>
-      </div>
-
-      <div class="card card--done">
-        <div class="card__icon card__icon--blue">❓</div>
-        <div class="card__title">FAQ accordion</div>
-        <div class="card__desc">5 vragen met vloeiende CSS-grid animatie (geen sprongetjes). Eén vraag open tegelijk, blauw oplichten bij hover.</div>
-      </div>
-
-      <div class="card card--done">
-        <div class="card__icon card__icon--orange">📣</div>
-        <div class="card__title">CTA sectie</div>
-        <div class="card__desc">Donkerblauwe gradient achtergrond, oranje knop, 3 vertrouwensbadges en social proof met avatar-rij.</div>
-      </div>
-
-      <div class="card card--done">
-        <div class="card__icon card__icon--blue">📬</div>
-        <div class="card__title">Contactformulier</div>
-        <div class="card__desc">Serverless formulier via Netlify Functions. Stuurt e-mail naar Alex via Resend API. Spambeveiliging ingebouwd.</div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- Design & UX features -->
-  <div class="section">
-    <p class="section__label">Design &amp; UX</p>
-    <h2 class="section__heading">2026 UI details &amp; animaties</h2>
-    <div class="grid grid--3">
-
-      <div class="card card--done">
-        <div class="card__icon card__icon--purple">🔮</div>
-        <div class="card__title">Glassmorphism navbar</div>
-        <div class="card__desc">Navbar wordt transparant met blur-effect zodra je scrollt. Met hamburger menu op mobiel.</div>
-      </div>
-
-      <div class="card card--done">
-        <div class="card__icon card__icon--blue">✨</div>
-        <div class="card__title">Scroll reveal animaties</div>
-        <div class="card__desc">Elke sectie en kaart animeert soepel in beeld bij scrollen. Staggered delays voor een vloeiend effect.</div>
-      </div>
-
-      <div class="card card--done">
-        <div class="card__icon card__icon--orange">🔢</div>
-        <div class="card__title">Teller animaties</div>
-        <div class="card__desc">Statistieken (97%, 5000+) tellen op van 0 bij het scrollen naar de hero sectie.</div>
-      </div>
-
-      <div class="card card--done">
-        <div class="card__icon card__icon--green">📱</div>
-        <div class="card__title">100% Responsive</div>
-        <div class="card__desc">Werkt perfect op mobiel, tablet en desktop. Hamburger menu, stacked layouts, aangepaste groottes.</div>
-      </div>
-
-      <div class="card card--done">
-        <div class="card__icon card__icon--blue">🎨</div>
-        <div class="card__title">Plus Jakarta Sans font</div>
-        <div class="card__desc">Trending 2026 font. Variabele gewichten (300–800) voor een premium, professionele uitstraling.</div>
-      </div>
-
-      <div class="card card--done">
-        <div class="card__icon card__icon--orange">💬</div>
-        <div class="card__title">WhatsApp knop</div>
-        <div class="card__desc">Vaste WhatsApp-knop rechts onderaan op elke pagina met groene puls-animatie. Directe verbinding.</div>
-      </div>
-
-      <div class="card card--done">
-        <div class="card__icon card__icon--purple">📢</div>
-        <div class="card__title">Aankondigingsbalk</div>
-        <div class="card__desc">"Gratis proefles bij aanmelding" balk bovenaan. Wegklikbaar en onthoudt dit via sessiestorage.</div>
-      </div>
-
-      <div class="card card--done">
-        <div class="card__icon card__icon--blue">🖼️</div>
-        <div class="card__title">SVG Logo</div>
-        <div class="card__desc">Eigen logo gebouwd: cirkel met auto, A+ tekst en THEORIE in huisstijlkleuren. Scherp op alle schermen.</div>
-      </div>
-
-      <div class="card card--done">
-        <div class="card__icon card__icon--green">🔍</div>
-        <div class="card__title">SEO &amp; Social sharing</div>
-        <div class="card__desc">Meta-tags, Open Graph, Twitter Card, canonical URLs en favicon ingebouwd voor Google en social media.</div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- Tech stack -->
-  <div class="section">
-    <p class="section__label">Techniek</p>
-    <h2 class="section__heading">Tech stack</h2>
-    <div class="info-box">
-      <strong>Alles is opgeslagen in één configuratiebestand</strong> — <code>src/config/site.config.js</code>. Alex of een developer kan tekst, prijzen, pakketten en contactinfo aanpassen zonder in componenten te hoeven duiken.
-    </div>
-    <div class="tech-list">
-      <div class="tech-pill"><span>⚡</span> Astro 4.x (framework)</div>
-      <div class="tech-pill"><span>🟢</span> Netlify (hosting + deployment)</div>
-      <div class="tech-pill"><span>⚙️</span> Netlify Functions (serverless)</div>
-      <div class="tech-pill"><span>📧</span> Resend API (e-mail)</div>
-      <div class="tech-pill"><span>🎨</span> Vanilla CSS + design tokens</div>
-      <div class="tech-pill"><span>🔤</span> Plus Jakarta Sans (Google Fonts)</div>
-      <div class="tech-pill"><span>🐙</span> GitHub (versiebeheer)</div>
-      <div class="tech-pill"><span>🔒</span> HTTPS (automatisch via Netlify)</div>
-    </div>
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- Footer delivered -->
-  <div class="section">
-    <p class="section__label">Footer</p>
-    <h2 class="section__heading">Professionele 3-koloms footer</h2>
-    <div class="grid grid--3">
-      <div class="card">
-        <div class="card__icon card__icon--blue">📞</div>
-        <div class="card__title">Contact kolom</div>
-        <div class="card__desc">Telefoon, WhatsApp, e-mail en openingstijden — elk als klikbare kaart.</div>
-      </div>
-      <div class="card">
-        <div class="card__icon card__icon--orange">⭐</div>
-        <div class="card__title">Beoordelingen kolom</div>
-        <div class="card__desc">Google 5/5, Facebook aanbevolen, Trustpilot uitstekend — als review-kaarten.</div>
-      </div>
-      <div class="card">
-        <div class="card__icon card__icon--purple">📲</div>
-        <div class="card__title">Social media kolom</div>
-        <div class="card__desc">Instagram, Facebook en WhatsApp — elk als klikbare kaart met icon.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- What Alex still needs to do -->
-  <div class="section">
-    <p class="section__label">Actiepunten voor Alex</p>
-    <h2 class="section__heading">Wat Alex zelf nog moet doen</h2>
-    <div style="display:flex;flex-direction:column;gap:12px">
-
-      <div class="next-card next-card--phase">
-        <div class="next-card__num">1</div>
-        <div>
-          <div class="next-card__title">Contactgegevens invullen</div>
-          <div class="next-card__desc">Telefoonnummer, e-mailadres, WhatsApp-link en adres aanpassen in <code>src/config/site.config.js</code>. Nu staan er placeholders.</div>
-        </div>
-      </div>
-
-      <div class="next-card next-card--phase">
-        <div class="next-card__num">2</div>
-        <div>
-          <div class="next-card__title">Netlify omgevingsvariabelen instellen</div>
-          <div class="next-card__desc">In Netlify → Site configuration → Environment variables: <strong>CONTACT_EMAIL</strong> (jouw e-mailadres) en <strong>EMAIL_API_KEY</strong> (Resend API key) invullen zodat het contactformulier werkt.</div>
-        </div>
-      </div>
-
-      <div class="next-card next-card--phase">
-        <div class="next-card__num">3</div>
-        <div>
-          <div class="next-card__title">Resend.com account aanmaken</div>
-          <div class="next-card__desc">Gratis account op resend.com, domein verifiëren, API key aanmaken en in Netlify plakken. Daarna werkt het contactformulier volledig.</div>
-        </div>
-      </div>
-
-      <div class="next-card next-card--phase">
-        <div class="next-card__num">4</div>
-        <div>
-          <div class="next-card__title">Eigen domein koppelen</div>
-          <div class="next-card__desc">aplustheorie.nl kopen (bijv. via TransIP of Mijndomein) en koppelen aan Netlify. Netlify regelt SSL (HTTPS) automatisch.</div>
-        </div>
-      </div>
-
-      <div class="next-card next-card--phase">
-        <div class="next-card__num">5</div>
-        <div>
-          <div class="next-card__title">OG-afbeelding toevoegen</div>
-          <div class="next-card__desc">Een afbeelding van 1200×630px opslaan als <code>public/og-image.jpg</code> voor mooie previews op WhatsApp, Facebook en Google.</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- What can still be added -->
-  <div class="section">
-    <p class="section__label">Fase 2 — Toekomst</p>
-    <h2 class="section__heading">Wat er nog bij kan komen</h2>
-    <div style="display:flex;flex-direction:column;gap:12px">
-
-      <div class="next-card">
-        <div class="next-card__num">💳</div>
-        <div>
-          <div class="next-card__title">Online betaalsysteem</div>
-          <div class="next-card__desc">iDEAL / creditcard betalingen via Stripe of Mollie. Cursisten kunnen direct een pakket kopen en toegang krijgen.</div>
-        </div>
-      </div>
-
-      <div class="next-card">
-        <div class="next-card__num">🔐</div>
-        <div>
-          <div class="next-card__title">Inlogsysteem voor cursisten</div>
-          <div class="next-card__desc">Eigen account per cursist om voortgang bij te houden, oefenexamens te starten en resultaten te bekijken.</div>
-        </div>
-      </div>
-
-      <div class="next-card">
-        <div class="next-card__num">📝</div>
-        <div>
-          <div class="next-card__title">Oefenexamen module</div>
-          <div class="next-card__desc">Het echte leerplatform: CBR-stijl vragen, tijdslimiet, score bijhouden, per onderwerp oefenen. Dit is het hart van het product.</div>
-        </div>
-      </div>
-
-      <div class="next-card">
-        <div class="next-card__num">🎥</div>
-        <div>
-          <div class="next-card__title">Video-uitleg per onderwerp</div>
-          <div class="next-card__desc">Korte uitlegvideo's per verkeersonderwerp (verkeerstekens, gevaarherkenning etc.) als aanvulling op de oefenexamens.</div>
-        </div>
-      </div>
-
-      <div class="next-card">
-        <div class="next-card__num">📊</div>
-        <div>
-          <div class="next-card__title">Cursisten dashboard</div>
-          <div class="next-card__desc">Persoonlijk overzicht: hoeveel vragen goed/fout, welke onderwerpen verbetering nodig hebben, examendatum bijhouden.</div>
-        </div>
-      </div>
-
-      <div class="next-card">
-        <div class="next-card__num">📧</div>
-        <div>
-          <div class="next-card__title">E-mail marketing</div>
-          <div class="next-card__desc">Automatische e-mails na aanmelding, herinneringen, tips en aanbiedingen via Mailchimp of Brevo.</div>
-        </div>
-      </div>
-
-      <div class="next-card">
-        <div class="next-card__num">⭐</div>
-        <div>
-          <div class="next-card__title">Echte Google/Facebook reviews</div>
-          <div class="next-card__desc">Live beoordelingen ophalen via de Google Places API en op de website tonen. Nu zijn het placeholder-reviews.</div>
-        </div>
-      </div>
-
-      <div class="next-card">
-        <div class="next-card__num">📰</div>
-        <div>
-          <div class="next-card__title">Blog / tips sectie</div>
-          <div class="next-card__desc">Artikelen over rijbewijs halen, examenstress, theorie-tips. Goed voor SEO en vertrouwen bij bezoekers.</div>
-        </div>
-      </div>
-
-      <div class="next-card">
-        <div class="next-card__num">🍪</div>
-        <div>
-          <div class="next-card__title">Cookie banner (AVG/GDPR)</div>
-          <div class="next-card__desc">Verplicht bij gebruik van Google Analytics of advertentie-tracking. Eenvoudig toe te voegen.</div>
-        </div>
-      </div>
-
-      <div class="next-card">
-        <div class="next-card__num">📈</div>
-        <div>
-          <div class="next-card__title">Google Analytics / statistieken</div>
-          <div class="next-card__desc">Bijhouden hoeveel bezoekers er zijn, waar ze vandaan komen en welke pagina's het populairst zijn.</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- CTA banner -->
-  <div class="cta-banner">
-    <div>
-      <div class="cta-banner__title">Klaar voor de volgende stap?</div>
-      <div class="cta-banner__sub">Neem contact op om fase 2 te bespreken — betaalsysteem, leerplatform of iets anders.</div>
-    </div>
-    <a href="mailto:info@aplustheorie.nl" class="cta-banner__btn">Contact opnemen →</a>
-  </div>
-
 </div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__logo">A<span>+</span>theorie</div>
+    <p class="footer__copy">© 2026 A+theorie · Project Overzicht voor Alex</p>
+  </div>
+</footer>
+
 </body>
 </html>
