@@ -3,173 +3,366 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>A+theorie — Project Overzicht</title>
+<title>A+theorie — Project Overzicht · AkkerDigital</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --blue:#0066CC;
-  --blue-dark:#1e3a8a;
-  --orange:#f97316;
-  --orange-dark:#ea580c;
-  --white:#ffffff;
-  --bg:#f8fafc;
-  --border:#e2e8f0;
-  --text:#1e293b;
-  --muted:#64748b;
-  --grad-primary:linear-gradient(135deg,#1e3a8a 0%,#0066CC 100%);
-  --grad-accent:linear-gradient(135deg,#f97316 0%,#ea580c 100%);
-  --shadow-sm:0 1px 3px rgba(0,0,0,.08);
-  --shadow-md:0 4px 16px rgba(0,0,0,.1);
-  --shadow-blue:0 8px 24px rgba(0,102,204,.25);
-  --shadow-orange:0 8px 24px rgba(249,115,22,.3);
-  --radius:14px;
-  --radius-sm:8px;
-  --radius-full:999px;
+  --bg:          #0d0d1a;
+  --bg-card:     #13132a;
+  --bg-card2:    #1a1a35;
+  --border:      rgba(255,255,255,0.07);
+  --border-glow: rgba(168,85,247,0.35);
+  --pink:        #e91e8c;
+  --purple:      #7c3aed;
+  --violet:      #a855f7;
+  --grad:        linear-gradient(135deg,#e91e8c 0%,#7c3aed 100%);
+  --grad-soft:   linear-gradient(135deg,rgba(233,30,140,.15) 0%,rgba(124,58,237,.15) 100%);
+  --white:       #ffffff;
+  --muted:       rgba(255,255,255,0.55);
+  --muted2:      rgba(255,255,255,0.25);
+  --radius:      14px;
+  --radius-sm:   8px;
+  --radius-full: 999px;
 }
-body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--white);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
 
-/* ---- Utilities ---- */
-.container{max-width:960px;margin:0 auto;padding:0 24px}
-.gradient-text{background:var(--grad-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+/* ── Gradient text utility ── */
+.g{
+  background:var(--grad);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
 
-/* ============================================================
+/* ══════════════════════════════
    NAVBAR
-============================================================ */
-.navbar{background:var(--white);border-bottom:1px solid var(--border);padding:0 24px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
-.navbar__inner{max-width:960px;margin:0 auto;height:64px;display:flex;align-items:center;justify-content:space-between}
-.navbar__logo{display:flex;align-items:center;gap:8px;text-decoration:none}
-.navbar__logo-mark{width:36px;height:36px;background:var(--grad-primary);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.navbar__logo-svg{display:block}
-.navbar__logo-name{font-size:1.2rem;font-weight:800;letter-spacing:-.02em;color:var(--blue-dark)}
-.navbar__logo-name span{color:var(--orange)}
-.navbar__badge{background:linear-gradient(135deg,rgb(249 115 22/.15),rgb(249 115 22/.05));border:1px solid rgb(249 115 22/.3);color:var(--orange);font-size:12px;font-weight:700;padding:4px 12px;border-radius:var(--radius-full)}
+══════════════════════════════ */
+.nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(13,13,26,0.85);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+  padding:0 24px;
+}
+.nav__inner{
+  max-width:980px;margin:0 auto;
+  height:62px;display:flex;align-items:center;justify-content:space-between;
+}
+.nav__logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav__mark{
+  width:36px;height:36px;border-radius:10px;
+  background:var(--grad);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.nav__mark svg{display:block}
+.nav__name{font-size:15px;font-weight:800;color:var(--white);letter-spacing:-.01em}
+.nav__name span{
+  background:var(--grad);-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;background-clip:text;
+}
+.nav__pill{
+  background:var(--grad-soft);
+  border:1px solid var(--border-glow);
+  color:var(--violet);
+  font-size:12px;font-weight:700;
+  padding:5px 14px;border-radius:var(--radius-full);
+  letter-spacing:.03em;
+}
 
-/* ============================================================
+/* ══════════════════════════════
    HERO
-============================================================ */
-.hero{background:var(--grad-primary);padding:72px 24px 80px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 80% 50%,rgb(249 115 22/.18),transparent);pointer-events:none}
-.hero::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:60px;background:var(--bg);clip-path:ellipse(55% 100% at 50% 100%)}
-.hero__inner{max-width:960px;margin:0 auto;position:relative}
-.hero__eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgb(255 255 255/.12);border:1px solid rgb(255 255 255/.2);color:rgb(255 255 255/.9);font-size:13px;font-weight:600;padding:6px 14px;border-radius:var(--radius-full);margin-bottom:28px;letter-spacing:.03em}
-.hero__eyebrow::before{content:'';width:7px;height:7px;background:#f97316;border-radius:50%;animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgb(249 115 22/.5)}50%{box-shadow:0 0 0 5px rgb(249 115 22/0)}}
-.hero__title{font-size:clamp(32px,5vw,52px);font-weight:800;color:var(--white);line-height:1.15;letter-spacing:-.02em;margin-bottom:16px}
-.hero__title span{color:var(--orange)}
-.hero__sub{font-size:17px;color:rgb(255 255 255/.8);max-width:560px;line-height:1.7;margin-bottom:36px}
+══════════════════════════════ */
+.hero{
+  padding:88px 24px 96px;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;
+  top:-120px;left:50%;transform:translateX(-50%);
+  width:700px;height:700px;
+  background:radial-gradient(circle,rgba(124,58,237,.22) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero::after{
+  content:'';position:absolute;
+  bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--border-glow),transparent);
+}
+.hero__inner{max-width:980px;margin:0 auto;position:relative}
+.hero__eye{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--grad-soft);
+  border:1px solid var(--border-glow);
+  color:var(--violet);
+  font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:7px 16px;border-radius:var(--radius-full);
+  margin-bottom:28px;
+}
+.hero__eye::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--pink);
+  box-shadow:0 0 8px var(--pink);
+}
+.hero__title{
+  font-size:clamp(34px,5.5vw,58px);
+  font-weight:800;line-height:1.1;letter-spacing:-.03em;
+  margin-bottom:18px;
+}
+.hero__sub{
+  font-size:17px;color:var(--muted);
+  max-width:540px;line-height:1.75;
+  margin-bottom:36px;
+}
 .hero__tags{display:flex;flex-wrap:wrap;gap:10px}
-.hero__tag{background:rgb(255 255 255/.1);border:1px solid rgb(255 255 255/.2);color:rgb(255 255 255/.9);font-size:13px;font-weight:600;padding:8px 16px;border-radius:var(--radius-full);display:flex;align-items:center;gap:6px}
+.hero__tag{
+  background:rgba(255,255,255,.05);
+  border:1px solid var(--border);
+  color:rgba(255,255,255,.75);
+  font-size:13px;font-weight:600;
+  padding:8px 16px;border-radius:var(--radius-full);
+}
 
-/* ============================================================
+/* ══════════════════════════════
    CONTENT
-============================================================ */
-.content{padding:72px 0 96px}
-.section{margin-bottom:72px}
-.section__label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--orange);margin-bottom:10px;display:flex;align-items:center;gap:8px}
-.section__label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgb(249 115 22/.3),transparent);max-width:120px}
-.section__heading{font-size:clamp(22px,3vw,30px);font-weight:800;color:var(--blue-dark);letter-spacing:-.02em;margin-bottom:28px}
+══════════════════════════════ */
+.wrap{max-width:980px;margin:0 auto;padding:80px 24px 100px}
+.section{margin-bottom:80px}
 
-/* ---- Page list ---- */
+.section__label{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.12em;color:var(--violet);
+  margin-bottom:12px;
+}
+.section__label::before{
+  content:'';width:20px;height:2px;
+  background:var(--grad);border-radius:2px;
+}
+.section__heading{
+  font-size:clamp(22px,3vw,32px);
+  font-weight:800;letter-spacing:-.02em;
+  margin-bottom:28px;color:var(--white);
+}
+
+/* ── Page rows ── */
 .pages{display:flex;flex-direction:column;gap:10px}
-.page-row{display:flex;align-items:center;gap:14px;background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);padding:16px 20px;transition:border-color .2s,box-shadow .2s}
-.page-row:hover{border-color:var(--blue);box-shadow:var(--shadow-blue)}
-.page-row__pill{background:var(--grad-primary);color:var(--white);font-size:11px;font-weight:700;padding:4px 11px;border-radius:var(--radius-full);white-space:nowrap;flex-shrink:0}
-.page-row__title{font-weight:700;font-size:14px;color:var(--text)}
+.page-row{
+  display:flex;align-items:center;gap:14px;
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:16px 22px;
+  transition:border-color .2s,background .2s;
+}
+.page-row:hover{border-color:var(--border-glow);background:var(--bg-card2)}
+.page-row__pill{
+  background:var(--grad);
+  color:var(--white);font-size:11px;font-weight:700;
+  padding:4px 12px;border-radius:var(--radius-full);
+  white-space:nowrap;flex-shrink:0;
+}
+.page-row__title{font-weight:700;font-size:14px;color:var(--white)}
 .page-row__desc{font-size:12px;color:var(--muted);margin-top:2px}
-.page-row__url{margin-left:auto;font-size:12px;color:var(--muted);font-family:monospace;flex-shrink:0}
+.page-row__url{
+  margin-left:auto;font-size:12px;color:var(--muted2);
+  font-family:monospace;flex-shrink:0;
+}
 
-/* ---- Cards grid ---- */
-.grid{display:grid;gap:14px}
+/* ── Cards grid ── */
+.grid{display:grid;gap:12px}
 .grid--2{grid-template-columns:1fr}
 .grid--3{grid-template-columns:1fr}
 @media(min-width:560px){.grid--2{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:680px){.grid--3{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:700px){.grid--3{grid-template-columns:repeat(3,1fr)}}
 
-.card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);padding:22px;transition:box-shadow .2s,transform .2s,border-color .2s}
-.card:hover{box-shadow:var(--shadow-blue);transform:translateY(-2px);border-color:rgb(0 102 204/.25)}
-.card__icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:14px}
-.card__icon--blue{background:#dbeafe}
-.card__icon--orange{background:#ffedd5}
-.card__icon--green{background:#dcfce7}
-.card__icon--purple{background:#ede9fe}
-.card__title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:5px}
+.card{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:22px;
+  transition:border-color .2s,background .2s,transform .2s;
+}
+.card:hover{
+  border-color:var(--border-glow);
+  background:var(--bg-card2);
+  transform:translateY(-2px);
+}
+.card__icon{
+  width:40px;height:40px;border-radius:10px;
+  background:var(--grad-soft);
+  border:1px solid var(--border-glow);
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;margin-bottom:14px;
+}
+.card__title{font-size:14px;font-weight:700;color:var(--white);margin-bottom:5px}
+.card__title--done::after{content:' ✓';color:#a855f7}
 .card__desc{font-size:13px;color:var(--muted);line-height:1.55}
-.card--done{border-color:#bbf7d0}
-.card--done .card__title::after{content:' ✓';color:#16a34a;font-weight:700}
 
-/* ---- Tech pills ---- */
+/* ── Tech pills ── */
 .tech-grid{display:flex;flex-wrap:wrap;gap:10px}
-.tech-pill{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius-full);padding:9px 18px;font-size:13px;font-weight:600;color:var(--blue-dark);transition:border-color .2s,box-shadow .2s}
-.tech-pill:hover{border-color:var(--blue);box-shadow:var(--shadow-sm)}
-.tech-pill__icon{font-size:16px}
+.tech-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:var(--radius-full);
+  padding:9px 18px;
+  font-size:13px;font-weight:600;color:rgba(255,255,255,.8);
+  transition:border-color .2s;
+}
+.tech-pill:hover{border-color:var(--border-glow)}
 
-/* ---- Info box ---- */
-.infobox{background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:var(--radius);padding:16px 20px;font-size:14px;color:#1e40af;margin-bottom:24px;line-height:1.6}
-.infobox code{background:rgb(0 102 204/.1);padding:2px 6px;border-radius:4px;font-size:13px}
+/* ── Info box ── */
+.infobox{
+  background:var(--grad-soft);
+  border:1px solid var(--border-glow);
+  border-radius:var(--radius);
+  padding:16px 20px;
+  font-size:14px;color:rgba(255,255,255,.8);
+  margin-bottom:24px;line-height:1.6;
+}
+.infobox code{
+  background:rgba(168,85,247,.2);
+  color:var(--violet);
+  padding:2px 7px;border-radius:4px;font-size:13px;
+}
 
-/* ---- Step cards ---- */
-.steps{display:flex;flex-direction:column;gap:12px}
-.step{display:flex;gap:16px;align-items:flex-start;background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);padding:20px;transition:box-shadow .2s}
-.step:hover{box-shadow:var(--shadow-md)}
-.step--action{border-left:4px solid var(--orange)}
-.step--future{border-left:4px solid var(--blue)}
-.step__num{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;flex-shrink:0}
-.step__num--orange{background:var(--grad-accent);color:var(--white)}
-.step__num--blue{background:var(--grad-primary);color:var(--white)}
-.step__num--emoji{background:var(--bg);border:1.5px solid var(--border);font-size:18px}
-.step__title{font-weight:700;font-size:15px;color:var(--text);margin-bottom:4px}
+/* ── Step rows ── */
+.steps{display:flex;flex-direction:column;gap:10px}
+.step{
+  display:flex;gap:16px;align-items:flex-start;
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-left:3px solid transparent;
+  border-radius:var(--radius);
+  padding:20px 22px;
+  transition:border-color .2s,background .2s;
+}
+.step:hover{background:var(--bg-card2)}
+.step--action{border-left-color:var(--pink)}
+.step--future{border-left-color:var(--purple)}
+.step__num{
+  width:34px;height:34px;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:14px;flex-shrink:0;
+}
+.step__num--grad{background:var(--grad);color:var(--white)}
+.step__num--emoji{
+  background:var(--bg-card2);
+  border:1px solid var(--border);
+  font-size:17px;
+}
+.step__title{font-weight:700;font-size:15px;color:var(--white);margin-bottom:4px}
 .step__desc{font-size:13px;color:var(--muted);line-height:1.6}
-.step__desc code{background:rgb(0 0 0/.06);padding:2px 5px;border-radius:4px;font-size:12px}
+.step__desc code{
+  background:rgba(168,85,247,.2);color:var(--violet);
+  padding:2px 6px;border-radius:4px;font-size:12px;
+}
 
-/* ---- Divider ---- */
-.divider{height:1px;background:var(--border);margin:56px 0}
+/* ── Divider ── */
+.divider{
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--border-glow),transparent);
+  margin:64px 0;
+}
 
-/* ---- CTA Banner ---- */
-.cta-banner{background:var(--grad-accent);border-radius:20px;padding:40px 40px;color:var(--white);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;margin-top:64px;position:relative;overflow:hidden;box-shadow:var(--shadow-orange)}
-.cta-banner::before{content:'';position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.08)}
-.cta-banner__left{position:relative}
-.cta-banner__label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;opacity:.8;margin-bottom:8px}
-.cta-banner__title{font-size:24px;font-weight:800;line-height:1.25}
-.cta-banner__sub{font-size:14px;opacity:.85;margin-top:6px;max-width:400px}
-.cta-banner__btn{background:var(--white);color:var(--orange);font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px;padding:14px 28px;border-radius:10px;white-space:nowrap;border:none;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.15);transition:transform .2s,box-shadow .2s;position:relative;display:inline-block;text-decoration:none}
-.cta-banner__btn:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(0,0,0,.2)}
+/* ── CTA banner ── */
+.cta{
+  background:var(--grad);
+  border-radius:20px;
+  padding:44px 40px;
+  display:flex;flex-wrap:wrap;
+  align-items:center;justify-content:space-between;
+  gap:24px;margin-top:64px;
+  position:relative;overflow:hidden;
+  box-shadow:0 20px 60px rgba(124,58,237,.4);
+}
+.cta::before{
+  content:'';position:absolute;
+  right:-60px;top:-60px;
+  width:220px;height:220px;
+  border-radius:50%;
+  background:rgba(255,255,255,.08);
+}
+.cta__label{
+  font-size:11px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.1em;
+  opacity:.75;margin-bottom:8px;
+}
+.cta__title{font-size:24px;font-weight:800;line-height:1.25}
+.cta__sub{font-size:14px;opacity:.85;margin-top:6px;max-width:380px}
+.cta__btn{
+  background:var(--white);
+  color:var(--purple);
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-weight:700;font-size:14px;
+  padding:14px 28px;border-radius:10px;
+  border:none;cursor:pointer;white-space:nowrap;
+  box-shadow:0 4px 20px rgba(0,0,0,.2);
+  transition:transform .2s,box-shadow .2s;
+  text-decoration:none;display:inline-block;
+  position:relative;
+}
+.cta__btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.3)}
 
-/* ---- Footer ---- */
-.footer{background:var(--blue-dark);padding:32px 24px;text-align:center}
-.footer__inner{max-width:960px;margin:0 auto}
-.footer__logo{font-size:18px;font-weight:800;color:var(--white);margin-bottom:8px}
-.footer__logo span{color:var(--orange)}
-.footer__copy{font-size:13px;color:rgb(255 255 255/.5)}
+/* ── Footer ── */
+.footer{
+  border-top:1px solid var(--border);
+  padding:32px 24px;text-align:center;
+}
+.footer__logo{
+  font-size:16px;font-weight:800;
+  margin-bottom:6px;
+}
+.footer__copy{font-size:13px;color:var(--muted)}
 </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar">
-  <div class="navbar__inner">
-    <div class="navbar__logo">
-      <div class="navbar__logo-mark">
-        <svg class="navbar__logo-svg" viewBox="0 0 28 28" width="22" height="22" fill="none">
-          <circle cx="14" cy="14" r="12" stroke="white" stroke-width="2.5"/>
-          <circle cx="14" cy="14" r="8" stroke="#f97316" stroke-width="1.8"/>
-          <text x="14" y="19" font-family="Arial Black,sans-serif" font-size="11" font-weight="900" fill="white" text-anchor="middle">A</text>
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="#" class="nav__logo">
+      <div class="nav__mark">
+        <!-- Akkerd Digital A-mark -->
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M10 2 L17 16 H13.5 L10 9.5 L6.5 16 H3 Z" fill="url(#lg)"/>
+          <path d="M6.5 16 L10 9.5 L13.5 16" fill="rgba(255,255,255,0.15)"/>
+          <defs>
+            <linearGradient id="lg" x1="3" y1="2" x2="17" y2="16" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#e91e8c"/>
+              <stop offset="100%" stop-color="#7c3aed"/>
+            </linearGradient>
+          </defs>
         </svg>
       </div>
-      <span class="navbar__logo-name">A<span>+</span>theorie</span>
-    </div>
-    <span class="navbar__badge">Project Overzicht</span>
+      <span class="nav__name">Akker<span>Digital</span></span>
+    </a>
+    <span class="nav__pill">Project Overzicht</span>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero__inner">
-    <div class="hero__eyebrow">April 2026 · Opgeleverd aan Alex</div>
-    <h1 class="hero__title">Alles wat is gebouwd<br/><span>voor A+theorie</span></h1>
-    <p class="hero__sub">Een volledig overzicht van alle pagina's, secties, features en animaties die zijn opgeleverd — plus wat er in de toekomst nog bij kan.</p>
+    <div class="hero__eye">April 2026 · Opgeleverd aan Alex</div>
+    <h1 class="hero__title">
+      Alles wat gebouwd is<br/>
+      <span class="g">voor A+theorie</span>
+    </h1>
+    <p class="hero__sub">
+      Een volledig overzicht van alle pagina's, secties, features en animaties die zijn opgeleverd — plus wat er in de toekomst nog bij kan.
+    </p>
     <div class="hero__tags">
       <div class="hero__tag">⚡ Astro + Netlify</div>
       <div class="hero__tag">📱 Volledig responsive</div>
@@ -180,352 +373,351 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);c
 </section>
 
 <!-- CONTENT -->
-<div class="content">
-  <div class="container">
+<div class="wrap">
 
-    <!-- PAGINA'S -->
-    <div class="section">
-      <p class="section__label">Pagina's</p>
-      <h2 class="section__heading">5 volledige pagina's</h2>
-      <div class="pages">
-        <div class="page-row">
-          <span class="page-row__pill">HOME</span>
-          <div>
-            <div class="page-row__title">Homepagina</div>
-            <div class="page-row__desc">Hero · Over Ons · Cursussen · Beoordelingen · Prijzen · FAQ · CTA</div>
-          </div>
-          <span class="page-row__url">/</span>
+  <!-- PAGINA'S -->
+  <div class="section">
+    <p class="section__label">Pagina's</p>
+    <h2 class="section__heading">5 volledige pagina's</h2>
+    <div class="pages">
+      <div class="page-row">
+        <span class="page-row__pill">HOME</span>
+        <div>
+          <div class="page-row__title">Homepagina</div>
+          <div class="page-row__desc">Hero · Over Ons · Cursussen · Beoordelingen · Prijzen · FAQ · CTA</div>
         </div>
-        <div class="page-row">
-          <span class="page-row__pill">OVER ONS</span>
-          <div>
-            <div class="page-row__title">Over Ons</div>
-            <div class="page-row__desc">Missie, kenmerken van de opleiding, browser-mockup met voortgang</div>
-          </div>
-          <span class="page-row__url">/over-ons</span>
+        <span class="page-row__url">/</span>
+      </div>
+      <div class="page-row">
+        <span class="page-row__pill">OVER ONS</span>
+        <div>
+          <div class="page-row__title">Over Ons</div>
+          <div class="page-row__desc">Missie, kenmerken van de opleiding, browser-mockup met voortgangsdiagram</div>
         </div>
-        <div class="page-row">
-          <span class="page-row__pill">CURSUSSEN</span>
-          <div>
-            <div class="page-row__title">Cursussen</div>
-            <div class="page-row__desc">Basis, Compleet &amp; Premium pakket met inhoud en CTA</div>
-          </div>
-          <span class="page-row__url">/cursussen</span>
+        <span class="page-row__url">/over-ons</span>
+      </div>
+      <div class="page-row">
+        <span class="page-row__pill">CURSUSSEN</span>
+        <div>
+          <div class="page-row__title">Cursussen</div>
+          <div class="page-row__desc">Basis, Compleet &amp; Premium pakket met inhoud en CTA-knoppen</div>
         </div>
-        <div class="page-row">
-          <span class="page-row__pill">PRIJZEN</span>
-          <div>
-            <div class="page-row__title">Prijzen</div>
-            <div class="page-row__desc">Transparant prijsoverzicht met features per pakket</div>
-          </div>
-          <span class="page-row__url">/prijzen</span>
+        <span class="page-row__url">/cursussen</span>
+      </div>
+      <div class="page-row">
+        <span class="page-row__pill">PRIJZEN</span>
+        <div>
+          <div class="page-row__title">Prijzen</div>
+          <div class="page-row__desc">Transparant prijsoverzicht met features per pakket en urgentiebalk</div>
         </div>
-        <div class="page-row">
-          <span class="page-row__pill">CONTACT</span>
-          <div>
-            <div class="page-row__title">Contact</div>
-            <div class="page-row__desc">Werkend formulier met e-mail notificatie via serverless functie</div>
-          </div>
-          <span class="page-row__url">/contact</span>
+        <span class="page-row__url">/prijzen</span>
+      </div>
+      <div class="page-row">
+        <span class="page-row__pill">CONTACT</span>
+        <div>
+          <div class="page-row__title">Contact</div>
+          <div class="page-row__desc">Werkend formulier met automatische e-mail notificatie via serverless functie</div>
         </div>
+        <span class="page-row__url">/contact</span>
       </div>
     </div>
-
-    <div class="divider"></div>
-
-    <!-- SECTIES -->
-    <div class="section">
-      <p class="section__label">Secties &amp; Componenten</p>
-      <h2 class="section__heading">Wat er precies in zit</h2>
-      <div class="grid grid--2">
-        <div class="card card--done">
-          <div class="card__icon card__icon--blue">🦸</div>
-          <div class="card__title">Hero sectie</div>
-          <div class="card__desc">Split-layout met animerende statistieken (97% slagingspercentage, 5000+ cursisten), grote CTA met shimmer-effect, vertrouwensbadges en CSS app-mockup.</div>
-        </div>
-        <div class="card card--done">
-          <div class="card__icon card__icon--blue">ℹ️</div>
-          <div class="card__title">Over Ons sectie</div>
-          <div class="card__desc">Twee kolommen: browser-mockup met voortgangsringdiagram en percentages per onderwerp, plus tekst met 4 kenmerken van de opleiding.</div>
-        </div>
-        <div class="card card--done">
-          <div class="card__icon card__icon--orange">📦</div>
-          <div class="card__title">Cursuspakketten (3x)</div>
-          <div class="card__desc">Basis, Compleet (uitgelicht met oranje rand) en Premium — elk met eigen badge, inhoudslijst en CTA-knop. Staggered animatie bij scrollen.</div>
-        </div>
-        <div class="card card--done">
-          <div class="card__icon card__icon--orange">💰</div>
-          <div class="card__title">Prijzenoverzicht</div>
-          <div class="card__desc">Drie prijskaarten met groot bedrag, features-lijst, urgentiebalk en de populairste optie extra uitgelicht. Inclusief "geen abonnement" trust-balk.</div>
-        </div>
-        <div class="card card--done">
-          <div class="card__icon card__icon--green">⭐</div>
-          <div class="card__title">Beoordelingen sectie</div>
-          <div class="card__desc">Drie reviews op blauwe curved achtergrond. Score-badge (5.0 · Uitstekend), auteur-avatars, naam en tijdstempel per kaart.</div>
-        </div>
-        <div class="card card--done">
-          <div class="card__icon card__icon--blue">❓</div>
-          <div class="card__title">FAQ accordion</div>
-          <div class="card__desc">5 vragen met vloeiende CSS-animatie (geen sprongetjes). Slechts één vraag open tegelijk, knop draait soepel om.</div>
-        </div>
-        <div class="card card--done">
-          <div class="card__icon card__icon--orange">📣</div>
-          <div class="card__title">CTA sectie</div>
-          <div class="card__desc">Donkerblauwe gradient, oranje knop met shimmer, 3 vertrouwensbadges (geen abonnement / direct toegang / geld-terug) en social proof avatar-rij.</div>
-        </div>
-        <div class="card card--done">
-          <div class="card__icon card__icon--blue">📬</div>
-          <div class="card__title">Contactformulier</div>
-          <div class="card__desc">Serverless formulier via Netlify Functions. Stuurt automatisch een e-mail naar Alex via de Resend API. Spambeveiliging (honeypot) ingebouwd.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- DESIGN & UX -->
-    <div class="section">
-      <p class="section__label">Design &amp; UX</p>
-      <h2 class="section__heading">2026 UI details &amp; animaties</h2>
-      <div class="grid grid--3">
-        <div class="card card--done">
-          <div class="card__icon card__icon--purple">🔮</div>
-          <div class="card__title">Glassmorphism navbar</div>
-          <div class="card__desc">Navbar wordt transparant met blur-effect bij scrollen. Hamburger menu op mobiel met slide-animatie.</div>
-        </div>
-        <div class="card card--done">
-          <div class="card__icon card__icon--blue">✨</div>
-          <div class="card__title">Scroll reveal animaties</div>
-          <div class="card__desc">Elke sectie en kaart animeert soepel in beeld. Staggered delays zodat het één voor één verschijnt.</div>
-        </div>
-        <div class="card card--done">
-          <div class="card__icon card__icon--orange">🔢</div>
-          <div class="card__title">Teller animaties</div>
-          <div class="card__desc">Statistieken (97%, 5000+) tellen op van nul zodra je de hero in beeld scrolt. Easing curve voor een natuurlijk gevoel.</div>
-        </div>
-        <div class="card card--done">
-          <div class="card__icon card__icon--green">📱</div>
-          <div class="card__title">100% Responsive</div>
-          <div class="card__desc">Werkt perfect op mobiel, tablet en desktop. Hamburger menu, stacked layouts en aangepaste lettergroottes.</div>
-        </div>
-        <div class="card card--done">
-          <div class="card__icon card__icon--blue">🎨</div>
-          <div class="card__title">Plus Jakarta Sans</div>
-          <div class="card__desc">Trending 2026 font met variabele gewichten (300–800) voor een premium, moderne uitstraling op alle schermen.</div>
-        </div>
-        <div class="card card--done">
-          <div class="card__icon card__icon--orange">💬</div>
-          <div class="card__title">WhatsApp FAB knop</div>
-          <div class="card__desc">Vaste groene knop rechtsonder op elke pagina met puls-animatie. Directe verbinding met Alex via WhatsApp.</div>
-        </div>
-        <div class="card card--done">
-          <div class="card__icon card__icon--purple">📢</div>
-          <div class="card__title">Aankondigingsbalk</div>
-          <div class="card__desc">"Gratis proefles bij aanmelding" balk bovenaan. Wegklikbaar en onthoudt dit via sessiestorage.</div>
-        </div>
-        <div class="card card--done">
-          <div class="card__icon card__icon--blue">🖼️</div>
-          <div class="card__title">SVG Logo</div>
-          <div class="card__desc">Eigen logo: cirkel met auto bovenop, A+ tekst en THEORIE in de precieze huisstijlkleuren. Scherp op elk scherm.</div>
-        </div>
-        <div class="card card--done">
-          <div class="card__icon card__icon--green">🔍</div>
-          <div class="card__title">SEO &amp; Social sharing</div>
-          <div class="card__desc">Meta-tags, Open Graph, Twitter Card, canonical URL's en favicon voor Google en social media previews.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- FOOTER -->
-    <div class="section">
-      <p class="section__label">Footer</p>
-      <h2 class="section__heading">Professionele 3-koloms footer</h2>
-      <div class="grid grid--3">
-        <div class="card card--done">
-          <div class="card__icon card__icon--blue">📞</div>
-          <div class="card__title">Contact kolom</div>
-          <div class="card__desc">Telefoon, WhatsApp, e-mail en openingstijden — elk als klikbare kaart met icon.</div>
-        </div>
-        <div class="card card--done">
-          <div class="card__icon card__icon--orange">⭐</div>
-          <div class="card__title">Beoordelingen kolom</div>
-          <div class="card__desc">Google 5/5, Facebook aanbevolen, Trustpilot uitstekend — als herkenbare review-kaarten.</div>
-        </div>
-        <div class="card card--done">
-          <div class="card__icon card__icon--purple">📲</div>
-          <div class="card__title">Social media kolom</div>
-          <div class="card__desc">Instagram, Facebook en WhatsApp als klikbare kaarten met merkicon en kleur.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- TECH STACK -->
-    <div class="section">
-      <p class="section__label">Techniek</p>
-      <h2 class="section__heading">Tech stack</h2>
-      <div class="infobox">
-        <strong>Eén configuratiebestand voor alles</strong> — alle tekst, prijzen, pakketten en contactinfo staan in <code>src/config/site.config.js</code>. Alex of een developer kan dit aanpassen zonder in losse componenten te hoeven duiken.
-      </div>
-      <div class="tech-grid">
-        <div class="tech-pill"><span class="tech-pill__icon">⚡</span> Astro 4.x</div>
-        <div class="tech-pill"><span class="tech-pill__icon">🟢</span> Netlify hosting</div>
-        <div class="tech-pill"><span class="tech-pill__icon">⚙️</span> Netlify Functions</div>
-        <div class="tech-pill"><span class="tech-pill__icon">📧</span> Resend e-mail API</div>
-        <div class="tech-pill"><span class="tech-pill__icon">🎨</span> Vanilla CSS + tokens</div>
-        <div class="tech-pill"><span class="tech-pill__icon">🔤</span> Plus Jakarta Sans</div>
-        <div class="tech-pill"><span class="tech-pill__icon">🐙</span> GitHub</div>
-        <div class="tech-pill"><span class="tech-pill__icon">🔒</span> HTTPS automatisch</div>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- ACTIEPUNTEN ALEX -->
-    <div class="section">
-      <p class="section__label">Actiepunten voor Alex</p>
-      <h2 class="section__heading">Dit moet Alex zelf nog instellen</h2>
-      <div class="steps">
-        <div class="step step--action">
-          <div class="step__num step__num--orange">1</div>
-          <div>
-            <div class="step__title">Contactgegevens invullen</div>
-            <div class="step__desc">Telefoonnummer, e-mailadres, WhatsApp-link en adres aanpassen in <code>src/config/site.config.js</code>. Nu staan er tijdelijke placeholders.</div>
-          </div>
-        </div>
-        <div class="step step--action">
-          <div class="step__num step__num--orange">2</div>
-          <div>
-            <div class="step__title">Netlify omgevingsvariabelen instellen</div>
-            <div class="step__desc">In Netlify → Site configuration → Environment variables: <code>CONTACT_EMAIL</code> (jouw e-mailadres) en <code>EMAIL_API_KEY</code> (Resend API key) invullen zodat het contactformulier werkt.</div>
-          </div>
-        </div>
-        <div class="step step--action">
-          <div class="step__num step__num--orange">3</div>
-          <div>
-            <div class="step__title">Resend.com account aanmaken</div>
-            <div class="step__desc">Gratis account op resend.com → domein verifiëren → API key kopiëren → plakken in Netlify (stap 2). Hierna werkt het contactformulier volledig automatisch.</div>
-          </div>
-        </div>
-        <div class="step step--action">
-          <div class="step__num step__num--orange">4</div>
-          <div>
-            <div class="step__title">Eigen domein koppelen</div>
-            <div class="step__desc">aplustheorie.nl kopen via TransIP, Mijndomein of een andere registrar. In Netlify → Domains koppelen. SSL (HTTPS) regelt Netlify volledig automatisch.</div>
-          </div>
-        </div>
-        <div class="step step--action">
-          <div class="step__num step__num--orange">5</div>
-          <div>
-            <div class="step__title">OG-afbeelding toevoegen</div>
-            <div class="step__desc">Een afbeelding van 1200×630px opslaan als <code>public/og-image.jpg</code> voor mooie previews bij het delen op WhatsApp, Facebook, LinkedIn en Google.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- FASE 2 -->
-    <div class="section">
-      <p class="section__label">Fase 2 — Toekomst</p>
-      <h2 class="section__heading">Wat er nog bij kan komen</h2>
-      <div class="steps">
-        <div class="step step--future">
-          <div class="step__num step__num--emoji">💳</div>
-          <div>
-            <div class="step__title">Online betaalsysteem</div>
-            <div class="step__desc">iDEAL, creditcard en PayPal via Stripe of Mollie. Cursisten kopen direct een pakket en krijgen meteen toegang — geen handmatige handelingen meer.</div>
-          </div>
-        </div>
-        <div class="step step--future">
-          <div class="step__num step__num--emoji">🔐</div>
-          <div>
-            <div class="step__title">Inlogsysteem voor cursisten</div>
-            <div class="step__desc">Eigen account per cursist met e-mail verificatie. Toegang tot het leerplatform na betaling, voortgang opslaan en terugkomen waar je gebleven was.</div>
-          </div>
-        </div>
-        <div class="step step--future">
-          <div class="step__num step__num--emoji">📝</div>
-          <div>
-            <div class="step__title">Oefenexamen module</div>
-            <div class="step__desc">Het echte hart van het product: CBR-stijl vragen met tijdslimiet, score bijhouden, zakken/slagen feedback en per onderwerp oefenen (verkeerstekens, gevaarherkenning etc.).</div>
-          </div>
-        </div>
-        <div class="step step--future">
-          <div class="step__num step__num--emoji">🎥</div>
-          <div>
-            <div class="step__title">Video-uitleg per onderwerp</div>
-            <div class="step__desc">Korte uitlegvideo's bij elk verkeersonderwerp als aanvulling op de oefenexamens. Versterkt het leerproces en verhoogt de waarde van duurdere pakketten.</div>
-          </div>
-        </div>
-        <div class="step step--future">
-          <div class="step__num step__num--emoji">📊</div>
-          <div>
-            <div class="step__title">Cursisten dashboard</div>
-            <div class="step__desc">Persoonlijk overzicht per cursist: hoeveel vragen goed/fout, welke onderwerpen aandacht nodig hebben, examendatum instellen en countdown.</div>
-          </div>
-        </div>
-        <div class="step step--future">
-          <div class="step__num step__num--emoji">📧</div>
-          <div>
-            <div class="step__title">E-mail marketing</div>
-            <div class="step__desc">Automatische welkomstmail na aanmelding, herinneringen vóór het examen, tips per week en gerichte aanbiedingen via Mailchimp of Brevo.</div>
-          </div>
-        </div>
-        <div class="step step--future">
-          <div class="step__num step__num--emoji">⭐</div>
-          <div>
-            <div class="step__title">Echte Google/Facebook reviews</div>
-            <div class="step__desc">Live beoordelingen ophalen via de Google Places API en op de website tonen. Nu zijn het placeholder-reviews — echte reviews versterken het vertrouwen enorm.</div>
-          </div>
-        </div>
-        <div class="step step--future">
-          <div class="step__num step__num--emoji">📈</div>
-          <div>
-            <div class="step__title">Google Analytics + statistieken</div>
-            <div class="step__desc">Bijhouden hoeveel bezoekers er zijn, waar ze vandaan komen, welke pagina's het populairst zijn en waar mensen afhaken. Essentieel voor groei.</div>
-          </div>
-        </div>
-        <div class="step step--future">
-          <div class="step__num step__num--emoji">📰</div>
-          <div>
-            <div class="step__title">Blog / tips sectie</div>
-            <div class="step__desc">Artikelen over rijbewijs halen, examenstress, theorie-tips en nieuws. Goed voor SEO (hogere Google-positie) en vertrouwen bij nieuwe bezoekers.</div>
-          </div>
-        </div>
-        <div class="step step--future">
-          <div class="step__num step__num--emoji">🍪</div>
-          <div>
-            <div class="step__title">Cookie banner (AVG/GDPR)</div>
-            <div class="step__desc">Wettelijk verplicht zodra je Google Analytics of advertentie-tracking gebruikt. Eenvoudig toe te voegen met een bestaande cookieoplossing.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CTA BANNER -->
-    <div class="cta-banner">
-      <div class="cta-banner__left">
-        <div class="cta-banner__label">Klaar voor de volgende stap?</div>
-        <div class="cta-banner__title">Fase 2 bespreken?</div>
-        <div class="cta-banner__sub">Betaalsysteem, leerplatform, inlogsysteem of iets anders — neem contact op.</div>
-      </div>
-      <a href="mailto:info@aplustheorie.nl" class="cta-banner__btn">Contact opnemen →</a>
-    </div>
-
   </div>
+
+  <div class="divider"></div>
+
+  <!-- SECTIES -->
+  <div class="section">
+    <p class="section__label">Secties &amp; Componenten</p>
+    <h2 class="section__heading">Wat er precies in zit</h2>
+    <div class="grid grid--2">
+      <div class="card">
+        <div class="card__icon">🦸</div>
+        <div class="card__title card__title--done">Hero sectie</div>
+        <div class="card__desc">Split-layout met animerende statistieken (97% slagingspercentage, 5000+ cursisten), grote CTA met shimmer-effect, vertrouwensbadges en CSS app-mockup.</div>
+      </div>
+      <div class="card">
+        <div class="card__icon">ℹ️</div>
+        <div class="card__title card__title--done">Over Ons sectie</div>
+        <div class="card__desc">Twee kolommen: browser-mockup met voortgangsringdiagram en percentages per onderwerp, plus tekst met 4 kenmerken van de opleiding.</div>
+      </div>
+      <div class="card">
+        <div class="card__icon">📦</div>
+        <div class="card__title card__title--done">Cursuspakketten (3x)</div>
+        <div class="card__desc">Basis, Compleet (uitgelicht met oranje rand) en Premium — elk met eigen badge, inhoudslijst en CTA. Staggered animatie bij scrollen.</div>
+      </div>
+      <div class="card">
+        <div class="card__icon">💰</div>
+        <div class="card__title card__title--done">Prijzenoverzicht</div>
+        <div class="card__desc">Drie prijskaarten met groot bedrag, features-lijst, populairste optie uitgelicht en "geen abonnement" trust-balk onderaan.</div>
+      </div>
+      <div class="card">
+        <div class="card__icon">⭐</div>
+        <div class="card__title card__title--done">Beoordelingen sectie</div>
+        <div class="card__desc">Drie reviews op blauwe curved achtergrond. Score-badge (5.0 · Uitstekend), auteur-avatars, naam en tijdstempel per kaart.</div>
+      </div>
+      <div class="card">
+        <div class="card__icon">❓</div>
+        <div class="card__title card__title--done">FAQ accordion</div>
+        <div class="card__desc">5 vragen met vloeiende CSS-animatie (geen sprongetjes). Slechts één vraag open tegelijk, knop draait soepel om bij klikken.</div>
+      </div>
+      <div class="card">
+        <div class="card__icon">📣</div>
+        <div class="card__title card__title--done">CTA sectie</div>
+        <div class="card__desc">Donkerblauwe gradient achtergrond, oranje knop met shimmer, 3 vertrouwensbadges en social proof avatar-rij met "5.000+ cursisten".</div>
+      </div>
+      <div class="card">
+        <div class="card__icon">📬</div>
+        <div class="card__title card__title--done">Contactformulier</div>
+        <div class="card__desc">Serverless formulier via Netlify Functions. Stuurt automatisch een e-mail naar Alex via de Resend API. Spambeveiliging (honeypot) ingebouwd.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- DESIGN & UX -->
+  <div class="section">
+    <p class="section__label">Design &amp; UX</p>
+    <h2 class="section__heading">2026 UI details &amp; animaties</h2>
+    <div class="grid grid--3">
+      <div class="card">
+        <div class="card__icon">🔮</div>
+        <div class="card__title card__title--done">Glassmorphism navbar</div>
+        <div class="card__desc">Navbar wordt transparant met blur-effect bij scrollen. Met hamburger menu en slide-animatie op mobiel.</div>
+      </div>
+      <div class="card">
+        <div class="card__icon">✨</div>
+        <div class="card__title card__title--done">Scroll reveal animaties</div>
+        <div class="card__desc">Elke sectie en kaart animeert soepel in beeld. Staggered delays zodat het één voor één verschijnt.</div>
+      </div>
+      <div class="card">
+        <div class="card__icon">🔢</div>
+        <div class="card__title card__title--done">Teller animaties</div>
+        <div class="card__desc">97% en 5000+ tellen op van nul zodra je de hero in beeld scrolt, met een vloeiende easing curve.</div>
+      </div>
+      <div class="card">
+        <div class="card__icon">📱</div>
+        <div class="card__title card__title--done">100% Responsive</div>
+        <div class="card__desc">Werkt perfect op mobiel, tablet en desktop. Hamburger menu, stacked layouts en aangepaste groottes.</div>
+      </div>
+      <div class="card">
+        <div class="card__icon">🎨</div>
+        <div class="card__title card__title--done">Plus Jakarta Sans</div>
+        <div class="card__desc">Trending 2026 font met variabele gewichten (300–800) voor een premium, moderne uitstraling.</div>
+      </div>
+      <div class="card">
+        <div class="card__icon">💬</div>
+        <div class="card__title card__title--done">WhatsApp FAB</div>
+        <div class="card__desc">Vaste groene knop rechtsonder op elke pagina met puls-animatie. Directe verbinding via WhatsApp.</div>
+      </div>
+      <div class="card">
+        <div class="card__icon">📢</div>
+        <div class="card__title card__title--done">Aankondigingsbalk</div>
+        <div class="card__desc">"Gratis proefles bij aanmelding" balk bovenaan. Wegklikbaar, onthoudt dit via sessiestorage.</div>
+      </div>
+      <div class="card">
+        <div class="card__icon">🖼️</div>
+        <div class="card__title card__title--done">SVG Logo</div>
+        <div class="card__desc">Eigen logo: cirkel met auto bovenop, A+ tekst en THEORIE in de precieze huisstijlkleuren. Scherp op elk scherm.</div>
+      </div>
+      <div class="card">
+        <div class="card__icon">🔍</div>
+        <div class="card__title card__title--done">SEO &amp; Social sharing</div>
+        <div class="card__desc">Meta-tags, Open Graph, Twitter Card, canonical URL's en favicon voor Google en social media previews.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- FOOTER SECTIE -->
+  <div class="section">
+    <p class="section__label">Footer</p>
+    <h2 class="section__heading">Professionele 3-koloms footer</h2>
+    <div class="grid grid--3">
+      <div class="card">
+        <div class="card__icon">📞</div>
+        <div class="card__title card__title--done">Contact kolom</div>
+        <div class="card__desc">Telefoon, WhatsApp, e-mail en openingstijden — elk als klikbare kaart met icon.</div>
+      </div>
+      <div class="card">
+        <div class="card__icon">⭐</div>
+        <div class="card__title card__title--done">Beoordelingen kolom</div>
+        <div class="card__desc">Google 5/5, Facebook aanbevolen, Trustpilot uitstekend als herkenbare review-kaarten.</div>
+      </div>
+      <div class="card">
+        <div class="card__icon">📲</div>
+        <div class="card__title card__title--done">Social media kolom</div>
+        <div class="card__desc">Instagram, Facebook en WhatsApp als klikbare kaarten met merkicon en kleur.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- TECH STACK -->
+  <div class="section">
+    <p class="section__label">Techniek</p>
+    <h2 class="section__heading">Tech stack</h2>
+    <div class="infobox">
+      <strong>Eén configuratiebestand voor alles</strong> — alle tekst, prijzen, pakketten en contactinfo staan in
+      <code>src/config/site.config.js</code>. Alex kan dit aanpassen zonder in losse componenten te hoeven duiken.
+    </div>
+    <div class="tech-grid">
+      <div class="tech-pill">⚡ Astro 4.x</div>
+      <div class="tech-pill">🟢 Netlify hosting</div>
+      <div class="tech-pill">⚙️ Netlify Functions</div>
+      <div class="tech-pill">📧 Resend e-mail API</div>
+      <div class="tech-pill">🎨 Vanilla CSS + tokens</div>
+      <div class="tech-pill">🔤 Plus Jakarta Sans</div>
+      <div class="tech-pill">🐙 GitHub</div>
+      <div class="tech-pill">🔒 HTTPS automatisch</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ACTIEPUNTEN ALEX -->
+  <div class="section">
+    <p class="section__label">Actiepunten voor Alex</p>
+    <h2 class="section__heading">Dit moet Alex zelf nog instellen</h2>
+    <div class="steps">
+      <div class="step step--action">
+        <div class="step__num step__num--grad">1</div>
+        <div>
+          <div class="step__title">Contactgegevens invullen</div>
+          <div class="step__desc">Telefoonnummer, e-mailadres, WhatsApp-link en adres aanpassen in <code>src/config/site.config.js</code>. Nu staan er tijdelijke placeholders.</div>
+        </div>
+      </div>
+      <div class="step step--action">
+        <div class="step__num step__num--grad">2</div>
+        <div>
+          <div class="step__title">Netlify omgevingsvariabelen instellen</div>
+          <div class="step__desc">In Netlify → Site configuration → Environment variables: <code>CONTACT_EMAIL</code> en <code>EMAIL_API_KEY</code> invullen zodat het contactformulier werkt.</div>
+        </div>
+      </div>
+      <div class="step step--action">
+        <div class="step__num step__num--grad">3</div>
+        <div>
+          <div class="step__title">Resend.com account aanmaken</div>
+          <div class="step__desc">Gratis account op resend.com → domein verifiëren → API key kopiëren → plakken in Netlify (stap 2). Daarna werkt het contactformulier volledig automatisch.</div>
+        </div>
+      </div>
+      <div class="step step--action">
+        <div class="step__num step__num--grad">4</div>
+        <div>
+          <div class="step__title">Eigen domein koppelen</div>
+          <div class="step__desc">aplustheorie.nl kopen via TransIP of Mijndomein en in Netlify → Domains koppelen. SSL (HTTPS) regelt Netlify volledig automatisch.</div>
+        </div>
+      </div>
+      <div class="step step--action">
+        <div class="step__num step__num--grad">5</div>
+        <div>
+          <div class="step__title">OG-afbeelding toevoegen</div>
+          <div class="step__desc">Een afbeelding van 1200×630px opslaan als <code>public/og-image.jpg</code> voor mooie previews bij delen op WhatsApp, Facebook en Google.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- FASE 2 -->
+  <div class="section">
+    <p class="section__label">Fase 2 — Toekomst</p>
+    <h2 class="section__heading">Wat er nog bij kan komen</h2>
+    <div class="steps">
+      <div class="step step--future">
+        <div class="step__num step__num--emoji">💳</div>
+        <div>
+          <div class="step__title">Online betaalsysteem</div>
+          <div class="step__desc">iDEAL, creditcard en PayPal via Stripe of Mollie. Cursisten kopen direct een pakket en krijgen meteen toegang — geen handmatige handelingen meer voor Alex.</div>
+        </div>
+      </div>
+      <div class="step step--future">
+        <div class="step__num step__num--emoji">🔐</div>
+        <div>
+          <div class="step__title">Inlogsysteem voor cursisten</div>
+          <div class="step__desc">Eigen account per cursist met e-mail verificatie. Toegang tot het leerplatform na betaling, voortgang opslaan en terugkomen waar je gebleven was.</div>
+        </div>
+      </div>
+      <div class="step step--future">
+        <div class="step__num step__num--emoji">📝</div>
+        <div>
+          <div class="step__title">Oefenexamen module</div>
+          <div class="step__desc">Het echte hart van het product: CBR-stijl vragen met tijdslimiet, score bijhouden, zakken/slagen feedback en per onderwerp oefenen.</div>
+        </div>
+      </div>
+      <div class="step step--future">
+        <div class="step__num step__num--emoji">🎥</div>
+        <div>
+          <div class="step__title">Video-uitleg per onderwerp</div>
+          <div class="step__desc">Korte uitlegvideo's bij elk verkeersonderwerp als aanvulling op de oefenexamens. Verhoogt de waarde van duurdere pakketten aanzienlijk.</div>
+        </div>
+      </div>
+      <div class="step step--future">
+        <div class="step__num step__num--emoji">📊</div>
+        <div>
+          <div class="step__title">Cursisten dashboard</div>
+          <div class="step__desc">Persoonlijk overzicht: hoeveel vragen goed/fout, welke onderwerpen aandacht nodig hebben, examendatum instellen en countdown bijhouden.</div>
+        </div>
+      </div>
+      <div class="step step--future">
+        <div class="step__num step__num--emoji">📧</div>
+        <div>
+          <div class="step__title">E-mail marketing</div>
+          <div class="step__desc">Automatische welkomstmail na aanmelding, herinneringen vóór het examen, tips per week en gerichte aanbiedingen via Mailchimp of Brevo.</div>
+        </div>
+      </div>
+      <div class="step step--future">
+        <div class="step__num step__num--emoji">⭐</div>
+        <div>
+          <div class="step__title">Echte Google/Facebook reviews</div>
+          <div class="step__desc">Live beoordelingen ophalen via de Google Places API. Nu zijn het placeholder-reviews — echte reviews versterken het vertrouwen bij nieuwe bezoekers enorm.</div>
+        </div>
+      </div>
+      <div class="step step--future">
+        <div class="step__num step__num--emoji">📈</div>
+        <div>
+          <div class="step__title">Google Analytics</div>
+          <div class="step__desc">Bijhouden hoeveel bezoekers er zijn, waar ze vandaan komen, welke pagina's populairst zijn en waar mensen afhaken. Essentieel voor groei.</div>
+        </div>
+      </div>
+      <div class="step step--future">
+        <div class="step__num step__num--emoji">📰</div>
+        <div>
+          <div class="step__title">Blog / tips sectie</div>
+          <div class="step__desc">Artikelen over rijbewijs halen en theorie-tips. Goed voor SEO (hogere Google-positie) en vertrouwen bij nieuwe bezoekers.</div>
+        </div>
+      </div>
+      <div class="step step--future">
+        <div class="step__num step__num--emoji">🍪</div>
+        <div>
+          <div class="step__title">Cookie banner (AVG/GDPR)</div>
+          <div class="step__desc">Wettelijk verplicht zodra je Google Analytics of advertentie-tracking gebruikt. Eenvoudig toe te voegen.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA BANNER -->
+  <div class="cta">
+    <div class="cta__left">
+      <div class="cta__label">Klaar voor de volgende stap?</div>
+      <div class="cta__title">Fase 2 bespreken?</div>
+      <div class="cta__sub">Betaalsysteem, leerplatform, inlogsysteem of iets anders — neem contact op met Esosa.</div>
+    </div>
+    <a href="mailto:info@akkerdigital.nl" class="cta__btn">Contact opnemen →</a>
+  </div>
+
 </div>
 
 <!-- FOOTER -->
 <footer class="footer">
-  <div class="footer__inner">
-    <div class="footer__logo">A<span>+</span>theorie</div>
-    <p class="footer__copy">© 2026 A+theorie · Project Overzicht voor Alex</p>
+  <div class="footer__logo">
+    Akker<span class="g">Digital</span>
   </div>
+  <p class="footer__copy">© 2026 AkkerDigital · Project overzicht voor A+theorie</p>
 </footer>
 
 </body>
