@@ -153,3 +153,10 @@ export const site = {
     copyright: `© ${new Date().getFullYear()} A+theorie. Alle rechten voorbehouden.`,
   },
 };
+
+export const demoMode = {
+  enabled: true,          // Master switch — zet op false bij launch
+  showBanner: true,       // Gele demo banner bovenaan
+  markPlaceholders: true, // Visuele markering op placeholder-elementen
+  showPhase2: true,       // Cursussen- en Prijzensecties tonen of verbergen
+};

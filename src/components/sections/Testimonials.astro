@@ -1,10 +1,13 @@
 ---
-import { site } from '../../config/site.config.js';
+import { site, demoMode } from '../../config/site.config.js';
 const { testimonials } = site;
 ---
 
 <section class="reviews">
-  <div class="container reviews__header">
+  <div class="container reviews__header" style="position:relative">
+    {demoMode.enabled && demoMode.markPlaceholders && (
+      <span class="placeholder-tag" aria-hidden="true">📝 placeholder</span>
+    )}
     <p class="section__label" data-reveal>Beoordelingen</p>
     <h2 class="reviews__heading" data-reveal data-delay="1">Wat cursisten zeggen</h2>
     <div class="reviews__score-badge" data-reveal data-delay="2">
@@ -53,7 +56,7 @@ const { testimonials } = site;
 .reviews__heading {
   font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-4xl));
   font-weight: var(--font-weight-extrabold);
-  color: var(--color-primary-dark);
+  color: var(--color-primary);
   margin-bottom: var(--space-4);
   letter-spacing: -0.02em;
 }
@@ -114,7 +117,7 @@ const { testimonials } = site;
 .review-card__title {
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-bold);
-  color: var(--color-primary-dark);
+  color: var(--color-primary);
 }
 .review-card__text {
   font-size: var(--font-size-sm);

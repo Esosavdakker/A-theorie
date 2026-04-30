@@ -1,5 +1,5 @@
 ---
-import { site } from '../../config/site.config.js';
+import { site, demoMode } from '../../config/site.config.js';
 const { hero } = site;
 ---
 
@@ -23,7 +23,10 @@ const { hero } = site;
       </h1>
 
       <!-- Stats pills -->
-      <div class="hero__stats-bar" data-counter-group data-reveal data-delay="3">
+      <div class="hero__stats-bar" data-counter-group data-reveal data-delay="3" style="position:relative">
+        {demoMode.enabled && demoMode.markPlaceholders && (
+          <span class="placeholder-tag" aria-hidden="true">📝 placeholder</span>
+        )}
         {hero.stats.map(s => (
           <div class="hero__stat-pill">
             <span class="hero__stat-icon" aria-hidden="true">{s.icon}</span>
@@ -183,7 +186,12 @@ const { hero } = site;
   margin-bottom: var(--space-8);
 }
 .hero__line { display: block; }
-.hero__line--sub { color: var(--color-text); }
+.hero__line--sub {
+  background: linear-gradient(90deg, #fb923c 0%, #f97316 50%, #ea580c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
 /* Stats pills */
 .hero__stats-bar {
@@ -214,7 +222,7 @@ const { hero } = site;
 .hero__stat-text strong {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-extrabold);
-  color: var(--color-text);
+  color: var(--color-primary);
   font-variant-numeric: tabular-nums;
 }
 .hero__stat-text span { font-size: var(--font-size-xs); color: var(--color-text-muted); }
