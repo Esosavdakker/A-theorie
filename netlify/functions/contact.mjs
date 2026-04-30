@@ -41,8 +41,9 @@ export default async (req) => {
     });
   }
 
-  const toEmail = Netlify.env.get('CONTACT_EMAIL');
-  const apiKey  = Netlify.env.get('EMAIL_API_KEY');
+  const toEmail   = Netlify.env.get('CONTACT_EMAIL');
+  const apiKey    = Netlify.env.get('EMAIL_API_KEY');
+  const fromEmail = Netlify.env.get('FROM_EMAIL') || 'onboarding@resend.dev';
 
   if (!toEmail || !apiKey) {
     console.error('Missing env vars: CONTACT_EMAIL or EMAIL_API_KEY');
@@ -63,7 +64,7 @@ export default async (req) => {
         'Authorization': `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        from: 'A+theorie Contact <noreply@aplustheorie.nl>',
+        from: `A+theorie Contact <${fromEmail}>`,
         to: [toEmail],
         reply_to: email,
         subject: `Nieuw contactbericht van ${name}`,
