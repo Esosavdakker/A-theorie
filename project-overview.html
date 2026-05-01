@@ -120,6 +120,27 @@ body {
   max-width: 560px; line-height: 1.8;
 }
 .opening__body p + p { margin-top: 12px }
+.opening__actions {
+  display: flex; align-items: center; gap: 16px;
+  flex-wrap: wrap; margin-top: 32px;
+}
+.opening__demo-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--grad); color: var(--white);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700; font-size: 15px;
+  padding: 13px 26px; border-radius: var(--radius-sm);
+  text-decoration: none;
+  box-shadow: 0 4px 24px rgba(124,58,237,.4);
+  transition: transform .2s, box-shadow .2s, opacity .2s;
+}
+.opening__demo-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(124,58,237,.55);
+}
+.opening__demo-url {
+  font-size: 13px; color: var(--muted2); font-family: monospace;
+}
 
 /* ══════════════════════════
    CONTENT WRAPPER
@@ -436,15 +457,20 @@ body {
   <div class="nav__inner">
     <a href="#" class="nav__logo">
       <div class="nav__mark">
-        <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-          <path d="M10 2 L17 16 H13.5 L10 9.5 L6.5 16 H3 Z" fill="url(#lg)"/>
-          <path d="M6.5 16 L10 9.5 L13.5 16" fill="rgba(255,255,255,0.15)"/>
+        <svg width="22" height="24" viewBox="0 0 44 50" fill="none">
           <defs>
-            <linearGradient id="lg" x1="3" y1="2" x2="17" y2="16" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#7c3aed"/>
-              <stop offset="100%" stop-color="#e879f9"/>
+            <linearGradient id="akd-g" x1="22" y1="0" x2="22" y2="50" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#f472b6"/>
+              <stop offset="55%" stop-color="#a855f7"/>
+              <stop offset="100%" stop-color="#7c3aed"/>
             </linearGradient>
           </defs>
+          <!-- Left leg -->
+          <polygon points="2,48 13,48 30,4 19,4" fill="url(#akd-g)"/>
+          <!-- Fold shadow on left leg -->
+          <polygon points="19,4 30,4 27,16 16,16" fill="rgba(0,0,0,0.28)"/>
+          <!-- Right leg -->
+          <polygon points="24,48 35,48 42,18 31,18" fill="url(#akd-g)" opacity="0.82"/>
         </svg>
       </div>
       <span class="nav__name">Akker<span>Digital</span></span>
@@ -472,6 +498,13 @@ body {
         Dit document laat zien waar we staan, wat er nog nodig is om live te gaan,
         en wat er daarna mogelijk is. Geen haast — we lopen het samen door.
       </p>
+    </div>
+    <div class="opening__actions">
+      <a href="https://aplustheorie.netlify.app" target="_blank" rel="noopener noreferrer" class="opening__demo-btn">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Bekijk de demo
+      </a>
+      <span class="opening__demo-url">aplustheorie.netlify.app</span>
     </div>
   </div>
 </section>
