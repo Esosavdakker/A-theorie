@@ -247,6 +247,92 @@ body {
 }
 
 /* ══════════════════════════
+   SECTION INTRO
+══════════════════════════ */
+.section__intro {
+  font-size: 14px; color: var(--muted);
+  margin-top: -12px; margin-bottom: 20px;
+  max-width: 560px; line-height: 1.65;
+}
+
+/* ══════════════════════════
+   CHECKLIST (sectie 4)
+══════════════════════════ */
+.checklist { display: flex; flex-direction: column; gap: 10px }
+
+.checklist-item {
+  display: flex; gap: 16px; align-items: flex-start;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  transition: border-color .2s, background .2s;
+}
+.checklist-item:hover { border-color: var(--border-glow); background: var(--bg-card2) }
+
+.checklist-item__num {
+  width: 32px; height: 32px; border-radius: 9px; flex-shrink: 0;
+  background: var(--grad);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 13px; color: var(--white);
+  margin-top: 1px;
+}
+.checklist-item__title {
+  font-size: 15px; font-weight: 700; color: var(--white);
+  margin-bottom: 8px;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+
+.tag {
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .06em; padding: 3px 9px; border-radius: var(--radius-full);
+}
+.tag--required {
+  background: rgba(168,85,247,.15);
+  border: 1px solid rgba(168,85,247,.35);
+  color: var(--violet);
+}
+.tag--optional {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  color: var(--muted);
+}
+
+.detail-list { list-style: none; display: flex; flex-direction: column; gap: 5px }
+.detail-list li {
+  font-size: 13px; color: var(--muted); line-height: 1.5;
+  padding-left: 14px; position: relative;
+}
+.detail-list li::before {
+  content: '–'; position: absolute; left: 0; color: var(--muted2);
+}
+
+/* ══════════════════════════
+   TIMELINE (sectie 5)
+══════════════════════════ */
+.timeline { display: flex; flex-direction: column; gap: 0; position: relative; padding-left: 16px }
+.timeline::before {
+  content: ''; position: absolute;
+  left: 7px; top: 12px; bottom: 12px; width: 1px;
+  background: linear-gradient(to bottom, var(--purple), rgba(168,85,247,.1));
+}
+
+.timeline-row {
+  display: flex; gap: 20px; align-items: flex-start;
+  padding: 18px 0;
+  position: relative;
+}
+.timeline-dot {
+  width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0;
+  background: var(--bg-card2); border: 2px solid var(--border-glow);
+  margin-top: 4px; position: relative; z-index: 1;
+}
+.timeline-dot--grad { background: var(--grad); border-color: transparent }
+
+.timeline-row__title { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 4px }
+.timeline-row__desc  { font-size: 13px; color: var(--muted); line-height: 1.6 }
+
+/* ══════════════════════════
    FOOTER
 ══════════════════════════ */
 .footer {
@@ -392,7 +478,114 @@ body {
 
   <div class="divider"></div>
 
-  <!-- Sectie 4–7 volgen -->
+  <!-- ══════════════════════════════════════
+       SECTIE 4 — WAT IS NODIG VAN ALEX
+  ══════════════════════════════════════ -->
+  <div class="section">
+    <p class="section__label">Jouw input</p>
+    <h2 class="section__heading">Wat ik van jou nodig heb</h2>
+    <p class="section__intro">Vijf punten — sommige verplicht, sommige optioneel. Samen bepalen we wat er op de site komt.</p>
+    <div class="checklist">
+
+      <div class="checklist-item">
+        <div class="checklist-item__num">1</div>
+        <div class="checklist-item__body">
+          <div class="checklist-item__title">Contactgegevens <span class="tag tag--required">Verplicht</span></div>
+          <ul class="detail-list">
+            <li>Telefoonnummer</li>
+            <li>E-mailadres</li>
+            <li>Postadres of vestigingslocatie</li>
+            <li>Openingstijden</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <div class="checklist-item__num">2</div>
+        <div class="checklist-item__body">
+          <div class="checklist-item__title">Pakketten en prijzen <span class="tag tag--required">Verplicht</span></div>
+          <ul class="detail-list">
+            <li>Pakket-namen, inhoud en prijzen — of de keuze om "neem contact op voor offerte" te tonen</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <div class="checklist-item__num">3</div>
+        <div class="checklist-item__body">
+          <div class="checklist-item__title">Statistieken <span class="tag tag--optional">Optioneel</span></div>
+          <ul class="detail-list">
+            <li>Wil je een slagingspercentage tonen? Dan moet dit verifieerbaar zijn</li>
+            <li>Aantal gegeven lessen of cursisten, als je dat kwijt wilt</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <div class="checklist-item__num">4</div>
+        <div class="checklist-item__body">
+          <div class="checklist-item__title">Reviews <span class="tag tag--optional">Optioneel</span></div>
+          <ul class="detail-list">
+            <li>Heb je Google- of Facebook-reviews die we kunnen tonen?</li>
+            <li>Of liever voorlopig zonder reviews-sectie starten — dat is ook prima</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <div class="checklist-item__num">5</div>
+        <div class="checklist-item__body">
+          <div class="checklist-item__title">Domeinnaam <span class="tag tag--required">Verplicht</span></div>
+          <ul class="detail-list">
+            <li>Voorkeur: aplustheorie.nl — of een andere naam als je die liever hebt</li>
+            <li>Ik kan registreren namens jou; kosten ~€10/jaar worden doorberekend</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ══════════════════════════════════════
+       SECTIE 5 — TIMELINE NAAR LAUNCH
+  ══════════════════════════════════════ -->
+  <div class="section">
+    <p class="section__label">Planning</p>
+    <h2 class="section__heading">Naar launch</h2>
+    <div class="timeline">
+
+      <div class="timeline-row">
+        <div class="timeline-dot timeline-dot--grad"></div>
+        <div class="timeline-row__body">
+          <div class="timeline-row__title">Zodra content en domein binnen zijn</div>
+          <div class="timeline-row__desc">Ik verwerk alles en zet de definitieve versie klaar — verwacht 1 tot 2 weken.</div>
+        </div>
+      </div>
+
+      <div class="timeline-row">
+        <div class="timeline-dot"></div>
+        <div class="timeline-row__body">
+          <div class="timeline-row__title">Inbegrepen bij launch</div>
+          <div class="timeline-row__desc">Configuratie, DNS-koppeling aan jouw domein, e-mail setup via Resend en een finale controle op alle pagina's.</div>
+        </div>
+      </div>
+
+      <div class="timeline-row">
+        <div class="timeline-dot"></div>
+        <div class="timeline-row__body">
+          <div class="timeline-row__title">Na launch — maandelijks onderhoud</div>
+          <div class="timeline-row__desc">€35 per maand, zoals afgesproken in de offerte. Dekt updates, kleine aanpassingen en beschikbaarheidsmonitoring.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Sectie 6–7 volgen -->
 
 </div>
 
