@@ -63,8 +63,8 @@ body {
 }
 .nav__logo { display: flex; align-items: center; gap: 10px; text-decoration: none }
 .nav__mark {
-  width: 34px; height: 34px; border-radius: 9px;
-  background: var(--grad);
+  width: 32px; height: 36px; border-radius: 0;
+  background: transparent;
   display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 }
 .nav__name { font-size: 15px; font-weight: 800; color: var(--white); letter-spacing: -.01em }
@@ -457,20 +457,22 @@ body {
   <div class="nav__inner">
     <a href="#" class="nav__logo">
       <div class="nav__mark">
-        <svg width="22" height="24" viewBox="0 0 44 50" fill="none">
+        <svg width="32" height="36" viewBox="0 0 64 72" fill="none">
           <defs>
-            <linearGradient id="akd-g" x1="22" y1="0" x2="22" y2="50" gradientUnits="userSpaceOnUse">
+            <linearGradient id="akd-g" x1="32" y1="0" x2="32" y2="72" gradientUnits="userSpaceOnUse">
               <stop offset="0%" stop-color="#f472b6"/>
-              <stop offset="55%" stop-color="#a855f7"/>
+              <stop offset="60%" stop-color="#a855f7"/>
               <stop offset="100%" stop-color="#7c3aed"/>
             </linearGradient>
           </defs>
-          <!-- Left leg -->
-          <polygon points="2,48 13,48 30,4 19,4" fill="url(#akd-g)"/>
-          <!-- Fold shadow on left leg -->
-          <polygon points="19,4 30,4 27,16 16,16" fill="rgba(0,0,0,0.28)"/>
-          <!-- Right leg -->
-          <polygon points="24,48 35,48 42,18 31,18" fill="url(#akd-g)" opacity="0.82"/>
+          <!-- Left bar -->
+          <polygon points="4,70 20,70 28,22 12,22" fill="url(#akd-g)"/>
+          <!-- Pink fold flap (top-right visible face) -->
+          <polygon points="12,22 32,4 50,4 30,22" fill="#f472b6"/>
+          <!-- Fold crease shadow -->
+          <polygon points="30,22 50,4 56,22 36,22" fill="rgba(0,0,0,0.32)"/>
+          <!-- Right bar -->
+          <polygon points="34,70 50,70 60,22 44,22" fill="url(#akd-g)" opacity="0.78"/>
         </svg>
       </div>
       <span class="nav__name">Akker<span>Digital</span></span>
@@ -484,7 +486,7 @@ body {
 ══════════════════════════════════════ -->
 <section class="opening">
   <div class="opening__inner">
-    <div class="opening__date">Mei 2026 · JAS Rijschool — A+theorie</div>
+    <div class="opening__date">Mei 2026 · A+theorie</div>
     <h1 class="opening__aanhef">
       Beste Alex,<br/>
       <span class="g">hier staat de demo.</span>
@@ -651,17 +653,6 @@ body {
         </div>
       </div>
 
-      <div class="checklist-item">
-        <div class="checklist-item__num">5</div>
-        <div class="checklist-item__body">
-          <div class="checklist-item__title">Domeinnaam <span class="tag tag--required">Verplicht</span></div>
-          <ul class="detail-list">
-            <li>Voorkeur: aplustheorie.nl — of een andere naam als je die liever hebt</li>
-            <li>Ik kan registreren namens jou; kosten ~€10/jaar worden doorberekend</li>
-          </ul>
-        </div>
-      </div>
-
     </div>
   </div>
 
@@ -688,14 +679,6 @@ body {
         <div class="timeline-row__body">
           <div class="timeline-row__title">Inbegrepen bij launch</div>
           <div class="timeline-row__desc">Configuratie, DNS-koppeling aan jouw domein, e-mail setup via Resend en een finale controle op alle pagina's.</div>
-        </div>
-      </div>
-
-      <div class="timeline-row">
-        <div class="timeline-dot"></div>
-        <div class="timeline-row__body">
-          <div class="timeline-row__title">Na launch — maandelijks onderhoud</div>
-          <div class="timeline-row__desc">€35 per maand, zoals afgesproken in de offerte. Dekt updates, kleine aanpassingen en beschikbaarheidsmonitoring.</div>
         </div>
       </div>
 
@@ -789,11 +772,11 @@ body {
         </svg>
         WhatsApp — 06 80 11 31 41
       </a>
-      <a href="mailto:info@akkerdigital.nl" class="cta-btn cta-btn--ghost">
+      <a href="mailto:esosa@akkerdigital.com" class="cta-btn cta-btn--ghost">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
         </svg>
-        E-mail — info@akkerdigital.nl
+        E-mail — esosa@akkerdigital.com
       </a>
     </div>
   </div>
@@ -803,7 +786,7 @@ body {
 <!-- ── FOOTER ── -->
 <footer class="footer">
   <div class="footer__logo">Akker<span class="g">Digital</span></div>
-  <p class="footer__copy">© 2026 AkkerDigital · Project overzicht voor A+theorie · JAS Rijschool</p>
+  <p class="footer__copy">© 2026 AkkerDigital · Project overzicht voor A+theorie</p>
 </footer>
 
 </body>
