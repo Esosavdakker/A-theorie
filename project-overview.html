@@ -63,7 +63,7 @@ body {
 }
 .nav__logo { display: flex; align-items: center; gap: 10px; text-decoration: none }
 .nav__mark {
-  width: 22px; height: 26px; border-radius: 0;
+  width: 16px; height: 19px; border-radius: 0;
   background: transparent;
   display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 }
@@ -457,17 +457,21 @@ body {
   <div class="nav__inner">
     <a href="#" class="nav__logo">
       <div class="nav__mark">
-        <svg width="22" height="26" viewBox="0 0 60 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="16" height="19" viewBox="0 0 60 70" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <linearGradient id="akd-g" x1="30" y1="4" x2="30" y2="68" gradientUnits="userSpaceOnUse">
+            <linearGradient id="akd-g" x1="30" y1="6" x2="30" y2="64" gradientUnits="userSpaceOnUse">
               <stop offset="0%" stop-color="#e879f9"/>
               <stop offset="100%" stop-color="#6d28d9"/>
             </linearGradient>
           </defs>
-          <polygon points="2,68 20,68 28,26 12,26" fill="url(#akd-g)"/>
-          <polygon points="40,68 58,68 48,26 32,26" fill="url(#akd-g)" opacity="0.85"/>
-          <polygon points="10,26 24,4 42,4 28,26" fill="#f472b6"/>
-          <polygon points="28,26 42,4 46,14 36,26" fill="rgba(0,0,0,0.35)"/>
+          <!-- left leg — parallelogram, splay outward -->
+          <polygon points="2,64 20,64 28,26 10,26" fill="url(#akd-g)"/>
+          <!-- right leg — mirror of left -->
+          <polygon points="40,64 58,64 50,26 32,26" fill="url(#akd-g)" opacity="0.85"/>
+          <!-- pink fold face — parallelogram tilted upper-right -->
+          <polygon points="8,26 22,6 48,6 34,26" fill="#f472b6"/>
+          <!-- fold shadow crease -->
+          <polygon points="34,26 48,6 52,16 42,26" fill="rgba(0,0,0,0.38)"/>
         </svg>
       </div>
       <span class="nav__name">Akker<span>Digital</span></span>
