@@ -63,8 +63,7 @@ body {
 }
 .nav__logo { display: flex; align-items: center; gap: 10px; text-decoration: none }
 .nav__mark {
-  width: 34px; height: 34px; border-radius: 9px;
-  background: var(--grad);
+  width: 28px; height: 28px;
   display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 }
 .nav__name { font-size: 15px; font-weight: 800; color: var(--white); letter-spacing: -.01em }
@@ -457,20 +456,25 @@ body {
   <div class="nav__inner">
     <a href="#" class="nav__logo">
       <div class="nav__mark">
-        <svg width="22" height="24" viewBox="0 0 44 50" fill="none">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="28" height="28">
           <defs>
-            <linearGradient id="akd-g" x1="22" y1="0" x2="22" y2="50" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#f472b6"/>
-              <stop offset="55%" stop-color="#a855f7"/>
+            <linearGradient id="ak-t" x1="81" y1="2" x2="37" y2="50" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#fce7f3"/>
+              <stop offset="100%" stop-color="#e879f9"/>
+            </linearGradient>
+            <linearGradient id="ak-l" x1="37" y1="50" x2="16" y2="100" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#c026d3"/>
               <stop offset="100%" stop-color="#7c3aed"/>
             </linearGradient>
+            <linearGradient id="ak-r" x1="56" y1="50" x2="63" y2="100" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#8b5cf6"/>
+              <stop offset="100%" stop-color="#4c1d95"/>
+            </linearGradient>
           </defs>
-          <!-- Left leg -->
-          <polygon points="2,48 13,48 30,4 19,4" fill="url(#akd-g)"/>
-          <!-- Fold shadow on left leg -->
-          <polygon points="19,4 30,4 27,16 16,16" fill="rgba(0,0,0,0.28)"/>
-          <!-- Right leg -->
-          <polygon points="24,48 35,48 42,18 31,18" fill="url(#akd-g)" opacity="0.82"/>
+          <polygon points="25,50 49,50 28,100 4,100" fill="url(#ak-l)"/>
+          <polygon points="49,50 63,56 70,100 56,100" fill="url(#ak-r)"/>
+          <polygon points="25,50 49,50 47,60 23,56" fill="#1e1b4b" opacity="0.45"/>
+          <polygon points="25,50 49,50 93,3 69,2" fill="url(#ak-t)"/>
         </svg>
       </div>
       <span class="nav__name">Akker<span>Digital</span></span>
@@ -484,7 +488,7 @@ body {
 ══════════════════════════════════════ -->
 <section class="opening">
   <div class="opening__inner">
-    <div class="opening__date">Mei 2026 · JAS Rijschool — A+theorie</div>
+    <div class="opening__date">Mei 2026 · A+theorie</div>
     <h1 class="opening__aanhef">
       Beste Alex,<br/>
       <span class="g">hier staat de demo.</span>
@@ -528,17 +532,17 @@ body {
           <li>Contactformulier met automatische e-mail via Resend API</li>
           <li>SEO-basisstructuur — titels, meta-tags, Open Graph, canonical URL's</li>
           <li>Hosting via Netlify CDN — snel en wereldwijd beschikbaar</li>
+          <li>Domeinnaam ontvangen — aplustheorie.nl is geregistreerd</li>
         </ul>
       </div>
 
       <div class="status-card status-card--open">
         <div class="status-card__heading">Wat staat nog open</div>
         <ul class="status-list">
-          <li>Domeinnaam registreren — aplustheorie.nl of andere voorkeur</li>
           <li>E-mail instellen — Resend API-sleutel invoeren zodat het formulier werkt</li>
           <li>Echte content invullen — contactgegevens, openingstijden, pakketten en prijzen</li>
           <li>Beslissing over slagingspercentage — verifieerbaar onderbouwen of weglaten</li>
-          <li>Live deployment + DNS-koppeling aan het domein</li>
+          <li>Live deployment + DNS-koppeling aan aplustheorie.nl</li>
         </ul>
       </div>
 
@@ -651,17 +655,6 @@ body {
         </div>
       </div>
 
-      <div class="checklist-item">
-        <div class="checklist-item__num">5</div>
-        <div class="checklist-item__body">
-          <div class="checklist-item__title">Domeinnaam <span class="tag tag--required">Verplicht</span></div>
-          <ul class="detail-list">
-            <li>Voorkeur: aplustheorie.nl — of een andere naam als je die liever hebt</li>
-            <li>Ik kan registreren namens jou; kosten ~€10/jaar worden doorberekend</li>
-          </ul>
-        </div>
-      </div>
-
     </div>
   </div>
 
@@ -678,7 +671,7 @@ body {
       <div class="timeline-row">
         <div class="timeline-dot timeline-dot--grad"></div>
         <div class="timeline-row__body">
-          <div class="timeline-row__title">Zodra content en domein binnen zijn</div>
+          <div class="timeline-row__title">Zodra content binnen is</div>
           <div class="timeline-row__desc">Ik verwerk alles en zet de definitieve versie klaar — verwacht 1 tot 2 weken.</div>
         </div>
       </div>
@@ -688,14 +681,6 @@ body {
         <div class="timeline-row__body">
           <div class="timeline-row__title">Inbegrepen bij launch</div>
           <div class="timeline-row__desc">Configuratie, DNS-koppeling aan jouw domein, e-mail setup via Resend en een finale controle op alle pagina's.</div>
-        </div>
-      </div>
-
-      <div class="timeline-row">
-        <div class="timeline-dot"></div>
-        <div class="timeline-row__body">
-          <div class="timeline-row__title">Na launch — maandelijks onderhoud</div>
-          <div class="timeline-row__desc">€35 per maand, zoals afgesproken in de offerte. Dekt updates, kleine aanpassingen en beschikbaarheidsmonitoring.</div>
         </div>
       </div>
 
@@ -781,7 +766,7 @@ body {
   <div class="section cta-section">
     <p class="section__label">Contact</p>
     <h2 class="section__heading">Volgende stap</h2>
-    <p class="cta-section__body">Wil je de demo bekijken en samen door de openstaande punten lopen? Plan een belletje of langskomen — een uurtje is genoeg.</p>
+    <p class="cta-section__body">Wil je de demo bekijken en samen door de openstaande punten lopen? Bel of WhatsApp me — een kort gesprek is genoeg.</p>
     <div class="cta-btns">
       <a href="https://wa.me/31680113141" target="_blank" rel="noopener noreferrer" class="cta-btn cta-btn--primary">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -789,11 +774,11 @@ body {
         </svg>
         WhatsApp — 06 80 11 31 41
       </a>
-      <a href="mailto:info@akkerdigital.nl" class="cta-btn cta-btn--ghost">
+      <a href="mailto:esosa@akkerdigital.com" class="cta-btn cta-btn--ghost">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
         </svg>
-        E-mail — info@akkerdigital.nl
+        E-mail — esosa@akkerdigital.com
       </a>
     </div>
   </div>
@@ -803,7 +788,7 @@ body {
 <!-- ── FOOTER ── -->
 <footer class="footer">
   <div class="footer__logo">Akker<span class="g">Digital</span></div>
-  <p class="footer__copy">© 2026 AkkerDigital · Project overzicht voor A+theorie · JAS Rijschool</p>
+  <p class="footer__copy">© 2026 AkkerDigital · Project overzicht voor A+theorie</p>
 </footer>
 
 </body>
