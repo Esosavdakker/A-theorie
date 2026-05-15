@@ -1,5 +1,5 @@
 import { getMollie } from '../db/mollie.js';
-import supabase from '../db/supabase.js';
+import { getSupabase } from '../db/supabase.js';
 
 export async function createPayment(req, res) {
   const { userId, courseId } = req.body;
@@ -10,6 +10,7 @@ export async function createPayment(req, res) {
 
   try {
     const mollie = getMollie();
+    const supabase = getSupabase();
 
     const { data: course, error: courseError } = await supabase
       .from('courses')
@@ -74,6 +75,8 @@ export async function mollieWebhook(req, res) {
 
   try {
     const mollie = getMollie();
+    const supabase = getSupabase();
+
     const payment = await mollie.payments.get(paymentId);
     const { userId, courseId } = payment.metadata;
 
@@ -107,6 +110,8 @@ export async function checkAccess(req, res) {
   const { userId, courseId } = req.params;
 
   try {
+    const supabase = getSupabase();
+
     const { data, error } = await supabase
       .from('course_access')
       .select('id, granted_at')
