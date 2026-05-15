@@ -61,7 +61,8 @@ export async function createPayment(req, res) {
       checkoutUrl: payment.getCheckoutUrl(),
       paymentId: payment.id,
     });
-  } catch {
+  } catch (err) {
+    console.error('createPayment error:', err.message);
     return res.status(500).json({ error: 'Payment creation failed.' });
   }
 }
@@ -101,7 +102,8 @@ export async function mollieWebhook(req, res) {
     }
 
     return res.status(200).send('OK');
-  } catch {
+  } catch (err) {
+    console.error('mollieWebhook error:', err.message);
     return res.status(200).send('OK');
   }
 }
@@ -119,12 +121,18 @@ export async function checkAccess(req, res) {
       .eq('course_id', courseId)
       .single();
 
-    if (error || !data) {
+    if (error && error.code !== 'PGRST116') {
+      console.error('checkAccess error:', error.message);
+      return res.status(500).json({ error: 'Access check failed.' });
+    }
+
+    if (!data) {
       return res.status(200).json({ hasAccess: false });
     }
 
     return res.status(200).json({ hasAccess: true, grantedAt: data.granted_at });
-  } catch {
+  } catch (err) {
+    console.error('checkAccess exception:', err.message);
     return res.status(500).json({ error: 'Access check failed.' });
   }
 }
