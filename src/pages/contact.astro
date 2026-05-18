@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Input from '../components/ui/Input.astro';
 import Button from '../components/ui/Button.astro';
 import { site } from '../config/site.config.js';
+
+const cursusOpties = [...site.courses.map(c => c.title), 'Anders / weet ik nog niet'];
 ---
 
 <BaseLayout
@@ -18,6 +19,7 @@ import { site } from '../config/site.config.js';
 
   <section class="contact section">
     <div class="container contact__grid">
+
       <address class="contact__info" style="font-style: normal;">
         <h2 class="contact__info-heading">Contactgegevens</h2>
 
@@ -31,7 +33,7 @@ import { site } from '../config/site.config.js';
 
         <div class="contact__detail">
           <span class="contact__detail-icon" aria-hidden="true">📞</span>
-          <a href={`tel:${site.phone}`} class="contact__link">{site.phone}</a>
+          <a href={`tel:${site.phone.replace(/\s/g,'')}`} class="contact__link">{site.phone}</a>
         </div>
 
         <div class="contact__detail">
@@ -48,77 +50,233 @@ import { site } from '../config/site.config.js';
 
         <div class="contact__hours">
           <h3>Openingstijden</h3>
-          <p>Ma–Vr: 09:00–17:00</p>
-          <p>Za–Zo: Gesloten</p>
+          <p>{site.footer.hours.weekdays}</p>
+          <p>{site.footer.hours.sunday}</p>
         </div>
       </address>
 
-      <div class="contact__form-wrapper">
-        <h2 class="contact__form-heading">Stuur een bericht</h2>
-        <form class="contact__form" id="contact-form" novalidate>
-          <div style="display:none" aria-hidden="true">
-            <label for="website">Laat dit veld leeg</label>
-            <input type="text" id="website" name="honeypot" tabindex="-1" autocomplete="off" />
-          </div>
+      <div class="contact__form-col">
+        <div id="form-wrapper">
+          <h2 class="contact__form-heading">Stuur een bericht</h2>
+          <form class="contact__form" id="contact-form" novalidate>
 
-          <Input label="Naam" name="name" placeholder="Jan Janssen" required />
-          <Input label="E-mailadres" name="email" type="email" placeholder="jan@email.nl" required />
-          <Input label="Telefoonnummer" name="phone" type="tel" placeholder="+31 6 12345678" />
-          <Input label="Bericht" name="message" type="textarea" placeholder="Hoe kunnen we je helpen?" required rows={5} />
+            <!-- Honeypot -->
+            <div style="display:none" aria-hidden="true">
+              <label for="website">Laat dit veld leeg</label>
+              <input type="text" id="website" name="honeypot" tabindex="-1" autocomplete="off" />
+            </div>
 
-          <Button type="submit" variant="primary" size="lg" id="submit-btn" class="contact__submit">
-            Verstuur bericht
-          </Button>
+            <!-- Naam -->
+            <div class="field">
+              <label for="naam" class="field__label">
+                Naam <span class="field__required" aria-hidden="true">*</span>
+              </label>
+              <input
+                id="naam" name="naam" type="text"
+                class="field__input"
+                placeholder="Jan Janssen"
+                maxlength="100"
+                autocomplete="name"
+                aria-required="true"
+                aria-describedby="error-naam"
+                aria-invalid="false"
+              />
+              <p id="error-naam" class="field__error" role="alert" hidden></p>
+            </div>
 
-          <div id="form-status" class="form-status" role="alert" aria-live="polite"></div>
-        </form>
+            <!-- Email -->
+            <div class="field">
+              <label for="email" class="field__label">
+                E-mailadres <span class="field__required" aria-hidden="true">*</span>
+              </label>
+              <input
+                id="email" name="email" type="email"
+                class="field__input"
+                placeholder="jan@email.nl"
+                maxlength="150"
+                autocomplete="email"
+                aria-required="true"
+                aria-describedby="error-email"
+                aria-invalid="false"
+              />
+              <p id="error-email" class="field__error" role="alert" hidden></p>
+            </div>
+
+            <!-- Telefoon (optioneel) -->
+            <div class="field">
+              <label for="telefoon" class="field__label">Telefoonnummer</label>
+              <input
+                id="telefoon" name="telefoon" type="tel"
+                class="field__input"
+                placeholder="+31 6 12 34 56 78"
+                maxlength="20"
+                autocomplete="tel"
+                aria-describedby="error-telefoon"
+                aria-invalid="false"
+              />
+              <p id="error-telefoon" class="field__error" role="alert" hidden></p>
+            </div>
+
+            <!-- Cursus interesse -->
+            <div class="field">
+              <label for="cursus" class="field__label">
+                Cursus interesse <span class="field__required" aria-hidden="true">*</span>
+              </label>
+              <select
+                id="cursus" name="cursus"
+                class="field__input field__select"
+                aria-required="true"
+                aria-describedby="error-cursus"
+                aria-invalid="false"
+              >
+                <option value="">Selecteer een cursus</option>
+                {cursusOpties.map(opt => (
+                  <option value={opt}>{opt}</option>
+                ))}
+              </select>
+              <p id="error-cursus" class="field__error" role="alert" hidden></p>
+            </div>
+
+            <!-- Vraag -->
+            <div class="field">
+              <label for="vraag" class="field__label">
+                Vraag <span class="field__required" aria-hidden="true">*</span>
+              </label>
+              <textarea
+                id="vraag" name="vraag"
+                class="field__input field__textarea"
+                placeholder="Hoe kunnen we je helpen?"
+                rows="5"
+                maxlength="2000"
+                aria-required="true"
+                aria-describedby="error-vraag"
+                aria-invalid="false"
+              ></textarea>
+              <p id="error-vraag" class="field__error" role="alert" hidden></p>
+            </div>
+
+            <!-- Generic error banner -->
+            <p id="form-error-banner" class="form-error-banner" role="alert" hidden></p>
+
+            <Button type="submit" variant="primary" size="lg" id="submit-btn" class="contact__submit" arrow>
+              <span id="submit-label">Verstuur bericht</span>
+            </Button>
+
+          </form>
+        </div>
+
+        <!-- Success state -->
+        <div id="form-success" class="form-success" hidden>
+          <div class="form-success__icon" aria-hidden="true">✅</div>
+          <h2 class="form-success__heading" tabindex="-1">Bericht ontvangen!</h2>
+          <p class="form-success__body">
+            Bedankt voor je bericht. We nemen zo snel mogelijk contact op, uiterlijk binnen 24 uur.
+          </p>
+          <button id="send-another" class="form-success__retry">
+            Nog een bericht sturen
+          </button>
+        </div>
       </div>
+
     </div>
   </section>
 </BaseLayout>
 
 <script>
-  const form = document.getElementById('contact-form') as HTMLFormElement | null;
-  const statusEl = document.getElementById('form-status');
-  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
+  const form        = document.getElementById('contact-form') as HTMLFormElement;
+  const formWrapper = document.getElementById('form-wrapper') as HTMLElement;
+  const successEl   = document.getElementById('form-success') as HTMLElement;
+  const submitBtn   = document.getElementById('submit-btn') as HTMLButtonElement;
+  const submitLabel = document.getElementById('submit-label') as HTMLElement;
+  const errorBanner = document.getElementById('form-error-banner') as HTMLElement;
 
-  form?.addEventListener('submit', async (e) => {
+  const FIELDS = ['naam', 'email', 'telefoon', 'cursus', 'vraag'] as const;
+
+  function showError(name: string, msg: string) {
+    const el    = document.getElementById(`error-${name}`);
+    const input = document.getElementById(name);
+    if (el)    { el.textContent = msg; el.removeAttribute('hidden'); }
+    if (input) input.setAttribute('aria-invalid', 'true');
+  }
+
+  function clearError(name: string) {
+    const el    = document.getElementById(`error-${name}`);
+    const input = document.getElementById(name);
+    if (el)    { el.textContent = ''; el.setAttribute('hidden', ''); }
+    if (input) input.setAttribute('aria-invalid', 'false');
+  }
+
+  function clearAll() {
+    FIELDS.forEach(clearError);
+    errorBanner.textContent = '';
+    errorBanner.setAttribute('hidden', '');
+  }
+
+  function setLoading(on: boolean) {
+    submitBtn.disabled = on;
+    submitLabel.textContent = on ? 'Versturen...' : 'Verstuur bericht';
+  }
+
+  function showSuccess() {
+    formWrapper.setAttribute('hidden', '');
+    successEl.removeAttribute('hidden');
+    const heading = successEl.querySelector<HTMLElement>('[tabindex="-1"]');
+    heading?.focus();
+  }
+
+  document.getElementById('send-another')?.addEventListener('click', () => {
+    successEl.setAttribute('hidden', '');
+    formWrapper.removeAttribute('hidden');
+    form.reset();
+    clearAll();
+    document.getElementById('naam')?.focus();
+  });
+
+  form.addEventListener('submit', async (e: Event) => {
     e.preventDefault();
-    if (!submitBtn || !statusEl) return;
-
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Versturen...';
-    statusEl.textContent = '';
-    statusEl.className = 'form-status';
+    clearAll();
+    setLoading(true);
 
     const data = Object.fromEntries(new FormData(form).entries());
 
     try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
+      const res  = await fetch('/api/contact', {
+        method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body:    JSON.stringify(data),
       });
       const json = await res.json();
+
       if (res.ok) {
-        statusEl.textContent = json.message ?? 'Bericht ontvangen!';
-        statusEl.classList.add('form-status--success');
-        form.reset();
-      } else {
-        statusEl.textContent = json.error ?? 'Er is iets misgegaan.';
-        statusEl.classList.add('form-status--error');
+        showSuccess();
+        return;
       }
+
+      if (res.status === 400 && json.errors) {
+        let first: string | null = null;
+        for (const field of FIELDS) {
+          if (json.errors[field]) {
+            showError(field, json.errors[field]);
+            if (!first) first = field;
+          }
+        }
+        if (first) document.getElementById(first)?.focus();
+        return;
+      }
+
+      errorBanner.textContent = json.error ?? 'Er is iets misgegaan. Probeer het opnieuw.';
+      errorBanner.removeAttribute('hidden');
     } catch {
-      statusEl.textContent = 'Netwerkfout. Probeer het later opnieuw.';
-      statusEl.classList.add('form-status--error');
+      errorBanner.textContent = 'Netwerkfout. Controleer je verbinding en probeer het opnieuw.';
+      errorBanner.removeAttribute('hidden');
     } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Verstuur bericht';
+      setLoading(false);
     }
   });
 </script>
 
 <style>
+/* Page hero */
 .page-hero {
   background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
   color: var(--color-white);
@@ -136,11 +294,18 @@ import { site } from '../config/site.config.js';
   max-width: 560px;
   margin-inline: auto;
 }
+
+/* Layout */
 .contact__grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-12);
 }
+@media (min-width: 768px) {
+  .contact__grid { grid-template-columns: 1fr 1.5fr; }
+}
+
+/* Info panel */
 .contact__info-heading, .contact__form-heading {
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
@@ -169,18 +334,92 @@ import { site } from '../config/site.config.js';
   margin-bottom: var(--space-2);
 }
 .contact__hours p { color: var(--color-text-muted); font-size: var(--font-size-sm); }
+
+/* Form layout */
 .contact__form { display: flex; flex-direction: column; gap: var(--space-5); }
 .contact__submit { align-self: flex-start; }
-.form-status {
+
+/* Field */
+.field { display: flex; flex-direction: column; gap: var(--space-2); }
+.field__label {
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+}
+.field__required { color: var(--color-accent); }
+.field__input {
+  padding: var(--space-3) var(--space-4);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  background: var(--color-white);
+  width: 100%;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+.field__input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgb(0 102 204 / 0.15);
+}
+.field__input[aria-invalid="true"] { border-color: #ef4444; }
+.field__textarea { resize: vertical; min-height: 120px; }
+.field__select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-4) center;
+  background-size: 16px;
+  padding-right: var(--space-10);
+  cursor: pointer;
+}
+.field__error { color: #ef4444; font-size: var(--font-size-sm); }
+
+/* Generic error banner */
+.form-error-banner {
+  background: #fee2e2;
+  color: #991b1b;
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
   padding: var(--space-3) var(--space-4);
   border-radius: var(--radius-md);
 }
-.form-status:empty { display: none; }
-.form-status--success { background: #dcfce7; color: #166534; }
-.form-status--error   { background: #fee2e2; color: #991b1b; }
-@media (min-width: 768px) {
-  .contact__grid { grid-template-columns: 1fr 1.5fr; }
+
+/* Success state */
+.form-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-16) var(--space-8);
+  gap: var(--space-4);
 }
+.form-success__icon { font-size: 3rem; }
+.form-success__heading {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-primary);
+}
+.form-success__heading:focus { outline: none; }
+.form-success__body {
+  font-size: var(--font-size-base);
+  color: var(--color-text-muted);
+  max-width: 400px;
+  line-height: var(--line-height-relaxed);
+}
+.form-success__retry {
+  background: none;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-5);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  margin-top: var(--space-2);
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+.form-success__retry:hover { border-color: var(--color-primary); color: var(--color-primary); }
 </style>
