@@ -3,18 +3,18 @@ export const site = {
   tagline: "Slaag voor je theorie-examen!",
   description: "De beste online theorie-opleiding voor rijbewijs B. Leer in je eigen tempo en slaag met zekerheid.",
   url: "https://aplustheorie.nl",
-  phone: "+31 6 00 00 00 00",
+  phone: "06 44 79 30 93",
   email: "info@aplustheorie.nl",
   address: {
-    street: "Straatnaam 1",
-    city: "Amsterdam",
-    postalCode: "1000 AA",
+    street: "Reggestraat 38",
+    city: "IJmuiden",
+    postalCode: "1972 WL",
     country: "Nederland",
   },
   social: {
     instagram: "https://instagram.com/aplustheorie",
     facebook: "https://facebook.com/aplustheorie",
-    whatsapp: "https://wa.me/31600000000",
+    whatsapp: "https://wa.me/31644793093",
   },
   announcement: {
     active: true,
@@ -101,23 +101,10 @@ export const site = {
       badge: "Meest gekozen",
       cta: { label: "Kies Compleet", href: "/contact" },
     },
-    {
-      id: "premium",
-      title: "Premium Pakket",
-      description: "Maximale ondersteuning voor een zeker slagen.",
-      includes: [
-        "Alles uit Compleet",
-        "1-op-1 telefonische begeleiding",
-        "Onbeperkte toegang",
-        "Geld-terug-garantie",
-      ],
-      cta: { label: "Kies Premium", href: "/contact" },
-    },
   ],
   pricing: [
     { package: "Basis",    price: "€29", period: "eenmalig" },
     { package: "Compleet", price: "€49", period: "eenmalig", highlight: true },
-    { package: "Premium",  price: "€79", period: "eenmalig" },
   ],
   faq: [
     {
@@ -149,7 +136,7 @@ export const site = {
   },
   footer: {
     tagline: "Jouw weg naar het rijbewijs begint hier.",
-    hours: { weekdays: "Ma–Vr: 09:00–17:00", saturday: "Za: Gesloten", sunday: "Zo: Gesloten" },
+    hours: { weekdays: "Ma–Za: 09:00–22:00", sunday: "Zo: 09:00–17:00" },
     copyright: `© ${new Date().getFullYear()} A+theorie. Alle rechten voorbehouden.`,
   },
 };
