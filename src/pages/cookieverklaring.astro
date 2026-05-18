@@ -1,0 +1,170 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../config/site.config.js';
+
+const telHref = `tel:${site.phone.replace(/\s/g, '').replace(/^0/, '+31')}`;
+---
+
+<BaseLayout
+  title="Cookieverklaring"
+  description="Informatie over het cookiegebruik op aplustheorie.nl — alleen functionele cookies, geen tracking."
+>
+  <div class="cookie-page">
+    <div class="container cookie-page__body">
+      <h1>Cookieverklaring</h1>
+      <p class="cookie-page__meta">Laatste update: mei 2026 &nbsp;·&nbsp; aplustheorie.nl</p>
+
+      <section>
+        <h2>Wat zijn cookies?</h2>
+        <p>Cookies zijn kleine tekstbestanden of gegevens die een website op je apparaat opslaat. Ze worden gebruikt om voorkeuren te onthouden en de website correct te laten werken.</p>
+      </section>
+
+      <section>
+        <h2>Welke cookies gebruiken wij?</h2>
+        <p>A+theorie gebruikt uitsluitend <strong>functionele cookies</strong>. Dit zijn cookies die strikt noodzakelijk zijn voor de basisfunctionaliteit van de website. Wij plaatsen <strong>geen</strong> tracking-, marketing- of analytische cookies.</p>
+        <div class="cookie-page__table-wrap">
+          <table class="cookie-page__table">
+            <thead>
+              <tr>
+                <th>Naam</th>
+                <th>Opslag</th>
+                <th>Doel</th>
+                <th>Bewaartermijn</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>cookies-ok</code></td>
+                <td>localStorage</td>
+                <td>Onthoudt dat je de cookiemelding hebt bevestigd</td>
+                <td>Tot wissen browserdata</td>
+              </tr>
+              <tr>
+                <td><code>ann-dismissed</code></td>
+                <td>sessionStorage</td>
+                <td>Onthoudt dat je de aankondigingsbalk hebt gesloten</td>
+                <td>Tot sluiten van de browser</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>Geen tracking of marketing</h2>
+        <p>Wij plaatsen geen cookies van derden, tracking pixels, social media cookies of cookies van advertentienetwerken. Je surfgedrag wordt niet gevolgd en er worden geen persoonsgegevens gedeeld met derden voor marketingdoeleinden.</p>
+      </section>
+
+      <section>
+        <h2>Cookies verwijderen of blokkeren</h2>
+        <p>Je kunt lokale opslagdata wissen via de instellingen van je browser:</p>
+        <ul>
+          <li><strong>Chrome:</strong> Instellingen → Privacy en beveiliging → Browsegegevens wissen</li>
+          <li><strong>Firefox:</strong> Instellingen → Privacy en beveiliging → Cookies en site-data wissen</li>
+          <li><strong>Safari:</strong> Instellingen → Safari → Wis geschiedenis en websitedata</li>
+          <li><strong>Edge:</strong> Instellingen → Privacy, zoeken en services → Browsegegevens wissen</li>
+        </ul>
+        <p>Let op: het blokkeren van functionele cookies kan de werking van de website beïnvloeden.</p>
+      </section>
+
+      <section>
+        <h2>Verantwoordelijke (AVG)</h2>
+        <p>
+          A+theorie / JAS Rijschool<br />
+          T.a.v.: Alex<br />
+          {site.address.street}<br />
+          {site.address.postalCode} {site.address.city}<br />
+          <a href={`mailto:${site.email}`}>{site.email}</a><br />
+          <a href={telHref}>{site.phone}</a>
+        </p>
+        <p>Heb je vragen over ons cookiebeleid? Neem gerust contact op via bovenstaande gegevens.</p>
+      </section>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+.cookie-page {
+  padding-top: calc(var(--navbar-height) + var(--space-16));
+  padding-bottom: var(--space-24);
+}
+.cookie-page__body {
+  max-width: 720px;
+}
+.cookie-page__body h1 {
+  font-size: clamp(var(--font-size-2xl), 4vw, var(--font-size-4xl));
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-primary);
+  letter-spacing: var(--letter-spacing-tight);
+  margin-bottom: var(--space-2);
+}
+.cookie-page__meta {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-12);
+}
+.cookie-page__body section {
+  margin-bottom: var(--space-10);
+}
+.cookie-page__body h2 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--space-3);
+}
+.cookie-page__body p {
+  font-size: var(--font-size-base);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-4);
+}
+.cookie-page__body ul {
+  list-style: disc;
+  padding-left: var(--space-6);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+.cookie-page__body a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.cookie-page__table-wrap {
+  overflow-x: auto;
+  margin-top: var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+.cookie-page__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+}
+.cookie-page__table th,
+.cookie-page__table td {
+  text-align: left;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+.cookie-page__table tr:last-child td { border-bottom: none; }
+.cookie-page__table th {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  background: var(--color-bg-subtle);
+  white-space: nowrap;
+}
+.cookie-page__table td { color: var(--color-text-muted); }
+.cookie-page__table code {
+  font-family: monospace;
+  font-size: 0.85em;
+  background: var(--color-bg-subtle);
+  padding: 1px 5px;
+  border-radius: var(--radius-sm);
+  color: var(--color-primary);
+}
+</style>
