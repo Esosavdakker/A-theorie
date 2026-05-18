@@ -1,13 +1,10 @@
 ---
-import { site, demoMode } from '../../config/site.config.js';
+import { site } from '../../config/site.config.js';
 const { testimonials } = site;
 ---
 
 <section class="reviews">
-  <div class="container reviews__header" style="position:relative">
-    {demoMode.enabled && demoMode.markPlaceholders && (
-      <span class="placeholder-tag" aria-hidden="true">📝 placeholder</span>
-    )}
+  <div class="container reviews__header">
     <p class="section__label" data-reveal>Beoordelingen</p>
     <h2 class="reviews__heading" data-reveal data-delay="1">Wat cursisten zeggen</h2>
     <div class="reviews__score-badge" data-reveal data-delay="2">

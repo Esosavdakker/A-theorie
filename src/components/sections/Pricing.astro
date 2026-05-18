@@ -1,13 +1,11 @@
 ---
 import Card from '../ui/Card.astro';
 import Button from '../ui/Button.astro';
-import { site, demoMode } from '../../config/site.config.js';
+import { site } from '../../config/site.config.js';
 ---
 
-{demoMode.enabled && demoMode.showPhase2 ? (
-<section class="pricing section demo-phase2-section" id="prijzen">
+<section class="pricing section" id="prijzen">
   <div class="container">
-    <span class="demo-phase2-badge">Voorbeeld — Fase 2</span>
     <p class="section__label" data-reveal>Prijzen</p>
     <h2 class="section__heading" data-reveal data-delay="1">Transparante prijzen</h2>
     <p class="section__sub" data-reveal data-delay="2">Geen verborgen kosten. Eenmalig betalen, direct starten.</p>
@@ -44,17 +42,6 @@ import { site, demoMode } from '../../config/site.config.js';
     </p>
   </div>
 </section>
-) : (
-<section class="pricing section" id="prijzen">
-  <div class="container">
-    <p class="section__label">Prijzen</p>
-    <h2 class="section__heading">Onze prijzen</h2>
-    <p class="section__sub">
-      <a href="/contact" class="pricing__contact-link">Neem contact op</a> voor meer informatie over onze tarieven.
-    </p>
-  </div>
-</section>
-)}
 
 <style>
 .pricing__grid {

@@ -2,7 +2,7 @@
 import '../styles/tokens.css';
 import Navbar from '../components/layout/Navbar.astro';
 import Footer from '../components/layout/Footer.astro';
-import { site, demoMode } from '../config/site.config.js';
+import { site } from '../config/site.config.js';
 
 interface Props {
   title?: string;
@@ -46,12 +46,6 @@ const pageTitle = title === site.name ? title : `${title} | ${site.name}`;
 </head>
 <body>
 
-  {demoMode.enabled && demoMode.showBanner && (
-    <div class="demo-banner" role="alert">
-      Demo / voorbeeld — definitieve content en cijfers volgen
-    </div>
-  )}
-
   {site.announcement?.active && (
     <div class="announcement-bar" id="announcement-bar">
       <div class="container announcement__inner">
@@ -86,17 +80,6 @@ const pageTitle = title === site.name ? title : `${title} | ${site.name}`;
 </html>
 
 <style is:global>
-/* --- Demo banner --- */
-.demo-banner {
-  background: #fff3cd;
-  color: #856404;
-  border-bottom: 1px solid #ffc107;
-  padding: 8px 16px;
-  text-align: center;
-  font-size: 13px;
-  font-family: system-ui, sans-serif;
-}
-
 /* --- Announcement bar --- */
 .announcement-bar {
   background: var(--color-primary-dark);

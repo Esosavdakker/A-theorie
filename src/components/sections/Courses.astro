@@ -1,13 +1,11 @@
 ---
 import Card from '../ui/Card.astro';
 import Button from '../ui/Button.astro';
-import { site, demoMode } from '../../config/site.config.js';
+import { site } from '../../config/site.config.js';
 ---
 
-{demoMode.enabled && demoMode.showPhase2 ? (
-<section class="courses section demo-phase2-section" id="cursussen">
+<section class="courses section" id="cursussen">
   <div class="container">
-    <span class="demo-phase2-badge">Voorbeeld — Fase 2</span>
     <p class="section__label" data-reveal>Onze cursussen</p>
     <h2 class="section__heading" data-reveal data-delay="1">Kies jouw pakket</h2>
     <p class="section__sub" data-reveal data-delay="2">Begin vandaag nog — direct toegang na aanmelding.</p>
@@ -37,17 +35,6 @@ import { site, demoMode } from '../../config/site.config.js';
     </div>
   </div>
 </section>
-) : (
-<section class="courses section" id="cursussen">
-  <div class="container">
-    <p class="section__label">Onze cursussen</p>
-    <h2 class="section__heading">Onze cursussen</h2>
-    <p class="section__sub">
-      <a href="/contact" class="courses__contact-link">Neem contact op</a> voor meer informatie over onze cursuspakketten.
-    </p>
-  </div>
-</section>
-)}
 
 <style>
 .courses__grid {
