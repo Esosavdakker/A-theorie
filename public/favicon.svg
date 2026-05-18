@@ -1,14 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-  <circle cx="32" cy="32" r="30" fill="white"/>
-  <circle cx="32" cy="32" r="30" stroke="#0066CC" stroke-width="4"/>
-  <circle cx="32" cy="32" r="24" stroke="#f97316" stroke-width="2.5"/>
-  <text x="30" y="46"
+  <!-- White background -->
+  <circle cx="32" cy="32" r="31" fill="white"/>
+  <!-- Blue outer ring -->
+  <circle cx="32" cy="32" r="29" fill="none" stroke="#0066CC" stroke-width="4.5"/>
+  <!-- Orange inner ring -->
+  <circle cx="32" cy="32" r="22" fill="none" stroke="#f97316" stroke-width="3"/>
+  <!-- A (blue, bold) -->
+  <text x="29" y="44"
         font-family="'Arial Black',Arial,sans-serif"
-        font-size="28"
+        font-size="30"
         font-weight="900"
         fill="#0066CC"
         text-anchor="middle">A</text>
-  <text x="48" y="38"
+  <!-- + (orange, superscript) -->
+  <text x="47" y="35"
         font-family="'Arial Black',Arial,sans-serif"
         font-size="20"
         font-weight="900"
