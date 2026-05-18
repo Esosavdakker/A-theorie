@@ -10,9 +10,7 @@
   },
   "dependencies": {
     "astro": "^4.16.0",
-    "@astrojs/netlify": "^5.5.0",
-    "@mollie/api-client": "^3.7.0",
-    "@supabase/supabase-js": "^2.43.0"
+    "@astrojs/netlify": "^5.5.0"
   },
   "devDependencies": {
     "@netlify/functions": "^2.8.1"
