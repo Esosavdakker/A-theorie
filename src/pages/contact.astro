@@ -2,8 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/ui/Button.astro';
 import { site } from '../config/site.config.js';
-
-const cursusOpties = [...site.courses.map(c => c.title), 'Anders / weet ik nog niet'];
 ---
 
 <BaseLayout
@@ -117,26 +115,6 @@ const cursusOpties = [...site.courses.map(c => c.title), 'Anders / weet ik nog n
               <p id="error-telefoon" class="field__error" role="alert" hidden></p>
             </div>
 
-            <!-- Cursus interesse -->
-            <div class="field">
-              <label for="cursus" class="field__label">
-                Cursus interesse <span class="field__required" aria-hidden="true">*</span>
-              </label>
-              <select
-                id="cursus" name="cursus"
-                class="field__input field__select"
-                aria-required="true"
-                aria-describedby="error-cursus"
-                aria-invalid="false"
-              >
-                <option value="">Selecteer een cursus</option>
-                {cursusOpties.map(opt => (
-                  <option value={opt}>{opt}</option>
-                ))}
-              </select>
-              <p id="error-cursus" class="field__error" role="alert" hidden></p>
-            </div>
-
             <!-- Vraag -->
             <div class="field">
               <label for="vraag" class="field__label">
@@ -190,7 +168,7 @@ const cursusOpties = [...site.courses.map(c => c.title), 'Anders / weet ik nog n
   const submitLabel = document.getElementById('submit-label') as HTMLElement;
   const errorBanner = document.getElementById('form-error-banner') as HTMLElement;
 
-  const FIELDS = ['naam', 'email', 'telefoon', 'cursus', 'vraag'] as const;
+  const FIELDS = ['naam', 'email', 'telefoon', 'vraag'] as const;
 
   function showError(name: string, msg: string) {
     const el    = document.getElementById(`error-${name}`);
@@ -365,15 +343,6 @@ const cursusOpties = [...site.courses.map(c => c.title), 'Anders / weet ik nog n
 }
 .field__input[aria-invalid="true"] { border-color: #ef4444; }
 .field__textarea { resize: vertical; min-height: 120px; }
-.field__select {
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right var(--space-4) center;
-  background-size: 16px;
-  padding-right: var(--space-10);
-  cursor: pointer;
-}
 .field__error { color: #ef4444; font-size: var(--font-size-sm); }
 
 /* Generic error banner */

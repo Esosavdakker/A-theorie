@@ -1,8 +1,5 @@
 import { Resend } from 'resend';
 
-// Must match site.config.js courses[].title + last fallback option
-const VALID_CURSUS = ['Basis Pakket', 'Compleet Pakket', 'Anders / weet ik nog niet'];
-
 // In-memory rate limiter — MVP: per-instance only. Replace with Redis for multi-instance scale.
 const rateMap = new Map();
 const RATE_LIMIT  = 5;
@@ -53,7 +50,7 @@ export default async (req) => {
     return respond({ error: 'Ongeldig verzoek.' }, 400);
   }
 
-  const { naam, email, telefoon, cursus, vraag, honeypot } = body;
+  const { naam, email, telefoon, vraag, honeypot } = body;
 
   if (honeypot) return respond({ success: true, message: 'Bericht ontvangen!' });
 
@@ -74,10 +71,6 @@ export default async (req) => {
 
   if (telefoon && typeof telefoon === 'string' && telefoon.trim().length > 20) {
     errors.telefoon = 'Telefoonnummer mag maximaal 20 tekens bevatten.';
-  }
-
-  if (!cursus || !VALID_CURSUS.includes(cursus)) {
-    errors.cursus = 'Selecteer een cursus.';
   }
 
   if (!vraag || typeof vraag !== 'string' || vraag.trim().length === 0) {
@@ -122,10 +115,6 @@ export default async (req) => {
       <td style="padding:10px 0;font-weight:600;color:#475569;vertical-align:top">Telefoon</td>
       <td style="padding:10px 0">${escHtml(telVal)}</td>
     </tr>` : ''}
-    <tr style="border-bottom:1px solid #e2e8f0">
-      <td style="padding:10px 0;font-weight:600;color:#475569;vertical-align:top">Cursus</td>
-      <td style="padding:10px 0">${escHtml(cursus)}</td>
-    </tr>
     <tr>
       <td style="padding:10px 0;font-weight:600;color:#475569;vertical-align:top">Vraag</td>
       <td style="padding:10px 0;line-height:1.6">${escHtml(vraagVal).replace(/\n/g, '<br>')}</td>
@@ -144,7 +133,7 @@ export default async (req) => {
     `E-mail:   ${emailVal}`,
   ];
   if (telVal) lines.push(`Telefoon: ${telVal}`);
-  lines.push(`Cursus:   ${cursus}`, '', 'Vraag:', vraagVal);
+  lines.push('', 'Vraag:', vraagVal);
   const text = lines.join('\n');
 
   try {
@@ -152,7 +141,7 @@ export default async (req) => {
       from:     'A+theorie Contactformulier <info@aplustheorie.nl>',
       to:       ['info@aplustheorie.nl'],
       reply_to: emailVal,
-      subject:  `[Contactformulier] Vraag van ${naamVal} — ${cursus}`,
+      subject:  `[Contactformulier] Vraag van ${naamVal}`,
       html,
       text,
     });
