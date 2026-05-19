@@ -30,11 +30,11 @@ export const site = {
     trust: ["CBR-oefenexamens", "Direct toegang", "Alle apparaten"],
     stats: [
       { icon: "🏆", numericValue: 97,   suffix: "%",  label: "Slagingspercentage" },
-      { icon: "⭐", numericValue: 5000, suffix: "+",  label: "Tevreden cursisten" },
+      { icon: "⭐", numericValue: 100,  suffix: "+",  label: "Tevreden cursisten" },
       { icon: "🎓", value: "CBR",                    label: "Erkend materiaal"   },
     ],
     socialProof: {
-      text: "5.000+ cursisten gingen je voor",
+      text: "100+ cursisten gingen je voor",
       avatars: 5,
     },
   },
@@ -125,7 +125,7 @@ export const site = {
   ],
   cta: {
     heading: "Klaar om in één keer te slagen?",
-    body: "Sluit je aan bij 5.000+ cursisten die al hun rijbewijs hebben behaald met A+theorie.",
+    body: "Sluit je aan bij 100+ cursisten die al hun rijbewijs hebben behaald met A+theorie.",
     button: { label: "Meld je aan", href: "/contact" },
     trust: ["Geen abonnement", "Direct toegang", "Geld-terug garantie"],
   },
