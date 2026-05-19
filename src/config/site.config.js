@@ -16,11 +16,6 @@ export const site = {
     facebook: "https://facebook.com/aplustheorie",
     whatsapp: "https://wa.me/31644793093",
   },
-  announcement: {
-    active: true,
-    text: "🎉 Tijdelijk: Gratis proefles bij aanmelding voor het Compleet pakket",
-    cta: { label: "Claim nu →", href: "/contact" },
-  },
   nav: [
     { label: "Home",       href: "/" },
     { label: "Over Ons",   href: "/over-ons" },

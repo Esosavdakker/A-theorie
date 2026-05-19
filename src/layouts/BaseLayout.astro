@@ -46,23 +46,6 @@ const pageTitle = title === site.name ? title : `${title} | ${site.name}`;
 </head>
 <body>
 
-  {site.announcement?.active && (
-    <div class="announcement-bar" id="announcement-bar">
-      <div class="container announcement__inner">
-        <span class="announcement__text">{site.announcement.text}</span>
-        <a href={site.announcement.cta.href} class="announcement__cta">
-          {site.announcement.cta.label}
-        </a>
-        <button class="announcement__close" id="close-announcement" aria-label="Sluiten">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-            <line x1="1" y1="1" x2="13" y2="13"/>
-            <line x1="13" y1="1" x2="1" y2="13"/>
-          </svg>
-        </button>
-      </div>
-    </div>
-  )}
-
   <Navbar />
   <main>
     <slot />
@@ -92,46 +75,6 @@ const pageTitle = title === site.name ? title : `${title} | ${site.name}`;
 </html>
 
 <style is:global>
-/* --- Announcement bar --- */
-.announcement-bar {
-  background: var(--color-primary-dark);
-  color: var(--color-white);
-  padding-block: var(--space-2);
-  font-size: var(--font-size-sm);
-  position: relative;
-  z-index: 200;
-}
-.announcement__inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-4);
-  flex-wrap: wrap;
-}
-.announcement__text { opacity: 0.9; }
-.announcement__cta {
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-accent);
-  white-space: nowrap;
-  transition: opacity var(--transition-fast);
-}
-.announcement__cta:hover { opacity: 0.8; }
-.announcement__close {
-  position: absolute;
-  right: var(--space-4);
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: rgb(255 255 255 / 0.6);
-  cursor: pointer;
-  padding: var(--space-1);
-  display: flex;
-  align-items: center;
-  transition: color var(--transition-fast);
-}
-.announcement__close:hover { color: var(--color-white); }
-
 /* --- WhatsApp FAB --- */
 .whatsapp-fab {
   position: fixed;
@@ -200,15 +143,6 @@ const pageTitle = title === site.name ? title : `${title} | ${site.name}`;
 </style>
 
 <script>
-/* ---- Announcement bar dismiss ---- */
-const bar   = document.getElementById('announcement-bar');
-const close = document.getElementById('close-announcement');
-if (sessionStorage.getItem('ann-dismissed')) bar?.remove();
-close?.addEventListener('click', () => {
-  bar?.remove();
-  sessionStorage.setItem('ann-dismissed', '1');
-});
-
 /* ---- Scroll reveal ---- */
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
