@@ -19,7 +19,6 @@ import { site } from '../../config/site.config.js';
     </nav>
 
     <div class="navbar__actions">
-      <a href="/contact" class="navbar__login">Inloggen</a>
       <a href="/contact" class="navbar__cta">
         Meld je aan
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="navbar__cta-arrow">
@@ -40,7 +39,6 @@ import { site } from '../../config/site.config.js';
           <li><a href={item.href} class="navbar__mobile-link">{item.label}</a></li>
         ))}
         <li class="navbar__mobile-divider"></li>
-        <li><a href="/contact" class="navbar__mobile-link">Inloggen</a></li>
         <li><a href="/contact" class="navbar__mobile-cta">Meld je aan →</a></li>
       </ul>
     </nav>
@@ -143,16 +141,6 @@ import { site } from '../../config/site.config.js';
   gap: var(--space-2);
   flex-shrink: 0;
 }
-.navbar__login {
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text-muted);
-  padding: var(--space-2) var(--space-4);
-  border-radius: var(--radius-md);
-  transition: color var(--transition-fast), background var(--transition-fast);
-}
-.navbar__login:hover { color: var(--color-text); background: var(--color-bg); }
-
 .navbar__cta {
   display: inline-flex;
   align-items: center;

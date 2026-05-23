@@ -67,7 +67,7 @@ const pageTitle = title === site.name ? title : `${title} | ${site.name}`;
         Er worden geen tracking- of marketingcookies gebruikt.
         <a href="/cookieverklaring" class="cookie-banner__link">Lees onze cookieverklaring →</a>
       </p>
-      <button id="cookie-accept" class="btn btn--primary btn--sm">Akkoord</button>
+      <button id="cookie-accept">Akkoord</button>
     </div>
   </div>
 
@@ -104,6 +104,36 @@ const pageTitle = title === site.name ? title : `${title} | ${site.name}`;
   0%, 100% { box-shadow: 0 4px 20px rgb(37 211 102 / 0.45); }
   50%       { box-shadow: 0 4px 20px rgb(37 211 102 / 0.45), 0 0 0 10px rgb(37 211 102 / 0.12); }
 }
+
+/* --- Cookie accept button --- */
+#cookie-accept {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2) var(--space-5);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  white-space: nowrap;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  background: var(--gradient-accent);
+  color: var(--color-white);
+  box-shadow: var(--shadow-accent);
+  transition: transform var(--duration-normal) var(--ease-spring),
+              box-shadow var(--duration-normal) var(--ease-out);
+}
+#cookie-accept:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 28px rgb(249 115 22 / 0.45);
+}
+#cookie-accept:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+#cookie-accept:active { transform: translateY(0) scale(0.98); }
 
 /* --- Cookie banner --- */
 .cookie-banner {

@@ -24,8 +24,8 @@ export const site = {
     { label: "Contact",    href: "/contact" },
   ],
   hero: {
-    headline1: "SLAAG IN 1 KEER",
-    headline2: "VOOR JE THEORIE",
+    headline1: "Jouw theorie-examen,",
+    headline2: "in één keer gehaald.",
     ctaPrimary: { label: "Meld je aan", href: "/contact" },
     trust: ["CBR-oefenexamens", "Direct toegang", "Alle apparaten"],
     stats: [
