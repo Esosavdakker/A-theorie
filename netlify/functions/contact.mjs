@@ -139,7 +139,7 @@ export default async (req) => {
   try {
     const { data, error } = await resend.emails.send({
       from:     'A+theorie Contactformulier <info@aplustheorie.nl>',
-      to:       ['info@aplustheorie.nl'],
+      to:       ['jasrijschool@gmail.com'],
       reply_to: emailVal,
       subject:  `[Contactformulier] Vraag van ${naamVal}`,
       html,
