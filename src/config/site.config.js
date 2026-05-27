@@ -148,7 +148,7 @@ export const site = {
   footer: {
     tagline: "Jouw weg naar het rijbewijs begint hier.",
     hours: { weekdays: "Ma–Za: 09:00–22:00", sunday: "Zo: 09:00–17:00" },
-    copyright: `© ${new Date().getFullYear()} A+theorie. Alle rechten voorbehouden.`,
+    copyright: `© ${new Date().getFullYear()} AkkerDigital. Alle rechten voorbehouden.`,
   },
 };
 
