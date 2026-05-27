@@ -110,7 +110,6 @@ export const site = {
       description: "Ons meest populaire pakket met alles wat je nodig hebt.",
       includes: [
         "Alles uit Basis",
-        "Video-uitleg per onderwerp",
         "90 dagen toegang",
         "E-mail ondersteuning",
       ],
@@ -125,15 +124,11 @@ export const site = {
   faq: [
     {
       question: "Hoe lang heb ik toegang tot de cursus?",
-      answer: "Dit is afhankelijk van het gekozen pakket: 30, 90 of onbeperkte dagen.",
+      answer: "Dit is afhankelijk van het gekozen pakket.",
     },
     {
       question: "Is het materiaal CBR-erkend?",
       answer: "Ja, al ons materiaal is gebaseerd op de officiële CBR-leerstof en wordt regelmatig bijgewerkt.",
-    },
-    {
-      question: "Wat als ik zak voor mijn examen?",
-      answer: "Premium-cursisten ontvangen volledige restitutie als ze niet slagen. Voor andere pakketten bieden we een herhalingsdeal aan.",
     },
     {
       question: "Kan ik de cursus op mijn telefoon volgen?",
