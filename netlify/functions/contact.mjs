@@ -141,7 +141,7 @@ export default async (req) => {
       from:     'A+theorie Contactformulier <info@aplustheorie.nl>',
       to:       ['jasrijschool@gmail.com'],
       reply_to: emailVal,
-      subject:  `[Contactformulier] Vraag van ${naamVal}`,
+      subject:  `[A+theorie] Vraag van ${naamVal}`,
       html,
       text,
     });
