@@ -143,7 +143,7 @@ export const site = {
     heading: "Klaar om in één keer te slagen?",
     body: "Sluit je aan bij 100+ cursisten die al hun rijbewijs hebben behaald met A+theorie.",
     button: { label: "Meld je aan", href: "/contact" },
-    trust: ["Geen abonnement", "Direct toegang", "Geld-terug garantie"],
+    trust: ["Geen abonnement", "Direct toegang"],
   },
   footer: {
     tagline: "Jouw weg naar het rijbewijs begint hier.",
