@@ -1,0 +1,1127 @@
+{
+  "meta": {
+    "title": "A+theorie — Question Bank Seed (Auto / Personenauto B)",
+    "version": "1.0.0",
+    "language": "nl-NL",
+    "count": 100,
+    "legal_note": "All questions are ORIGINAL, authored from the publicly available CBR exam requirements (exameneisen) and Dutch traffic law (RVV 1990, WVW 1994). They do NOT reproduce official CBR exam items. Rules reflect Dutch law as of 2026 (e.g. 100 km/h on the motorway between 06:00-19:00).",
+    "schema_mapping": {
+      "category": "categories.slug",
+      "type": "questions.type (single | multi | truefalse)",
+      "difficulty": "questions.difficulty (1=easy, 2=medium, 3=hard)",
+      "stem": "questions.stem",
+      "explanation": "questions.explanation",
+      "image_prompt": "feed to an AI image generator; on import, create a media_assets row and link via questions.media_id (null = no image needed)",
+      "options[].label": "question_options.label",
+      "options[].is_correct": "question_options.is_correct"
+    }
+  },
+  "categories": [
+    { "slug": "verkeersregels",     "name": "Verkeersregels",            "kind": "knowledge", "sort_order": 1 },
+    { "slug": "verkeersinzicht",    "name": "Verkeersinzicht",           "kind": "insight",   "sort_order": 2 },
+    { "slug": "gevaarherkenning",   "name": "Gevaarherkenning",          "kind": "hazard",    "sort_order": 3 },
+    { "slug": "voertuig-en-milieu", "name": "Voertuigkennis & Milieu",   "kind": "knowledge", "sort_order": 4 }
+  ],
+  "questions": [
+    {
+      "id": "q001", "category": "verkeersregels", "type": "single", "difficulty": 1,
+      "stem": "Wat is binnen de bebouwde kom de maximumsnelheid voor een personenauto, als er geen borden staan die iets anders aangeven?",
+      "image_prompt": null,
+      "options": [
+        { "label": "30 km/u", "is_correct": false },
+        { "label": "50 km/u", "is_correct": true },
+        { "label": "60 km/u", "is_correct": false }
+      ],
+      "explanation": "Binnen de bebouwde kom geldt standaard een maximumsnelheid van 50 km/u. Steeds vaker geldt op woonstraten 30 km/u, maar dat moet dan met borden zijn aangegeven."
+    },
+    {
+      "id": "q002", "category": "verkeersregels", "type": "single", "difficulty": 1,
+      "stem": "Je rijdt buiten de bebouwde kom op een gewone provinciale weg (N-weg) zonder snelheidsborden. Wat is de maximumsnelheid?",
+      "image_prompt": null,
+      "options": [
+        { "label": "60 km/u", "is_correct": false },
+        { "label": "80 km/u", "is_correct": true },
+        { "label": "100 km/u", "is_correct": false }
+      ],
+      "explanation": "Buiten de bebouwde kom geldt op gewone wegen standaard 80 km/u. Op een autoweg geldt 100 km/u en op een autosnelweg gelden eigen regels."
+    },
+    {
+      "id": "q003", "category": "verkeersregels", "type": "single", "difficulty": 2,
+      "stem": "Wat is op een autosnelweg de maximumsnelheid voor een personenauto tussen 06:00 en 19:00 uur, als er geen ander bord staat?",
+      "image_prompt": null,
+      "options": [
+        { "label": "100 km/u", "is_correct": true },
+        { "label": "120 km/u", "is_correct": false },
+        { "label": "130 km/u", "is_correct": false }
+      ],
+      "explanation": "Sinds 2020 geldt overdag (06:00-19:00 uur) op de autosnelweg standaard 100 km/u. Buiten die uren geldt de snelheid die op de borden staat (vaak 120 of 130 km/u)."
+    },
+    {
+      "id": "q004", "category": "verkeersregels", "type": "single", "difficulty": 1,
+      "stem": "Wat is de maximumsnelheid op een autoweg (aangegeven met het bord met een witte auto op blauwe achtergrond)?",
+      "image_prompt": "Dutch traffic sign G3: white car icon on blue square background (autoweg / expressway sign), clean flat vector illustration",
+      "options": [
+        { "label": "80 km/u", "is_correct": false },
+        { "label": "100 km/u", "is_correct": true },
+        { "label": "130 km/u", "is_correct": false }
+      ],
+      "explanation": "Op een autoweg mag je maximaal 100 km/u rijden, tenzij borden een lagere snelheid aangeven."
+    },
+    {
+      "id": "q005", "category": "verkeersregels", "type": "single", "difficulty": 2,
+      "stem": "Je hebt sinds 1 jaar je rijbewijs en bent dus een beginnend bestuurder. Welk alcoholpromillage mag je maximaal hebben?",
+      "image_prompt": null,
+      "options": [
+        { "label": "0,0 promille", "is_correct": false },
+        { "label": "0,2 promille", "is_correct": true },
+        { "label": "0,5 promille", "is_correct": false }
+      ],
+      "explanation": "Voor beginnende bestuurders (de eerste 5 jaar na het halen van het rijbewijs) geldt een limiet van 0,2 promille. Voor ervaren bestuurders is dit 0,5 promille."
+    },
+    {
+      "id": "q006", "category": "verkeersregels", "type": "single", "difficulty": 1,
+      "stem": "Welk maximaal alcoholpromillage geldt voor een ervaren bestuurder (langer dan 5 jaar in het bezit van het rijbewijs)?",
+      "image_prompt": null,
+      "options": [
+        { "label": "0,2 promille", "is_correct": false },
+        { "label": "0,5 promille", "is_correct": true },
+        { "label": "0,8 promille", "is_correct": false }
+      ],
+      "explanation": "Voor ervaren bestuurders geldt een wettelijke limiet van 0,5 promille. Toch is het altijd veiliger om helemaal geen alcohol te drinken als je gaat rijden (BOB)."
+    },
+    {
+      "id": "q007", "category": "verkeersregels", "type": "single", "difficulty": 2,
+      "stem": "Je nadert een kruising van twee gelijkwaardige wegen. Van rechts komt tegelijk een auto aan. Wie moet voorrang verlenen?",
+      "image_prompt": "Top-down view of an equal-priority crossroads (no signs, no markings) in a Dutch residential area, two cars approaching, one from the right, clean illustration for a quiz",
+      "options": [
+        { "label": "Jij verleent voorrang aan de auto van rechts", "is_correct": true },
+        { "label": "De auto van rechts verleent voorrang aan jou", "is_correct": false },
+        { "label": "Wie het eerst bij de kruising is, mag eerst", "is_correct": false }
+      ],
+      "explanation": "Op een gelijkwaardige kruising verleen je voorrang aan bestuurders die van rechts komen. Dit geldt voor alle bestuurders, dus ook fietsers en brommers."
+    },
+    {
+      "id": "q008", "category": "verkeersregels", "type": "single", "difficulty": 1,
+      "stem": "Een voetganger staat duidelijk te wachten bij een zebrapad (voetgangersoversteekplaats). Wat moet je doen?",
+      "image_prompt": "A pedestrian waiting at a zebra crossing in a Dutch town, a car approaching, daytime, illustration style",
+      "options": [
+        { "label": "Voetgangers op een zebrapad voor laten gaan", "is_correct": true },
+        { "label": "Doorrijden, voetgangers moeten wachten", "is_correct": false },
+        { "label": "Alleen stoppen als de voetganger een hand opsteekt", "is_correct": false }
+      ],
+      "explanation": "Bestuurders moeten voetgangers en bestuurders van een gehandicaptenvoertuig die op een zebrapad oversteken of duidelijk op het punt staan over te steken, voor laten gaan."
+    },
+    {
+      "id": "q009", "category": "verkeersregels", "type": "single", "difficulty": 2,
+      "stem": "Een tram en jij naderen tegelijk een kruising. In welke situatie moet je een tram NIET altijd voorrang geven?",
+      "image_prompt": null,
+      "options": [
+        { "label": "Als jij voorrang hebt volgens borden of verkeerslichten geldt dat ook voor de tram", "is_correct": false },
+        { "label": "Een tram heeft op een gelijkwaardige kruising voorrang, ook van links", "is_correct": true },
+        { "label": "Een tram heeft nooit voorrang", "is_correct": false }
+      ],
+      "explanation": "Op een gelijkwaardige kruising moet je een tram altijd voorrang geven, ook als die van links komt. Bij borden, haaientanden of verkeerslichten geldt de gewone voorrangsregeling wel ook voor de tram."
+    },
+    {
+      "id": "q010", "category": "verkeersregels", "type": "single", "difficulty": 2,
+      "stem": "Waar rijdt een bromfiets (blauw kenteken, maximaal 45 km/u) binnen de bebouwde kom, als er geen apart bromfietspad is?",
+      "image_prompt": null,
+      "options": [
+        { "label": "Op het fietspad", "is_correct": false },
+        { "label": "Op de rijbaan, tussen het overige verkeer", "is_correct": true },
+        { "label": "Op het trottoir", "is_correct": false }
+      ],
+      "explanation": "Binnen de bebouwde kom rijdt een bromfietser op de rijbaan, tenzij er een verplicht bromfietspad is. Buiten de bebouwde kom rijdt de bromfiets juist op het fiets/bromfietspad."
+    },
+    {
+      "id": "q011", "category": "verkeersregels", "type": "single", "difficulty": 2,
+      "stem": "Wat betekent een doorgetrokken streep in het midden van de weg?",
+      "image_prompt": "A Dutch two-lane road with a solid continuous white center line, slight perspective, illustration",
+      "options": [
+        { "label": "Je mag de streep niet overschrijden of erop rijden", "is_correct": true },
+        { "label": "Je mag de streep alleen overschrijden om in te halen", "is_correct": false },
+        { "label": "De streep geeft alleen het midden van de weg aan en mag je negeren", "is_correct": false }
+      ],
+      "explanation": "Een doorgetrokken streep mag je niet overschrijden en je mag er ook niet op rijden. Een onderbroken streep mag je wel overschrijden, bijvoorbeeld om in te halen."
+    },
+    {
+      "id": "q012", "category": "verkeersregels", "type": "single", "difficulty": 2,
+      "stem": "Wat betekenen haaientanden (driehoekjes) op het wegdek?",
+      "image_prompt": "Shark teeth road markings (white triangles painted on asphalt) at a Dutch junction approach, top-down view, illustration",
+      "options": [
+        { "label": "Je moet voorrang verlenen aan bestuurders op de kruisende weg", "is_correct": true },
+        { "label": "Je hebt voorrang op de kruisende weg", "is_correct": false },
+        { "label": "Je moet altijd volledig stoppen", "is_correct": false }
+      ],
+      "explanation": "Haaientanden betekenen dat je voorrang moet verlenen aan bestuurders op de kruisende weg. Je hoeft niet per se te stoppen, dat moet alleen bij een STOP-bord."
+    },
+    {
+      "id": "q013", "category": "verkeersregels", "type": "single", "difficulty": 1,
+      "stem": "Je nadert een verkeerslicht dat op geel (oranje) springt. Wat is de juiste handelwijze?",
+      "image_prompt": null,
+      "options": [
+        { "label": "Stoppen, tenzij je zo dicht bij het licht bent dat veilig stoppen niet meer kan", "is_correct": true },
+        { "label": "Altijd doorrijden, geel betekent doorrijden", "is_correct": false },
+        { "label": "Altijd hard remmen, ongeacht je positie", "is_correct": false }
+      ],
+      "explanation": "Geel betekent: stoppen. Alleen als je zo dicht bij het verkeerslicht bent dat je niet meer veilig kunt stoppen, mag je doorrijden."
+    },
+    {
+      "id": "q014", "category": "verkeersregels", "type": "single", "difficulty": 2,
+      "stem": "Wat betekent een knipperend geel verkeerslicht?",
+      "image_prompt": null,
+      "options": [
+        { "label": "Het verkeerslicht is buiten werking; de normale voorrangsregels gelden", "is_correct": true },
+        { "label": "Je hebt altijd voorrang", "is_correct": false },
+        { "label": "Je moet altijd stoppen", "is_correct": false }
+      ],
+      "explanation": "Een knipperend geel licht betekent dat de verkeerslichten niet in werking zijn. Je let dan op borden, haaientanden of de regel 'voorrang aan verkeer van rechts'."
+    },
+    {
+      "id": "q015", "category": "verkeersregels", "type": "single", "difficulty": 2,
+      "stem": "Je verlaat een rotonde. Moet je richting aangeven?",
+      "image_prompt": "A roundabout from above with a car exiting, Dutch style single-lane roundabout, illustration",
+      "options": [
+        { "label": "Ja, je geeft richting aan (rechts) bij het verlaten van de rotonde", "is_correct": true },
+        { "label": "Nee, op een rotonde hoef je nooit richting aan te geven", "is_correct": false },
+        { "label": "Alleen als er verkeer achter je rijdt", "is_correct": false }
+      ],
+      "explanation": "Bij het verlaten van de rotonde geef je richting aan naar rechts, zodat andere weggebruikers weten dat je de rotonde af gaat. Bij het oprijden geef je geen richting aan als je rechtdoor of de eerste afslag neemt."
+    },
+    {
+      "id": "q016", "category": "verkeersregels", "type": "single", "difficulty": 2,
+      "stem": "Een voorrangsvoertuig (politie, brandweer of ambulance) nadert met zwaailicht én sirene. Wat doe je?",
+      "image_prompt": "An ambulance with flashing blue lights approaching from behind on a Dutch street, other cars making room, illustration",
+      "options": [
+        { "label": "Ruimte maken en zo nodig veilig stoppen om het voertuig voor te laten gaan", "is_correct": true },
+        { "label": "Gewoon doorrijden met je eigen snelheid", "is_correct": false },
+        { "label": "Direct vol in de remmen, midden op de weg", "is_correct": false }
+      ],
+      "explanation": "Een voorrangsvoertuig met zwaailicht en sirene moet je voor laten gaan. Maak rustig en veilig ruimte, ga zo nodig opzij of stop, maar veroorzaak geen gevaarlijke situatie."
+    },
+    {
+      "id": "q017", "category": "verkeersregels", "type": "single", "difficulty": 2,
+      "stem": "Binnen de bebouwde kom geeft een lijnbus bij een halte richting aan om weg te rijden. Wat moet je doen?",
+      "image_prompt": "A city bus at a bus stop indicating left to pull out, a car behind it inside a Dutch town, illustration",
+      "options": [
+        { "label": "De bus voor laten gaan en je snelheid aanpassen", "is_correct": true },
+        { "label": "Snel langs de bus rijden voordat hij wegrijdt", "is_correct": false },
+        { "label": "Toeteren zodat de bus blijft staan", "is_correct": false }
+      ],
+      "explanation": "Binnen de bebouwde kom moet je een lijnbus die vanaf een halte wegrijdt en richting aangeeft, voor laten gaan. Buiten de bebouwde kom geldt deze regel niet."
+    },
+    {
+      "id": "q018", "category": "verkeersregels", "type": "single", "difficulty": 1,
+      "stem": "Wat betekent een rond blauw bord met een witte pijl recht naar boven?",
+      "image_prompt": "Dutch mandatory direction sign D4: round blue sign with a white arrow pointing straight up, flat vector",
+      "options": [
+        { "label": "Gebod om rechtdoor te rijden", "is_correct": true },
+        { "label": "Verbod om rechtdoor te rijden", "is_correct": false },
+        { "label": "Aanbevolen rijrichting, je mag ook anders", "is_correct": false }
+      ],
+      "explanation": "Ronde blauwe borden met een pijl geven een verplichte rijrichting aan (gebodsborden). Hier is dat: rechtdoor."
+    },
+    {
+      "id": "q019", "category": "verkeersregels", "type": "single", "difficulty": 1,
+      "stem": "Wat betekent een rond rood-wit bord (witte balk op rood) — het 'C1'-bord?",
+      "image_prompt": "Dutch traffic sign C1: round red sign with a horizontal white bar in the middle (closed in both directions), flat vector",
+      "options": [
+        { "label": "Gesloten in beide richtingen voor voertuigen, ruiters en geleiders van vee", "is_correct": true },
+        { "label": "Eenrichtingsverkeer", "is_correct": false },
+        { "label": "Verboden in te halen", "is_correct": false }
+      ],
+      "explanation": "Het C1-bord (rond, rood met een witte horizontale balk) betekent: gesloten in beide richtingen. Je mag deze weg niet in rijden."
+    },
+    {
+      "id": "q020", "category": "verkeersregels", "type": "single", "difficulty": 2,
+      "stem": "Wat is het verschil tussen een gele doorgetrokken streep en een gele onderbroken streep langs de rand van de rijbaan?",
+      "image_prompt": "Comparison illustration: a Dutch curb with a solid yellow line on the left and a broken/dashed yellow line on the right, top-down",
+      "options": [
+        { "label": "Doorgetrokken = verbod om stil te staan; onderbroken = verbod om te parkeren", "is_correct": true },
+        { "label": "Doorgetrokken = verbod om te parkeren; onderbroken = verbod om stil te staan", "is_correct": false },
+        { "label": "Beide betekenen precies hetzelfde", "is_correct": false }
+      ],
+      "explanation": "Een gele doorgetrokken streep betekent een stopverbod (je mag er niet stilstaan). Een gele onderbroken streep betekent een parkeerverbod (stilstaan om in/uit te stappen mag wel)."
+    },
+    {
+      "id": "q021", "category": "verkeersregels", "type": "single", "difficulty": 2,
+      "stem": "Mag je parkeren binnen 5 meter van een kruispunt?",
+      "image_prompt": null,
+      "options": [
+        { "label": "Nee, parkeren binnen 5 meter van een kruispunt is verboden", "is_correct": true },
+        { "label": "Ja, dat mag altijd", "is_correct": false },
+        { "label": "Alleen overdag verboden", "is_correct": false }
+      ],
+      "explanation": "Parkeren binnen 5 meter van een kruispunt is verboden. Hierdoor houden bestuurders voldoende overzicht op de kruising."
+    },
+    {
+      "id": "q022", "category": "verkeersregels", "type": "single", "difficulty": 2,
+      "stem": "Wat betekent een blauw bord met een witte 'P' en daaronder het symbool van een parkeerschijf?",
+      "image_prompt": "Dutch blue parking sign with white P and a parking disc (blauwe zone) symbol below it, flat vector",
+      "options": [
+        { "label": "Parkeren is toegestaan, maar je moet een parkeerschijf gebruiken", "is_correct": true },
+        { "label": "Hier mag je nooit parkeren", "is_correct": false },
+        { "label": "Hier mag je gratis en onbeperkt parkeren", "is_correct": false }
+      ],
+      "explanation": "Dit is een blauwe zone. Je mag er parkeren met een parkeerschijf waarop je aankomsttijd staat, voor de aangegeven maximale tijd."
+    },
+    {
+      "id": "q023", "category": "verkeersregels", "type": "single", "difficulty": 1,
+      "stem": "Je nadert een STOP-bord (achthoekig rood bord). Wat moet je doen?",
+      "image_prompt": "Octagonal red STOP sign at a Dutch intersection with a white stop line on the road, illustration",
+      "options": [
+        { "label": "Volledig stilstaan vóór de stopstreep en voorrang verlenen", "is_correct": true },
+        { "label": "Alleen langzamer rijden en doorrijden als het kan", "is_correct": false },
+        { "label": "Alleen stoppen als er ander verkeer is", "is_correct": false }
+      ],
+      "explanation": "Bij een STOP-bord moet je altijd volledig stilstaan vóór de stopstreep, ook als er geen ander verkeer is. Daarna verleen je voorrang aan het kruisende verkeer."
+    },
+    {
+      "id": "q024", "category": "verkeersregels", "type": "single", "difficulty": 1,
+      "stem": "Wat betekent een rond blauw bord met de witte letters/symbolen die de bebouwde kom aangeven (komborden)?",
+      "image_prompt": "Dutch built-up area sign (blue rectangular place-name sign 'bebouwde kom'), illustration",
+      "options": [
+        { "label": "Vanaf hier geldt de bebouwde kom: standaard 50 km/u en bijbehorende parkeerregels", "is_correct": true },
+        { "label": "Einde bebouwde kom", "is_correct": false },
+        { "label": "Alleen een plaatsnaam, zonder gevolgen voor de regels", "is_correct": false }
+      ],
+      "explanation": "Het kombord geeft het begin van de bebouwde kom aan. Vanaf dat punt geldt standaard 50 km/u en gelden de regels voor de bebouwde kom (bijvoorbeeld over parkeren en bussen)."
+    },
+    {
+      "id": "q025", "category": "verkeersregels", "type": "single", "difficulty": 2,
+      "stem": "Mag je een file op de invoegstrook bij wijze van ritsen om en om laten invoegen?",
+      "image_prompt": "Two lanes merging into one (zipper/ritsen merge) with cars alternating, Dutch motorway, top-down illustration",
+      "options": [
+        { "label": "Ja, ritsen (om en om invoegen) gebeurt zo laat mogelijk bij het einde van de strook", "is_correct": true },
+        { "label": "Nee, je moet altijd zo vroeg mogelijk invoegen", "is_correct": false },
+        { "label": "Ritsen mag alleen buiten de spits", "is_correct": false }
+      ],
+      "explanation": "Bij een rijstrook die ophoudt, rits je om en om in: het verkeer voegt zo laat mogelijk, vlak voor het einde van de strook, beurtelings in. Dit zorgt voor een betere doorstroming."
+    },
+    {
+      "id": "q026", "category": "verkeersregels", "type": "single", "difficulty": 2,
+      "stem": "Wat betekent een rond rood bord met daarin een rode auto en een zwarte auto naast elkaar?",
+      "image_prompt": "Dutch traffic sign C12 / inhaalverbod style: round white sign with red border showing two cars side by side (one red), flat vector",
+      "options": [
+        { "label": "Verboden in te halen", "is_correct": true },
+        { "label": "Verplicht in te halen", "is_correct": false },
+        { "label": "Einde inhaalverbod", "is_correct": false }
+      ],
+      "explanation": "Dit bord (twee auto's naast elkaar, waarvan één rood) betekent een inhaalverbod voor motorvoertuigen. Het geldt tot een bord 'einde inhaalverbod' of tot het volgende kruispunt."
+    },
+    {
+      "id": "q027", "category": "verkeersregels", "type": "single", "difficulty": 2,
+      "stem": "Mag je rechts inhalen?",
+      "image_prompt": null,
+      "options": [
+        { "label": "In principe haal je links in; rechts inhalen mag o.a. bij file, op rijstroken met pijlen en bij voorsorterend verkeer", "is_correct": true },
+        { "label": "Rechts inhalen mag altijd en overal", "is_correct": false },
+        { "label": "Rechts inhalen is in geen enkele situatie toegestaan", "is_correct": false }
+      ],
+      "explanation": "Inhalen doe je in principe links. Rechts 'voorbijrijden' mag wel in bepaalde situaties, zoals bij filevorming, bij bestuurders die naar links voorsorteren, en op wegen met rijstroken die door pijlen of strepen zijn gescheiden."
+    },
+    {
+      "id": "q028", "category": "verkeersregels", "type": "truefalse", "difficulty": 1,
+      "stem": "Stelling: Het is verboden om tijdens het rijden een mobiele telefoon vast te houden.",
+      "image_prompt": null,
+      "options": [
+        { "label": "Waar", "is_correct": true },
+        { "label": "Niet waar", "is_correct": false }
+      ],
+      "explanation": "Het is verboden om tijdens het rijden een mobiel elektronisch apparaat zoals een telefoon vast te houden. Bellen of navigeren mag alleen handsfree, bijvoorbeeld via een houder."
+    },
+    {
+      "id": "q029", "category": "verkeersregels", "type": "single", "difficulty": 2,
+      "stem": "Wanneer mag je een mistlamp achter gebruiken?",
+      "image_prompt": null,
+      "options": [
+        { "label": "Alleen als het zicht door mist, sneeuw of regen minder is dan 50 meter", "is_correct": true },
+        { "label": "Altijd 's nachts", "is_correct": false },
+        { "label": "Altijd als het regent", "is_correct": false }
+      ],
+      "explanation": "De mistlamp achter mag je alleen aanzetten als het zicht minder is dan 50 meter door mist, sneeuw of zware regen. Bij beter zicht verblindt hij het achteropkomende verkeer en is hij verboden."
+    },
+    {
+      "id": "q030", "category": "verkeersregels", "type": "single", "difficulty": 1,
+      "stem": "Welke lichten gebruik je overdag bij goed zicht binnen de bebouwde kom (verplicht of toegestaan)?",
+      "image_prompt": null,
+      "options": [
+        { "label": "Dimlicht of dagrijlicht", "is_correct": true },
+        { "label": "Altijd groot licht", "is_correct": false },
+        { "label": "Altijd mistlampen voor", "is_correct": false }
+      ],
+      "explanation": "Overdag mag je dagrijlicht of dimlicht voeren. Groot licht (grootlicht) gebruik je alleen in het donker buiten de bebouwde kom als er geen ander verkeer wordt verblind."
+    },
+    {
+      "id": "q031", "category": "verkeersregels", "type": "single", "difficulty": 2,
+      "stem": "Wat betekent een verdrijvingsvlak (gearceerd vlak met witte strepen) op de weg?",
+      "image_prompt": "A chevron/diagonal striped road marking area (verdrijvingsvlak) separating lanes on a Dutch road, top-down illustration",
+      "options": [
+        { "label": "Je moet het vlak zoveel mogelijk vermijden; erop of eroverheen rijden mag alleen als het echt nodig is en veilig kan", "is_correct": true },
+        { "label": "Hier mag je parkeren", "is_correct": false },
+        { "label": "Dit is een extra rijstrook die je vrij mag gebruiken", "is_correct": false }
+      ],
+      "explanation": "Een verdrijvingsvlak scheidt rijstromen. Je rijdt er zo min mogelijk op of overheen. Als het vlak door doorgetrokken strepen wordt begrensd, mag je er helemaal niet op of overheen rijden."
+    },
+    {
+      "id": "q032", "category": "verkeersregels", "type": "single", "difficulty": 2,
+      "stem": "Je wilt rechtsaf slaan op een kruising. Waar let je vooral op?",
+      "image_prompt": "A car turning right at a Dutch intersection with a cyclist going straight on a bike lane to the right of the car, illustration emphasizing the blind spot",
+      "options": [
+        { "label": "Op fietsers en bromfietsers die rechtdoor gaan en rechts naast of achter je rijden", "is_correct": true },
+        { "label": "Alleen op tegemoetkomend verkeer", "is_correct": false },
+        { "label": "Nergens speciaal op, rechtsaf is altijd veilig", "is_correct": false }
+      ],
+      "explanation": "Bij rechtsaf slaan moet je goed letten op (brom)fietsers die rechtdoor gaan en zich rechts naast of achter je kunnen bevinden (dode hoek). Zij gaan voor."
+    },
+    {
+      "id": "q033", "category": "verkeersregels", "type": "single", "difficulty": 1,
+      "stem": "Wat geeft een onderbord (rechthoekig wit bordje onder een verkeersbord) aan?",
+      "image_prompt": "A Dutch traffic sign with a white rectangular sub-sign (onderbord) underneath it, illustration",
+      "options": [
+        { "label": "Een aanvulling of beperking op het bord erboven", "is_correct": true },
+        { "label": "Een geheel los bord zonder verband met het bord erboven", "is_correct": false },
+        { "label": "Altijd een snelheidslimiet", "is_correct": false }
+      ],
+      "explanation": "Een onderbord geeft extra informatie bij het hoofdbord, bijvoorbeeld op welke tijden of voor welke voertuigen het bord geldt, of over welke afstand."
+    },
+    {
+      "id": "q034", "category": "verkeersregels", "type": "single", "difficulty": 2,
+      "stem": "Je nadert een gelijkwaardige kruising en wilt linksaf slaan. Er komt verkeer recht tegemoet. Wie gaat voor?",
+      "image_prompt": "A car wanting to turn left at an intersection while an oncoming car goes straight, Dutch road, top-down illustration",
+      "options": [
+        { "label": "Het tegemoetkomende verkeer dat rechtdoor gaat of rechtsaf slaat, gaat voor", "is_correct": true },
+        { "label": "Jij gaat voor omdat je linksaf slaat", "is_correct": false },
+        { "label": "Wie het hardst rijdt, gaat voor", "is_correct": false }
+      ],
+      "explanation": "Bij linksaf slaan moet je tegemoetkomend verkeer dat rechtdoor gaat of rechtsaf slaat voor laten gaan. Je kruist immers hun rijrichting."
+    },
+    {
+      "id": "q035", "category": "verkeersregels", "type": "single", "difficulty": 1,
+      "stem": "Wat betekent een omgekeerde driehoek (punt naar beneden) als verkeersbord, het bord 'B6'?",
+      "image_prompt": "Dutch traffic sign B6: inverted triangle, white with red border (give way / voorrang verlenen), flat vector",
+      "options": [
+        { "label": "Verleen voorrang aan bestuurders op de kruisende weg", "is_correct": true },
+        { "label": "Je hebt voorrang", "is_correct": false },
+        { "label": "Verboden in te rijden", "is_correct": false }
+      ],
+      "explanation": "De omgekeerde driehoek (B6) betekent: voorrang verlenen aan bestuurders op de kruisende weg. Vaak liggen er ook haaientanden op het wegdek."
+    },
+
+    {
+      "id": "q036", "category": "verkeersinzicht", "type": "single", "difficulty": 2,
+      "stem": "Welke vuistregel gebruik je voor een veilige volgafstand achter je voorganger bij droog weer?",
+      "image_prompt": null,
+      "options": [
+        { "label": "De 2-secondenregel", "is_correct": true },
+        { "label": "De 0,5-secondenregel", "is_correct": false },
+        { "label": "Altijd precies 10 meter", "is_correct": false }
+      ],
+      "explanation": "Met de 2-secondenregel houd je voldoende afstand: als je voorganger een vast punt passeert, moet jij dat punt pas minstens 2 seconden later bereiken. Bij slecht weer of gladheid neem je meer afstand."
+    },
+    {
+      "id": "q037", "category": "verkeersinzicht", "type": "single", "difficulty": 2,
+      "stem": "Hoe verandert je totale stopafstand als je snelheid hoger wordt?",
+      "image_prompt": null,
+      "options": [
+        { "label": "De remweg wordt sterker langer dan de snelheidstoename: bij dubbele snelheid wordt de remweg ongeveer vier keer zo lang", "is_correct": true },
+        { "label": "De stopafstand blijft gelijk", "is_correct": false },
+        { "label": "Bij dubbele snelheid wordt de remweg precies twee keer zo lang", "is_correct": false }
+      ],
+      "explanation": "De reactieafstand neemt recht evenredig toe met de snelheid, maar de remweg neemt kwadratisch toe. Bij dubbele snelheid is de remweg dus ongeveer vier keer zo lang. Daarom is snelheid zo bepalend voor je stopafstand."
+    },
+    {
+      "id": "q038", "category": "verkeersinzicht", "type": "single", "difficulty": 2,
+      "stem": "Wat is 'reactietijd' en hoe lang duurt die gemiddeld bij een oplettende bestuurder?",
+      "image_prompt": null,
+      "options": [
+        { "label": "De tijd tussen het zien van het gevaar en het beginnen met remmen; gemiddeld ongeveer 1 seconde", "is_correct": true },
+        { "label": "De tijd die de auto nodig heeft om stil te staan; ongeveer 5 seconden", "is_correct": false },
+        { "label": "De tijd om de motor te starten; ongeveer 2 seconden", "is_correct": false }
+      ],
+      "explanation": "De reactietijd is de tijd tussen het waarnemen van een gevaar en het daadwerkelijk reageren (remmen). Die is gemiddeld ongeveer 1 seconde, maar wordt langer door vermoeidheid, afleiding of alcohol."
+    },
+    {
+      "id": "q039", "category": "verkeersinzicht", "type": "single", "difficulty": 2,
+      "stem": "Wat is aquaplaning?",
+      "image_prompt": "A car driving through a large puddle on a wet motorway with water spraying, illustration showing loss of tyre grip",
+      "options": [
+        { "label": "De banden verliezen door een laag water het contact met het wegdek, waardoor sturen en remmen niet meer werken", "is_correct": true },
+        { "label": "Het beslaan van de ruiten bij regen", "is_correct": false },
+        { "label": "Het slippen van de banden door olie op de weg", "is_correct": false }
+      ],
+      "explanation": "Bij aquaplaning kan het water niet snel genoeg worden afgevoerd en 'drijft' de band op een laag water. Je verliest grip. Voorkom dit door snelheid te minderen bij veel water en je banden op spanning en profiel te houden."
+    },
+    {
+      "id": "q040", "category": "verkeersinzicht", "type": "single", "difficulty": 2,
+      "stem": "Je rijdt naast een vrachtwagen die rechtsaf wil slaan. Waarom is dit gevaarlijk?",
+      "image_prompt": "A car/cyclist in the blind spot (dode hoek) of a large truck turning right at a Dutch intersection, illustration",
+      "options": [
+        { "label": "Je kunt in de dode hoek van de vrachtwagen rijden, waar de chauffeur je niet ziet", "is_correct": true },
+        { "label": "Vrachtwagens hebben altijd voorrang, dus jij moet remmen", "is_correct": false },
+        { "label": "Er is geen gevaar, de chauffeur ziet alles via de spiegels", "is_correct": false }
+      ],
+      "explanation": "Naast en rechts vóór een vrachtwagen ligt een grote dode hoek. Een afslaande vrachtwagen kan je over het hoofd zien. Blijf uit de dode hoek of zorg dat je oogcontact hebt met de chauffeur."
+    },
+    {
+      "id": "q041", "category": "verkeersinzicht", "type": "single", "difficulty": 2,
+      "stem": "Je nadert een onoverzichtelijke bocht naar rechts. Wanneer pas je je snelheid aan?",
+      "image_prompt": "A car approaching a sharp blind right-hand bend on a rural Dutch road, illustration",
+      "options": [
+        { "label": "Vóór de bocht afremmen, in de bocht gelijkmatig sturen en daarna weer optrekken", "is_correct": true },
+        { "label": "In de bocht hard remmen", "is_correct": false },
+        { "label": "Pas snelheid aanpassen als je iets ziet aankomen", "is_correct": false }
+      ],
+      "explanation": "Je remt vóór de bocht af tot een snelheid waarbij je veilig door de bocht kunt. In de bocht zelf remmen vermindert je grip en kan je laten slippen. Pas na de bocht trek je weer op."
+    },
+    {
+      "id": "q042", "category": "verkeersinzicht", "type": "single", "difficulty": 1,
+      "stem": "Voordat je van rijstrook wisselt, in welke volgorde kijk je het beste?",
+      "image_prompt": null,
+      "options": [
+        { "label": "Binnenspiegel, buitenspiegel, dode hoek (schouderblik), richting aangeven, dan pas wisselen", "is_correct": true },
+        { "label": "Alleen even in de buitenspiegel kijken", "is_correct": false },
+        { "label": "Eerst van rijstrook wisselen, dan kijken", "is_correct": false }
+      ],
+      "explanation": "Goede kijktechniek: eerst spiegels, dan een schouderblik voor de dode hoek, richting aangeven en pas daarna rustig van rijstrook wisselen. Zo verras je geen verkeer dat je niet in de spiegel zag."
+    },
+    {
+      "id": "q043", "category": "verkeersinzicht", "type": "single", "difficulty": 2,
+      "stem": "Waarom is anticiperen (vooruitkijken en voorspellen) belangrijk in het verkeer?",
+      "image_prompt": null,
+      "options": [
+        { "label": "Je herkent gevaar eerder en kunt rustiger en veiliger reageren", "is_correct": true },
+        { "label": "Je kunt harder rijden", "is_correct": false },
+        { "label": "Het is alleen handig op de snelweg", "is_correct": false }
+      ],
+      "explanation": "Door ver vooruit te kijken en situaties in te schatten, herken je gevaar eerder. Je hoeft dan minder vaak hard te remmen, rijdt zuiniger en veiliger en hebt meer tijd om te reageren."
+    },
+    {
+      "id": "q044", "category": "verkeersinzicht", "type": "single", "difficulty": 2,
+      "stem": "Je nadert een school rond schooltijd. Wat is verstandig?",
+      "image_prompt": "A street near a Dutch primary school with children walking and cycling, a car approaching slowly, illustration",
+      "options": [
+        { "label": "Snelheid minderen en extra alert zijn op overstekende kinderen", "is_correct": true },
+        { "label": "Je snelheid behouden, kinderen kijken zelf wel uit", "is_correct": false },
+        { "label": "Toeteren zodat kinderen wegblijven", "is_correct": false }
+      ],
+      "explanation": "Kinderen zijn onvoorspelbaar en overzien het verkeer nog niet goed. Rond scholen verminder je je snelheid en houd je rekening met plotseling overstekende of stilstaande kinderen."
+    },
+    {
+      "id": "q045", "category": "verkeersinzicht", "type": "single", "difficulty": 2,
+      "stem": "In de herfst liggen er natte bladeren op de weg. Welk effect heeft dit?",
+      "image_prompt": "A rural Dutch road covered with wet autumn leaves, a car driving carefully, illustration",
+      "options": [
+        { "label": "De weg kan glad zijn; je remweg wordt langer en je grip minder", "is_correct": true },
+        { "label": "Geen effect, bladeren zijn ongevaarlijk", "is_correct": false },
+        { "label": "De weg wordt juist stroever", "is_correct": false }
+      ],
+      "explanation": "Natte bladeren maken het wegdek glad, vergelijkbaar met ijzel. Je grip neemt af en je remweg wordt langer. Pas je snelheid aan en houd meer afstand."
+    },
+    {
+      "id": "q046", "category": "verkeersinzicht", "type": "single", "difficulty": 3,
+      "stem": "Je wilt op een 80 km/u-weg een trekker (landbouwvoertuig) inhalen. Wat is het belangrijkste dat je moet inschatten?",
+      "image_prompt": "A car about to overtake a slow tractor on a single-lane rural road, with an oncoming car in the distance, illustration",
+      "options": [
+        { "label": "Of er voldoende vrije ruimte en zicht is, en hoe snel eventueel tegemoetkomend verkeer nadert", "is_correct": true },
+        { "label": "Alleen of de trekker richting aangeeft", "is_correct": false },
+        { "label": "Alleen je eigen snelheid", "is_correct": false }
+      ],
+      "explanation": "Inhalen kost veel ruimte en tijd, zeker bij een groot snelheidsverschil. Je moet de afstand én de snelheid van tegemoetkomend verkeer goed inschatten en alleen inhalen als je voldoende zicht en vrije ruimte hebt."
+    },
+    {
+      "id": "q047", "category": "verkeersinzicht", "type": "single", "difficulty": 2,
+      "stem": "Waarom is oogcontact maken met andere weggebruikers nuttig?",
+      "image_prompt": null,
+      "options": [
+        { "label": "Je weet beter of de ander jou heeft gezien en wat hij waarschijnlijk gaat doen", "is_correct": true },
+        { "label": "Het is wettelijk verplicht bij elke kruising", "is_correct": false },
+        { "label": "Het heeft geen nut", "is_correct": false }
+      ],
+      "explanation": "Oogcontact helpt je inschatten of de ander jou heeft opgemerkt, bijvoorbeeld bij een voetganger die wil oversteken of een automobilist die wil invoegen. Het vervangt echter nooit het verlenen van voorrang volgens de regels."
+    },
+    {
+      "id": "q048", "category": "verkeersinzicht", "type": "single", "difficulty": 2,
+      "stem": "Je merkt dat je tijdens een lange rit vermoeid raakt. Wat is de beste oplossing?",
+      "image_prompt": null,
+      "options": [
+        { "label": "Stoppen op een veilige plek en rust nemen (pauze, eventueel kort slapen)", "is_correct": true },
+        { "label": "Harder rijden om sneller thuis te zijn", "is_correct": false },
+        { "label": "Het raam openzetten en gewoon doorrijden, dat is genoeg", "is_correct": false }
+      ],
+      "explanation": "Vermoeidheid verlengt je reactietijd sterk en is een belangrijke oorzaak van ongevallen. De enige echte oplossing is rust nemen. Een raam openzetten of muziek helpt maar heel even."
+    },
+    {
+      "id": "q049", "category": "verkeersinzicht", "type": "single", "difficulty": 2,
+      "stem": "Je rijdt op de snelweg en wilt invoegen vanaf de invoegstrook. Wat is de juiste techniek?",
+      "image_prompt": "A car on a motorway acceleration lane matching speed to merge into traffic, Dutch highway, illustration",
+      "options": [
+        { "label": "Snelheid aanpassen aan het verkeer op de rijbaan, een gat zoeken en soepel invoegen", "is_correct": true },
+        { "label": "Aan het eind van de strook vol stilstaan en wachten", "is_correct": false },
+        { "label": "Met lage snelheid invoegen en het overige verkeer laten remmen", "is_correct": false }
+      ],
+      "explanation": "Op de invoegstrook breng je je snelheid op die van het verkeer op de rechterrijstrook. Zo kun je soepel in een gat invoegen zonder dat anderen hard moeten remmen. Stilstaan op de invoegstrook is gevaarlijk."
+    },
+    {
+      "id": "q050", "category": "verkeersinzicht", "type": "single", "difficulty": 2,
+      "stem": "Waarom houd je bij het passeren van een file op de andere weghelft of naast je toch afstand en aandacht?",
+      "image_prompt": null,
+      "options": [
+        { "label": "Uit een file kunnen onverwacht voetgangers, deuren of voertuigen komen", "is_correct": true },
+        { "label": "Dat hoeft niet, een file is altijd veilig", "is_correct": false },
+        { "label": "Alleen omdat het netjes is", "is_correct": false }
+      ],
+      "explanation": "Bij stilstaand of langzaam rijdend verkeer kunnen mensen tussen auto's door oversteken, portieren opengaan of voertuigen plotseling uitvoegen. Houd daarom afstand en je snelheid laag."
+    },
+    {
+      "id": "q051", "category": "verkeersinzicht", "type": "single", "difficulty": 2,
+      "stem": "Je ziet ver vooruit dat een verkeerslicht al lang op groen staat. Wat is een verstandige gedachte?",
+      "image_prompt": null,
+      "options": [
+        { "label": "Het licht kan zo op geel springen; ik anticipeer en ben klaar om te stoppen", "is_correct": true },
+        { "label": "Het blijft vast groen, ik geef extra gas", "is_correct": false },
+        { "label": "Ik sluit mijn ogen voor de zekerheid", "is_correct": false }
+      ],
+      "explanation": "Een 'oud' groen licht (dat al lang groen is) springt waarschijnlijk snel op geel. Door dit te anticiperen voorkom je dat je moet kiezen tussen hard remmen of door rood rijden."
+    },
+    {
+      "id": "q052", "category": "verkeersinzicht", "type": "single", "difficulty": 2,
+      "stem": "Een geparkeerde auto vóór je heeft de remlichten uit, maar de uitlaat dampt en de wielen staan iets gedraaid. Wat kun je hieruit afleiden?",
+      "image_prompt": "A parked car at the curb with exhaust fumes and front wheels turned slightly outward, hinting it may pull away, Dutch street, illustration",
+      "options": [
+        { "label": "De auto kan elk moment wegrijden; ik houd er rekening mee", "is_correct": true },
+        { "label": "De auto blijft zeker staan", "is_correct": false },
+        { "label": "Dit zegt niets, ik rijd gewoon door zonder op te letten", "is_correct": false }
+      ],
+      "explanation": "Aanwijzingen zoals een draaiende motor, brandende lichten of gedraaide wielen kunnen betekenen dat een auto gaat wegrijden. Door deze signalen te lezen, anticipeer je op wat er kan gebeuren."
+    },
+    {
+      "id": "q053", "category": "verkeersinzicht", "type": "single", "difficulty": 1,
+      "stem": "Waarom is bumperkleven (te kort op je voorganger rijden) gevaarlijk?",
+      "image_prompt": null,
+      "options": [
+        { "label": "Je hebt te weinig tijd en ruimte om te reageren als je voorganger plotseling remt", "is_correct": true },
+        { "label": "Het is alleen onbeleefd, maar niet gevaarlijk", "is_correct": false },
+        { "label": "Het is juist veiliger want je ziet je voorganger goed", "is_correct": false }
+      ],
+      "explanation": "Bij te weinig afstand kun je bij plotseling remmen van je voorganger niet op tijd stoppen, met een kop-staartbotsing als gevolg. Houd minimaal de 2-secondenregel aan."
+    },
+    {
+      "id": "q054", "category": "verkeersinzicht", "type": "single", "difficulty": 2,
+      "stem": "Je nadert in het donker een tegenligger met groot licht. Wat doe je om verblinding te beperken?",
+      "image_prompt": "Night driving on a rural road with an oncoming car using high beams, illustration of glare",
+      "options": [
+        { "label": "Niet recht in de koplampen kijken maar naar de rechterkant van je rijstrook, en snelheid zo nodig minderen", "is_correct": true },
+        { "label": "Zelf ook groot licht aanzetten en aanlaten", "is_correct": false },
+        { "label": "Je ogen sluiten tot je hem gepasseerd bent", "is_correct": false }
+      ],
+      "explanation": "Kijk bij verblinding naar de rechterkant van je rijstrook (bijvoorbeeld de wegmarkering) in plaats van in de lichten, en minder zo nodig snelheid. Zelf dimmen helpt ook de tegenligger."
+    },
+    {
+      "id": "q055", "category": "verkeersinzicht", "type": "single", "difficulty": 2,
+      "stem": "Een bal rolt vanaf het trottoir de weg op. Wat is het grootste gevaar dat je verwacht?",
+      "image_prompt": "A ball rolling onto the road from between parked cars in a residential Dutch street, illustration",
+      "options": [
+        { "label": "Dat er een kind achter de bal aan de weg op rent", "is_correct": true },
+        { "label": "Niets, een bal is licht en ongevaarlijk", "is_correct": false },
+        { "label": "Dat je band lek raakt", "is_correct": false }
+      ],
+      "explanation": "Achter een bal komt vaak een kind. Door dit te anticiperen rem je af en ben je voorbereid, zodat je op tijd kunt stoppen als er inderdaad een kind de weg op rent."
+    },
+    {
+      "id": "q056", "category": "verkeersinzicht", "type": "single", "difficulty": 3,
+      "stem": "Wat bedoelen we met 'defensief rijden'?",
+      "image_prompt": null,
+      "options": [
+        { "label": "Rekening houden met fouten van anderen en daar je rijgedrag op aanpassen", "is_correct": true },
+        { "label": "Zo hard mogelijk rijden om uit gevaarlijke situaties te blijven", "is_correct": false },
+        { "label": "Altijd je recht opeisen in het verkeer", "is_correct": false }
+      ],
+      "explanation": "Defensief rijden betekent dat je anticipeert op fouten van anderen, voldoende afstand en marge houdt en niet je gelijk afdwingt. Zo voorkom je ongevallen, ook als een ander een fout maakt."
+    },
+    {
+      "id": "q057", "category": "verkeersinzicht", "type": "single", "difficulty": 2,
+      "stem": "Je rijdt achter een fietser op een smalle weg. Er is tegemoetkomend verkeer. Wat doe je?",
+      "image_prompt": "A car behind a cyclist on a narrow road with oncoming traffic, illustration showing the car waiting",
+      "options": [
+        { "label": "Wachten achter de fietser tot je met voldoende ruimte (minstens ongeveer 1,5 m) veilig kunt passeren", "is_correct": true },
+        { "label": "Direct passeren, ook al moet de fietser opzij", "is_correct": false },
+        { "label": "Toeteren zodat de fietser van de weg gaat", "is_correct": false }
+      ],
+      "explanation": "Je passeert een fietser pas als je voldoende ruimte hebt (richtlijn: ongeveer 1,5 meter zijwaarts). Bij tegemoetkomend verkeer wacht je rustig tot het veilig kan."
+    },
+    {
+      "id": "q058", "category": "verkeersinzicht", "type": "single", "difficulty": 2,
+      "stem": "Het is glad door ijzel. Hoe pas je je rijstijl aan?",
+      "image_prompt": null,
+      "options": [
+        { "label": "Rustiger rijden, meer afstand houden en zacht remmen, sturen en optrekken", "is_correct": true },
+        { "label": "Hard remmen om te testen of het glad is", "is_correct": false },
+        { "label": "Niets aanpassen, moderne auto's slippen niet", "is_correct": false }
+      ],
+      "explanation": "Bij gladheid heb je veel minder grip. Rijd rustig, vergroot je afstand fors en bedien alles (gas, rem, stuur) zo soepel mogelijk om slippen te voorkomen."
+    },
+    {
+      "id": "q059", "category": "verkeersinzicht", "type": "single", "difficulty": 2,
+      "stem": "Waarom geef je op tijd richting aan?",
+      "image_prompt": null,
+      "options": [
+        { "label": "Zodat andere weggebruikers je bedoeling op tijd weten en daarop kunnen anticiperen", "is_correct": true },
+        { "label": "Alleen omdat het anders een boete oplevert", "is_correct": false },
+        { "label": "Richting aangeven is eigenlijk niet nodig", "is_correct": false }
+      ],
+      "explanation": "Richting aangeven is communicatie: het laat anderen op tijd weten wat je van plan bent, zodat zij erop kunnen reageren. Geef het op tijd en niet te laat aan."
+    },
+    {
+      "id": "q060", "category": "verkeersinzicht", "type": "single", "difficulty": 3,
+      "stem": "Je nadert een onbewaakte spoorwegovergang (alleen een Andreaskruis, geen bomen of lichten). Wat doe je?",
+      "image_prompt": "An unguarded level crossing in the Dutch countryside with a Saint Andrew's cross (Andreaskruis) sign, no barriers, illustration",
+      "options": [
+        { "label": "Snelheid minderen, goed naar links en rechts kijken en alleen oversteken als het veilig is", "is_correct": true },
+        { "label": "Zonder te kijken oversteken, er rijdt vast geen trein", "is_correct": false },
+        { "label": "Op het spoor stoppen om te kijken", "is_correct": false }
+      ],
+      "explanation": "Bij een onbewaakte overgang moet je zelf goed opletten: minder snelheid, kijk beide kanten op en steek pas over als je zeker weet dat er geen trein nadert. Stop nooit op het spoor zelf."
+    },
+
+    {
+      "id": "q061", "category": "gevaarherkenning", "type": "single", "difficulty": 2,
+      "stem": "Je rijdt 50 km/u in een woonstraat. Tussen twee geparkeerde auto's stapt een klein kind onverwacht de weg op, vlak voor je. Wat doe je?",
+      "image_prompt": "First-person driver view in a Dutch residential street, a small child stepping out between two parked cars close ahead, illustration",
+      "options": [
+        { "label": "Remmen", "is_correct": true },
+        { "label": "Gas loslaten", "is_correct": false },
+        { "label": "Niets doen", "is_correct": false }
+      ],
+      "explanation": "Het kind is dichtbij en steekt direct over: dit is een acuut gevaar. Je remt krachtig om een aanrijding te voorkomen."
+    },
+    {
+      "id": "q062", "category": "gevaarherkenning", "type": "single", "difficulty": 2,
+      "stem": "Je rijdt op een 80 km/u-weg. Ver vooruit zie je een tegenligger die begint in te halen en op jouw weghelft komt. Wat doe je als eerste?",
+      "image_prompt": "First-person view on a rural road, an oncoming car overtaking another and moving into your lane in the distance, illustration",
+      "options": [
+        { "label": "Remmen", "is_correct": true },
+        { "label": "Gas loslaten", "is_correct": false },
+        { "label": "Niets doen", "is_correct": false }
+      ],
+      "explanation": "Een tegenligger op jouw weghelft is levensgevaarlijk. Rem af en wijk zo nodig naar rechts uit om ruimte te maken en de klap te voorkomen."
+    },
+    {
+      "id": "q063", "category": "gevaarherkenning", "type": "single", "difficulty": 2,
+      "stem": "Je rijdt 50 km/u. Verderop staat een voetganger bij een zebrapad, maar hij kijkt op zijn telefoon en stapt nog niet de weg op. Wat doe je?",
+      "image_prompt": "First-person driver view approaching a zebra crossing where a pedestrian stands looking at a phone, not yet stepping out, Dutch street, illustration",
+      "options": [
+        { "label": "Gas loslaten", "is_correct": true },
+        { "label": "Remmen", "is_correct": false },
+        { "label": "Niets doen", "is_correct": false }
+      ],
+      "explanation": "Er is nog geen acuut gevaar, maar de voetganger kan elk moment oversteken. Door gas los te laten verlaag je je snelheid en sta je klaar om te remmen als hij de weg op stapt."
+    },
+    {
+      "id": "q064", "category": "gevaarherkenning", "type": "single", "difficulty": 2,
+      "stem": "Je rijdt op een rustige weg met 50 km/u. Ver vooruit steekt een voetganger over die de overkant ruim haalt voordat jij er bent. Verder is de weg vrij. Wat doe je?",
+      "image_prompt": "First-person view of a quiet street, a pedestrian crossing far ahead who will easily reach the other side in time, illustration",
+      "options": [
+        { "label": "Niets doen", "is_correct": true },
+        { "label": "Hard remmen", "is_correct": false },
+        { "label": "Gas geven om er snel langs te zijn", "is_correct": false }
+      ],
+      "explanation": "De voetganger is ruim weg voordat je er bent en er is geen ander gevaar. Je kunt rustig je snelheid behouden; remmen of versnellen is niet nodig."
+    },
+    {
+      "id": "q065", "category": "gevaarherkenning", "type": "single", "difficulty": 2,
+      "stem": "Je nadert een kruising met 50 km/u. Van rechts komt een fietser die geen aanstalten maakt om te stoppen en voorrang lijkt te nemen. Wat doe je?",
+      "image_prompt": "First-person view approaching an intersection where a cyclist comes from the right without slowing down, Dutch town, illustration",
+      "options": [
+        { "label": "Remmen", "is_correct": true },
+        { "label": "Gas loslaten", "is_correct": false },
+        { "label": "Niets doen", "is_correct": false }
+      ],
+      "explanation": "Een fietser van rechts die doorrijdt vormt een direct risico op een aanrijding op de kruising. Rem zodat je hem voor kunt laten gaan en een botsing voorkomt."
+    },
+    {
+      "id": "q066", "category": "gevaarherkenning", "type": "single", "difficulty": 2,
+      "stem": "Je rijdt achter een lijnbus binnen de bebouwde kom. De bus staat bij een halte en geeft links richting aan om weg te rijden. Wat doe je?",
+      "image_prompt": "First-person view behind a city bus at a stop, left indicator on, ready to pull out, Dutch town, illustration",
+      "options": [
+        { "label": "Gas loslaten", "is_correct": true },
+        { "label": "Gas geven en er snel langs", "is_correct": false },
+        { "label": "Niets doen en met dezelfde snelheid passeren", "is_correct": false }
+      ],
+      "explanation": "Binnen de bebouwde kom moet je de bus voor laten gaan. Laat gas los, verminder snelheid en geef de bus de ruimte om weg te rijden."
+    },
+    {
+      "id": "q067", "category": "gevaarherkenning", "type": "single", "difficulty": 3,
+      "stem": "Je rijdt 50 km/u langs geparkeerde auto's. Bij een auto vóór je gaan plotseling de remlichten uit en de bestuurder draait zijn hoofd om. Wat doe je?",
+      "image_prompt": "First-person view passing parked cars, one parked car ahead with brake lights and a driver looking over the shoulder as if to pull out, illustration",
+      "options": [
+        { "label": "Gas loslaten", "is_correct": true },
+        { "label": "Gas geven", "is_correct": false },
+        { "label": "Niets doen", "is_correct": false }
+      ],
+      "explanation": "De signalen wijzen erop dat de auto kan wegrijden of dat een portier opengaat. Laat gas los zodat je snelheid daalt en je direct kunt remmen als dat nodig is."
+    },
+    {
+      "id": "q068", "category": "gevaarherkenning", "type": "single", "difficulty": 2,
+      "stem": "Je rijdt op een 30 km/u-weg. Een hond rent zonder lijn de weg op, vlak voor je auto. Wat doe je?",
+      "image_prompt": "First-person view on a low-speed residential street, a dog running onto the road close ahead, illustration",
+      "options": [
+        { "label": "Remmen", "is_correct": true },
+        { "label": "Gas loslaten", "is_correct": false },
+        { "label": "Niets doen", "is_correct": false }
+      ],
+      "explanation": "De hond is vlakbij en steekt direct over; bovendien kan de eigenaar achter het dier aan komen. Rem om een aanrijding te voorkomen."
+    },
+    {
+      "id": "q069", "category": "gevaarherkenning", "type": "single", "difficulty": 2,
+      "stem": "Je rijdt 80 km/u buiten de bebouwde kom. Een fietser op het fietspad naast de weg zwalkt en kijkt om. Hij is nog op ruime afstand. Wat doe je?",
+      "image_prompt": "First-person view on a rural road, a cyclist on the adjacent bike path wobbling and looking back, some distance ahead, illustration",
+      "options": [
+        { "label": "Gas loslaten", "is_correct": true },
+        { "label": "Niets doen", "is_correct": false },
+        { "label": "Toeteren en doorrijden", "is_correct": false }
+      ],
+      "explanation": "Een zwalkende, omkijkende fietser is onvoorspelbaar en kan zomaar de rijbaan op komen. Laat gas los zodat je snelheid daalt en je klaarstaat om te remmen of uit te wijken."
+    },
+    {
+      "id": "q070", "category": "gevaarherkenning", "type": "single", "difficulty": 2,
+      "stem": "Je rijdt op een rechte snelweg met 100 km/u. De auto's ver vooruit gaan plotseling allemaal remmen (remlichten lichten op). Wat doe je?",
+      "image_prompt": "First-person view on a busy motorway, brake lights of many cars lighting up ahead indicating a sudden traffic jam, illustration",
+      "options": [
+        { "label": "Remmen", "is_correct": true },
+        { "label": "Gas loslaten en afwachten", "is_correct": false },
+        { "label": "Niets doen", "is_correct": false }
+      ],
+      "explanation": "Veel remlichten vooruit wijzen op een file of stilstaand verkeer. Rem tijdig en geleidelijk om afstand te houden en een kop-staartbotsing te voorkomen; zet zo nodig je alarmlichten aan."
+    },
+    {
+      "id": "q071", "category": "gevaarherkenning", "type": "single", "difficulty": 3,
+      "stem": "Je rijdt 50 km/u in een straat met aan beide kanten geparkeerde auto's. Tussen de auto's door zie je de benen van een voetganger die op het punt staat over te steken. Wat doe je?",
+      "image_prompt": "First-person view of a street lined with parked cars, legs of a pedestrian visible between cars about to cross, illustration",
+      "options": [
+        { "label": "Gas loslaten", "is_correct": true },
+        { "label": "Niets doen", "is_correct": false },
+        { "label": "Versnellen om er langs te zijn", "is_correct": false }
+      ],
+      "explanation": "De voetganger is nog niet op de rijbaan, maar staat klaar om over te steken. Laat gas los om snelheid te verminderen, zodat je kunt remmen zodra hij zichtbaar wordt en oversteekt."
+    },
+    {
+      "id": "q072", "category": "gevaarherkenning", "type": "single", "difficulty": 2,
+      "stem": "Je rijdt op een ruime, lege weg met 50 km/u. Vooruit is alles overzichtelijk en vrij, geen voetgangers, fietsers of kruisingen. Wat doe je?",
+      "image_prompt": "First-person view of a clear, open Dutch road with no other road users, good visibility, illustration",
+      "options": [
+        { "label": "Niets doen", "is_correct": true },
+        { "label": "Remmen", "is_correct": false },
+        { "label": "Gas loslaten", "is_correct": false }
+      ],
+      "explanation": "Er is geen waarneembaar gevaar. Je houdt je snelheid en blijft vooruitkijken. Onnodig remmen of gas loslaten kan juist verwarrend zijn voor het verkeer achter je."
+    },
+    {
+      "id": "q073", "category": "gevaarherkenning", "type": "single", "difficulty": 3,
+      "stem": "Je nadert met 50 km/u een kruising waar het verkeerslicht voor jou groen is, maar van rechts komt een ambulance met zwaailicht en sirene aan. Wat doe je?",
+      "image_prompt": "First-person view at a green light intersection with an ambulance approaching from the right with flashing lights, illustration",
+      "options": [
+        { "label": "Remmen", "is_correct": true },
+        { "label": "Niets doen, want je hebt groen", "is_correct": false },
+        { "label": "Gas geven om snel weg te zijn", "is_correct": false }
+      ],
+      "explanation": "Ook al heb je groen, een voorrangsvoertuig moet je voor laten gaan. Rem en stop zo nodig om de ambulance vrije doorgang te geven."
+    },
+    {
+      "id": "q074", "category": "gevaarherkenning", "type": "single", "difficulty": 2,
+      "stem": "Je rijdt 50 km/u en ziet ver vooruit een vrachtwagen die achteruit een inrit in wil steken en de weg blokkeert. Hij staat nog stil met alarmlichten aan. Wat doe je?",
+      "image_prompt": "First-person view, a truck ahead with hazard lights preparing to reverse into a driveway, blocking part of the road, illustration",
+      "options": [
+        { "label": "Gas loslaten", "is_correct": true },
+        { "label": "Niets doen", "is_correct": false },
+        { "label": "Versnellen om er nog langs te kunnen", "is_correct": false }
+      ],
+      "explanation": "De situatie kan snel veranderen als de vrachtwagen gaat manoeuvreren. Laat gas los om snelheid te minderen en houd in de gaten of je moet stoppen of veilig kunt passeren."
+    },
+    {
+      "id": "q075", "category": "gevaarherkenning", "type": "single", "difficulty": 3,
+      "stem": "Je rijdt 50 km/u. Een voetbal stuitert vanaf links de weg op, vlak voor je auto. Wat doe je?",
+      "image_prompt": "First-person view in a residential street, a football bouncing onto the road from the left just ahead of the car, illustration",
+      "options": [
+        { "label": "Remmen", "is_correct": true },
+        { "label": "Gas loslaten", "is_correct": false },
+        { "label": "Niets doen", "is_correct": false }
+      ],
+      "explanation": "Achter de bal kan een kind de weg op rennen, en de bal is vlakbij. Rem direct zodat je kunt stoppen voor een eventueel overstekend kind."
+    },
+    {
+      "id": "q076", "category": "gevaarherkenning", "type": "single", "difficulty": 2,
+      "stem": "Je rijdt 80 km/u en nadert een file die net is ontstaan; de laatste auto's staan stil op jouw rijstrook, redelijk dichtbij. Wat doe je?",
+      "image_prompt": "First-person view approaching the tail of a traffic jam where cars are stationary in your lane, fairly close, illustration",
+      "options": [
+        { "label": "Remmen", "is_correct": true },
+        { "label": "Gas loslaten", "is_correct": false },
+        { "label": "Niets doen", "is_correct": false }
+      ],
+      "explanation": "Stilstaand verkeer dichtbij vraagt om direct remmen om een kop-staartbotsing te voorkomen. Zet daarbij zo nodig je alarmlichten aan om het achteropkomende verkeer te waarschuwen."
+    },
+    {
+      "id": "q077", "category": "gevaarherkenning", "type": "single", "difficulty": 2,
+      "stem": "Je rijdt 50 km/u langs een rij geparkeerde auto's. Bij een auto verderop lichten de achteruitrijlichten (witte lichten) op. Wat doe je?",
+      "image_prompt": "First-person view passing parked cars, one car ahead showing white reversing lights, indicating it may back out, illustration",
+      "options": [
+        { "label": "Gas loslaten", "is_correct": true },
+        { "label": "Niets doen", "is_correct": false },
+        { "label": "Versnellen", "is_correct": false }
+      ],
+      "explanation": "Witte achteruitrijlichten betekenen dat de auto achteruit de parkeerplek uit wil. Laat gas los, verminder snelheid en wees klaar om te stoppen."
+    },
+    {
+      "id": "q078", "category": "gevaarherkenning", "type": "single", "difficulty": 3,
+      "stem": "Je rijdt 30 km/u in een drukke winkelstraat. Een voetganger stapt vlak voor je auto onverwacht de weg op zonder te kijken. Wat doe je?",
+      "image_prompt": "First-person view in a busy Dutch shopping street, a pedestrian stepping out right in front of the car without looking, illustration",
+      "options": [
+        { "label": "Remmen", "is_correct": true },
+        { "label": "Gas loslaten", "is_correct": false },
+        { "label": "Niets doen", "is_correct": false }
+      ],
+      "explanation": "De voetganger is vlakbij en steekt direct over: acuut gevaar. Rem krachtig om een aanrijding te voorkomen."
+    },
+    {
+      "id": "q079", "category": "gevaarherkenning", "type": "single", "difficulty": 2,
+      "stem": "Je rijdt 80 km/u op een weg met bomen langs de kant. Het waait hard en je ziet vooruit dat takken en bladeren over de weg waaien. Verder is de weg vrij. Wat doe je?",
+      "image_prompt": "First-person view on a tree-lined rural road on a windy day, branches and leaves blowing across the road ahead, illustration",
+      "options": [
+        { "label": "Gas loslaten", "is_correct": true },
+        { "label": "Niets doen", "is_correct": false },
+        { "label": "Gas geven om snel uit het bos te zijn", "is_correct": false }
+      ],
+      "explanation": "Bij harde wind kunnen takken op de weg vallen en kan je auto opzij worden geduwd. Laat gas los om je snelheid te verlagen en houd je stuur goed vast."
+    },
+    {
+      "id": "q080", "category": "gevaarherkenning", "type": "single", "difficulty": 3,
+      "stem": "Je rijdt 50 km/u en nadert een onbewaakte oversteekplaats. Vanaf rechts nadert een fietser die richting aangeeft dat hij linksaf jouw weg op wil, maar nog ruim voor de oversteek is. Wat doe je?",
+      "image_prompt": "First-person view approaching an unguarded crossing, a cyclist from the right signalling to turn left onto your road but still some distance away, illustration",
+      "options": [
+        { "label": "Gas loslaten", "is_correct": true },
+        { "label": "Niets doen", "is_correct": false },
+        { "label": "Versnellen om voor de fietser te zijn", "is_correct": false }
+      ],
+      "explanation": "De fietser is nog op afstand maar wil jouw weg op. Laat gas los om snelheid te minderen en de situatie te beoordelen, zodat je kunt remmen als hij daadwerkelijk oversteekt."
+    },
+
+    {
+      "id": "q081", "category": "voertuig-en-milieu", "type": "single", "difficulty": 2,
+      "stem": "Wat is een gevolg van een te lage bandenspanning?",
+      "image_prompt": "A car tyre that is visibly underinflated/soft, close-up illustration with a tyre pressure gauge",
+      "options": [
+        { "label": "Meer brandstofverbruik, meer slijtage en een langere remweg", "is_correct": true },
+        { "label": "Minder brandstofverbruik en betere grip", "is_correct": false },
+        { "label": "Geen enkel gevolg", "is_correct": false }
+      ],
+      "explanation": "Te lage bandenspanning zorgt voor meer rolweerstand (hoger verbruik), snellere en ongelijke slijtage en een slechter weggedrag met langere remweg. Controleer de spanning regelmatig."
+    },
+    {
+      "id": "q082", "category": "voertuig-en-milieu", "type": "single", "difficulty": 1,
+      "stem": "Wat is de wettelijk minimale profieldiepte van autobanden in Nederland?",
+      "image_prompt": "Close-up of a car tyre tread with a depth gauge showing the groove depth, illustration",
+      "options": [
+        { "label": "1,6 mm", "is_correct": true },
+        { "label": "0,5 mm", "is_correct": false },
+        { "label": "3,0 mm", "is_correct": false }
+      ],
+      "explanation": "De wettelijke minimale profieldiepte is 1,6 mm. Voor goede grip, vooral bij regen, wordt vaak geadviseerd om al bij 2 à 3 mm nieuwe banden te overwegen."
+    },
+    {
+      "id": "q083", "category": "voertuig-en-milieu", "type": "single", "difficulty": 2,
+      "stem": "Hoe rijd je zo zuinig en milieuvriendelijk mogelijk (Het Nieuwe Rijden)?",
+      "image_prompt": null,
+      "options": [
+        { "label": "Vroeg opschakelen, rustig optrekken en zoveel mogelijk gelijkmatig rijden", "is_correct": true },
+        { "label": "Laat opschakelen en hoge toeren draaien", "is_correct": false },
+        { "label": "Steeds hard optrekken en afremmen", "is_correct": false }
+      ],
+      "explanation": "Zuinig rijden doe je door vroeg op te schakelen, rustig op te trekken, gelijkmatig te rijden en op tijd gas los te laten. Dat scheelt brandstof, kosten en uitstoot."
+    },
+    {
+      "id": "q084", "category": "voertuig-en-milieu", "type": "single", "difficulty": 2,
+      "stem": "Wat is het voordeel van de motorrem gebruiken (gas loslaten in een versnelling) in plaats van uitsluitend op de rem trappen?",
+      "image_prompt": null,
+      "options": [
+        { "label": "Je verbruikt geen brandstof tijdens het afremmen en spaart de remmen", "is_correct": true },
+        { "label": "De motor draait juist sneller stuk", "is_correct": false },
+        { "label": "Het verbruikt veel meer brandstof", "is_correct": false }
+      ],
+      "explanation": "Bij afremmen op de motor (gas los, in versnelling) sluit de brandstoftoevoer; je verbruikt dan vrijwel geen brandstof en je remmen slijten minder. Het is dus zuinig én veilig."
+    },
+    {
+      "id": "q085", "category": "voertuig-en-milieu", "type": "truefalse", "difficulty": 1,
+      "stem": "Stelling: Onnodig stationair laten draaien van de motor (bijvoorbeeld lang stilstaan met draaiende motor) is slecht voor het milieu en verspilt brandstof.",
+      "image_prompt": null,
+      "options": [
+        { "label": "Waar", "is_correct": true },
+        { "label": "Niet waar", "is_correct": false }
+      ],
+      "explanation": "Onnodig stationair draaien verbruikt brandstof en stoot uitlaatgassen uit zonder dat je rijdt. Bij langer stilstaan kun je beter de motor uitzetten (veel auto's doen dit automatisch met start-stop)."
+    },
+    {
+      "id": "q086", "category": "voertuig-en-milieu", "type": "single", "difficulty": 2,
+      "stem": "Wanneer verbruikt een auto met benzinemotor relatief het meest per kilometer?",
+      "image_prompt": null,
+      "options": [
+        { "label": "Bij een koude start en korte ritten", "is_correct": true },
+        { "label": "Bij een warme motor op constante snelheid", "is_correct": false },
+        { "label": "Altijd evenveel, ongeacht de situatie", "is_correct": false }
+      ],
+      "explanation": "Een koude motor verbruikt meer en stoot meer uit, omdat hij nog niet op temperatuur is. Korte ritten zijn daardoor relatief onzuinig. Combineer ritjes waar mogelijk."
+    },
+    {
+      "id": "q087", "category": "voertuig-en-milieu", "type": "single", "difficulty": 1,
+      "stem": "Wat is de APK?",
+      "image_prompt": null,
+      "options": [
+        { "label": "Een wettelijk verplichte periodieke keuring van je auto op veiligheid en milieu", "is_correct": true },
+        { "label": "Een verzekering tegen pech onderweg", "is_correct": false },
+        { "label": "Een vrijwillige servicebeurt bij de garage", "is_correct": false }
+      ],
+      "explanation": "De APK (Algemene Periodieke Keuring) is een wettelijk verplichte keuring waarbij wordt gecontroleerd of je auto veilig en voldoende milieuvriendelijk is. Zonder geldige APK mag je niet de weg op."
+    },
+    {
+      "id": "q088", "category": "voertuig-en-milieu", "type": "single", "difficulty": 2,
+      "stem": "Het waarschuwingslampje van de motortemperatuur (rood) gaat branden tijdens het rijden. Wat doe je?",
+      "image_prompt": "A red engine temperature warning light illuminated on a car dashboard, close-up illustration",
+      "options": [
+        { "label": "Zo snel mogelijk veilig stoppen en de motor laten afkoelen / hulp inschakelen", "is_correct": true },
+        { "label": "Gewoon doorrijden, het lampje gaat vanzelf uit", "is_correct": false },
+        { "label": "Harder rijden zodat de motor afkoelt door de wind", "is_correct": false }
+      ],
+      "explanation": "Een brandend rood temperatuurlampje betekent oververhitting; doorrijden kan de motor zwaar beschadigen. Stop zo snel mogelijk veilig, zet de motor uit en laat hem afkoelen of schakel hulp in."
+    },
+    {
+      "id": "q089", "category": "voertuig-en-milieu", "type": "single", "difficulty": 2,
+      "stem": "Waarvoor dient de katalysator in de uitlaat?",
+      "image_prompt": null,
+      "options": [
+        { "label": "Het verminderen van schadelijke stoffen in de uitlaatgassen", "is_correct": true },
+        { "label": "Het verhogen van het motorvermogen", "is_correct": false },
+        { "label": "Het koelen van de motor", "is_correct": false }
+      ],
+      "explanation": "De katalysator zet schadelijke stoffen in de uitlaatgassen (zoals koolmonoxide en stikstofoxiden) om in minder schadelijke stoffen. Hij werkt het best als de motor op bedrijfstemperatuur is."
+    },
+    {
+      "id": "q090", "category": "voertuig-en-milieu", "type": "single", "difficulty": 2,
+      "stem": "Wat controleer je regelmatig zelf om veilig en zuinig te blijven rijden?",
+      "image_prompt": null,
+      "options": [
+        { "label": "Onder andere bandenspanning, profiel, verlichting, ruitenwissers en vloeistofniveaus", "is_correct": true },
+        { "label": "Alleen de kleur van de auto", "is_correct": false },
+        { "label": "Niets, dat doet de garage allemaal", "is_correct": false }
+      ],
+      "explanation": "Regelmatige eigen controle van bandenspanning, profiel, verlichting, ruitenwissers, olie- en koelvloeistofniveau houdt je auto veilig, zuinig en betrouwbaar. Niet alles wacht tot de volgende beurt."
+    },
+    {
+      "id": "q091", "category": "voertuig-en-milieu", "type": "single", "difficulty": 2,
+      "stem": "Je rijdt met een aanhangwagen. Wat verandert er aan je rijgedrag?",
+      "image_prompt": "A passenger car towing a trailer on a Dutch road, illustration",
+      "options": [
+        { "label": "Je remweg wordt langer, je moet ruimer bochten nemen en rustiger rijden", "is_correct": true },
+        { "label": "Niets, een aanhanger heeft geen invloed", "is_correct": false },
+        { "label": "Je kunt juist harder rijden", "is_correct": false }
+      ],
+      "explanation": "Met een aanhanger is je voertuig zwaarder en langer: je remweg wordt langer, je moet bochten ruimer nemen en rekening houden met lagere maximumsnelheden voor het rijden met aanhanger."
+    },
+    {
+      "id": "q092", "category": "voertuig-en-milieu", "type": "single", "difficulty": 1,
+      "stem": "Waarvoor dient de hoofdsteun in de auto?",
+      "image_prompt": null,
+      "options": [
+        { "label": "Het beschermen van je nek tegen een whiplash bij een aanrijding van achteren", "is_correct": true },
+        { "label": "Alleen voor het comfort tijdens lange ritten", "is_correct": false },
+        { "label": "Het ophangen van kleding", "is_correct": false }
+      ],
+      "explanation": "De hoofdsteun beschermt je nek bij een aanrijding van achteren (whiplash). Stel hem goed af: de bovenkant ongeveer ter hoogte van je kruin en dicht bij je hoofd."
+    },
+    {
+      "id": "q093", "category": "voertuig-en-milieu", "type": "single", "difficulty": 2,
+      "stem": "Wat is de juiste manier om de veiligheidsgordel te dragen?",
+      "image_prompt": null,
+      "options": [
+        { "label": "Strak, plat over de schouder en laag over de heupen", "is_correct": true },
+        { "label": "Los, met de schoudergordel onder de arm", "is_correct": false },
+        { "label": "Alleen de heupgordel, de schoudergordel achter je rug", "is_correct": false }
+      ],
+      "explanation": "De gordel hoort strak te zitten: de schoudergordel plat over je schouder (niet onder de arm) en de heupgordel laag over je heupen. Alleen zo beschermt hij optimaal bij een botsing."
+    },
+    {
+      "id": "q094", "category": "voertuig-en-milieu", "type": "single", "difficulty": 2,
+      "stem": "Wat betekent het als het rode oliedruklampje tijdens het rijden gaat branden?",
+      "image_prompt": "A red oil pressure warning light on a car dashboard, close-up illustration",
+      "options": [
+        { "label": "Er is mogelijk te weinig oliedruk; stop zo snel mogelijk veilig om motorschade te voorkomen", "is_correct": true },
+        { "label": "Je moet juist gas geven", "is_correct": false },
+        { "label": "Het is normaal en je kunt het negeren", "is_correct": false }
+      ],
+      "explanation": "Het rode oliedruklampje wijst op te lage oliedruk, wat snel tot ernstige motorschade leidt. Stop zo snel mogelijk veilig, zet de motor uit en controleer het oliepeil of schakel hulp in."
+    },
+    {
+      "id": "q095", "category": "voertuig-en-milieu", "type": "single", "difficulty": 2,
+      "stem": "Waarom is het belangrijk dat de ruiten, spiegels en verlichting schoon zijn voordat je wegrijdt?",
+      "image_prompt": "A driver clearing a frosted/dirty windscreen before driving, Dutch winter morning, illustration",
+      "options": [
+        { "label": "Voor goed zicht en goede zichtbaarheid; dat is essentieel voor de veiligheid", "is_correct": true },
+        { "label": "Alleen voor de netheid van de auto", "is_correct": false },
+        { "label": "Het maakt niet uit voor het rijden", "is_correct": false }
+      ],
+      "explanation": "Schone ruiten, spiegels en verlichting zorgen ervoor dat je goed ziet én goed gezien wordt. Maak in de winter eerst de ruiten volledig vrij van ijs en condens voordat je gaat rijden."
+    },
+    {
+      "id": "q096", "category": "voertuig-en-milieu", "type": "single", "difficulty": 2,
+      "stem": "Welke bandenkeuze is verstandig bij winterse omstandigheden (kou, sneeuw, ijzel)?",
+      "image_prompt": "Comparison of a summer tyre and a winter tyre tread pattern, illustration",
+      "options": [
+        { "label": "Winterbanden, omdat ze bij lage temperaturen en op sneeuw meer grip geven", "is_correct": true },
+        { "label": "Zo glad mogelijke banden voor minder weerstand", "is_correct": false },
+        { "label": "Bandenkeuze maakt in de winter niets uit", "is_correct": false }
+      ],
+      "explanation": "Winterbanden hebben een rubbersamenstelling en profiel dat bij kou, sneeuw en ijzel meer grip geeft dan zomerbanden. In Nederland zijn ze niet verplicht, maar wel veiliger in de winter."
+    },
+    {
+      "id": "q097", "category": "voertuig-en-milieu", "type": "single", "difficulty": 3,
+      "stem": "Je hebt te veel lading in de auto, boven het toegestane gewicht. Wat is een gevolg?",
+      "image_prompt": "An overloaded car with a sagging rear, luggage piled high, illustration",
+      "options": [
+        { "label": "Slechter weggedrag, langere remweg en meer slijtage; bovendien is het verboden", "is_correct": true },
+        { "label": "Betere wegligging door het extra gewicht", "is_correct": false },
+        { "label": "Geen enkel gevolg zolang de deuren dichtgaan", "is_correct": false }
+      ],
+      "explanation": "Overbelading verslechtert het weggedrag, verlengt de remweg en belast banden en remmen extra. Het is bovendien wettelijk verboden. Houd je aan het toegestane laadvermogen uit het kentekenbewijs."
+    },
+    {
+      "id": "q098", "category": "voertuig-en-milieu", "type": "truefalse", "difficulty": 1,
+      "stem": "Stelling: Een elektrische auto stoot tijdens het rijden zelf geen uitlaatgassen uit.",
+      "image_prompt": null,
+      "options": [
+        { "label": "Waar", "is_correct": true },
+        { "label": "Niet waar", "is_correct": false }
+      ],
+      "explanation": "Een volledig elektrische auto heeft geen uitlaat en stoot tijdens het rijden geen uitlaatgassen uit. De totale milieu-impact hangt wel af van hoe de elektriciteit is opgewekt en van de productie van de accu."
+    },
+    {
+      "id": "q099", "category": "voertuig-en-milieu", "type": "single", "difficulty": 2,
+      "stem": "Hoe stel je je buitenspiegels het beste af?",
+      "image_prompt": "Illustration of correctly adjusted car side mirrors minimizing the blind spot, top-down diagram",
+      "options": [
+        { "label": "Zo dat je net een klein stukje van je eigen auto ziet en de dode hoek zo klein mogelijk is", "is_correct": true },
+        { "label": "Volledig op je eigen auto gericht", "is_correct": false },
+        { "label": "Naar de lucht gericht", "is_correct": false }
+      ],
+      "explanation": "Stel de buitenspiegels zo af dat je nog net een klein stukje van je eigen auto ziet en zo veel mogelijk van de rijstrook ernaast. Zo verklein je de dode hoek. Een schouderblik blijft toch nodig."
+    },
+    {
+      "id": "q100", "category": "voertuig-en-milieu", "type": "single", "difficulty": 2,
+      "stem": "Wat is verstandig met je snelheid op de snelweg als je let op brandstofverbruik en uitstoot?",
+      "image_prompt": null,
+      "options": [
+        { "label": "Een rustige, constante snelheid aanhouden; hard rijden verhoogt verbruik en uitstoot flink", "is_correct": true },
+        { "label": "Zo hard mogelijk rijden bespaart juist brandstof", "is_correct": false },
+        { "label": "Voortdurend optrekken en afremmen is het zuinigst", "is_correct": false }
+      ],
+      "explanation": "Bij hogere snelheden neemt de luchtweerstand sterk toe, waardoor verbruik en uitstoot flink stijgen. Een rustige, constante snelheid (en bijvoorbeeld cruisecontrol op de snelweg) is zuiniger en schoner."
+    }
+  ]
+}
