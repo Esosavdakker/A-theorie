@@ -3,23 +3,18 @@ export const site = {
   tagline: "Slaag voor je theorie-examen!",
   description: "De beste online theorie-opleiding voor rijbewijs B. Leer in je eigen tempo en slaag met zekerheid.",
   url: "https://aplustheorie.nl",
-  phone: "+31 6 00 00 00 00",
+  phone: "06 44 79 30 93",
   email: "info@aplustheorie.nl",
   address: {
-    street: "Straatnaam 1",
-    city: "Amsterdam",
-    postalCode: "1000 AA",
+    street: "Reggestraat 38",
+    city: "IJmuiden",
+    postalCode: "1972 WL",
     country: "Nederland",
   },
   social: {
     instagram: "https://instagram.com/aplustheorie",
     facebook: "https://facebook.com/aplustheorie",
-    whatsapp: "https://wa.me/31600000000",
-  },
-  announcement: {
-    active: true,
-    text: "🎉 Tijdelijk: Gratis proefles bij aanmelding voor het Compleet pakket",
-    cta: { label: "Claim nu →", href: "/contact" },
+    whatsapp: "https://wa.me/31644793093",
   },
   nav: [
     { label: "Home",       href: "/" },
@@ -29,17 +24,17 @@ export const site = {
     { label: "Contact",    href: "/contact" },
   ],
   hero: {
-    headline1: "SLAAG IN 1 KEER",
-    headline2: "VOOR JE THEORIE",
+    headline1: "Jouw theorie-examen,",
+    headline2: "in één keer gehaald.",
     ctaPrimary: { label: "Meld je aan", href: "/contact" },
     trust: ["CBR-oefenexamens", "Direct toegang", "Alle apparaten"],
     stats: [
       { icon: "🏆", numericValue: 97,   suffix: "%",  label: "Slagingspercentage" },
-      { icon: "⭐", numericValue: 5000, suffix: "+",  label: "Tevreden cursisten" },
+      { icon: "⭐", numericValue: 100,  suffix: "+",  label: "Tevreden cursisten" },
       { icon: "🎓", value: "CBR",                    label: "Erkend materiaal"   },
     ],
     socialProof: {
-      text: "5.000+ cursisten gingen je voor",
+      text: "100+ cursisten gingen je voor",
       avatars: 5,
     },
   },
@@ -55,25 +50,46 @@ export const site = {
   },
   testimonials: [
     {
-      name: "Miryam A.",
+      name: "Dylan Lindelauf",
+      rating: 5,
+      title: "Hartstikke fijn!",
+      text: "Ik vond met Alex rijden hartstikke fijn. Ongeveer een halfjaar lang gereden met Alex en heb alles op mijn eigen tempo mogen benaderen. Tijdens het lessen heb ik het ook hartstikke gezellig gehad!",
+      time: "5 maanden geleden",
+    },
+    {
+      name: "Jenz Groen",
+      rating: 5,
+      title: "In 1x geslaagd!",
+      text: "De rijinstructeur (Alex) is top, heel fijn om mee op pad te gaan. Als je van een praatje houdt kan dat ook zeker. Legt alles ook goed uit. Ik ben met deze fijne lessen ook in 1x geslaagd — zeker een aanrader!",
+      time: "3 maanden geleden",
+    },
+    {
+      name: "Keano C.",
       rating: 5,
       title: "Aanrader!",
-      text: "In één keer geslaagd dankzij de duidelijke uitleg en goede oefenexamens. Echt een aanrader!",
-      time: "2 weken geleden",
+      text: "Ik heb goede lessen gehad van Alex. Een superfijne instructeur die duidelijk uitleg geeft en met wie het altijd gezellig is. Bedankt!",
+      time: "5 maanden geleden",
     },
     {
-      name: "Khalil C.",
+      name: "Vigo Jansen",
       rating: 5,
-      title: "Top cursus!",
-      text: "Top docent en 1x keer geslaagd. Echt aanrader voor iedereen die zijn rijbewijs wil halen.",
-      time: "1 maand geleden",
+      title: "Rijbewijs in 1 maand",
+      text: "Geweldige rijschool. Heb binnen 1 maand mijn rijbewijs gehaald met geweldige hulp van rijinstructeur Alex.",
+      time: "4 maanden geleden",
     },
     {
-      name: "Sara V.",
+      name: "Danilo Heyman",
       rating: 5,
-      title: "Intensief maar waardevol",
-      text: "Veel informatie, goede uitleg. Met vertrouwen het examen ingegaan en in één keer geslaagd.",
-      time: "3 weken geleden",
+      title: "Fijn en duidelijk",
+      text: "Fijne rustige rijinstructeur. Legt goed en duidelijk uit.",
+      time: "2 maanden geleden",
+    },
+    {
+      name: "Google-gebruiker",
+      rating: 4,
+      title: "Geslaagd na 2 eerdere pogingen",
+      text: "Geslaagd 🥳 Eerst 2 keer bij een andere rijschool gezakt. Nu in één keer geslaagd bij Alex.",
+      time: "5 maanden geleden",
     },
   ],
   courses: [
@@ -94,43 +110,25 @@ export const site = {
       description: "Ons meest populaire pakket met alles wat je nodig hebt.",
       includes: [
         "Alles uit Basis",
-        "Video-uitleg per onderwerp",
         "90 dagen toegang",
         "E-mail ondersteuning",
       ],
       badge: "Meest gekozen",
       cta: { label: "Kies Compleet", href: "/contact" },
     },
-    {
-      id: "premium",
-      title: "Premium Pakket",
-      description: "Maximale ondersteuning voor een zeker slagen.",
-      includes: [
-        "Alles uit Compleet",
-        "1-op-1 telefonische begeleiding",
-        "Onbeperkte toegang",
-        "Geld-terug-garantie",
-      ],
-      cta: { label: "Kies Premium", href: "/contact" },
-    },
   ],
   pricing: [
     { package: "Basis",    price: "€29", period: "eenmalig" },
     { package: "Compleet", price: "€49", period: "eenmalig", highlight: true },
-    { package: "Premium",  price: "€79", period: "eenmalig" },
   ],
   faq: [
     {
       question: "Hoe lang heb ik toegang tot de cursus?",
-      answer: "Dit is afhankelijk van het gekozen pakket: 30, 90 of onbeperkte dagen.",
+      answer: "Dit is afhankelijk van het gekozen pakket.",
     },
     {
       question: "Is het materiaal CBR-erkend?",
       answer: "Ja, al ons materiaal is gebaseerd op de officiële CBR-leerstof en wordt regelmatig bijgewerkt.",
-    },
-    {
-      question: "Wat als ik zak voor mijn examen?",
-      answer: "Premium-cursisten ontvangen volledige restitutie als ze niet slagen. Voor andere pakketten bieden we een herhalingsdeal aan.",
     },
     {
       question: "Kan ik de cursus op mijn telefoon volgen?",
@@ -143,20 +141,14 @@ export const site = {
   ],
   cta: {
     heading: "Klaar om in één keer te slagen?",
-    body: "Sluit je aan bij 5.000+ cursisten die al hun rijbewijs hebben behaald met A+theorie.",
+    body: "Sluit je aan bij 100+ cursisten die al hun rijbewijs hebben behaald met A+theorie.",
     button: { label: "Meld je aan", href: "/contact" },
-    trust: ["Geen abonnement", "Direct toegang", "Geld-terug garantie"],
+    trust: ["Geen abonnement", "Direct toegang"],
   },
   footer: {
     tagline: "Jouw weg naar het rijbewijs begint hier.",
-    hours: { weekdays: "Ma–Vr: 09:00–17:00", saturday: "Za: Gesloten", sunday: "Zo: Gesloten" },
-    copyright: `© ${new Date().getFullYear()} A+theorie. Alle rechten voorbehouden.`,
+    hours: { weekdays: "Ma–Za: 09:00–22:00", sunday: "Zo: 09:00–17:00" },
+    copyright: `© ${new Date().getFullYear()} AkkerDigital. Alle rechten voorbehouden.`,
   },
 };
 
-export const demoMode = {
-  enabled: true,          // Master switch — zet op false bij launch
-  showBanner: true,       // Gele demo banner bovenaan
-  markPlaceholders: true, // Visuele markering op placeholder-elementen
-  showPhase2: true,       // Cursussen- en Prijzensecties tonen of verbergen
-};

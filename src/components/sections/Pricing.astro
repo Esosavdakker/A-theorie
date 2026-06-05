@@ -1,16 +1,15 @@
 ---
 import Card from '../ui/Card.astro';
 import Button from '../ui/Button.astro';
-import { site, demoMode } from '../../config/site.config.js';
+import { site } from '../../config/site.config.js';
 ---
 
-{demoMode.enabled && demoMode.showPhase2 ? (
-<section class="pricing section demo-phase2-section" id="prijzen">
+<section class="pricing section" id="prijzen">
   <div class="container">
-    <span class="demo-phase2-badge">Voorbeeld — Fase 2</span>
     <p class="section__label" data-reveal>Prijzen</p>
     <h2 class="section__heading" data-reveal data-delay="1">Transparante prijzen</h2>
     <p class="section__sub" data-reveal data-delay="2">Geen verborgen kosten. Eenmalig betalen, direct starten.</p>
+    <div class="pricing__wrapper">
     <div class="pricing__grid">
       {site.courses.map((course, i) => (
         <Card highlighted={!!course.badge} data-reveal data-delay={String(i + 1)}>
@@ -39,29 +38,27 @@ import { site, demoMode } from '../../config/site.config.js';
         </Card>
       ))}
     </div>
+    </div>
     <p class="pricing__trust" data-reveal data-delay="4">
       💳 Geen abonnement &nbsp;·&nbsp; Eenmalig betalen &nbsp;·&nbsp; Direct toegang
     </p>
   </div>
 </section>
-) : (
-<section class="pricing section" id="prijzen">
-  <div class="container">
-    <p class="section__label">Prijzen</p>
-    <h2 class="section__heading">Onze prijzen</h2>
-    <p class="section__sub">
-      <a href="/contact" class="pricing__contact-link">Neem contact op</a> voor meer informatie over onze tarieven.
-    </p>
-  </div>
-</section>
-)}
 
 <style>
+.pricing__wrapper {
+  max-width: 52rem;
+  margin-inline: auto;
+}
 .pricing__grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-6);
-  align-items: start;
+  align-items: stretch;
+}
+:global(#prijzen .card) {
+  display: flex;
+  flex-direction: column;
 }
 .pricing__badge {
   display: inline-block;
@@ -128,7 +125,7 @@ import { site, demoMode } from '../../config/site.config.js';
   border-radius: var(--radius-sm);
   flex-shrink: 0;
 }
-.pricing__cta { width: 100%; justify-content: center; }
+.pricing__cta { width: 100%; justify-content: center; margin-top: auto; }
 .pricing__trust {
   text-align: center;
   margin-top: var(--space-8);
@@ -136,10 +133,8 @@ import { site, demoMode } from '../../config/site.config.js';
   color: var(--color-text-muted);
   letter-spacing: 0.01em;
 }
-.pricing__contact-link { color: var(--color-primary); font-weight: var(--font-weight-medium); }
-.pricing__contact-link:hover { text-decoration: underline; }
 
 @media (min-width: 768px) {
-  .pricing__grid { grid-template-columns: repeat(3, 1fr); align-items: stretch; }
+  .pricing__grid { grid-template-columns: repeat(2, 1fr); }
 }
 </style>

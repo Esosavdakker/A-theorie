@@ -2,7 +2,7 @@
 import '../styles/tokens.css';
 import Navbar from '../components/layout/Navbar.astro';
 import Footer from '../components/layout/Footer.astro';
-import { site, demoMode } from '../config/site.config.js';
+import { site } from '../config/site.config.js';
 
 interface Props {
   title?: string;
@@ -26,7 +26,7 @@ const pageTitle = title === site.name ? title : `${title} | ${site.name}`;
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="canonical" href={canonicalURL} />
-  <meta name="robots" content="noindex, nofollow" />
+  <meta name="robots" content="index, follow" />
 
   <title>{pageTitle}</title>
   <meta name="description" content={description} />
@@ -46,29 +46,6 @@ const pageTitle = title === site.name ? title : `${title} | ${site.name}`;
 </head>
 <body>
 
-  {demoMode.enabled && demoMode.showBanner && (
-    <div class="demo-banner" role="alert">
-      Demo / voorbeeld — definitieve content en cijfers volgen
-    </div>
-  )}
-
-  {site.announcement?.active && (
-    <div class="announcement-bar" id="announcement-bar">
-      <div class="container announcement__inner">
-        <span class="announcement__text">{site.announcement.text}</span>
-        <a href={site.announcement.cta.href} class="announcement__cta">
-          {site.announcement.cta.label}
-        </a>
-        <button class="announcement__close" id="close-announcement" aria-label="Sluiten">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-            <line x1="1" y1="1" x2="13" y2="13"/>
-            <line x1="13" y1="1" x2="1" y2="13"/>
-          </svg>
-        </button>
-      </div>
-    </div>
-  )}
-
   <Navbar />
   <main>
     <slot />
@@ -82,61 +59,22 @@ const pageTitle = title === site.name ? title : `${title} | ${site.name}`;
     </svg>
   </a>
 
+  <!-- Cookie banner -->
+  <div id="cookie-banner" class="cookie-banner" role="region" aria-label="Cookiemelding" hidden>
+    <div class="container cookie-banner__inner">
+      <p class="cookie-banner__text">
+        Deze website gebruikt alleen functionele cookies die nodig zijn voor de basisfunctionaliteit.
+        Er worden geen tracking- of marketingcookies gebruikt.
+        <a href="/cookieverklaring" class="cookie-banner__link">Lees onze cookieverklaring →</a>
+      </p>
+      <button id="cookie-accept">Akkoord</button>
+    </div>
+  </div>
+
 </body>
 </html>
 
 <style is:global>
-/* --- Demo banner --- */
-.demo-banner {
-  background: #fff3cd;
-  color: #856404;
-  border-bottom: 1px solid #ffc107;
-  padding: 8px 16px;
-  text-align: center;
-  font-size: 13px;
-  font-family: system-ui, sans-serif;
-}
-
-/* --- Announcement bar --- */
-.announcement-bar {
-  background: var(--color-primary-dark);
-  color: var(--color-white);
-  padding-block: var(--space-2);
-  font-size: var(--font-size-sm);
-  position: relative;
-  z-index: 200;
-}
-.announcement__inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-4);
-  flex-wrap: wrap;
-}
-.announcement__text { opacity: 0.9; }
-.announcement__cta {
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-accent);
-  white-space: nowrap;
-  transition: opacity var(--transition-fast);
-}
-.announcement__cta:hover { opacity: 0.8; }
-.announcement__close {
-  position: absolute;
-  right: var(--space-4);
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: rgb(255 255 255 / 0.6);
-  cursor: pointer;
-  padding: var(--space-1);
-  display: flex;
-  align-items: center;
-  transition: color var(--transition-fast);
-}
-.announcement__close:hover { color: var(--color-white); }
-
 /* --- WhatsApp FAB --- */
 .whatsapp-fab {
   position: fixed;
@@ -166,18 +104,75 @@ const pageTitle = title === site.name ? title : `${title} | ${site.name}`;
   0%, 100% { box-shadow: 0 4px 20px rgb(37 211 102 / 0.45); }
   50%       { box-shadow: 0 4px 20px rgb(37 211 102 / 0.45), 0 0 0 10px rgb(37 211 102 / 0.12); }
 }
+
+/* --- Cookie accept button --- */
+#cookie-accept {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2) var(--space-5);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  white-space: nowrap;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  background: var(--gradient-accent);
+  color: var(--color-white);
+  box-shadow: var(--shadow-accent);
+  transition: transform var(--duration-normal) var(--ease-spring),
+              box-shadow var(--duration-normal) var(--ease-out);
+}
+#cookie-accept:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 28px rgb(249 115 22 / 0.45);
+}
+#cookie-accept:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+#cookie-accept:active { transform: translateY(0) scale(0.98); }
+
+/* --- Cookie banner --- */
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  background: var(--color-white);
+  border-top: 1px solid var(--color-border);
+  box-shadow: 0 -4px 20px rgb(0 0 0 / 0.08);
+  padding-block: var(--space-4);
+}
+.cookie-banner__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+.cookie-banner__text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  flex: 1;
+  min-width: 16rem;
+  line-height: var(--line-height-relaxed);
+}
+.cookie-banner__link {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  white-space: nowrap;
+}
+@media (max-width: 599px) {
+  .cookie-banner__inner { flex-direction: column; align-items: stretch; }
+  .cookie-banner__inner .btn { justify-content: center; }
+}
 </style>
 
 <script>
-/* ---- Announcement bar dismiss ---- */
-const bar   = document.getElementById('announcement-bar');
-const close = document.getElementById('close-announcement');
-if (sessionStorage.getItem('ann-dismissed')) bar?.remove();
-close?.addEventListener('click', () => {
-  bar?.remove();
-  sessionStorage.setItem('ann-dismissed', '1');
-});
-
 /* ---- Scroll reveal ---- */
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -218,4 +213,22 @@ const counterObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 
 document.querySelectorAll('[data-counter-group]').forEach(el => counterObserver.observe(el));
+
+/* ---- Cookie banner ---- */
+const cookieBanner = document.getElementById('cookie-banner') as HTMLElement | null;
+const cookieAccept = document.getElementById('cookie-accept');
+const fab          = document.querySelector('.whatsapp-fab') as HTMLElement | null;
+
+if (!localStorage.getItem('cookies-ok') && cookieBanner) {
+  cookieBanner.removeAttribute('hidden');
+  const nudge = () => { if (fab) fab.style.bottom = `calc(var(--space-6) + ${cookieBanner.offsetHeight}px)`; };
+  nudge();
+  window.addEventListener('resize', nudge, { passive: true });
+  cookieAccept?.addEventListener('click', () => {
+    localStorage.setItem('cookies-ok', '1');
+    cookieBanner.setAttribute('hidden', '');
+    if (fab) fab.style.bottom = '';
+    window.removeEventListener('resize', nudge);
+  });
+}
 </script>

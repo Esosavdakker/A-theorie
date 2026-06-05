@@ -14,3 +14,23 @@
   port = 8888
   targetPort = 4321
   framework = "astro"
+
+# HTTP → HTTPS (301)
+[[redirects]]
+  from   = "http://aplustheorie.nl/*"
+  to     = "https://aplustheorie.nl/:splat"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from   = "http://www.aplustheorie.nl/*"
+  to     = "https://aplustheorie.nl/:splat"
+  status = 301
+  force  = true
+
+# www → apex (301)
+[[redirects]]
+  from   = "https://www.aplustheorie.nl/*"
+  to     = "https://aplustheorie.nl/:splat"
+  status = 301
+  force  = true

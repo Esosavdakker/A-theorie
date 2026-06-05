@@ -1,5 +1,5 @@
 ---
-import { site, demoMode } from '../../config/site.config.js';
+import { site } from '../../config/site.config.js';
 const { hero } = site;
 ---
 
@@ -13,7 +13,7 @@ const { hero } = site;
       <!-- Trust pill -->
       <div class="hero__trust-pill" data-reveal data-delay="1">
         <span class="hero__trust-dot" aria-hidden="true"></span>
-        <span>CBR-erkend · 5.000+ geslaagd</span>
+        <span>CBR-erkend · 100+ geslaagd</span>
       </div>
 
       <!-- Headline -->
@@ -23,10 +23,7 @@ const { hero } = site;
       </h1>
 
       <!-- Stats pills -->
-      <div class="hero__stats-bar" data-counter-group data-reveal data-delay="3" style="position:relative">
-        {demoMode.enabled && demoMode.markPlaceholders && (
-          <span class="placeholder-tag" aria-hidden="true">📝 placeholder</span>
-        )}
+      <div class="hero__stats-bar" data-counter-group data-reveal data-delay="3">
         {hero.stats.map(s => (
           <div class="hero__stat-pill">
             <span class="hero__stat-icon" aria-hidden="true">{s.icon}</span>

@@ -9,8 +9,10 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/netlify": "^5.5.0",
+    "@astrojs/sitemap": "^3.7.2",
     "astro": "^4.16.0",
-    "@astrojs/netlify": "^5.5.0"
+    "resend": "^6.12.3"
   },
   "devDependencies": {
     "@netlify/functions": "^2.8.1"
