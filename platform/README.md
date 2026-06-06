@@ -39,18 +39,22 @@ under Authentication → Providers → Email.)
 1. `/signup` → create an account → check your email → click the link.
 2. `/login` → you land on `/dashboard`.
 3. The dashboard shows **"Geen actieve toegang"** until a `course_access` row
-   exists. To simulate paid access before Phase 2, run in the Supabase SQL
-   Editor (replace the email + course):
+   exists. To simulate a paid purchase before Phase 2, run in the Supabase SQL
+   Editor (replace the email). This creates a test order + a time-boxed access
+   row, exactly like the Mollie webhook will in Phase 2:
    ```sql
+   with o as (
+     insert into public.orders (user_id, course_id, mollie_payment_id, amount_cents, status)
+     select p.id, c.id, 'test_' || gen_random_uuid(), c.price_cents, 'paid'
+     from public.profiles p, public.courses c
+     where p.email = 'you@example.com' and c.slug = 'compleet'
+     returning id, user_id, course_id
+   )
    insert into public.course_access (user_id, course_id, order_id, expires_at)
-   select p.id, c.id,
-          gen_random_uuid(),               -- placeholder order id (FK to orders in prod)
-          now() + (c.access_days || ' days')::interval
-   from public.profiles p, public.courses c
-   where p.email = 'you@example.com' and c.slug = 'compleet';
+   select o.user_id, o.course_id, o.id,
+          now() + ((select access_days from public.courses where slug = 'compleet') || ' days')::interval
+   from o;
    ```
-   > Note: `course_access.order_id` references `orders` — for a real grant create
-   > an order first; this snippet is only for eyeballing the dashboard UI.
 
 ## Deploy (later)
 Deploy this `platform/` directory to Vercel or Netlify, set the same env vars,
