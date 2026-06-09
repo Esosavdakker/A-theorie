@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Werk Overzicht — AkkerDigital × A+theorie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:          #0d0d1a;
+  --bg-card:     #13132a;
+  --bg-card2:    #1a1a35;
+  --border:      rgba(255,255,255,0.07);
+  --border-glow: rgba(168,85,247,0.35);
+  --purple:      #7c3aed;
+  --violet:      #a855f7;
+  --rose:        #e879f9;
+  --grad:        linear-gradient(135deg,#7c3aed 0%,#e879f9 100%);
+  --grad-soft:   linear-gradient(135deg,rgba(124,58,237,.15) 0%,rgba(232,121,249,.12) 100%);
+  --white:       #ffffff;
+  --muted:       rgba(255,255,255,0.55);
+  --muted2:      rgba(255,255,255,0.28);
+  --green:       #34d399;
+  --amber:       #fbbf24;
+  --red:         #f87171;
+  --blue:        #60a5fa;
+  --radius:      14px;
+  --radius-sm:   8px;
+  --radius-full: 999px;
+}
+html { scroll-behavior: smooth }
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.g {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* NAV */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(13,13,26,0.88);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+}
+.nav__inner {
+  max-width: 960px; margin: 0 auto;
+  height: 60px; display: flex; align-items: center; justify-content: space-between;
+}
+.nav__logo { display: flex; align-items: center; gap: 10px; text-decoration: none }
+.nav__mark { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; flex-shrink: 0 }
+.nav__name { font-size: 15px; font-weight: 800; color: var(--white); letter-spacing: -.01em }
+.nav__name span { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text }
+.nav__pill {
+  background: var(--grad-soft);
+  border: 1px solid var(--border-glow);
+  color: var(--violet);
+  font-size: 12px; font-weight: 700;
+  padding: 5px 14px; border-radius: var(--radius-full);
+}
+
+/* OPENING */
+.opening {
+  padding: 80px 24px 88px;
+  position: relative; overflow: hidden;
+}
+.opening::before {
+  content: ''; position: absolute;
+  top: -140px; left: 50%; transform: translateX(-50%);
+  width: 680px; height: 680px;
+  background: radial-gradient(circle, rgba(124,58,237,.2) 0%, transparent 68%);
+  pointer-events: none;
+}
+.opening::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+}
+.opening__inner { max-width: 960px; margin: 0 auto; position: relative }
+.opening__date {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--grad-soft);
+  border: 1px solid var(--border-glow);
+  color: var(--violet);
+  font-size: 12px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+  padding: 6px 16px; border-radius: var(--radius-full);
+  margin-bottom: 28px;
+}
+.opening__date::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--rose); box-shadow: 0 0 8px var(--rose);
+}
+.opening__aanhef {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800; letter-spacing: -.03em;
+  margin-bottom: 20px; line-height: 1.15;
+}
+.opening__body {
+  font-size: 16px; color: var(--muted);
+  max-width: 580px; line-height: 1.8;
+}
+.opening__body p + p { margin-top: 12px }
+
+/* CONTENT */
+.wrap { max-width: 960px; margin: 0 auto; padding: 72px 24px 100px }
+.section { margin-bottom: 72px }
+.section__label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .12em; color: var(--violet);
+  margin-bottom: 10px;
+}
+.section__label::before {
+  content: ''; width: 18px; height: 2px;
+  background: var(--grad); border-radius: 2px;
+}
+.section__heading {
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 800; letter-spacing: -.02em;
+  color: var(--white); margin-bottom: 8px;
+}
+.section__intro {
+  font-size: 14px; color: var(--muted);
+  margin-bottom: 24px;
+  max-width: 560px; line-height: 1.65;
+}
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+  margin: 60px 0;
+}
+
+/* TASK CARDS */
+.task-list { display: flex; flex-direction: column; gap: 12px }
+
+.task-card {
+  display: flex; gap: 16px; align-items: flex-start;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  transition: border-color .2s, background .2s;
+}
+.task-card:hover { border-color: var(--border-glow); background: var(--bg-card2) }
+.task-card--urgent { border-left: 3px solid var(--red) }
+.task-card--normal { border-left: 3px solid var(--amber) }
+.task-card--wait   { border-left: 3px solid var(--blue) }
+.task-card--fase2  { border-left: 3px solid var(--violet) }
+
+.task-icon {
+  width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; margin-top: 1px;
+}
+.task-icon--red    { background: rgba(248,113,113,.12); border: 1px solid rgba(248,113,113,.25) }
+.task-icon--amber  { background: rgba(251,191,36,.12);  border: 1px solid rgba(251,191,36,.25) }
+.task-icon--blue   { background: rgba(96,165,250,.12);  border: 1px solid rgba(96,165,250,.25) }
+.task-icon--violet { background: rgba(168,85,247,.12);  border: 1px solid rgba(168,85,247,.25) }
+.task-icon--green  { background: rgba(52,211,153,.12);  border: 1px solid rgba(52,211,153,.25) }
+
+.task-body { flex: 1; min-width: 0 }
+.task-title {
+  font-size: 15px; font-weight: 700; color: var(--white);
+  margin-bottom: 6px;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+
+.tag {
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .06em; padding: 3px 9px; border-radius: var(--radius-full);
+}
+.tag--urgent {
+  background: rgba(248,113,113,.15);
+  border: 1px solid rgba(248,113,113,.3);
+  color: var(--red);
+}
+.tag--wacht {
+  background: rgba(96,165,250,.12);
+  border: 1px solid rgba(96,165,250,.25);
+  color: var(--blue);
+}
+.tag--klein {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  color: var(--muted);
+}
+.tag--fase2 {
+  background: rgba(168,85,247,.12);
+  border: 1px solid rgba(168,85,247,.25);
+  color: var(--violet);
+}
+.tag--betaald {
+  background: rgba(52,211,153,.12);
+  border: 1px solid rgba(52,211,153,.25);
+  color: var(--green);
+}
+
+.task-desc { font-size: 13px; color: var(--muted); line-height: 1.6 }
+.task-desc strong { color: rgba(255,255,255,.85); font-weight: 600 }
+
+/* WAIT TABLE */
+.wait-table { width: 100%; border-collapse: collapse; margin-top: 4px }
+.wait-table th {
+  text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; color: var(--muted2);
+  padding: 0 12px 12px; border-bottom: 1px solid var(--border);
+}
+.wait-table td {
+  font-size: 13px; color: rgba(255,255,255,.8);
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.55;
+}
+.wait-table tr:last-child td { border-bottom: none }
+.wait-table td:first-child { font-weight: 600; color: var(--white); white-space: nowrap }
+.wait-table-wrap {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/* FASE 2 PRICING */
+.fase2-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+@media (min-width: 560px) { .fase2-grid { grid-template-columns: 1fr 1fr } }
+
+.fase2-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  transition: border-color .2s;
+}
+.fase2-card:hover { border-color: var(--border-glow) }
+.fase2-card__price {
+  font-size: 28px; font-weight: 800; letter-spacing: -.03em;
+  background: var(--grad);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  margin-bottom: 4px;
+}
+.fase2-card__name { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 8px }
+.fase2-card__desc { font-size: 13px; color: var(--muted); line-height: 1.55 }
+.fase2-card__list {
+  list-style: none; margin-top: 12px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.fase2-card__list li {
+  font-size: 12px; color: var(--muted);
+  padding-left: 14px; position: relative;
+}
+.fase2-card__list li::before { content: '–'; position: absolute; left: 0; color: var(--muted2) }
+
+.totaal-box {
+  background: linear-gradient(135deg, rgba(124,58,237,.18) 0%, rgba(232,121,249,.12) 100%);
+  border: 1px solid var(--border-glow);
+  border-radius: var(--radius);
+  padding: 22px 26px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px;
+}
+.totaal-box__label { font-size: 14px; font-weight: 700; color: var(--white) }
+.totaal-box__sub { font-size: 12px; color: var(--muted); margin-top: 2px }
+.totaal-box__amount {
+  font-size: 28px; font-weight: 800; letter-spacing: -.03em;
+  background: var(--grad);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+/* STATUS GRID */
+.status-grid {
+  display: grid; grid-template-columns: 1fr; gap: 16px;
+}
+@media (min-width: 640px) { .status-grid { grid-template-columns: 1fr 1fr } }
+.status-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 24px 26px;
+  transition: border-color .2s, background .2s;
+}
+.status-card:hover { border-color: var(--border-glow); background: var(--bg-card2) }
+.status-card--done { border-top: 2px solid var(--green) }
+.status-card--open { border-top: 2px solid var(--amber) }
+.status-card__heading {
+  font-size: 13px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .07em; margin-bottom: 16px;
+}
+.status-card--done .status-card__heading { color: var(--green) }
+.status-card--open .status-card__heading { color: var(--amber) }
+.status-list { list-style: none; display: flex; flex-direction: column; gap: 10px }
+.status-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 14px; color: rgba(255,255,255,.8); line-height: 1.5;
+}
+.status-list li::before { flex-shrink: 0; margin-top: 3px; font-size: 13px; line-height: 1 }
+.status-card--done .status-list li::before { content: '✓'; color: var(--green) }
+.status-card--open .status-list li::before { content: '·'; color: var(--amber); font-size: 20px; margin-top: 0 }
+
+/* CTA */
+.cta-section { text-align: center }
+.cta-section__body {
+  font-size: 15px; color: var(--muted);
+  max-width: 480px; margin: 0 auto 32px; line-height: 1.75;
+}
+.cta-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px }
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700; font-size: 14px;
+  padding: 13px 26px; border-radius: var(--radius-sm);
+  text-decoration: none; white-space: nowrap;
+  transition: transform .2s, box-shadow .2s, opacity .2s;
+}
+.cta-btn--primary {
+  background: var(--grad); color: var(--white);
+  box-shadow: 0 4px 20px rgba(124,58,237,.35);
+}
+.cta-btn--primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(124,58,237,.5) }
+.cta-btn--ghost {
+  background: transparent; color: rgba(255,255,255,.8);
+  border: 1px solid rgba(255,255,255,.18);
+}
+.cta-btn--ghost:hover { border-color: var(--border-glow); color: var(--white); transform: translateY(-2px) }
+
+/* FOOTER */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 24px; text-align: center;
+}
+.footer__logo { font-size: 15px; font-weight: 800; margin-bottom: 4px }
+.footer__copy { font-size: 12px; color: var(--muted) }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="#" class="nav__logo">
+      <div class="nav__mark">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="28" height="28">
+          <defs>
+            <linearGradient id="ak-t" x1="81" y1="2" x2="37" y2="50" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#fce7f3"/><stop offset="100%" stop-color="#e879f9"/>
+            </linearGradient>
+            <linearGradient id="ak-l" x1="37" y1="50" x2="16" y2="100" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#c026d3"/><stop offset="100%" stop-color="#7c3aed"/>
+            </linearGradient>
+            <linearGradient id="ak-r" x1="56" y1="50" x2="63" y2="100" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#8b5cf6"/><stop offset="100%" stop-color="#4c1d95"/>
+            </linearGradient>
+          </defs>
+          <polygon points="25,50 49,50 28,100 4,100" fill="url(#ak-l)"/>
+          <polygon points="49,50 63,56 70,100 56,100" fill="url(#ak-r)"/>
+          <polygon points="25,50 49,50 47,60 23,56" fill="#1e1b4b" opacity="0.45"/>
+          <polygon points="25,50 49,50 93,3 69,2" fill="url(#ak-t)"/>
+        </svg>
+      </div>
+      <span class="nav__name">Akker<span>Digital</span></span>
+    </a>
+    <span class="nav__pill">Werk Overzicht · Fase 2</span>
+  </div>
+</nav>
+
+<!-- OPENING -->
+<section class="opening">
+  <div class="opening__inner">
+    <div class="opening__date">Juni 2026 · A+theorie</div>
+    <h1 class="opening__aanhef">
+      Openstaand werk —<br/>
+      <span class="g">wat moet er nog komen.</span>
+    </h1>
+    <div class="opening__body">
+      <p>
+        Fase 1 is opgeleverd. Dit document laat zien wat er nog open staat:
+        kleine restpunten van de huidige site, acties die wachten op Alex,
+        en de scope voor Fase 2.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+
+  <!-- ═══════════════════════════
+       SECTIE 1 — SNEL OVERZICHT
+  ═══════════════════════════ -->
+  <div class="section">
+    <p class="section__label">Samenvatting</p>
+    <h2 class="section__heading">Huidige staat</h2>
+    <div class="status-grid">
+
+      <div class="status-card status-card--done">
+        <div class="status-card__heading">Fase 1 — Opgeleverd</div>
+        <ul class="status-list">
+          <li>5 pagina's live op aplustheorie.nl</li>
+          <li>Responsive design — mobiel, tablet, desktop</li>
+          <li>Contactformulier actief (tijdelijk naar Gmail)</li>
+          <li>SEO-structuur, Open Graph, sitemap ingediend</li>
+          <li>Google Search Console gekoppeld</li>
+          <li>Hosting via Netlify CDN</li>
+        </ul>
+      </div>
+
+      <div class="status-card status-card--open">
+        <div class="status-card__heading">Nog open</div>
+        <ul class="status-list">
+          <li>E-mail definitief naar info@aplustheorie.nl</li>
+          <li>Betaling 50% van Alex (€ 325 excl. BTW)</li>
+          <li>Copyright terug naar A+theorie na betaling</li>
+          <li>OG-afbeelding voor social sharing</li>
+          <li>Fase 2 nog niet gestart</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════
+       SECTIE 2 — MIJN ACTIES
+  ═══════════════════════════ -->
+  <div class="section">
+    <p class="section__label">Mijn acties</p>
+    <h2 class="section__heading">Wat ik nog moet doen</h2>
+    <p class="section__intro">Taken die ik zelf kan afronden, zodra de voorwaarden kloppen.</p>
+
+    <div class="task-list">
+
+      <div class="task-card task-card--urgent">
+        <div class="task-icon task-icon--red">💶</div>
+        <div class="task-body">
+          <div class="task-title">
+            Betaling ontvangen — copyright terug
+            <span class="tag tag--urgent">Urgent</span>
+          </div>
+          <p class="task-desc">
+            Zodra Alex <strong>€ 325 excl. BTW</strong> heeft overgemaakt, zet ik de copyright
+            in de footer terug van "AkkerDigital" naar "A+theorie". Dit is de enige aanpassing
+            die nog van betaling afhangt.
+          </p>
+        </div>
+      </div>
+
+      <div class="task-card task-card--normal">
+        <div class="task-icon task-icon--amber">📧</div>
+        <div class="task-body">
+          <div class="task-title">
+            E-mail definitief instellen
+            <span class="tag tag--wacht">Wacht op Alex</span>
+          </div>
+          <p class="task-desc">
+            Zodra Alex het postvak <strong>info@aplustheorie.nl</strong> activeert in GoDaddy
+            en de SPF-record is ingesteld (<code>v=spf1 include:_spf.resend.com include:secureserver.net ~all</code>),
+            schakel ik het contactformulier over van jasrijschool@gmail.com naar info@aplustheorie.nl.
+            Dit is een aanpassing van één regel in de serverless function.
+          </p>
+        </div>
+      </div>
+
+      <div class="task-card task-card--normal">
+        <div class="task-icon task-icon--amber">🖼️</div>
+        <div class="task-body">
+          <div class="task-title">
+            OG-afbeelding toevoegen
+            <span class="tag tag--wacht">Wacht op Alex</span>
+          </div>
+          <p class="task-desc">
+            Voor een nette preview op WhatsApp, LinkedIn en Google is een
+            <strong>og-image.jpg van 1200×630 px</strong> nodig. Alex levert de afbeelding aan,
+            ik zet hem op de server. Nu staat er een placeholder.
+          </p>
+        </div>
+      </div>
+
+      <div class="task-card task-card--normal">
+        <div class="task-icon task-icon--amber">📊</div>
+        <div class="task-body">
+          <div class="task-title">
+            "100+ cursisten" aanpassen
+            <span class="tag tag--klein">Kleine fix</span>
+          </div>
+          <p class="task-desc">
+            De homepage toont nu "100+ tevreden cursisten" als stat. Omdat A+theorie
+            net is gestart, kan ik dit aanpassen naar <strong>"CBR-erkend materiaal"</strong>
+            of een andere claim die klopt. Kan ik snel doorvoeren.
+          </p>
+        </div>
+      </div>
+
+      <div class="task-card task-card--normal">
+        <div class="task-icon task-icon--green">🚀</div>
+        <div class="task-body">
+          <div class="task-title">
+            Netlify productie deploy activeren
+            <span class="tag tag--klein">Eenmalig</span>
+          </div>
+          <p class="task-desc">
+            Alle recente wijzigingen staan op de feature branch. Via het Netlify dashboard
+            (Deploys → Publish deploy) moeten ze naar productie gepushed worden zodat
+            aplustheorie.nl de nieuwste versie toont.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════
+       SECTIE 3 — WACHT OP ALEX
+  ═══════════════════════════ -->
+  <div class="section">
+    <p class="section__label">Acties voor Alex</p>
+    <h2 class="section__heading">Wat Alex moet regelen</h2>
+    <p class="section__intro">
+      Dit zijn de punten waar ik op wacht. Zodra Alex dit afhandelt, kan ik direct doorgaan.
+    </p>
+
+    <div class="wait-table-wrap">
+      <table class="wait-table">
+        <thead>
+          <tr>
+            <th>Actie</th>
+            <th>Wat het inhoudt</th>
+            <th>Prioriteit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Betaling 50%</td>
+            <td>€ 325 excl. BTW overmaken — afgesproken bij oplevering. Na ontvangst zet ik copyright terug.</td>
+            <td><span class="tag tag--urgent">Urgent</span></td>
+          </tr>
+          <tr>
+            <td>GoDaddy mailbox activeren</td>
+            <td>In GoDaddy → Email &amp; Office op "Laten we dit oplossen" klikken voor info@aplustheorie.nl. Daarna SPF-record aanpassen in DNS.</td>
+            <td><span class="tag tag--urgent">Urgent</span></td>
+          </tr>
+          <tr>
+            <td>Prijzen bevestigen</td>
+            <td>Basis €29 / Compleet €49 — kloppen deze nog? Zo niet, doorsturen wat het moet zijn.</td>
+            <td><span class="tag tag--klein">Normaal</span></td>
+          </tr>
+          <tr>
+            <td>OG-afbeelding aanleveren</td>
+            <td>Afbeelding van 1200×630 px voor social media previews. Kan een logo op gekleurde achtergrond zijn.</td>
+            <td><span class="tag tag--klein">Normaal</span></td>
+          </tr>
+          <tr>
+            <td>Akkoord Fase 2</td>
+            <td>Bevestigen dat Login &amp; Registratie + Betaalflow worden afgenomen (€ 400 excl. BTW totaal). Zie sectie hieronder.</td>
+            <td><span class="tag tag--fase2">Fase 2</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════
+       SECTIE 4 — FASE 2
+  ═══════════════════════════ -->
+  <div class="section">
+    <p class="section__label">Fase 2</p>
+    <h2 class="section__heading">Nieuw werk — Login &amp; Betaalflow</h2>
+    <p class="section__intro">
+      Zodra Alex akkoord gaat, start Fase 2. Dit zijn twee losse onderdelen die
+      onafhankelijk van elkaar opgeleverd kunnen worden.
+    </p>
+
+    <div class="fase2-grid">
+      <div class="fase2-card">
+        <div class="fase2-card__price">€ 250,–</div>
+        <div class="fase2-card__name">Login &amp; Registratie</div>
+        <div class="fase2-card__desc">Cursisten kunnen een account aanmaken en inloggen op het platform.</div>
+        <ul class="fase2-card__list">
+          <li>Login-pagina UI</li>
+          <li>Signup-pagina UI</li>
+          <li>Betalingspagina UI</li>
+          <li>E-mailverificatie koppeling</li>
+          <li>Database-schema &amp; migratie</li>
+          <li>Supabase Auth-backend koppeling</li>
+          <li>Time-based access logica</li>
+          <li>Security (JWT, signed media, veilige URL's)</li>
+        </ul>
+      </div>
+
+      <div class="fase2-card">
+        <div class="fase2-card__price">€ 150,–</div>
+        <div class="fase2-card__name">Betaalflow</div>
+        <div class="fase2-card__desc">Cursisten kunnen een pakket kiezen en betalen via iDEAL / creditcard.</div>
+        <ul class="fase2-card__list">
+          <li>Mollie create-payment aanroep</li>
+          <li>Webhook verwerking na succesvolle betaling</li>
+          <li>Doorstuur-logica op mislukking/succes</li>
+          <li>Koppeling naar Mollie webhook URL</li>
+          <li>Getest op Mollie test-modus</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="totaal-box">
+      <div>
+        <div class="totaal-box__label">Totaal Fase 2</div>
+        <div class="totaal-box__sub">Login + Registratie + Betaalflow · excl. BTW</div>
+      </div>
+      <div class="totaal-box__amount">€ 400,–</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════
+       SECTIE 5 — CTA
+  ═══════════════════════════ -->
+  <div class="section cta-section">
+    <p class="section__label" style="justify-content:center">Contact</p>
+    <h2 class="section__heading">Vragen of klaar om door te gaan?</h2>
+    <p class="cta-section__body">
+      Stuur me een WhatsApp of e-mail. Zodra betaling en e-mail geregeld zijn,
+      kunnen we meteen starten met Fase 2.
+    </p>
+    <div class="cta-btns">
+      <a href="https://wa.me/31644793093" class="cta-btn cta-btn--primary" target="_blank" rel="noopener noreferrer">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+      <a href="mailto:esosavandenakker@gmail.com" class="cta-btn cta-btn--ghost">
+        ✉️ esosavandenakker@gmail.com
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__logo"><span style="background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Akker</span>Digital</div>
+  <div class="footer__copy">© 2026 AkkerDigital · Werk overzicht A+theorie</div>
+</footer>
+
+</body>
+</html>
