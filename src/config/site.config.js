@@ -26,6 +26,8 @@ export const site = {
   hero: {
     headline1: "Jouw theorie-examen,",
     headline2: "in één keer gehaald.",
+    byline: "Van Alex · rijinstructeur · IJmuiden",
+    intro: "Ik ben Alex — rijinstructeur uit IJmuiden. Met mijn CBR-erkende online cursus bereid ik jou voor op je theorie-examen, zodat je in één keer slaagt.",
     ctaPrimary: { label: "Meld je aan", href: "/contact" },
     trust: ["CBR-oefenexamens", "Direct toegang", "Alle apparaten"],
     stats: [
