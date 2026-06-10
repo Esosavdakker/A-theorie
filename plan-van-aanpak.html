@@ -396,7 +396,7 @@ body {
   <div class="section">
     <p class="section__label">Aanpak</p>
     <h2 class="section__heading">Stappenplan</h2>
-    <p class="section__intro">Twee fases. Backend is aangeleverd door Fahad via GitHub — nog te mergen.</p>
+    <p class="section__intro">Twee fases, stap voor stap opgeleverd.</p>
     <div class="checklist">
 
       <div class="checklist-item">
@@ -410,7 +410,7 @@ body {
             <li>Signup pagina: voornaam, achternaam, email, wachtwoord, bevestig wachtwoord</li>
             <li>Login pagina: email + wachtwoord</li>
             <li>Formuliervalidatie + zichtbare foutmeldingen</li>
-            <li>Koppeling aan Supabase Auth (aangeleverd door Fahad)</li>
+            <li>Koppeling aan Supabase Auth</li>
             <li>Redirect na succesvolle login naar dashboard</li>
             <li>Responsive, consistent met Astro marketing site</li>
             <li><strong>Prijs: € 250,–</strong></li>
@@ -430,119 +430,13 @@ body {
             <li>Loading state tijdens betaalverwerking</li>
             <li>Betalingsbevestiging pagina na succesvolle betaling</li>
             <li>Foutpagina bij mislukte of geannuleerde betaling</li>
-            <li>Koppeling aan Mollie redirect URL (aangeleverd door Fahad)</li>
+            <li>Koppeling aan Mollie redirect URL</li>
             <li><strong>Prijs: € 150,–</strong></li>
           </ul>
         </div>
       </div>
 
     </div>
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- SECTIE 3 — TAAKVERDELING -->
-  <div class="section">
-    <p class="section__label">Rollen</p>
-    <h2 class="section__heading">Taakverdeling</h2>
-    <p class="section__intro">Duidelijke scheiding tussen frontend en backend verantwoordelijkheid.</p>
-    <div class="status-grid">
-
-      <div class="status-card status-card--neutral">
-        <div class="status-card__heading">Esosa — Akker Digital</div>
-        <div class="status-card__subheading">Frontend UI/UX</div>
-        <ul class="status-list">
-          <li>Signup pagina UI</li>
-          <li>Login pagina UI</li>
-          <li>Formuliervalidatie + error states</li>
-          <li>Betaalpagina UI</li>
-          <li>Betalingsbevestiging UI</li>
-          <li>Responsive design</li>
-        </ul>
-      </div>
-
-      <div class="status-card status-card--neutral">
-        <div class="status-card__heading">Fahad</div>
-        <div class="status-card__subheading">Backend &amp; infrastructuur</div>
-        <ul class="status-list">
-          <li>Supabase Auth (sessie, tokens)</li>
-          <li>Database schema + migraties</li>
-          <li>Mollie webhook + verificatie</li>
-          <li>Time-boxed access (expires_at)</li>
-          <li>API endpoints</li>
-          <li>Security: RLS, signed media</li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- SECTIE 4 — GAP-ANALYSE TABEL -->
-  <div class="section">
-    <p class="section__label">Technisch</p>
-    <h2 class="section__heading">Gap-analyse — wie pakt wat op</h2>
-    <p class="section__intro">Gebaseerd op de technische analyse van de bestaande codebase.</p>
-    <div class="gap-table-wrap">
-      <table class="gap-table">
-        <thead>
-          <tr>
-            <th>Onderdeel</th>
-            <th>Huidige staat</th>
-            <th>Wie</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Marketing site (Astro)</td>
-            <td>✅ Werkend</td>
-            <td><span class="tag tag--blijft">Blijft staan</span></td>
-          </tr>
-          <tr>
-            <td>Login UI</td>
-            <td>Route aangemaakt, pagina leeg</td>
-            <td><span class="tag tag--esosa">Esosa</span></td>
-          </tr>
-          <tr>
-            <td>Signup UI</td>
-            <td>Route aangemaakt, pagina leeg</td>
-            <td><span class="tag tag--esosa">Esosa</span></td>
-          </tr>
-          <tr>
-            <td>Betaalpagina UI</td>
-            <td>Niet aanwezig</td>
-            <td><span class="tag tag--esosa">Esosa</span></td>
-          </tr>
-          <tr>
-            <td>Betalingsbevestiging UI</td>
-            <td>Niet aanwezig</td>
-            <td><span class="tag tag--esosa">Esosa</span></td>
-          </tr>
-          <tr>
-            <td>Supabase Auth backend</td>
-            <td>Niet aanwezig</td>
-            <td><span class="tag tag--fahad">Fahad ✓</span></td>
-          </tr>
-          <tr>
-            <td>Mollie webhook verificatie</td>
-            <td>Aanwezig, onbevestigd</td>
-            <td><span class="tag tag--fahad">Fahad ✓</span></td>
-          </tr>
-          <tr>
-            <td>Time-boxed access</td>
-            <td>course_access geeft eeuwige toegang</td>
-            <td><span class="tag tag--fahad">Fahad ✓</span></td>
-          </tr>
-          <tr>
-            <td>Security (RLS, URL's)</td>
-            <td>GET /access/:userId/:courseId open</td>
-            <td><span class="tag tag--fahad">Fahad ✓</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p style="font-size:12px;color:var(--muted2);margin-top:10px">Fahad ✓ = backend aangeleverd via GitHub, nog te mergen.</p>
   </div>
 
   <div class="divider"></div>
