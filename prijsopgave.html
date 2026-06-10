@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Offerte ADQ-2026-001 · AkkerDigital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:          #0d0d1a;
+  --bg-card:     #13132a;
+  --bg-card2:    #1a1a35;
+  --border:      rgba(255,255,255,0.07);
+  --border-glow: rgba(168,85,247,0.35);
+  --purple:      #7c3aed;
+  --violet:      #a855f7;
+  --rose:        #e879f9;
+  --grad:        linear-gradient(135deg,#7c3aed 0%,#e879f9 100%);
+  --grad-soft:   linear-gradient(135deg,rgba(124,58,237,.15) 0%,rgba(232,121,249,.12) 100%);
+  --white:       #ffffff;
+  --muted:       rgba(255,255,255,0.55);
+  --muted2:      rgba(255,255,255,0.28);
+  --green:       #34d399;
+  --amber:       #fbbf24;
+  --radius:      14px;
+  --radius-sm:   8px;
+  --radius-full: 999px;
+}
+
+html { scroll-behavior: smooth }
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.g {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ══ NAVBAR ══ */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(13,13,26,0.88);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+}
+.nav__inner {
+  max-width: 960px; margin: 0 auto;
+  height: 60px; display: flex; align-items: center; justify-content: space-between;
+}
+.nav__logo { display: flex; align-items: center; gap: 10px; text-decoration: none }
+.nav__mark { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; flex-shrink: 0 }
+.nav__name { font-size: 15px; font-weight: 800; color: var(--white); letter-spacing: -.01em }
+.nav__name span { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text }
+.nav__links { display: flex; gap: 4px }
+.nav__link {
+  font-size: 13px; font-weight: 600; color: var(--muted);
+  padding: 6px 12px; border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: color .15s, background .15s;
+}
+.nav__link:hover { color: var(--white); background: rgba(255,255,255,.06) }
+.nav__link--active { color: var(--violet); background: var(--grad-soft); border: 1px solid var(--border-glow) }
+
+/* ══ OPENING HERO ══ */
+.opening { padding: 80px 24px 88px; position: relative; overflow: hidden }
+.opening::before {
+  content: ''; position: absolute;
+  top: -140px; left: 50%; transform: translateX(-50%);
+  width: 680px; height: 680px;
+  background: radial-gradient(circle, rgba(124,58,237,.2) 0%, transparent 68%);
+  pointer-events: none;
+}
+.opening::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+}
+.opening__inner { max-width: 960px; margin: 0 auto; position: relative }
+.opening__date {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--grad-soft);
+  border: 1px solid var(--border-glow);
+  color: var(--violet);
+  font-size: 12px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+  padding: 6px 16px; border-radius: var(--radius-full);
+  margin-bottom: 28px;
+}
+.opening__date::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--rose); box-shadow: 0 0 8px var(--rose);
+}
+.opening__aanhef {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800; letter-spacing: -.03em;
+  margin-bottom: 20px; line-height: 1.15;
+}
+.opening__body { font-size: 16px; color: var(--muted); max-width: 560px; line-height: 1.8 }
+.opening__body p + p { margin-top: 12px }
+
+/* ══ CONTENT ══ */
+.wrap { max-width: 960px; margin: 0 auto; padding: 72px 24px 100px }
+.section { margin-bottom: 72px }
+.section__label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .12em; color: var(--violet); margin-bottom: 10px;
+}
+.section__label::before { content: ''; width: 18px; height: 2px; background: var(--grad); border-radius: 2px }
+.section__heading {
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 800; letter-spacing: -.02em;
+  color: var(--white); margin-bottom: 24px;
+}
+.section__intro {
+  font-size: 14px; color: var(--muted);
+  margin-top: -12px; margin-bottom: 20px;
+  max-width: 560px; line-height: 1.65;
+}
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+  margin: 60px 0;
+}
+
+/* ══ PARTIES GRID ══ */
+.parties { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 0 }
+@media (max-width: 520px) { .parties { grid-template-columns: 1fr } }
+.party-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+}
+.party-card__role {
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .1em; color: var(--violet); margin-bottom: 10px;
+}
+.party-card__name { font-size: 15px; font-weight: 800; color: var(--white); margin-bottom: 6px }
+.party-card__detail { font-size: 13px; color: var(--muted); line-height: 1.7 }
+
+/* ══ LINE ITEMS TABLE ══ */
+.quote-table-wrap {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.quote-table { border-collapse: collapse; width: 100% }
+.quote-table thead tr { background: var(--bg-card2) }
+.quote-table th {
+  font-size: 11px; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--muted); padding: 12px 20px;
+  text-align: left; border-bottom: 1px solid var(--border);
+  font-weight: 700;
+}
+.quote-table th:last-child { text-align: right }
+.quote-table td {
+  padding: 18px 20px; font-size: 14px;
+  color: rgba(255,255,255,.85); border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.quote-table td:last-child { text-align: right; font-weight: 700; white-space: nowrap }
+.quote-table tr:last-child td { border-bottom: none }
+.quote-table .td-desc { font-size: 12px; color: var(--muted); margin-top: 4px; line-height: 1.55 }
+
+.quote-totals {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-top: 2px;
+}
+.quote-total-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 13px 20px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+.quote-total-row:last-child { border-bottom: none }
+.quote-total-row__label { color: var(--muted) }
+.quote-total-row__value { font-weight: 700; color: var(--white) }
+.quote-total-row--grand {
+  background: var(--grad-soft);
+  border-top: 1px solid var(--border-glow) !important;
+}
+.quote-total-row--grand .quote-total-row__label { color: var(--white); font-weight: 700; font-size: 15px }
+.quote-total-row--grand .quote-total-row__value {
+  font-size: 22px; font-weight: 800;
+  background: var(--grad);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+/* ══ BETALING CARD ══ */
+.payment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px }
+@media (max-width: 520px) { .payment-grid { grid-template-columns: 1fr } }
+.payment-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  position: relative;
+}
+.payment-card--highlight {
+  border-color: var(--border-glow);
+  background: var(--grad-soft);
+}
+.payment-card__num {
+  width: 26px; height: 26px; border-radius: 8px;
+  background: var(--grad);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 12px; color: var(--white);
+  margin-bottom: 12px;
+}
+.payment-card__label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); margin-bottom: 6px }
+.payment-card__amount {
+  font-size: 22px; font-weight: 800; letter-spacing: -.02em;
+  background: var(--grad);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  margin-bottom: 4px;
+}
+.payment-card__note { font-size: 12px; color: var(--muted); line-height: 1.55 }
+
+/* ══ VOORWAARDEN ══ */
+.voorwaarden-list { list-style: none; display: flex; flex-direction: column; gap: 10px }
+.voorwaarden-list li {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 13px; color: var(--muted); line-height: 1.6;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+}
+.voorwaarden-list li::before {
+  content: '→'; color: var(--violet); flex-shrink: 0; font-weight: 700; margin-top: 1px;
+}
+.voorwaarden-list li strong { color: var(--white) }
+
+/* ══ AKKOORD / SIGNATURE ══ */
+.akkoord-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-glow);
+  border-radius: var(--radius);
+  padding: 32px 36px;
+  text-align: center;
+}
+.akkoord-box__heading {
+  font-size: 20px; font-weight: 800; letter-spacing: -.02em;
+  margin-bottom: 10px;
+}
+.akkoord-box__body {
+  font-size: 14px; color: var(--muted); max-width: 440px; margin: 0 auto 28px; line-height: 1.75;
+}
+.akkoord-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px }
+.akkoord-btn {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700; font-size: 14px;
+  padding: 13px 26px; border-radius: var(--radius-sm);
+  text-decoration: none; white-space: nowrap;
+  transition: transform .2s, box-shadow .2s, opacity .2s;
+}
+.akkoord-btn--primary { background: var(--grad); color: var(--white); box-shadow: 0 4px 20px rgba(124,58,237,.35) }
+.akkoord-btn--primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(124,58,237,.5) }
+.akkoord-btn--ghost { background: transparent; color: rgba(255,255,255,.8); border: 1px solid rgba(255,255,255,.18) }
+.akkoord-btn--ghost:hover { border-color: var(--border-glow); color: var(--white); transform: translateY(-2px) }
+
+/* ══ VALIDITY BADGE ══ */
+.validity {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(251,191,36,.08);
+  border: 1px solid rgba(251,191,36,.25);
+  color: var(--amber);
+  font-size: 12px; font-weight: 700; letter-spacing: .05em;
+  padding: 6px 14px; border-radius: var(--radius-full);
+  margin-bottom: 24px;
+}
+.validity::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--amber); box-shadow: 0 0 6px var(--amber);
+}
+
+/* ══ FOOTER ══ */
+.footer { border-top: 1px solid var(--border); padding: 28px 24px; text-align: center }
+.footer__logo { font-size: 15px; font-weight: 800; margin-bottom: 4px }
+.footer__copy { font-size: 12px; color: var(--muted) }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="#" class="nav__logo">
+      <div class="nav__mark">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="28" height="28">
+          <defs>
+            <linearGradient id="ak-t" x1="81" y1="2" x2="37" y2="50" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#fce7f3"/>
+              <stop offset="100%" stop-color="#e879f9"/>
+            </linearGradient>
+            <linearGradient id="ak-l" x1="37" y1="50" x2="16" y2="100" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#c026d3"/>
+              <stop offset="100%" stop-color="#7c3aed"/>
+            </linearGradient>
+            <linearGradient id="ak-r" x1="56" y1="50" x2="63" y2="100" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#8b5cf6"/>
+              <stop offset="100%" stop-color="#4c1d95"/>
+            </linearGradient>
+          </defs>
+          <polygon points="25,50 49,50 28,100 4,100" fill="url(#ak-l)"/>
+          <polygon points="49,50 63,56 70,100 56,100" fill="url(#ak-r)"/>
+          <polygon points="25,50 49,50 47,60 23,56" fill="#1e1b4b" opacity="0.45"/>
+          <polygon points="25,50 49,50 93,3 69,2" fill="url(#ak-t)"/>
+        </svg>
+      </div>
+      <span class="nav__name">Akker<span>Digital</span></span>
+    </a>
+    <div class="nav__links">
+      <a href="plan-van-aanpak.html" class="nav__link">Plan Fase 2</a>
+      <a href="prijsopgave.html" class="nav__link nav__link--active">Offerte</a>
+    </div>
+  </div>
+</nav>
+
+<!-- OPENING -->
+<section class="opening">
+  <div class="opening__inner">
+    <div class="opening__date">Offertenummer ADQ-2026-001 · 10 juni 2026</div>
+    <h1 class="opening__aanhef">
+      Hey Alex,<br/>
+      <span class="g">hier is je offerte.</span>
+    </h1>
+    <div class="opening__body">
+      <p>Hieronder vind je een overzicht van de werkzaamheden voor Fase 2, de bijbehorende prijs en de betalingsafspraken. Geef akkoord via WhatsApp of e-mail — daarna starten we direct.</p>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+
+  <!-- PARTIJEN -->
+  <div class="section">
+    <p class="section__label">Offerte</p>
+    <h2 class="section__heading">Partijen</h2>
+    <div class="parties">
+      <div class="party-card">
+        <div class="party-card__role">Opdrachtgever</div>
+        <div class="party-card__name">A+theorie</div>
+        <div class="party-card__detail">
+          Alex van den Akker<br/>
+          Reggestraat 38, 1972 WL IJmuiden<br/>
+          info@aplustheorie.nl
+        </div>
+      </div>
+      <div class="party-card">
+        <div class="party-card__role">Opdrachtnemer</div>
+        <div class="party-card__name">AkkerDigital</div>
+        <div class="party-card__detail">
+          Esosa van den Akker<br/>
+          info@akkerdigital.nl<br/>
+          06 80 11 31 41
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- WERKZAAMHEDEN -->
+  <div class="section">
+    <p class="section__label">Specificatie</p>
+    <h2 class="section__heading">Werkzaamheden</h2>
+    <p class="section__intro">Fase 2 — Login, registratie en betaalflow voor A+theorie platform.</p>
+
+    <div class="quote-table-wrap">
+      <table class="quote-table">
+        <thead>
+          <tr>
+            <th style="width:40px">#</th>
+            <th>Omschrijving</th>
+            <th>Prijs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="color:var(--muted);font-size:13px;font-weight:700">01</td>
+            <td>
+              <strong>Login &amp; Registratie</strong>
+              <div class="td-desc">
+                Signup pagina (naam, email, wachtwoord), login pagina, formuliervalidatie met foutmeldingen, koppeling Supabase Auth, redirect na succesvolle login naar dashboard. Responsive en consistent met de Astro marketing site.
+              </div>
+            </td>
+            <td>€ 250,–</td>
+          </tr>
+          <tr>
+            <td style="color:var(--muted);font-size:13px;font-weight:700">02</td>
+            <td>
+              <strong>Betaalflow</strong>
+              <div class="td-desc">
+                Betaalpagina met pakketkeuze en Mollie redirect, loading state tijdens verwerking, betalingsbevestigingspagina, foutpagina bij mislukte betaling, koppeling aan Mollie redirect URL.
+              </div>
+            </td>
+            <td>€ 150,–</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="quote-totals" style="margin-top:2px">
+      <div class="quote-total-row">
+        <span class="quote-total-row__label">Subtotaal</span>
+        <span class="quote-total-row__value">€ 400,–</span>
+      </div>
+      <div class="quote-total-row">
+        <span class="quote-total-row__label">BTW</span>
+        <span class="quote-total-row__value" style="color:var(--muted);font-weight:500">Niet van toepassing (KOR)</span>
+      </div>
+      <div class="quote-total-row quote-total-row--grand">
+        <span class="quote-total-row__label">Totaal</span>
+        <span class="quote-total-row__value">€ 400,–</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- BETALINGSAFSPRAKEN -->
+  <div class="section">
+    <p class="section__label">Betalingsafspraken</p>
+    <h2 class="section__heading">Hoe we het splitsen</h2>
+    <p class="section__intro">50% bij akkoord, 50% na oplevering.</p>
+
+    <div class="payment-grid">
+      <div class="payment-card payment-card--highlight">
+        <div class="payment-card__num">1</div>
+        <div class="payment-card__label">Aanbetaling — bij akkoord</div>
+        <div class="payment-card__amount">€ 200,–</div>
+        <div class="payment-card__note">Na jouw akkoord stuur ik direct een betalingsverzoek. Zodra dit binnen is gaan we van start.</div>
+      </div>
+      <div class="payment-card">
+        <div class="payment-card__num">2</div>
+        <div class="payment-card__label">Restbedrag — na oplevering</div>
+        <div class="payment-card__amount">€ 200,–</div>
+        <div class="payment-card__note">Het resterende bedrag is verschuldigd bij oplevering van de afgeronde werkzaamheden.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- VOORWAARDEN -->
+  <div class="section">
+    <p class="section__label">Voorwaarden</p>
+    <h2 class="section__heading">Afspraken</h2>
+    <ul class="voorwaarden-list">
+      <li><strong>Geldigheid:</strong> Deze offerte is geldig tot en met 24 juni 2026.</li>
+      <li><strong>Oplevering:</strong> Verwachte doorlooptijd na akkoord en ontvangst aanbetaling is 2–3 weken.</li>
+      <li><strong>Meerwerk:</strong> Werkzaamheden buiten deze specificatie worden vooraf overlegd en apart geoffreerd.</li>
+      <li><strong>Eigendom:</strong> De broncode wordt overgedragen na ontvangst van de volledige betaling.</li>
+      <li><strong>Communicatie:</strong> Bereikbaar via WhatsApp en e-mail. Reactietijd maximaal 24 uur op werkdagen.</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- AKKOORD -->
+  <div class="section">
+    <div class="akkoord-box">
+      <div class="validity">Geldig t/m 24 juni 2026</div>
+      <h2 class="akkoord-box__heading">Akkoord met deze offerte?</h2>
+      <p class="akkoord-box__body">Stuur me een berichtje via WhatsApp of e-mail. Ik stuur je daarna direct het betalingsverzoek voor de aanbetaling van € 200,– en dan gaan we van start.</p>
+      <div class="akkoord-btns">
+        <a href="https://wa.me/31680113141?text=Hey%20Esosa%2C%20ik%20ga%20akkoord%20met%20offerte%20ADQ-2026-001." target="_blank" rel="noopener noreferrer" class="akkoord-btn akkoord-btn--primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          Akkoord via WhatsApp
+        </a>
+        <a href="mailto:info@akkerdigital.nl?subject=Akkoord%20offerte%20ADQ-2026-001&body=Hey%20Esosa%2C%0A%0AIk%20ga%20akkoord%20met%20offerte%20ADQ-2026-001.%0A%0AGr%2C%20Alex" class="akkoord-btn akkoord-btn--ghost">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+          </svg>
+          Akkoord via e-mail
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__logo">Akker<span class="g">Digital</span></div>
+  <p class="footer__copy">© 2026 AkkerDigital · Offerte ADQ-2026-001 voor A+theorie</p>
+</footer>
+
+</body>
+</html>
