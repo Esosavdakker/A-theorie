@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>A+theorie — Fase 2 Overzicht · AkkerDigital</title>
+<title>A+theorie — Phase 2 Overview · AkkerDigital</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
@@ -312,7 +312,7 @@ body {
       <span class="nav__name">Akker<span>Digital</span></span>
     </a>
     <div class="nav__links">
-      <a href="fahad-plan.html" class="nav__link nav__link--active">Fase 2 Overzicht</a>
+      <a href="fahad-plan.html" class="nav__link nav__link--active">Phase 2 Overview</a>
     </div>
   </div>
 </nav>
@@ -320,14 +320,14 @@ body {
 <!-- OPENING -->
 <section class="opening">
   <div class="opening__inner">
-    <div class="opening__date">Juni 2026 · A+theorie</div>
+    <div class="opening__date">June 2026 · A+theorie</div>
     <h1 class="opening__aanhef">
       Hey Fahad,<br/>
-      <span class="g">Fase 2 — jouw kant en mijn kant</span>
+      <span class="g">Phase 2 — your side and my side</span>
     </h1>
     <div class="opening__body">
       <p>
-        Hier is het overzicht van Fase 2 — jouw kant en mijn kant.
+        Here's the overview of Phase 2 — your side and my side.
       </p>
     </div>
   </div>
@@ -335,37 +335,37 @@ body {
 
 <div class="wrap">
 
-  <!-- SECTIE 1 — HUIDIGE STAAT -->
+  <!-- SECTION 1 — CURRENT STATE -->
   <div class="section">
-    <p class="section__label">Analyse</p>
-    <h2 class="section__heading">Waar we nu staan</h2>
-    <p class="section__intro">Op basis van de gap-analyse van de bestaande codebase.</p>
+    <p class="section__label">Analysis</p>
+    <h2 class="section__heading">Where we are now</h2>
+    <p class="section__intro">Based on a gap analysis of the existing codebase.</p>
     <div class="status-grid">
 
       <div class="status-card status-card--done">
-        <div class="status-card__heading">Aanwezig</div>
+        <div class="status-card__heading">Already in place</div>
         <ul class="status-list">
-          <li>Marketing site (Astro) — volledig werkend</li>
-          <li>Contactformulier via Netlify + Resend</li>
-          <li>Database tabellen: users, courses, orders, course_access</li>
-          <li>Mollie create-payment aanwezig (webhook onbevestigd)</li>
-          <li>Next.js platform structuur aangemaakt (platform/)</li>
+          <li>Marketing site (Astro) — fully working</li>
+          <li>Contact form via Netlify + Resend</li>
+          <li>Database tables: users, courses, orders, course_access</li>
+          <li>Mollie create-payment present (webhook unconfirmed)</li>
+          <li>Next.js platform structure created (platform/)</li>
           <li>Routes: auth/, login/, signup/, dashboard/</li>
-          <li>Middleware.ts voor sessiebeveiliging</li>
+          <li>Middleware.ts for session security</li>
         </ul>
       </div>
 
       <div class="status-card status-card--open">
-        <div class="status-card__heading">Nog te bouwen</div>
+        <div class="status-card__heading">Still to build</div>
         <ul class="status-list">
-          <li>Login pagina UI</li>
-          <li>Signup pagina UI</li>
-          <li>Betaalpagina UI</li>
-          <li>Betalingsbevestiging UI</li>
-          <li>Supabase Auth backend koppeling</li>
-          <li>Time-boxed access logica (expires_at)</li>
-          <li>Mollie webhook verificatie</li>
-          <li>Security: RLS, signed media, veilige URL's</li>
+          <li>Login page UI</li>
+          <li>Signup page UI</li>
+          <li>Payment page UI</li>
+          <li>Payment confirmation UI</li>
+          <li>Supabase Auth backend integration</li>
+          <li>Time-boxed access logic (expires_at)</li>
+          <li>Mollie webhook verification</li>
+          <li>Security: RLS, signed media, secure URLs</li>
         </ul>
       </div>
 
@@ -374,27 +374,27 @@ body {
 
   <div class="divider"></div>
 
-  <!-- SECTIE 2 — FASERING -->
+  <!-- SECTION 2 — STEPS -->
   <div class="section">
-    <p class="section__label">Aanpak</p>
-    <h2 class="section__heading">Stappenplan</h2>
-    <p class="section__intro">Twee fases, stap voor stap opgeleverd.</p>
+    <p class="section__label">Approach</p>
+    <h2 class="section__heading">Step-by-step plan</h2>
+    <p class="section__intro">Two phases, delivered step by step.</p>
     <div class="checklist">
 
       <div class="checklist-item">
         <div class="checklist-item__num">1</div>
         <div class="checklist-item__body">
           <div class="checklist-item__title">
-            Login &amp; Registratie
-            <span class="tag tag--required">Fase 1</span>
+            Login &amp; Registration
+            <span class="tag tag--required">Phase 1</span>
           </div>
           <ul class="detail-list">
-            <li>Signup pagina: voornaam, achternaam, email, wachtwoord, bevestig wachtwoord</li>
-            <li>Login pagina: email + wachtwoord</li>
-            <li>Formuliervalidatie + zichtbare foutmeldingen</li>
-            <li>Koppeling aan Supabase Auth</li>
-            <li>Redirect na succesvolle login naar dashboard</li>
-            <li>Responsive, consistent met Astro marketing site</li>
+            <li>Signup page: first name, last name, email, password, confirm password</li>
+            <li>Login page: email + password</li>
+            <li>Form validation + visible error messages</li>
+            <li>Integration with Supabase Auth</li>
+            <li>Redirect to dashboard after successful login</li>
+            <li>Responsive, consistent with Astro marketing site</li>
           </ul>
         </div>
       </div>
@@ -403,15 +403,15 @@ body {
         <div class="checklist-item__num">2</div>
         <div class="checklist-item__body">
           <div class="checklist-item__title">
-            Betaalflow
-            <span class="tag tag--required">Fase 2</span>
+            Payment flow
+            <span class="tag tag--required">Phase 2</span>
           </div>
           <ul class="detail-list">
-            <li>Betaalpagina: pakketkeuze + Mollie redirect knop</li>
-            <li>Loading state tijdens betaalverwerking</li>
-            <li>Betalingsbevestiging pagina na succesvolle betaling</li>
-            <li>Foutpagina bij mislukte of geannuleerde betaling</li>
-            <li>Koppeling aan Mollie redirect URL</li>
+            <li>Payment page: package selection + Mollie redirect button</li>
+            <li>Loading state during payment processing</li>
+            <li>Payment confirmation page after successful payment</li>
+            <li>Error page for failed or cancelled payments</li>
+            <li>Integration with Mollie redirect URL</li>
           </ul>
         </div>
       </div>
@@ -424,7 +424,7 @@ body {
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer__logo">Akker<span class="g">Digital</span></div>
-  <p class="footer__copy">© 2026 AkkerDigital · Intern document</p>
+  <p class="footer__copy">© 2026 AkkerDigital · Internal document</p>
 </footer>
 
 </body>
