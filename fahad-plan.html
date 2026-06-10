@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>A+theorie — Fase 2 Overzicht · AkkerDigital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:          #0d0d1a;
+  --bg-card:     #13132a;
+  --bg-card2:    #1a1a35;
+  --border:      rgba(255,255,255,0.07);
+  --border-glow: rgba(168,85,247,0.35);
+  --purple:      #7c3aed;
+  --violet:      #a855f7;
+  --rose:        #e879f9;
+  --grad:        linear-gradient(135deg,#7c3aed 0%,#e879f9 100%);
+  --grad-soft:   linear-gradient(135deg,rgba(124,58,237,.15) 0%,rgba(232,121,249,.12) 100%);
+  --white:       #ffffff;
+  --muted:       rgba(255,255,255,0.55);
+  --muted2:      rgba(255,255,255,0.28);
+  --green:       #34d399;
+  --amber:       #fbbf24;
+  --radius:      14px;
+  --radius-sm:   8px;
+  --radius-full: 999px;
+}
+
+html { scroll-behavior: smooth }
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.g {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ══ NAVBAR ══ */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(13,13,26,0.88);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+}
+.nav__inner {
+  max-width: 960px; margin: 0 auto;
+  height: 60px; display: flex; align-items: center; justify-content: space-between;
+}
+.nav__logo { display: flex; align-items: center; gap: 10px; text-decoration: none }
+.nav__mark { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; flex-shrink: 0 }
+.nav__name { font-size: 15px; font-weight: 800; color: var(--white); letter-spacing: -.01em }
+.nav__name span { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text }
+.nav__links { display: flex; gap: 4px }
+.nav__link {
+  font-size: 13px; font-weight: 600; color: var(--muted);
+  padding: 6px 12px; border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: color .15s, background .15s;
+}
+.nav__link:hover { color: var(--white); background: rgba(255,255,255,.06) }
+.nav__link--active { color: var(--violet); background: var(--grad-soft); border: 1px solid var(--border-glow) }
+
+/* ══ OPENING HERO ══ */
+.opening { padding: 80px 24px 88px; position: relative; overflow: hidden }
+.opening::before {
+  content: ''; position: absolute;
+  top: -140px; left: 50%; transform: translateX(-50%);
+  width: 680px; height: 680px;
+  background: radial-gradient(circle, rgba(124,58,237,.2) 0%, transparent 68%);
+  pointer-events: none;
+}
+.opening::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+}
+.opening__inner { max-width: 960px; margin: 0 auto; position: relative }
+.opening__date {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--grad-soft);
+  border: 1px solid var(--border-glow);
+  color: var(--violet);
+  font-size: 12px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+  padding: 6px 16px; border-radius: var(--radius-full);
+  margin-bottom: 28px;
+}
+.opening__date::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--rose); box-shadow: 0 0 8px var(--rose);
+}
+.opening__aanhef {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800; letter-spacing: -.03em;
+  margin-bottom: 20px; line-height: 1.15;
+}
+.opening__body { font-size: 16px; color: var(--muted); max-width: 560px; line-height: 1.8 }
+.opening__body p + p { margin-top: 12px }
+
+/* ══ CONTENT ══ */
+.wrap { max-width: 960px; margin: 0 auto; padding: 72px 24px 100px }
+.section { margin-bottom: 72px }
+.section__label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .12em; color: var(--violet); margin-bottom: 10px;
+}
+.section__label::before { content: ''; width: 18px; height: 2px; background: var(--grad); border-radius: 2px }
+.section__heading {
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 800; letter-spacing: -.02em;
+  color: var(--white); margin-bottom: 24px;
+}
+.section__intro {
+  font-size: 14px; color: var(--muted);
+  margin-top: -12px; margin-bottom: 20px;
+  max-width: 560px; line-height: 1.65;
+}
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+  margin: 60px 0;
+}
+
+/* ══ STATUS GRID ══ */
+.status-grid { display: grid; grid-template-columns: 1fr; gap: 16px }
+@media (min-width: 640px) { .status-grid { grid-template-columns: 1fr 1fr } }
+
+.status-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 26px;
+  transition: border-color .2s, background .2s;
+}
+.status-card:hover { border-color: var(--border-glow); background: var(--bg-card2) }
+.status-card--done { border-top: 2px solid var(--green) }
+.status-card--open { border-top: 2px solid var(--amber) }
+
+.status-card__heading {
+  font-size: 13px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .07em; margin-bottom: 16px;
+}
+.status-card--done .status-card__heading { color: var(--green) }
+.status-card--open .status-card__heading { color: var(--amber) }
+.status-card__subheading { font-size: 11px; font-weight: 600; color: var(--muted); margin-top: 4px; margin-bottom: 16px; text-transform: none; letter-spacing: 0 }
+
+.status-list { list-style: none; display: flex; flex-direction: column; gap: 10px }
+.status-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 14px; color: rgba(255,255,255,.8); line-height: 1.5;
+}
+.status-list li::before { flex-shrink: 0; margin-top: 3px; font-size: 13px; line-height: 1 }
+.status-card--done .status-list li::before { content: '✓'; color: var(--green) }
+.status-card--open .status-list li::before { content: '·'; color: var(--amber); font-size: 20px; margin-top: 0 }
+.status-card--neutral .status-list li::before { content: '·'; color: var(--muted); font-size: 20px; margin-top: 0 }
+.status-card--neutral .status-card__heading { color: var(--white) }
+
+/* ══ CHECKLIST ══ */
+.checklist { display: flex; flex-direction: column; gap: 10px }
+.checklist-item {
+  display: flex; gap: 16px; align-items: flex-start;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  transition: border-color .2s, background .2s;
+}
+.checklist-item:hover { border-color: var(--border-glow); background: var(--bg-card2) }
+.checklist-item__num {
+  width: 32px; height: 32px; border-radius: 9px; flex-shrink: 0;
+  background: var(--grad);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 13px; color: var(--white);
+  margin-top: 1px;
+}
+.checklist-item__title {
+  font-size: 15px; font-weight: 700; color: var(--white);
+  margin-bottom: 8px;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.tag {
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .06em; padding: 3px 9px; border-radius: var(--radius-full);
+}
+.tag--required { background: rgba(168,85,247,.15); border: 1px solid rgba(168,85,247,.35); color: var(--violet) }
+.tag--optional { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); color: var(--muted) }
+.tag--esosa   { background: rgba(168,85,247,.15); border: 1px solid rgba(168,85,247,.35); color: var(--violet) }
+.tag--fahad   { background: rgba(59,130,246,.15);  border: 1px solid rgba(59,130,246,.35);  color: #93c5fd }
+.tag--blijft  { background: rgba(52,211,153,.12);  border: 1px solid rgba(52,211,153,.35);  color: var(--green) }
+
+.detail-list { list-style: none; display: flex; flex-direction: column; gap: 5px }
+.detail-list li {
+  font-size: 13px; color: var(--muted); line-height: 1.5;
+  padding-left: 14px; position: relative;
+}
+.detail-list li::before { content: '–'; position: absolute; left: 0; color: var(--muted2) }
+.detail-list li strong { color: var(--white) }
+
+/* ══ TIMELINE ══ */
+.timeline { display: flex; flex-direction: column; gap: 0; position: relative; padding-left: 16px }
+.timeline::before {
+  content: ''; position: absolute;
+  left: 7px; top: 12px; bottom: 12px; width: 1px;
+  background: linear-gradient(to bottom, var(--purple), rgba(168,85,247,.1));
+}
+.timeline-row { display: flex; gap: 20px; align-items: flex-start; padding: 18px 0; position: relative }
+.timeline-dot {
+  width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0;
+  background: var(--bg-card2); border: 2px solid var(--border-glow);
+  margin-top: 4px; position: relative; z-index: 1;
+}
+.timeline-dot--grad { background: var(--grad); border-color: transparent }
+.timeline-row__title { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 4px }
+.timeline-row__desc  { font-size: 13px; color: var(--muted); line-height: 1.6 }
+
+/* ══ MODULES GRID ══ */
+.modules-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-bottom: 20px }
+@media (min-width: 480px) { .modules-grid { grid-template-columns: repeat(2,1fr) } }
+
+.module-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  transition: border-color .2s, background .2s, transform .2s, box-shadow .2s;
+}
+.module-card:hover { border-color: var(--border-glow); background: var(--bg-card2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(124,58,237,.15) }
+.module-card__price {
+  font-size: 18px; font-weight: 800; letter-spacing: -.02em;
+  background: var(--grad);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  margin-bottom: 6px;
+}
+.module-card__name { font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 4px; line-height: 1.4 }
+.module-card__desc { font-size: 12px; color: var(--muted); line-height: 1.5 }
+.modules-note {
+  font-size: 13px; color: var(--muted2);
+  padding: 14px 18px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  line-height: 1.6;
+}
+
+/* ══ TABLE ══ */
+.gap-table-wrap {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.gap-table { border-collapse: collapse; width: 100% }
+.gap-table th {
+  background: var(--bg-card2);
+  font-size: 11px; text-transform: uppercase; letter-spacing: .07em;
+  color: var(--muted); padding: 10px 16px;
+  text-align: left; border-bottom: 1px solid var(--border);
+}
+.gap-table td {
+  padding: 10px 16px; font-size: 13px;
+  color: rgba(255,255,255,.8); border-bottom: 1px solid var(--border);
+}
+.gap-table tr:last-child td { border-bottom: none }
+.gap-table tr:hover td { background: rgba(255,255,255,.02) }
+
+/* ══ FOOTER ══ */
+.footer { border-top: 1px solid var(--border); padding: 28px 24px; text-align: center }
+.footer__logo { font-size: 15px; font-weight: 800; margin-bottom: 4px }
+.footer__copy { font-size: 12px; color: var(--muted) }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="#" class="nav__logo">
+      <div class="nav__mark">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="28" height="28">
+          <defs>
+            <linearGradient id="ak-t" x1="81" y1="2" x2="37" y2="50" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#fce7f3"/>
+              <stop offset="100%" stop-color="#e879f9"/>
+            </linearGradient>
+            <linearGradient id="ak-l" x1="37" y1="50" x2="16" y2="100" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#c026d3"/>
+              <stop offset="100%" stop-color="#7c3aed"/>
+            </linearGradient>
+            <linearGradient id="ak-r" x1="56" y1="50" x2="63" y2="100" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#8b5cf6"/>
+              <stop offset="100%" stop-color="#4c1d95"/>
+            </linearGradient>
+          </defs>
+          <polygon points="25,50 49,50 28,100 4,100" fill="url(#ak-l)"/>
+          <polygon points="49,50 63,56 70,100 56,100" fill="url(#ak-r)"/>
+          <polygon points="25,50 49,50 47,60 23,56" fill="#1e1b4b" opacity="0.45"/>
+          <polygon points="25,50 49,50 93,3 69,2" fill="url(#ak-t)"/>
+        </svg>
+      </div>
+      <span class="nav__name">Akker<span>Digital</span></span>
+    </a>
+    <div class="nav__links">
+      <a href="fahad-plan.html" class="nav__link nav__link--active">Fase 2 Overzicht</a>
+    </div>
+  </div>
+</nav>
+
+<!-- OPENING -->
+<section class="opening">
+  <div class="opening__inner">
+    <div class="opening__date">Juni 2026 · A+theorie</div>
+    <h1 class="opening__aanhef">
+      Hey Fahad,<br/>
+      <span class="g">Fase 2 — jouw kant en mijn kant</span>
+    </h1>
+    <div class="opening__body">
+      <p>
+        Hier is het overzicht van Fase 2 — jouw kant en mijn kant.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+
+  <!-- SECTIE 1 — HUIDIGE STAAT -->
+  <div class="section">
+    <p class="section__label">Analyse</p>
+    <h2 class="section__heading">Waar we nu staan</h2>
+    <p class="section__intro">Op basis van de gap-analyse van de bestaande codebase.</p>
+    <div class="status-grid">
+
+      <div class="status-card status-card--done">
+        <div class="status-card__heading">Aanwezig</div>
+        <ul class="status-list">
+          <li>Marketing site (Astro) — volledig werkend</li>
+          <li>Contactformulier via Netlify + Resend</li>
+          <li>Database tabellen: users, courses, orders, course_access</li>
+          <li>Mollie create-payment aanwezig (webhook onbevestigd)</li>
+          <li>Next.js platform structuur aangemaakt (platform/)</li>
+          <li>Routes: auth/, login/, signup/, dashboard/</li>
+          <li>Middleware.ts voor sessiebeveiliging</li>
+        </ul>
+      </div>
+
+      <div class="status-card status-card--open">
+        <div class="status-card__heading">Nog te bouwen</div>
+        <ul class="status-list">
+          <li>Login pagina UI</li>
+          <li>Signup pagina UI</li>
+          <li>Betaalpagina UI</li>
+          <li>Betalingsbevestiging UI</li>
+          <li>Supabase Auth backend koppeling</li>
+          <li>Time-boxed access logica (expires_at)</li>
+          <li>Mollie webhook verificatie</li>
+          <li>Security: RLS, signed media, veilige URL's</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SECTIE 2 — FASERING -->
+  <div class="section">
+    <p class="section__label">Aanpak</p>
+    <h2 class="section__heading">Stappenplan</h2>
+    <p class="section__intro">Twee fases, stap voor stap opgeleverd.</p>
+    <div class="checklist">
+
+      <div class="checklist-item">
+        <div class="checklist-item__num">1</div>
+        <div class="checklist-item__body">
+          <div class="checklist-item__title">
+            Login &amp; Registratie
+            <span class="tag tag--required">Fase 1</span>
+          </div>
+          <ul class="detail-list">
+            <li>Signup pagina: voornaam, achternaam, email, wachtwoord, bevestig wachtwoord</li>
+            <li>Login pagina: email + wachtwoord</li>
+            <li>Formuliervalidatie + zichtbare foutmeldingen</li>
+            <li>Koppeling aan Supabase Auth</li>
+            <li>Redirect na succesvolle login naar dashboard</li>
+            <li>Responsive, consistent met Astro marketing site</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <div class="checklist-item__num">2</div>
+        <div class="checklist-item__body">
+          <div class="checklist-item__title">
+            Betaalflow
+            <span class="tag tag--required">Fase 2</span>
+          </div>
+          <ul class="detail-list">
+            <li>Betaalpagina: pakketkeuze + Mollie redirect knop</li>
+            <li>Loading state tijdens betaalverwerking</li>
+            <li>Betalingsbevestiging pagina na succesvolle betaling</li>
+            <li>Foutpagina bij mislukte of geannuleerde betaling</li>
+            <li>Koppeling aan Mollie redirect URL</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__logo">Akker<span class="g">Digital</span></div>
+  <p class="footer__copy">© 2026 AkkerDigital · Intern document</p>
+</footer>
+
+</body>
+</html>
