@@ -139,7 +139,7 @@ export default async (req) => {
   try {
     const { data, error } = await resend.emails.send({
       from:     'A+theorie Contactformulier <info@aplustheorie.nl>',
-      to:       ['jasrijschool@gmail.com'],
+      to:       [Netlify.env.get('CONTACT_EMAIL') || 'info@aplustheorie.nl'],
       reply_to: emailVal,
       subject:  `[A+theorie] Vraag van ${naamVal}`,
       html,
