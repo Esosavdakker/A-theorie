@@ -26,7 +26,7 @@ export const site = {
   hero: {
     headline1: "Jouw theorie-examen,",
     headline2: "in één keer gehaald.",
-    ctaPrimary: { label: "Meld je aan", href: "/contact" },
+    ctaPrimary: { label: "Meld je aan", href: "https://aplusplatform.netlify.app/signup" },
     trust: ["CBR-oefenexamens", "Direct toegang", "Alle apparaten"],
     stats: [
       { icon: "🏆", numericValue: 97,   suffix: "%",  label: "Slagingspercentage" },
@@ -102,7 +102,7 @@ export const site = {
         "Officieel CBR-materiaal",
         "30 dagen toegang",
       ],
-      cta: { label: "Kies Basis", href: "/contact" },
+      cta: { label: "Kies Basis", href: "https://aplusplatform.netlify.app/signup" },
     },
     {
       id: "compleet",
@@ -114,7 +114,7 @@ export const site = {
         "E-mail ondersteuning",
       ],
       badge: "Meest gekozen",
-      cta: { label: "Kies Compleet", href: "/contact" },
+      cta: { label: "Kies Compleet", href: "https://aplusplatform.netlify.app/signup" },
     },
   ],
   pricing: [
@@ -142,7 +142,7 @@ export const site = {
   cta: {
     heading: "Klaar om in één keer te slagen?",
     body: "Sluit je aan bij 100+ cursisten die al hun rijbewijs hebben behaald met A+theorie.",
-    button: { label: "Meld je aan", href: "/contact" },
+    button: { label: "Meld je aan", href: "https://aplusplatform.netlify.app/signup" },
     trust: ["Geen abonnement", "Direct toegang"],
   },
   footer: {

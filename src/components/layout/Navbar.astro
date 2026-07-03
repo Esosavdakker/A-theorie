@@ -19,7 +19,8 @@ import { site } from '../../config/site.config.js';
     </nav>
 
     <div class="navbar__actions">
-      <a href="/contact" class="navbar__cta">
+      <a href="https://aplusplatform.netlify.app/login" class="navbar__login">Inloggen</a>
+      <a href="https://aplusplatform.netlify.app/signup" class="navbar__cta">
         Meld je aan
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="navbar__cta-arrow">
           <line x1="3" y1="8" x2="13" y2="8"/><polyline points="9 4 13 8 9 12"/>
@@ -39,7 +40,8 @@ import { site } from '../../config/site.config.js';
           <li><a href={item.href} class="navbar__mobile-link">{item.label}</a></li>
         ))}
         <li class="navbar__mobile-divider"></li>
-        <li><a href="/contact" class="navbar__mobile-cta">Meld je aan →</a></li>
+        <li><a href="https://aplusplatform.netlify.app/login" class="navbar__mobile-login">Inloggen</a></li>
+        <li><a href="https://aplusplatform.netlify.app/signup" class="navbar__mobile-cta">Meld je aan →</a></li>
       </ul>
     </nav>
   </div>
@@ -141,6 +143,21 @@ import { site } from '../../config/site.config.js';
   gap: var(--space-2);
   flex-shrink: 0;
 }
+.navbar__login {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary);
+  padding: var(--space-2) var(--space-3);
+  border: 1.5px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+.navbar__login:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
 .navbar__cta {
   display: inline-flex;
   align-items: center;
@@ -209,6 +226,19 @@ import { site } from '../../config/site.config.js';
 }
 .navbar__mobile-link:hover { background: var(--color-bg); color: var(--color-primary); }
 .navbar__mobile-divider { height: 1px; background: var(--color-border); margin-block: var(--space-3); }
+.navbar__mobile-login {
+  display: block;
+  margin-top: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  text-align: center;
+  border: 1.5px solid var(--color-primary);
+  color: var(--color-primary);
+  border-radius: var(--radius-md);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+.navbar__mobile-login:hover { background: var(--color-primary); color: var(--color-white); }
 .navbar__mobile-cta {
   display: block;
   margin-top: var(--space-2);
